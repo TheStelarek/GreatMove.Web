@@ -2,22 +2,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');
 
 :root {
-  --primary-color: #4bc0e7;
-  --primary-color-dark: #28b3e2;
-  --primary-color-light: #81d3ee;
+  --primary-color: var(--blue-40);
+  --secondary-color: var(--gray-40);
+
+  --blue-80: #11637e;
+  --blue-70: #167fa2;
+  --blue-60: #1b9bc5;
+  --blue-50: #28b3e2;
+  --blue-40: #4bc0e7;
+  --blue-30: #6fcceb;
+  --blue-20: #93d9f0;
+  --blue-10: #b7e6f5;
+  --blue-0: #dbf2fa;
+
+  --gray-80: #1f1f1f;
+  --gray-70: #333333;
+  --gray-60: #474747;
+  --gray-50: #5c5c5c;
+  --gray-40: #998a8a;
+  --gray-30: #9d9595;
+  --gray-20: #b1aaaa;
+  --gray-10: #e2dfdf;
+  --gray-0: #ece9e9;
 
   --white-1: #ffffff;
-  --white-2: #fff8eb;
-  --white-3: #fff1d6;
+  --white-2: #f5f4f4;
 
-  --black-1: #1c1c1c;
-  --black-2: #141414;
-  --black-3: #0a0a0a;
+  --black-1: #000501;
+  --black-2: #0b0a0a;
+  --black-2: #201d1d;
 
-  --gray-1: #292929;
-  --gray-2: #474747;
-  --gray-3: #999999;
-  --gray-4: #cccccc;
+  --green-1: #7ddf64;
+
+  --red-1: #f46b52;
+  --red-2: #f24a2c;
 }
 
 html,
