@@ -1,0 +1,10 @@
+.container {
+  padding: 50px 70px;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
