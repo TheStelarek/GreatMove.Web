@@ -18,14 +18,21 @@
     .navItem {
       width: 90px;
       list-style-type: none;
-      font-weight: 500;
-      font-size: 14px;
       color: var(--white-1);
       transition: 0.3s;
 
-      &:hover {
-        font-weight: 700;
-        color: var(--white-3);
+      button {
+        font-weight: 500;
+        font-size: 15px;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        color: inherit;
+
+        &:hover {
+          font-weight: 700;
+          color: var(--white-3);
+        }
       }
     }
   }
@@ -33,6 +40,9 @@
   .hamburger {
     display: none;
     margin-left: auto;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 
     .bar {
       display: block;
@@ -41,56 +51,43 @@
       margin: 5px auto;
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      background-color: var(--primary-color);
+      background-color: var(--white-1);
     }
   }
 }
 
 @media (max-width: 780px) {
   .navbar {
-    padding: 35px 35px;
+    padding: 30px 35px;
+
     .navMenu {
       position: fixed;
       left: -100%;
-      top: 70px;
+      top: 60px;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
       width: 100%;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 60px);
       transition: 0.3s;
       background-color: var(--primary-color);
+
+      .navItem {
+        margin-top: 30px;
+        text-align: center;
+
+        button {
+          font-size: 18px;
+        }
+      }
+
+      .navItem:first-of-type {
+        margin-top: 10px;
+      }
     }
 
     .navMenuActive {
       left: 0;
       padding: 0;
-    }
-
-    .navItem {
-      margin-top: 60px;
-      text-align: center;
-      .social {
-        margin-right: 0px;
-
-        button {
-          .icon {
-            font-size: 25px;
-          }
-        }
-      }
-
-      & > a {
-        font-size: 18px;
-      }
-    }
-
-    .navItem:first-of-type {
-      margin-top: 10px;
-    }
-
-    .navItem:last-of-type {
-      margin: 60px auto 0 auto;
     }
 
     .hamburger {

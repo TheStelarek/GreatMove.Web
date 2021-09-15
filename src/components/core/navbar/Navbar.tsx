@@ -23,14 +23,18 @@ export default function Navbar() {
         )}
       >
         <li className={styles.navItem}>
-          <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-            <Link href="/">Home</Link>
-          </button>
+          <Link href="/">
+            <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
+              Home
+            </button>
+          </Link>
         </li>
         <li className={styles.navItem}>
-          <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-            <Link href="/recipe">Recipes</Link>
-          </button>
+          <Link href="/recipe">
+            <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
+              Recipes
+            </button>
+          </Link>
         </li>
       </ul>
       <button
