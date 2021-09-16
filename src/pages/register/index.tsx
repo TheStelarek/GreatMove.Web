@@ -1,43 +1,61 @@
 import styles from '@/styles/Register.module.scss';
-import Google from '@/public/logos/google.svg';
-import Facebook from '@/public/logos/facebook.svg';
+import RegisterHeader from '@/components/register/registerHeader/RegisterHeader';
+import RegisterSocials from '@/components/register/registerSocials/RegisterSocials';
+import Divider from '@/components/core/divider/Divider';
+import Input from '@/components/core/input/Input';
+import RegisterSignIn from '@/components/register/registerSignIn/RegisterSignIn';
+import RegisterLogo from '@/components/register/registerLogo/RegisterLogo';
+import Weight from '@/public/benefits/weight.svg';
+import Diet from '@/public/benefits/diet.svg';
+import Body from '@/public/benefits/body.svg';
+import RegisterBenefitBox from '@/components/register/registerBenefitBox/RegisterBenefitBox';
 
 export default function Register() {
   return (
     <div className={styles.container}>
-      <div className={styles.information} />
+      <div className={styles.information}>
+        <RegisterLogo />
+        <div className={styles.benefits}>
+          <RegisterBenefitBox
+            title="Save and track your trainings"
+            description="By analyzing your workouts you will ensure continuous development."
+          >
+            <Weight className={styles.icon} />
+          </RegisterBenefitBox>
+          <RegisterBenefitBox
+            title="Plan and save your meals"
+            description="Achieve your fitness goals with calorie counting."
+          >
+            <Diet className={styles.icon} />
+          </RegisterBenefitBox>
+          <RegisterBenefitBox
+            title="Track your body measurements"
+            description="Analyze your progress by tracking your measurements."
+          >
+            <Body className={styles.icon} />
+          </RegisterBenefitBox>
+        </div>
+      </div>
       <div className={styles.register}>
-        <div className={styles.signIn}>
-          Already have an account?
-          <button type="button">Sign in</button>
+        <RegisterSignIn />
+        <div className={styles.wrapper}>
+          <RegisterHeader />
+          <RegisterSocials />
+          <Divider text="or" />
+          <form className={styles.registerForm}>
+            <Input
+              labelText="Email"
+              htmlFor="email"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email address"
+            />
+            <button type="button" className={styles.formBtn}>
+              Next
+            </button>
+          </form>
         </div>
-        <h1 className={styles.heading}>Create your free account</h1>
-        <div className={styles.socials}>
-          <button type="button" className={styles.social}>
-            <Google className={styles.icon} /> Sign up with Google
-          </button>
-          <button type="button" className={styles.social}>
-            <Facebook className={styles.icon} /> Sign up with Facebook
-          </button>
-        </div>
-        <span className={styles.divider}>or</span>
-        <form action="" className={styles.registerForm}>
-          <div className={styles.inputWrapper}>
-            <label htmlFor="email" className={styles.label}>
-              Email
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email address"
-                className={styles.input}
-              />
-            </label>
-          </div>
-          <button type="button" className={styles.formBtn}>
-            Next
-          </button>
-        </form>
       </div>
     </div>
   );
