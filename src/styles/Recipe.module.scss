@@ -1,10 +1,298 @@
 .container {
-  padding: 50px 70px;
+  padding: 20px 20px;
+  max-width: 1350px;
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  @media only screen and (min-width: 320px) {
+    max-width: 850px;
+    padding: 0px 0px;
   }
+
+  @media only screen and (min-width: 480px) {
+    max-width: 950px;
+    padding: 0px 0px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    max-width: 1050px;
+  }
+  @media only screen and (min-width: 992px) {
+    max-width: 1150px;
+  }
+  @media only screen and (min-width: 1200px) {
+    max-width: 1250px;
+  }
+}
+
+.wrapper {
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.foodIMG {
+  width: 400px;
+  height: 400px;
+  margin-top: 70px;
+
+  @media only screen and (max-width: 1200px) and (min-width: 650px) {
+    width: 350px;
+    height: 350px;
+  }
+
+  @media only screen and (max-width: 650px) and (min-width: 200px) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.title {
+  font-size: 50px;
+  padding-top: 30px;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 30px;
+  margin-top: 50px;
+  color: white;
+  max-width: 50%;
+  padding-left: 125px;
+
+  @media only screen and (max-width: 1200px) and (min-width: 1050px) {
+    font-size: 40px;
+    padding-left: 100px;
+  }
+
+  @media only screen and (max-width: 1050px) and (min-width: 700px) {
+    font-size: 30px;
+    padding-left: 48px;
+    max-width: 40%;
+  }
+
+  @media only screen and (max-width: 700px) and (min-width: 200px) {
+    font-size: 30px;
+    padding-left: 0px;
+  }
+}
+
+.timeInfo {
+  margin-bottom: 20px;
+  display: flex;
+  font-size: 10px;
+  margin-right: auto;
+  margin-left: 155px;
+  height: 100%;
+
+  @media only screen and (max-width: 1200px) and (min-width: 1050px) {
+    margin-left: 100px;
+  }
+
+  @media only screen and (max-width: 1050px) and (min-width: 700px) {
+    margin-left: 75px;
+  }
+
+  @media only screen and (max-width: 700px) and (min-width: 200px) {
+    margin-left: 30px;
+  }
+}
+
+.textTime {
+  color: var(--blue-10);
+  font-size: 13px;
+}
+
+.time {
+  margin-right: 30px;
+  float: left;
+  line-height: 30px;
+}
+.share {
+  margin-top: 10px;
+  margin-left: 70px;
+  float: left;
+
+  @media only screen and (max-width: 1160px) and (min-width: 200px) {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
+
+.img {
+  width: 80px;
+  height: 20px;
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  margin-top: 15px;
+  margin-right: auto;
+}
+
+.print {
+  margin-top: 10px;
+  margin-left: 20px;
+  float: left;
+
+  @media only screen and (max-width: 1160px) and (min-width: 400px) {
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  @media only screen and (max-width: 400px) and (min-width: 350px) {
+    margin-top: 9px;
+    margin-right: 40px;
+  }
+
+  @media only screen and (max-width: 350px) and (min-width: 250px) {
+    margin-top: 10px;
+    margin-right: 40px;
+  }
+}
+
+.desc {
+  max-width: 75%;
+  margin-right: auto;
+  color: var(--gray-40);
+  margin-top: 20px;
+  line-height: 20px;
+}
+
+.subTitle {
+  font-size: 28px;
+  margin-top: 30px;
+  padding-top: 30px;
+  letter-spacing: 2px;
+  font-weight: 1000;
+
+  @media only screen and (max-width: 700px) and (min-width: 200px) {
+    letter-spacing: 0px;
+    font-weight: 800;
+  }
+}
+
+.background {
+  width: 100%;
+
+  background-color: var(--primary-color);
+
+  @media only screen and (max-width: 1300px) and (min-width: 1000px) {
+    width: 140%;
+  }
+
+  @media only screen and (max-width: 1000px) and (min-width: 350px) {
+    width: 180%;
+  }
+
+  @media only screen and (max-width: 350px) and (min-width: 200px) {
+    width: 180%;
+  }
+}
+
+.servingsNUM {
+  margin-top: 18px;
+}
+
+.savages {
+  display: flex;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  padding-right: 2px;
+}
+
+.foods {
+  transform: translateY(-20%);
+  max-width: 49%;
+  position: sticky;
+  margin-right: 50px;
+  vertical-align: top;
+  text-align: center;
+  float: right;
+
+  @media only screen and (max-width: 1600px) and (min-width: 1050px) {
+    transform: translateY(-20%);
+  }
+
+  @media only screen and (max-width: 650px) and (min-width: 200px) {
+    transform: translateY(0%);
+    margin-right: -150px;
+  }
+
+  @media only screen and (max-width: 1050px) and (min-width: 650px) {
+    transform: translateY(-20%);
+    margin-right: -250px;
+  }
+}
+
+.leftBox {
+  margin-right: auto;
+  float: left;
+  max-width: 50%;
+  padding-left: 155px;
+
+  @media only screen and (max-width: 1200px) and (min-width: 1050px) {
+    padding-left: 100px;
+  }
+
+  @media only screen and (max-width: 1050px) and (min-width: 700px) {
+    padding-left: 75px;
+    max-width: 80%;
+  }
+
+  @media only screen and (max-width: 350px) and (min-width: 200px) {
+    padding-left: 10px;
+    max-width: 85%;
+  }
+
+  @media only screen and (max-width: 700px) and (min-width: 350px) {
+    padding-left: 20px;
+    max-width: 80%;
+  }
+}
+.bottom {
+  display: inline-block;
+  position: relative;
+}
+
+.Nurtilion {
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media only screen and (max-width: 790px) and (min-width: 680px) {
+    height: 150px;
+  }
+
+  @media only screen and (max-width: 680px) and (min-width: 550px) {
+    height: 180px;
+  }
+
+  @media only screen and (max-width: 550px) and (min-width: 200px) {
+    height: 250px;
+  }
+}
+
+.gray {
+  background-color: var(--gray-0);
+  margin-top: 30px;
+  line-height: 30px;
+
+  @media only screen and (max-width: 550px) and (min-width: 200px) {
+    width: 250px;
+  }
+}
+
+.ingredient {
+  padding-bottom: 30px;
+}
+
+.white {
+  color: white;
+}
+
+.nurPerSav {
+  color: var(--gray-30);
+  max-width: 100%;
 }

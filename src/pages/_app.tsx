@@ -6,7 +6,7 @@ import Layout from '../components/core/layout/Layout';
 import '../styles/global.scss';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return isAuthenticated ? (
     <Provider store={store}>
