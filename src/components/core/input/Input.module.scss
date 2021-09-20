@@ -23,4 +23,18 @@
       border: none;
     }
   }
+
+  .inputError {
+    border: 2px solid var(--red-2);
+  }
+
+  .error {
+    color: var(--red-2);
+    font-size: 14px;
+    margin: 5px 0 0 0;
+    padding: 0;
+    text-align: center;
+    line-height: 14px;
+    font-weight: 600;
+  }
 }

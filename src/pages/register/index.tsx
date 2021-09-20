@@ -2,13 +2,13 @@ import styles from '@/styles/Register.module.scss';
 import RegisterHeader from '@/components/register/registerHeader/RegisterHeader';
 import RegisterSocials from '@/components/register/registerSocials/RegisterSocials';
 import Divider from '@/components/core/divider/Divider';
-import Input from '@/components/core/input/Input';
 import RegisterSignIn from '@/components/register/registerSignIn/RegisterSignIn';
 import RegisterLogo from '@/components/register/registerLogo/RegisterLogo';
 import Weight from '@/public/benefits/weight.svg';
 import Diet from '@/public/benefits/diet.svg';
 import Body from '@/public/benefits/body.svg';
 import RegisterBenefitBox from '@/components/register/registerBenefitBox/RegisterBenefitBox';
+import RegisterForm from '@/components/register/registerForm/RegisterForm';
 
 export default function Register() {
   return (
@@ -36,25 +36,14 @@ export default function Register() {
           </RegisterBenefitBox>
         </div>
       </div>
+
       <div className={styles.register}>
         <RegisterSignIn />
         <div className={styles.wrapper}>
           <RegisterHeader />
           <RegisterSocials />
           <Divider text="or" />
-          <form className={styles.registerForm}>
-            <Input
-              labelText="Email"
-              htmlFor="email"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email address"
-            />
-            <button type="button" className={styles.formBtn}>
-              Next
-            </button>
-          </form>
+          <RegisterForm />
         </div>
       </div>
     </div>

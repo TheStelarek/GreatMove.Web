@@ -17,6 +17,13 @@
   "plugins": ["import", "jsx-a11y", "react", "react-hooks", "prettier"],
   "extends": ["airbnb", "prettier", "next", "next/core-web-vitals"],
   "rules": {
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state", "config"]
+      }
+    ],
     "prettier/prettier": "error",
     "camelcase": "off",
     "import/prefer-default-export": "off",
@@ -26,6 +33,7 @@
     "react/no-unused-prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
+    "@next/next/link-passhref": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

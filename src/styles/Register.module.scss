@@ -52,29 +52,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      .registerForm {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        width: 300px;
-
-        .formBtn {
-          margin-top: 10px;
-          margin-bottom: 25px;
-          border-radius: 20px;
-          width: 300px;
-          border: none;
-          background-color: var(--primary-color);
-          height: 50px;
-          letter-spacing: 1.1px;
-          color: var(--white-2);
-          font-weight: 600;
-          cursor: pointer;
-        }
-      }
     }
   }
 }
@@ -101,17 +78,6 @@
       width: 60%;
       padding: 30px 50px;
       height: 100vh;
-
-      .wrapper {
-        .registerForm {
-          width: 350px;
-
-          .formBtn {
-            width: 350px;
-            border: none;
-          }
-        }
-      }
     }
   }
 }
