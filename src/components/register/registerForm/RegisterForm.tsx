@@ -79,6 +79,7 @@ const RegisterForm = () => {
       {step === 1 && (
         <>
           <Input
+            borderRadius
             label="Email"
             type="text"
             placeholder="Email address"
@@ -98,6 +99,7 @@ const RegisterForm = () => {
       {step === 2 && (
         <>
           <Input
+            borderRadius
             label="Username"
             type="text"
             placeholder="Your username"
@@ -125,6 +127,7 @@ const RegisterForm = () => {
         ) : (
           <>
             <Input
+              borderRadius
               label="Password"
               type="password"
               placeholder="Enter password"

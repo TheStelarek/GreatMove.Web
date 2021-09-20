@@ -1,21 +1,41 @@
 import styles from '@/components/core/input/Input.module.scss';
 import cx from 'classnames';
 import { forwardRef } from 'react';
-import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 type InputProps = UseFormRegisterReturn & {
-  label: string;
+  label?: string;
   placeholder?: string;
   type: 'text' | 'email' | 'number' | 'password';
   error?: string | null;
+  borderRadius?: boolean;
+  gray?: boolean;
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ name, label, placeholder, type, error, onChange, onBlur }, ref) => (
+  (
+    {
+      name,
+      label,
+      placeholder,
+      type,
+      error,
+      borderRadius,
+      gray,
+      onChange,
+      onBlur,
+    },
+    ref,
+  ) => (
     <label htmlFor={name} className={styles.label}>
       {label && label}
       <input
-        className={cx(styles.input, error && styles.inputError)}
+        className={cx(
+          styles.input,
+          borderRadius && styles.inputRadius,
+          gray && styles.inputGray,
+          error && styles.inputError,
+        )}
         aria-invalid={error ? `true` : `false`}
         id={name}
         ref={ref}

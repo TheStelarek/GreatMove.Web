@@ -34,6 +34,7 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "@next/next/link-passhref": "off",
+    "react/no-unescaped-entities": 0,
     "import/extensions": [
       "error",
       "ignorePackages",

@@ -1,0 +1,21 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .formBtn {
+    width: 100%;
+    border: none;
+    background-color: var(--primary-color);
+    height: 50px;
+    letter-spacing: 1.1px;
+    color: var(--white-2);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .formBtn:disabled {
+    cursor: not-allowed;
+    background-color: var(--gray-30);
+  }
+}
