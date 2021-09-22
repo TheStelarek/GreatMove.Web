@@ -2,8 +2,11 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import type { RootState } from '@/store/index';
 import { signUpUser } from './signUpUser';
 import { isAvailableEmailUsername } from './isAvailableEmailUsername';
+import { signIn } from './signIn';
 
 interface AuthState {
+  isLoggedIn: boolean;
+  roles: Array<string>;
   isFetching: boolean;
   isSuccess: boolean;
   isError: boolean;
@@ -11,6 +14,8 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
+  isLoggedIn: false,
+  roles: [],
   isFetching: false,
   isSuccess: false,
   isError: false,
@@ -31,6 +36,16 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(
+      signIn.fulfilled,
+      (state: AuthState, { payload: { user } }) => {
+        state.isFetching = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.roles = user.roles;
+      },
+    );
+
     builder.addMatcher(
       isAnyOf(signUpUser.fulfilled, isAvailableEmailUsername.fulfilled),
       (state: AuthState) => {
@@ -40,14 +55,22 @@ export const authSlice = createSlice({
     );
 
     builder.addMatcher(
-      isAnyOf(signUpUser.pending, isAvailableEmailUsername.pending),
+      isAnyOf(
+        signUpUser.pending,
+        isAvailableEmailUsername.pending,
+        signIn.pending,
+      ),
       (state: AuthState) => {
         state.isFetching = true;
       },
     );
 
     builder.addMatcher(
-      isAnyOf(signUpUser.rejected, isAvailableEmailUsername.rejected),
+      isAnyOf(
+        signUpUser.rejected,
+        isAvailableEmailUsername.rejected,
+        signIn.rejected,
+      ),
       (state: AuthState, action) => {
         state.isFetching = false;
         state.isError = true;

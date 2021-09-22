@@ -1,13 +1,18 @@
 import styles from '@/components/core/spinner/Spinner.module.scss';
 
-const Spinner = () => (
-  <div className={styles.skChase}>
-    <div className={styles.skChaseDot} />
-    <div className={styles.skChaseDot} />
-    <div className={styles.skChaseDot} />
-    <div className={styles.skChaseDot} />
-    <div className={styles.skChaseDot} />
-    <div className={styles.skChaseDot} />
+interface SpinnerProps {
+  big?: boolean;
+  blue?: boolean;
+}
+
+const Spinner: React.FC<SpinnerProps> = ({ big, blue }) => (
+  <div className={big ? styles.skChageBig : styles.skChase}>
+    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
+    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
+    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
+    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
+    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
+    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
   </div>
 );
 

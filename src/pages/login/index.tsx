@@ -14,7 +14,7 @@ export default function Login() {
         <LoginForm />
         <div className={styles.links}>
           <p className={styles.link}>
-            <Link href="/">Don't have an account? Sign up!</Link>
+            <Link href="/register">Don't have an account? Sign up!</Link>
           </p>
           <p className={styles.link}>
             <Link href="/">Forgot password?</Link>

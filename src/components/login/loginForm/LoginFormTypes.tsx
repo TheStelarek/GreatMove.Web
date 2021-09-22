@@ -1,14 +1,11 @@
 import * as yup from 'yup';
 
 export interface LoginFormValue {
-  email: string;
+  username: string;
   password: string;
 }
 
 export const LoginValidationSchema = yup.object({
-  email: yup
-    .string()
-    .email(`Email must be a valid email.`)
-    .required(`Email is required.`),
+  username: yup.string().required(`Username is required.`),
   password: yup.string().required(`Password is required.`),
 });
