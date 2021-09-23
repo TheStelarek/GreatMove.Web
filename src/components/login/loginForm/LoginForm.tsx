@@ -13,9 +13,10 @@ import { LoginFormValue, LoginValidationSchema } from './LoginFormTypes';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const { isFetching, isError, errorMessage, isSuccess } =
     useAppSelector(authSelector);
-  const router = useRouter();
 
   const {
     register,
@@ -38,6 +39,12 @@ const LoginForm = () => {
     },
     [],
   );
+
+  useEffect(() => {
+    if (errorMessage) {
+      dispatch(clearState());
+    }
+  }, [errors.username, errors.password]);
 
   const onSubmit = (data: LoginFormValue) => {
     dispatch(clearState());
