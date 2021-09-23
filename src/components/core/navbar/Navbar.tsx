@@ -1,19 +1,22 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import cx from 'classnames';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { authSelector, logout } from '@/store/auth/AuthSlice';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import styles from './Navbar.module.scss';
 
 export default function Navbar() {
   const [showHamburger, setShowHamburger] = useState(false);
+  const { isLoggedIn } = useAppSelector(authSelector);
+  const dispatch = useAppDispatch();
 
-  const showMenu = () => {
-    setShowHamburger(!showHamburger);
+  const showMenu = () => setShowHamburger(!showHamburger);
+  const hideMenu = () => setShowHamburger(false);
+  const logoutUser = () => {
+    dispatch(logout());
+    hideMenu();
   };
-
-  const hideMenu = () => {
-    setShowHamburger(false);
-  };
-
   return (
     <nav className={styles.navbar}>
       <ul
@@ -36,6 +39,26 @@ export default function Navbar() {
             </button>
           </Link>
         </li>
+        <div className={styles.auth}>
+          {isLoggedIn ? (
+            <button type="button" onClick={logoutUser} onKeyPress={logoutUser}>
+              Logout
+            </button>
+          ) : (
+            <>
+              <Link href="/login">
+                <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
+                  Sign in
+                </button>
+              </Link>
+              <Link href="/register">
+                <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
+                  Sign up
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
       </ul>
       <button
         type="button"

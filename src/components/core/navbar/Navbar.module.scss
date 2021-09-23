@@ -2,36 +2,52 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 22px;
   width: 100%;
   position: fixed;
-  padding: 35px 100px;
+  padding: 15px 100px;
   background-color: var(--primary-color);
   z-index: 100;
 
   .navMenu {
     display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
     width: 100%;
+    gap: 35px;
 
-    .navItem {
-      width: 90px;
+    .navItem,
+    .auth {
       list-style-type: none;
-      color: var(--white-1);
+      color: var(--white-2);
       transition: 0.3s;
 
       button {
         font-weight: 500;
-        font-size: 15px;
         background-color: transparent;
         border: none;
         padding: 0;
         color: inherit;
+        cursor: pointer;
 
         &:hover {
           font-weight: 700;
           color: var(--white-3);
+        }
+      }
+    }
+
+    .auth {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+
+      button {
+        border-radius: 6px;
+        padding: 6px 8px;
+
+        &:last-of-type {
+          border: 1px solid var(--blue-0);
         }
       }
     }
@@ -58,21 +74,23 @@
 
 @media (max-width: 780px) {
   .navbar {
-    padding: 30px 35px;
+    padding: 10px 35px;
+    height: 50px;
 
     .navMenu {
       position: fixed;
       left: -100%;
-      top: 60px;
+      top: 50px;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 50px);
       transition: 0.3s;
       background-color: var(--primary-color);
+      gap: 50px;
 
-      .navItem {
-        margin-top: 30px;
+      .navItem,
+      .auth {
         text-align: center;
 
         button {
@@ -80,8 +98,11 @@
         }
       }
 
-      .navItem:first-of-type {
-        margin-top: 10px;
+      .auth {
+        margin: 0 auto;
+        gap: 50px;
+        justify-content: center;
+        flex-direction: column;
       }
     }
 

@@ -34,6 +34,12 @@ export const authSlice = createSlice({
 
       return state;
     },
+    logout: (state) => {
+      state.isLoggedIn = false;
+      state.roles = [];
+      localStorage.removeItem(`token`);
+      return state;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -83,5 +89,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { clearState } = authSlice.actions;
+export const { clearState, logout } = authSlice.actions;
 export const authSelector = (state: RootState) => state.auth;
