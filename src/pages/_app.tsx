@@ -1,39 +1,36 @@
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { NextPage } from 'next';
-import React from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '@/store/index';
-import Layout from '@/components/core/layout/Layout';
 import AuthGuard from '@/components/authGuard/AuthGuard';
 import '@/styles/global.scss';
 
 export type NextApplicationPage<P = any, IP = P> = NextPage<P, IP> & {
   requireAuth?: boolean;
+  getLayout?: (page: ReactElement) => ReactNode;
 };
 
-export default function MyApp(props: AppProps) {
-  const {
-    Component,
-    pageProps,
-  }: { Component: NextApplicationPage; pageProps: any } = props;
+type AppPropsWithLayout = AppProps & {
+  Component: NextApplicationPage;
+};
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
       {Component.requireAuth ? (
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <AuthGuard>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </AuthGuard>
+            <AuthGuard>{getLayout(<Component {...pageProps} />)}</AuthGuard>
           </PersistGate>
         </Provider>
       ) : (
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
           </PersistGate>
         </Provider>
       )}

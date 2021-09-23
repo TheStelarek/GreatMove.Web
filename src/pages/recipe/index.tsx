@@ -1,4 +1,6 @@
+import { ReactElement } from 'react';
 import styles from '@/styles/Recipe.module.scss';
+import Layout from '@/components/core/layout/Layout';
 
 export default function Recipe() {
   return (
@@ -384,3 +386,7 @@ export default function Recipe() {
     </div>
   );
 }
+
+Recipe.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
