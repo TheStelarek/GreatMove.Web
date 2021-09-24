@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--white-3);
 
   .header {
     width: 100%;
@@ -14,6 +15,17 @@
     min-height: calc(100vh - 50px);
     max-width: 1366px;
     width: 100%;
+    background-color: var(--white-3);
+  }
+
+  @media (min-width: 780px) {
+    .header {
+      height: 62px;
+    }
+
+    .main {
+      min-height: calc(100vh - 62px);
+    }
   }
 
   @media (min-width: 780px) {

@@ -6,7 +6,11 @@ import { authSelector, logout } from '@/store/auth/AuthSlice';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import styles from './Navbar.module.scss';
 
-export default function Navbar() {
+interface NavbarProps {
+  whiteNavbar?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ whiteNavbar }) => {
   const [showHamburger, setShowHamburger] = useState(false);
   const { isLoggedIn } = useAppSelector(authSelector);
   const dispatch = useAppDispatch();
@@ -17,14 +21,10 @@ export default function Navbar() {
     dispatch(logout());
     hideMenu();
   };
+
   return (
-    <nav className={styles.navbar}>
-      <ul
-        className={cx(
-          styles.navMenu,
-          showHamburger ? styles.navMenuActive : null,
-        )}
-      >
+    <nav className={cx(styles.navbar, whiteNavbar && styles.navbarWhite)}>
+      <ul className={cx(styles.navMenu, showHamburger && styles.navMenuActive)}>
         <li className={styles.navItem}>
           <Link href="/">
             <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
@@ -33,7 +33,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/recipe">
+          <Link href="/recipes">
             <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
               Recipes
             </button>
@@ -64,7 +64,7 @@ export default function Navbar() {
         type="button"
         className={cx(
           styles.hamburger,
-          showHamburger ? styles.hamburgerActive : null,
+          showHamburger && styles.hamburgerActive,
         )}
         onClick={showMenu}
         onKeyPress={hideMenu}
@@ -75,4 +75,6 @@ export default function Navbar() {
       </button>
     </nav>
   );
-}
+};
+
+export default Navbar;

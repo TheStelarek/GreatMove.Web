@@ -1,0 +1,112 @@
+.recipe {
+  max-width: 340px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--white-1);
+  cursor: pointer;
+
+  .image {
+    position: relative;
+    max-width: 300px;
+    height: 200px;
+  }
+
+  .content {
+    margin-top: 15px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .meal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        margin: 0;
+        color: var(--black-1);
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
+
+    .name {
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--black-3);
+    }
+
+    .difficulty {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        margin: 0;
+        color: var(--gray-20);
+        font-weight: 900;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media (min-width: 450px) {
+  .recipe {
+    max-width: 400px;
+
+    .image {
+      max-width: 360px;
+      height: 260px;
+    }
+  }
+}
+
+@media (min-width: 660px) {
+  .recipe {
+    max-width: 300px;
+
+    .image {
+      max-width: 260px;
+      height: 160px;
+    }
+  }
+}
+
+@media (min-width: 760px) {
+  .recipe {
+    max-width: 350px;
+
+    .image {
+      max-width: 310px;
+      height: 210px;
+    }
+  }
+}
+
+@media (min-width: 1060px) {
+  .recipe {
+    max-width: 280px;
+
+    .image {
+      max-width: 240px;
+      height: 140px;
+    }
+  }
+}
+
+@media (min-width: 1270px) {
+  .recipe {
+    max-width: 340px;
+
+    .image {
+      max-width: 300px;
+      height: 200px;
+    }
+  }
+}

@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   position: fixed;
+  width: 100%;
   padding: 15px 100px;
   background-color: var(--primary-color);
   z-index: 100;
@@ -19,20 +19,19 @@
     .navItem,
     .auth {
       list-style-type: none;
-      color: var(--white-2);
+      color: var(--white-3);
       transition: 0.3s;
 
       button {
-        font-weight: 500;
         background-color: transparent;
         border: none;
-        padding: 0;
         color: inherit;
         cursor: pointer;
+        padding: 0;
+        font-weight: 700;
 
         &:hover {
-          font-weight: 700;
-          color: var(--white-3);
+          color: var(--white-1);
         }
       }
     }
@@ -43,11 +42,12 @@
       gap: 20px;
 
       button {
+        width: 75px;
         border-radius: 6px;
         padding: 6px 8px;
 
         &:last-of-type {
-          border: 1px solid var(--blue-0);
+          border: 1px solid var(--blue-20);
         }
       }
     }
@@ -79,10 +79,10 @@
 
     .navMenu {
       position: fixed;
-      left: -100%;
-      top: 50px;
       flex-direction: column;
       align-items: center;
+      left: -100%;
+      top: 50px;
       width: 100%;
       height: calc(100vh - 50px);
       transition: 0.3s;
@@ -116,16 +116,50 @@
       cursor: pointer;
     }
 
-    .hamburgerActive .bar:nth-child(2) {
-      opacity: 0;
+    .hamburgerActive {
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
     }
+  }
+}
 
-    .hamburgerActive .bar:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
+.navbarWhite {
+  background-color: var(--white-1);
+
+  .navMenu {
+    background-color: var(--white-1);
+
+    .navItem,
+    .auth {
+      button {
+        font-weight: 700;
+        color: var(--black-1);
+
+        &:hover {
+          color: var(--blue-50);
+        }
+      }
     }
+  }
 
-    .hamburgerActive .bar:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
+  .auth {
+    button {
+      &:last-of-type {
+        color: var(--blue-50);
+      }
+    }
+  }
+
+  .hamburger {
+    .bar {
+      background-color: var(--blue-50);
     }
   }
 }
