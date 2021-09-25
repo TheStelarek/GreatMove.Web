@@ -1,16 +1,11 @@
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import { NextPage } from 'next';
-import React, { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '@/store/index';
 import AuthGuard from '@/components/authGuard/AuthGuard';
 import '@/styles/global.scss';
-
-export type NextApplicationPage<P = any, IP = P> = NextPage<P, IP> & {
-  requireAuth?: boolean;
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextApplicationPage;
