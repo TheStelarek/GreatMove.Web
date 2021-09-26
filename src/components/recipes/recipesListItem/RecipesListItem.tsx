@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import styles from '@/components/recipes/recipesListItem/RecipesListItem.module.scss';
 import { Recipe } from '@/utils/types/Recipe';
-import Image from 'next/image';
 
 const RecipesListItem: React.FC<Recipe> = ({
   name,

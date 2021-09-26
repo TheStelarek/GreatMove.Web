@@ -1,7 +1,7 @@
 import styles from '@/components/recipes/recipesList/RecipesList.module.scss';
 import { Recipe } from '@/utils/types/Recipe';
 import Pagination from '@/components/core/pagination/Pagination';
-import RecipesListItem from '../recipesListItem/RecipesListItem';
+import RecipesListItem from '@/components/recipes/recipesListItem/RecipesListItem';
 
 interface RecipesListProps {
   recipes: Array<Recipe>;

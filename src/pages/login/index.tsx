@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import styles from '@/styles/Login.module.scss';
 import LoginForm from '@/components/login/loginForm/LoginForm';
 import LoginSocials from '@/components/login/loginSocials/LoginSocials';
-import Link from 'next/link';
 
 export default function Login() {
   return (

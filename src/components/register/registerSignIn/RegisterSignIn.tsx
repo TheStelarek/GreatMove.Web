@@ -1,5 +1,5 @@
-import styles from '@/components/register/registerSignIn/RegisterSignIn.module.scss';
 import Link from 'next/link';
+import styles from '@/components/register/registerSignIn/RegisterSignIn.module.scss';
 
 const RegisterSignIn = () => (
   <div className={styles.signIn}>

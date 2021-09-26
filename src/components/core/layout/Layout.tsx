@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Navbar from '../navbar/Navbar';
+import Navbar from '@/components/core/navbar/Navbar';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {

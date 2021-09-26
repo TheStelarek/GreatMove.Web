@@ -1,9 +1,9 @@
-import { authSelector } from '@/store/auth/AuthSlice';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Spinner from '@/components/core/spinner/Spinner';
 import styles from '@/components/authGuard/AuthGuard.module.scss';
+import { authSelector } from '@/store/auth/AuthSlice';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
 
 const AuthGuard: React.FC = ({ children }) => {
   const { isLoggedIn, roles } = useAppSelector(authSelector);

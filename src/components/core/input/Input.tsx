@@ -1,7 +1,7 @@
-import styles from '@/components/core/input/Input.module.scss';
 import cx from 'classnames';
 import { forwardRef } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import styles from '@/components/core/input/Input.module.scss';
 
 type InputProps = UseFormRegisterReturn & {
   label?: string;

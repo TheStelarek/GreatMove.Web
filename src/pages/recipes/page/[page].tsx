@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
+import { GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 import styles from '@/styles/Recipes.module.scss';
 import Layout from '@/components/core/layout/Layout';
 import RecipesList from '@/components/recipes/recipesList/RecipesList';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { Recipe } from '@/utils/types/Recipe';
-import { GetStaticProps } from 'next';
-import { ParsedUrlQuery } from 'querystring';
 
 interface RecipesProps {
   recipes: Recipe[];
