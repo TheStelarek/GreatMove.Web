@@ -11,15 +11,18 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
+import { recipesSlice } from './recipes/RecipesSlice';
 
 const reducers = combineReducers({
   auth: authSlice.reducer,
+  recipes: recipesSlice.reducer,
 });
 
 const persistConfig = {
   key: `root`,
   version: 1,
   storage,
+  blacklist: [`recipes`],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

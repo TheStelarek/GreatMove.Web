@@ -11,7 +11,6 @@ export interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
   const [paginationGroup, setPaginationGroup] = useState<number[]>([]);
-
   useEffect(() => {
     const start = Math.floor((parseInt(currentPage, 10) - 1) / 5) * 5;
     const group = new Array(5).fill(undefined).map((_, idx) => start + idx + 1);

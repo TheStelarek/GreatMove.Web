@@ -18,21 +18,39 @@
     font-weight: 600;
 
     &::placeholder {
-      color: var(--gray-50);
+      color: var(--gray-30);
       border: none;
     }
   }
 
-  .inputGray {
+  .input-gray {
     border: 1px solid var(--gray-10);
+  }
+
+  .input-white {
+    border: none;
+    color: var(--primary-color);
+    background-color: var(--white-1);
+
+    &:focus {
+      outline: 1px solid var(--blue-20);
+    }
+  }
+
+  .input-radius-5 {
+    border-radius: 5px;
+  }
+
+  .input-radius-10 {
+    border-radius: 10px;
+  }
+
+  .input-radius-15 {
+    border-radius: 15px;
   }
 
   .inputError {
     border-color: var(--red-2);
-  }
-
-  .inputRadius {
-    border-radius: 15px;
   }
 
   .error {

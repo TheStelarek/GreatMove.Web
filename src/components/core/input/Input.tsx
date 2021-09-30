@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { forwardRef } from 'react';
+import { forwardRef, KeyboardEventHandler } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import styles from '@/components/core/input/Input.module.scss';
 
@@ -8,8 +8,10 @@ type InputProps = UseFormRegisterReturn & {
   placeholder?: string;
   type: 'text' | 'email' | 'number' | 'password';
   error?: string | null;
-  borderRadius?: boolean;
-  gray?: boolean;
+  radius?: 5 | 10 | 15;
+  variant?: 'gray' | 'white';
+  autocomplete?: boolean;
+  onKeyPress?: KeyboardEventHandler<HTMLInputElement> | undefined;
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -20,10 +22,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       type,
       error,
-      borderRadius,
-      gray,
+      radius,
+      variant,
       onChange,
       onBlur,
+      onKeyPress,
+      autocomplete = true,
     },
     ref,
   ) => (
@@ -32,13 +36,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <input
         className={cx(
           styles.input,
-          borderRadius && styles.inputRadius,
-          gray && styles.inputGray,
+          styles[`input-${variant}`],
+          styles[`input-radius-${radius}`],
           error && styles.inputError,
         )}
         aria-invalid={error ? `true` : `false`}
         id={name}
         ref={ref}
+        onKeyPress={onKeyPress}
+        autoComplete={autocomplete ? `on` : `off`}
         {...{ onChange, onBlur, name, placeholder, type }}
       />
       {error && (

@@ -26,6 +26,10 @@
       align-items: center;
 
       p {
+        &:first-of-type {
+          text-transform: capitalize;
+        }
+
         margin: 0;
         color: var(--black-1);
         font-weight: 600;

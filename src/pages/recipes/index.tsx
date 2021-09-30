@@ -1,40 +1,18 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import styles from '@/styles/Recipes.module.scss';
 import Layout from '@/components/core/layout/Layout';
 import RecipesList from '@/components/recipes/recipesList/RecipesList';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { Recipe } from '@/utils/types/Recipe';
+import Pagination from '@/components/core/pagination/Pagination';
+import FilterIcon from '@/public/filter.svg';
+import RecipesFilterList from '@/components/recipes/recipesFilterList/RecipesFilterList';
+import RecipesFilterForm from '@/components/recipes/recipesFilterForm/RecipesFilterForm';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { clearState, recipesSelector } from '@/store/recipes/RecipesSlice';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import { apiClient } from '@/api/apiClient';
 
-// const data = [
-//   {
-//     name: `Owsianka z bananami i borówkami`,
-//     meal: `Breakfast`,
-//     calories: 521,
-//     difficulty: `EASE`,
-//     estimatedTime: 10,
-//   },
-//   {
-//     name: `Owsianka z bananami i borówkami`,
-//     meal: `Breakfast`,
-//     calories: 521,
-//     difficulty: `EASE`,
-//     estimatedTime: 10,
-//   },
-//   {
-//     name: `Owsianka z bananami i borówkami`,
-//     meal: `Breakfast`,
-//     calories: 521,
-//     difficulty: `EASE`,
-//     estimatedTime: 10,
-//   },
-//   {
-//     name: `Owsianka z bananami i borówkami`,
-//     meal: `Breakfast`,
-//     calories: 521,
-//     difficulty: `EASE`,
-//     estimatedTime: 10,
-//   },
-// ];
 interface RecipesProps {
   recipes: Recipe[];
   currentPage: string;
@@ -45,15 +23,41 @@ const Recipes: NextApplicationPage<RecipesProps> = ({
   recipes,
   totalPages,
   currentPage,
-}) => (
-  <div className={styles.container}>
-    <RecipesList
-      recipes={recipes}
-      totalPages={totalPages}
-      currentPage={currentPage}
-    />
-  </div>
-);
+}) => {
+  const [showFilters, setShowFilter] = useState<boolean>(false);
+  const { filterSearch } = useAppSelector(recipesSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(
+    () => () => {
+      dispatch(clearState());
+    },
+    [],
+  );
+
+  return (
+    <div className={styles.container}>
+      <button
+        type="button"
+        className={styles.filterBtn}
+        onClick={() => setShowFilter(!showFilters)}
+      >
+        <FilterIcon className={styles.icon} /> Filters
+      </button>
+
+      {showFilters && <RecipesFilterForm />}
+
+      {filterSearch ? (
+        <RecipesFilterList />
+      ) : (
+        <div className={styles.staticRecipeList}>
+          <RecipesList recipes={recipes} />
+          <Pagination totalPages={totalPages} currentPage={currentPage} />
+        </div>
+      )}
+    </div>
+  );
+};
 
 Recipes.getLayout = function getLayout(page: ReactElement) {
   return <Layout whiteNavbar>{page}</Layout>;
@@ -62,25 +66,12 @@ Recipes.getLayout = function getLayout(page: ReactElement) {
 export default Recipes;
 
 export async function getStaticProps() {
-  const data = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=9&offset=9`,
-  );
-  const json = await data.json();
-
-  const totalPages = Math.ceil(json.count / 9);
-
-  const recipes = json.results.map((item: { name: string }) => ({
-    name: item.name.toUpperCase(),
-    meal: `Breakfast`,
-    calories: 521,
-    difficulty: `EASY`,
-    estimatedTime: 15,
-  }));
+  const response = await apiClient.get(`/recipes?take=9&skip=0`);
 
   return {
     props: {
-      recipes,
-      totalPages,
+      recipes: response.data.data,
+      totalPages: Math.trunc(response.data.total / 9),
       currentPage: `1`,
     },
   };

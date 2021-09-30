@@ -7,7 +7,8 @@ const RecipesListItem: React.FC<Recipe> = ({
   meal,
   calories,
   difficulty,
-  estimatedTime,
+  preparationTime,
+  cookTime,
 }) => (
   <div className={styles.recipe}>
     <div className={styles.image}>
@@ -26,7 +27,7 @@ const RecipesListItem: React.FC<Recipe> = ({
       <p className={styles.name}>{name}</p>
       <div className={styles.difficulty}>
         <p>{difficulty}</p>
-        <p>{estimatedTime} MINS</p>
+        <p>{preparationTime + cookTime} MINS</p>
       </div>
     </div>
   </div>

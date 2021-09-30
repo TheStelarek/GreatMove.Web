@@ -54,14 +54,14 @@ const LoginForm = () => {
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
       <Input
-        gray
+        variant="gray"
         type="text"
         placeholder="Username"
         {...register(`username`)}
         error={errors?.username?.message}
       />
       <Input
-        gray
+        variant="gray"
         type="password"
         placeholder="Enter password"
         {...register(`password`)}
