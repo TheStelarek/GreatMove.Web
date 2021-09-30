@@ -1,0 +1,74 @@
+.shareContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
+
+  @media (min-width: 279px) {
+    /* smartphones, iPhone, portrait 480x320 phones */
+    display: flex;
+    padding-left: 20px;
+  }
+  @media (min-width: 481px) {
+    /* smartphones, iPhone, portrait 480x320 phones */
+    position: static;
+  }
+  .rating {
+    margin-right: 30px;
+    line-height: 30px;
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 279px) {
+      /* smartphones, iPhone, portrait 480x320 phones */
+      margin-right: 20px;
+    }
+  }
+
+  .categoryText {
+    color: var(--blue-10);
+    font-size: 13px;
+  }
+  .star {
+    width: 22px;
+    height: 20px;
+  }
+
+  .share {
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+
+  .icon {
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 279px) {
+      /* smartphones, iPhone, portrait 480x320 phones */
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .print {
+    margin-top: 8px;
+    margin-left: 20px;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--gray-80);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+
+  .rate {
+    display: flex;
+    flex-direction: row;
+  }
+}

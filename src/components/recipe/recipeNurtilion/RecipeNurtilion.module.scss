@@ -1,0 +1,45 @@
+.nutrilionContainer {
+  .interval {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subTitle {
+    font-size: 28px;
+    margin-top: 30px;
+    padding-top: 30px;
+    letter-spacing: 2px;
+    font-weight: 1000;
+
+    @media only screen and (max-width: 700px) and (min-width: 279px) {
+      letter-spacing: 0px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+  }
+  .nurtilions {
+    display: flex;
+    width: 100%;
+    flex-direction: unset;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .nurtilion {
+    margin-right: 30px;
+    line-height: 30px;
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 279px) {
+      /* smartphones, iPhone, portrait 480x320 phones */
+      margin-right: 20px;
+    }
+  }
+
+  .nurPerSav {
+    color: var(--gray-30);
+  }
+}

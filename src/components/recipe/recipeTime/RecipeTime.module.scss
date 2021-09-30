@@ -1,0 +1,39 @@
+.timeContainer {
+  margin-bottom: 20px;
+  display: flex;
+  font-size: 10px;
+  margin-right: auto;
+
+  height: 100%;
+  @media (min-width: 279px) {
+    /* smartphones, iPhone, portrait 480x320 phones */
+    margin-left: 20px;
+  }
+  @media (min-width: 481px) {
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    margin-left: 11px;
+  }
+  @media (min-width: 1000px) {
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    margin-left: 85px;
+  }
+  .timeInfo {
+    margin-right: 30px;
+    line-height: 30px;
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 279px) {
+      /* smartphones, iPhone, portrait 480x320 phones */
+      margin-right: 20px;
+    }
+  }
+
+  .textTime {
+    color: var(--blue-10);
+    font-size: 13px;
+  }
+  .textColor {
+    color: white;
+  }
+}
