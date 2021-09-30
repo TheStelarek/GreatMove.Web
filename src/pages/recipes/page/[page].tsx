@@ -7,6 +7,7 @@ import RecipesList from '@/components/recipes/recipesList/RecipesList';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { Recipe } from '@/utils/types/Recipe';
 import Pagination from '@/components/core/pagination/Pagination';
+import { apiClient } from '@/api/apiClient';
 
 interface RecipesProps {
   recipes: Recipe[];
@@ -34,12 +35,9 @@ RecipesIndexPage.getLayout = function getLayout(page: ReactElement) {
 export default RecipesIndexPage;
 
 export async function getStaticPaths() {
-  const data = await fetch(
-    `https://greatmove-app.herokuapp.com/api/v1/recipes`,
-  );
-  const json = await data.json();
-  const totalRecipes = json.total;
-  const totalPages = Math.ceil(totalRecipes / 9) - 1;
+  const response = await apiClient.get(`/recipes`);
+  const totalRecipes = response.data.total;
+  const totalPages = Math.ceil(totalRecipes / 9);
   const paths = [];
 
   for (let page = 2; page <= totalPages; page += 1) {
@@ -58,19 +56,15 @@ interface IParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { page } = params as IParams;
-  const data = await fetch(
-    `https://greatmove-app.herokuapp.com/api/v1/recipes?take=9&skip=${
-      9 * parseInt(page, 10)
-    }`,
+  const response = await apiClient.get(
+    `/recipes?take=9&skip=${9 * (parseInt(page, 10) - 1)}`,
   );
-  const json = await data.json();
-  const totalPages = Math.trunc(json.total / 9);
 
   return {
     props: {
-      recipes: json.data,
-      totalPages,
-      currentPage: `1`,
+      recipes: response.data.data,
+      totalPages: Math.trunc(response.data.total / 9),
+      currentPage: page,
     },
   };
 };
