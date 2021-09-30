@@ -1,6 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { authSlice } from '@/store/auth/AuthSlice';
-import storage from 'redux-persist/lib/storage';
 import {
   FLUSH,
   PAUSE,
@@ -11,11 +9,15 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import { recipesSlice } from './recipes/RecipesSlice';
+import storage from 'redux-persist/lib/storage';
+import { authSlice } from '@/store/auth/AuthSlice';
+import { recipesSlice } from '@/store/recipes/RecipesSlice';
+import { shoppingListSlice } from '@/store/shoppingList/ShoppingListSlice';
 
 const reducers = combineReducers({
   auth: authSlice.reducer,
   recipes: recipesSlice.reducer,
+  shoppingList: shoppingListSlice.reducer,
 });
 
 const persistConfig = {

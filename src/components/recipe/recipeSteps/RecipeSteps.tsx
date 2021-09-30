@@ -7,9 +7,7 @@ const RecipeSteps: React.FC<RecipeStepsProps> = ({ steps }) => (
   <div className={styles.stepsContainer}>
     <p className={styles.subTitle}>How to make it?</p>
     <div className={styles.steps}>
-      {steps.map((step) => (
-        <p key={step}> {step} </p>
-      ))}
+      {!!steps?.length && steps.map((step) => <p key={step}> {step} </p>)}
     </div>
   </div>
 );

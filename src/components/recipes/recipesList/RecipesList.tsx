@@ -9,7 +9,7 @@ interface RecipesListProps {
 const RecipesList: React.FC<RecipesListProps> = ({ recipes }) => (
   <div className={styles.container}>
     <div className={styles.wrapperList}>
-      {recipes && recipes.length ? (
+      {recipes.length ? (
         recipes.map(
           ({
             id,
