@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  list-style-type: none;
 
   .arrow {
     border: none;
@@ -10,57 +11,69 @@
     width: 35px;
     cursor: pointer;
     background-color: unset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .icon {
-      width: 12px;
-      fill: var(--gray-30);
+    .arrowLink {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      .icon {
+        width: 12px;
+        fill: var(--gray-30);
+      }
     }
 
     &:hover {
       background-color: var(--gray-10);
       border-radius: 5px;
-
       .icon {
         fill: var(--gray-40);
       }
     }
   }
 
-  .buttons {
+  .arrowDisabled {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .break {
     color: var(--gray-30);
+  }
+
+  .page {
+    border: none;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    background-color: unset;
+    color: var(--gray-30);
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    font-size: 13px;
 
-    .dots {
-      width: 35px;
-      text-align: center;
-    }
-
-    .pageBtn {
-      border: none;
-      height: 35px;
-      width: 35px;
-      cursor: pointer;
-      background-color: unset;
-      color: var(--gray-30);
-      font-weight: 600;
+    .pageLink {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 13px;
-
-      &:hover {
-        border-radius: 4px;
-
-        background-color: var(--blue-50);
-        color: var(--white-1);
-      }
+      height: 100%;
+      width: 100%;
     }
+
+    &:hover {
+      border-radius: 4px;
+      background-color: var(--blue-50);
+      color: var(--white-1);
+    }
+  }
+
+  .pageActive {
+    border-radius: 4px;
+    color: var(--white-1);
+    background-color: var(--blue-50);
   }
 }
 
@@ -73,15 +86,9 @@
       width: 30px;
     }
 
-    .buttons {
-      .dots {
-        width: 30px;
-      }
-
-      .pageBtn {
-        height: 30px;
-        width: 30px;
-      }
+    .pageBtn {
+      height: 30px;
+      width: 30px;
     }
   }
 }

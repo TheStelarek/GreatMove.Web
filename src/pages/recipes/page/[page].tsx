@@ -23,7 +23,11 @@ const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({
   <div className={styles.container}>
     <div className={styles.recipeList}>
       <RecipesList recipes={recipes} />
-      <Pagination totalPages={totalPages} currentPage={currentPage} />
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        url="/recipes"
+      />
     </div>
   </div>
 );
@@ -63,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       recipes: response.data.data,
-      totalPages: Math.trunc(response.data.total / 9),
+      totalPages: Math.ceil(response.data.total / 9),
       currentPage: page,
     },
   };
