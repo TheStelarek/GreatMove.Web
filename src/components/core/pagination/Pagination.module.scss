@@ -4,6 +4,8 @@
   align-items: center;
   gap: 10px;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 
   .arrow {
     border: none;
@@ -86,7 +88,7 @@
       width: 30px;
     }
 
-    .pageBtn {
+    .page {
       height: 30px;
       width: 30px;
     }
