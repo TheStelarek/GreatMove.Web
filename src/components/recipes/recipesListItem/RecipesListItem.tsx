@@ -11,7 +11,7 @@ const RecipesListItem: React.FC<Recipe> = ({
   cookTime,
 }) => (
   <div className={styles.recipe}>
-    <div className={styles.image}>
+    <div className={styles.imageContainer}>
       <Image
         src="/recipes/placki.jpg"
         alt="Picture of the author"

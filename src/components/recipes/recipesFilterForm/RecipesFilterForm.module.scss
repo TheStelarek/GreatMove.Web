@@ -1,3 +1,82 @@
 .filterContainer {
   margin-top: 15px;
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 20px 0;
+    padding: 25px 25px 37px 25px;
+    background-color: var(--white-1);
+    border-radius: 8px;
+
+    .rangeWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+
+      .title {
+        margin: 0;
+        font-size: 20px;
+        color: var(--primary-color);
+
+        span {
+          font-weight: 900;
+        }
+      }
+
+      .range {
+        margin: 5px 0 0 0;
+        color: var(--primary-color);
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .title {
+        margin: 0;
+        font-size: 20px;
+        color: var(--primary-color);
+
+        span {
+          font-weight: 900;
+        }
+      }
+
+      .titleBold {
+        font-weight: 900;
+      }
+
+      .list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+    }
+  }
+  @media (min-width: 850px) {
+    .filters {
+      padding: 25px 25px 37px 25px;
+      justify-content: space-between;
+
+      .rangeWrapper {
+        width: calc(50% - 30px);
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .filters {
+      padding: 40px 40px 52px 40px;
+    }
+  }
 }

@@ -1,7 +1,4 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
   margin-top: 15px;
 
   .wrapperList {
@@ -12,14 +9,15 @@
     gap: 20px;
   }
 
-  @media (min-width: 660px) {
+  @media (min-width: 550px) {
     .wrapperList {
       flex-direction: row;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 
-  @media (min-width: 1060px) {
+  @media (min-width: 990px) {
     .wrapperList {
       gap: 30px;
     }
@@ -27,7 +25,7 @@
 
   @media (min-width: 1270px) {
     .wrapperList {
-      gap: 50px;
+      gap: 35px;
     }
   }
 }

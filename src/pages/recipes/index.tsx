@@ -34,7 +34,6 @@ const Recipes: NextApplicationPage<RecipesProps> = ({
     },
     [],
   );
-
   return (
     <div className={styles.container}>
       <button

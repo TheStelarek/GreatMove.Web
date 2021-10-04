@@ -1,0 +1,32 @@
+.tagContainer {
+  input {
+    width: 0;
+    height: 0;
+  }
+
+  input:checked ~ .label {
+    border: 1px solid var(--blue-10);
+    color: var(--blue-50);
+  }
+
+  .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-30);
+    border: 1px solid var(--gray-0);
+    padding: 5px 10px;
+    border-radius: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:focus-within .label {
+    border: 1px solid var(--blue-40);
+  }
+
+  &:focus-within input:checked ~ .label {
+    border: 1px solid var(--blue-40);
+  }
+}
