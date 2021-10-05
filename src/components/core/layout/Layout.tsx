@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Navbar from '@/components/core/navbar/Navbar';
+import Footer from '@/components/core/footer/Footer';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {
@@ -16,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ whiteNavbar, children }) => (
       <Navbar whiteNavbar={whiteNavbar} />
     </header>
     <main className={styles.main}>{children}</main>
+    <Footer />
   </div>
 );
 
