@@ -45,8 +45,6 @@ export const recipesSlice = createSlice({
       state.isError = false;
       state.isEmpty = false;
       state.errorMessage = null;
-
-      return state;
     },
     setSearchName: (state, action: PayloadAction<string>) => {
       state.searchName = action.payload;

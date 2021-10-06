@@ -31,14 +31,11 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.isFetching = false;
       state.errorMessage = null;
-
-      return state;
     },
     logout: (state) => {
       state.isLoggedIn = false;
       state.roles = [];
       localStorage.removeItem(`token`);
-      return state;
     },
   },
   extraReducers: (builder) => {

@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const paginationHandler = ({ selected }: SelectedItem) => {
     const link = selected + 1 === 1 ? url : `${url}/page/${selected + 1}`;
-    router.push(link, undefined, { shallow: true });
+    router.push(link);
   };
 
   const linkHref = (pageIndex: number) =>

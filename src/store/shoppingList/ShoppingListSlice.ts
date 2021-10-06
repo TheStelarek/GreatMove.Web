@@ -47,7 +47,6 @@ export const shoppingListSlice = createSlice({
       );
 
       state.products = [...increasedWeightsProductsList, ...newProducts];
-
       return state;
     },
   },
