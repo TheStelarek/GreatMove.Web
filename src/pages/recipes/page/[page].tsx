@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import styles from '@/styles/Recipes.module.scss';
@@ -8,6 +8,12 @@ import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { Recipe } from '@/utils/types/Recipe';
 import Pagination from '@/components/core/pagination/Pagination';
 import { apiClient } from '@/api/apiClient';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import { clearState, recipesSelector } from '@/store/recipes/RecipesSlice';
+import RecipesFilterList from '@/components/recipes/recipesFilterList/RecipesFilterList';
+import RecipesFilterForm from '@/components/recipes/recipesFilterForm/RecipesFilterForm';
+import FilterIcon from '@/public/filter.svg';
 
 interface RecipesProps {
   recipes: Recipe[];
@@ -19,18 +25,45 @@ const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({
   recipes,
   totalPages,
   currentPage,
-}) => (
-  <div className={styles.container}>
-    <div className={styles.recipeList}>
-      <RecipesList recipes={recipes} />
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        url="/recipes"
-      />
+}) => {
+  const [showFilters, setShowFilter] = useState<boolean>(false);
+  const { filterSearch } = useAppSelector(recipesSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(
+    () => () => {
+      dispatch(clearState());
+    },
+    [],
+  );
+
+  return (
+    <div className={styles.container}>
+      <button
+        type="button"
+        className={styles.filterBtn}
+        onClick={() => setShowFilter(!showFilters)}
+      >
+        <FilterIcon className={styles.icon} /> Filters
+      </button>
+
+      {showFilters && <RecipesFilterForm />}
+
+      {filterSearch ? (
+        <RecipesFilterList />
+      ) : (
+        <div className={styles.staticRecipeList}>
+          <RecipesList recipes={recipes} />
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            url="/recipes"
+          />
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 RecipesIndexPage.getLayout = function getLayout(page: ReactElement) {
   return <Layout whiteNavbar>{page}</Layout>;

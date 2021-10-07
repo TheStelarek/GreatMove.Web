@@ -9,7 +9,7 @@ type InputProps = UseFormRegisterReturn & {
   type: 'text' | 'email' | 'number' | 'password';
   error?: string | null;
   radius?: 5 | 10 | 15;
-  variant?: 'gray' | 'white';
+  variant?: 'gray' | 'white' | 'blue';
   autocomplete?: boolean;
   onKeyPress?: KeyboardEventHandler<HTMLInputElement> | undefined;
 };
