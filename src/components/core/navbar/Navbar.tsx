@@ -39,6 +39,13 @@ const Navbar: React.FC<NavbarProps> = ({ whiteNavbar }) => {
             </button>
           </Link>
         </li>
+        <li className={styles.navItem}>
+          <Link href="/calculators">
+            <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
+              Calculators
+            </button>
+          </Link>
+        </li>
         <div className={styles.auth}>
           {isLoggedIn ? (
             <button type="button" onClick={logoutUser} onKeyPress={logoutUser}>
