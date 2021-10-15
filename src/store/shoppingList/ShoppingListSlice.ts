@@ -14,7 +14,13 @@ export const shoppingListSlice = createSlice({
   name: `shoppingList`,
   initialState,
   reducers: {
-    addToShoppingList: (
+    clearState: (state) => {
+      state.products = [];
+    },
+    deleteProduct: (state, action: PayloadAction<string>) => {
+      state.products = state.products.filter(({ id }) => id !== action.payload);
+    },
+    addProduct: (
       state: ShoppingListState,
       action: PayloadAction<Array<Ingredient>>,
     ) => {
@@ -52,5 +58,6 @@ export const shoppingListSlice = createSlice({
   },
 });
 
-export const { addToShoppingList } = shoppingListSlice.actions;
+export const { addProduct, clearState, deleteProduct } =
+  shoppingListSlice.actions;
 export const shoppingListSelector = (state: RootState) => state.shoppingList;

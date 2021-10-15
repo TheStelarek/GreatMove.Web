@@ -1,0 +1,220 @@
+.container {
+  max-width: 100vw;
+  height: 100%;
+  display: flex;
+  background-color: var(--gray-00);
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px;
+  border-radius: 10px;
+  flex-direction: column;
+
+  .printButton {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--gray-00);
+    color: var(--gray-80);
+    cursor: pointer;
+  }
+  .saveButton {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--gray-00);
+    color: var(--gray-80);
+    cursor: pointer;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .trashButton {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--gray-00);
+    color: var(--gray-80);
+    cursor: pointer;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    padding-right: 15px;
+    gap: 5px;
+    margin-bottom: 25px;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 1000px;
+  }
+
+  .text {
+    font-weight: 900;
+    padding-left: 10px;
+  }
+  .title {
+    font-weight: 900;
+    padding-left: 30px;
+    width: 100%;
+    color: var(--blue-0);
+    @media (max-width: 600px) {
+      padding-left: 15px;
+      width: 100%;
+    }
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    background-color: var(--primary-color);
+    border-bottom: 1px;
+    @media (min-width: 450px) {
+      flex-direction: row;
+    }
+  }
+  .hidden {
+    display: none;
+    visibility: hidden;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--white-1);
+  }
+
+  .removeButton {
+    vertical-align: middle;
+    border: none;
+    color: inherit;
+    border-radius: 50%;
+    background: transparent;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+
+      color: var(--blue-50);
+    }
+
+    &:active {
+      background: var(--blue-20);
+    }
+
+    &:before,
+    &:after {
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 16px;
+      width: 2px;
+      background-color: currentColor;
+    }
+
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .categories {
+    height: 30%;
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid var(--gray-10) 1px;
+    @media (max-width: 600px) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .categoryNumber {
+      color: var(--gray-40);
+      text-align: center;
+      flex-basis: 10%;
+    }
+    .categoryProduct {
+      color: var(--gray-40);
+      text-align: center;
+      flex-basis: 45%;
+    }
+    .categoryWeight {
+      color: var(--gray-40);
+      text-align: center;
+      flex-basis: 30%;
+    }
+    .actionButtons {
+      flex-basis: 15%;
+    }
+  }
+
+  .products {
+    padding-left: 0px;
+    .product {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      padding-bottom: 15px;
+      padding-top: 15px;
+      max-width: 100%;
+      border-bottom: solid var(--gray-10) 1px;
+      @media (max-width: 600px) {
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .productNumber {
+        color: var(--gray-40);
+        text-align: center;
+        flex-basis: 10%;
+      }
+      .productName {
+        color: var(--gray-40);
+        flex-basis: 820px;
+        text-align: center;
+        flex-basis: 45%;
+        word-break: break-all;
+      }
+      .productWeight {
+        color: var(--gray-40);
+        flex-basis: 250px;
+        text-align: center;
+        flex-basis: 30%;
+      }
+      .productActions {
+        flex-basis: 15%;
+      }
+    }
+  }
+
+  .removesButton {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0%;
+    border: none;
+    background-color: var(--gray-00);
+    color: var(--gray-80);
+    cursor: pointer;
+    padding-left: 20px;
+  }
+}

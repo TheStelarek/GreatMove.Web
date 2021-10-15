@@ -64,7 +64,11 @@ Recipe.getLayout = function getLayout(page: ReactElement) {
 };
 
 export async function getStaticProps() {
-  const ingredients = [{ id: `1`, name: `egg`, weight: 400 }];
+  const ingredients = [
+    { id: `1`, name: `egg`, weight: 400 },
+    { id: `2`, name: `milk`, weight: 300 },
+    { id: `3`, name: `sugar`, weight: 300 },
+  ];
 
   return {
     props: {

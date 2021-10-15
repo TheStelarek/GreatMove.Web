@@ -4,7 +4,7 @@ import Minus from '@/public/recipe/minus.svg';
 import Plus from '@/public/recipe/plus.svg';
 import Shop from '@/public/recipe/shop.svg';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import { addToShoppingList } from '@/store/shoppingList/ShoppingListSlice';
+import { addProduct } from '@/store/shoppingList/ShoppingListSlice';
 import { Ingredient } from '@/utils/types/Ingredient';
 
 interface RecipeIngredientsProps {
@@ -50,7 +50,7 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({
     }
   };
 
-  const addToShopList = () => dispatch(addToShoppingList(recipeIngredients));
+  const addToShopList = () => dispatch(addProduct(recipeIngredients));
 
   return (
     <div className={styles.ingredientsContainer}>
