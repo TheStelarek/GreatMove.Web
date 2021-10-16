@@ -8,7 +8,7 @@ export default function Login() {
     <div className={styles.container}>
       <div className={styles.loginBox}>
         <div className={styles.logo}>GreatMove</div>
-        <h3 className={styles.login}>Sign in</h3>
+        <h6 className={styles.login}>Sign in</h6>
         <LoginSocials />
         <span className={styles.divider}>or</span>
         <LoginForm />

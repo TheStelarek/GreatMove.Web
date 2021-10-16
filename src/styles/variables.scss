@@ -75,6 +75,12 @@ html {
   --white: hsl(60, 100%, 99%);
   --black: hsl(0, 0%, 1%);
 
+  //radius
+  --border-radius-5: 5px;
+  --border-radius-8: 8px;
+  --border-radius-10: 10px;
+  --border-radius-15: 15px;
+
   //shadows
   --box-shadow-xs: rgba(0, 0, 0, 0.1) 0 2px 8px;
   --box-shadow-sm: rgba(0, 0, 0, 0.11) 0 4px 10px;
@@ -109,11 +115,11 @@ html {
   --space-40: 160px;
 
   //font-weights
-  --regular: 400;
-  --semi-bold: 600;
-  --bold: 700;
-  --extra-bold: 800;
-  --black: 900;
+  --font-weight-regular: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
 
   //sizing
   --font-size-display-1: 72px;
@@ -164,9 +170,9 @@ html {
   --font-size-p5: 24px;
   --line-height-p5: 22px;
 
-  --caption: 12px;
+  --font-size-caption: 12px;
   --line-height-caption: 18px;
 
-  --footer: 10px;
+  --font-size-footer: 10px;
   --line-height-footer: 14px;
 }

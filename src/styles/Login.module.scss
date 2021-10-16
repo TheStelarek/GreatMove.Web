@@ -3,38 +3,38 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: var(--white-3);
+  background-color: var(--gray-50);
   position: relative;
 
   .loginBox {
-    padding: 25px 20px;
-    background-color: var(--white-1);
+    padding: var(--space-5) var(--space-6);
+    background-color: var(--white);
+    gap: var(--space-1-5);
+    border-radius: var(--border-radius-8);
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    border-radius: 8px;
 
     .logo {
+      font-size: var(--font-size-h3-small);
+      font-weight: var(--font-weight-black);
+      color: var(--blue-700);
       text-align: center;
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--primary-color);
     }
 
     .login {
-      margin: 20px 0 10px 0;
-      font-weight: 600;
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--gray-800);
       text-align: center;
-      color: var(--gray-60);
+      margin: var(--space-1-5) 0;
     }
 
     .divider {
-      font-size: 13px;
-      font-weight: 600;
-      margin: 15px 0;
+      margin: var(--space-3) 0;
+      font-size: var(--font-size-p1);
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--gray-500);
       text-align: center;
-      color: var(--gray-20);
     }
 
     .links {
@@ -43,11 +43,10 @@
       justify-content: space-between;
 
       .link {
-        margin: 10px 0 0 0;
+        font-size: var(--font-size-caption);
+        font-weight: var(--font-weight-bold);
+        color: var(--blue-700);
         padding: 0;
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--blue-60);
         text-align: right;
       }
     }
@@ -55,13 +54,14 @@
 
   @media (min-width: 420px) {
     .loginBox {
-      padding: 35px 60px;
-      border: 1px solid var(--gray-0);
+      padding: var(--space-9) var(--space-14);
+      border: 1px solid var(--gray-100);
     }
   }
 
   @media (min-width: 460px) {
     .loginBox {
+      margin: var(--space-3) 0;
       max-width: 420px;
 
       .links {
