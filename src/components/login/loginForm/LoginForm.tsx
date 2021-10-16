@@ -15,8 +15,7 @@ const LoginForm = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const { isFetching, isError, errorMessage, isSuccess } =
-    useAppSelector(authSelector);
+  const { isFetching, errorMessage, isSuccess } = useAppSelector(authSelector);
 
   const {
     register,
@@ -65,13 +64,8 @@ const LoginForm = () => {
         type="password"
         placeholder="Enter password"
         {...register(`password`)}
-        error={errors?.password?.message}
+        error={errors?.password?.message || errorMessage}
       />
-      {isError && (
-        <p role="alert" className={styles.error}>
-          {errorMessage}
-        </p>
-      )}
       <button
         type="submit"
         className={styles.formBtn}

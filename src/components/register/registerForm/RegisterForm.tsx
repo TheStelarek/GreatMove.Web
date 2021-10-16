@@ -19,8 +19,7 @@ import {
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
-  const { isFetching, isSuccess, isError, errorMessage } =
-    useAppSelector(authSelector);
+  const { isFetching, isSuccess, errorMessage } = useAppSelector(authSelector);
   const [step, setStep] = useState<number>(1);
 
   const {
@@ -79,6 +78,7 @@ const RegisterForm = () => {
       {step === 1 && (
         <>
           <Input
+            variant="blue"
             radius={15}
             label="Email"
             type="text"
@@ -99,6 +99,7 @@ const RegisterForm = () => {
       {step === 2 && (
         <>
           <Input
+            variant="blue"
             radius={15}
             label="Username"
             type="text"
@@ -120,26 +121,21 @@ const RegisterForm = () => {
         (isSuccess ? (
           <>
             <MailSent className={styles.mail} />
-            <p role="alert" className={styles.success}>
+            <p role="alert" className="success">
               We just sent you confirmation link on email. Click on it!
             </p>
           </>
         ) : (
           <>
             <Input
+              variant="blue"
               radius={15}
               label="Password"
               type="password"
               placeholder="Enter password"
               {...register(`password`)}
-              error={errors?.password?.message}
+              error={errors?.password?.message || errorMessage}
             />
-            {isError && (
-              <p role="alert" className={styles.error}>
-                {errorMessage}
-              </p>
-            )}
-
             <button
               type="submit"
               className={styles.formBtn}

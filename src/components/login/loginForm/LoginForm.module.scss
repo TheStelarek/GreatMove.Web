@@ -4,9 +4,10 @@
   gap: var(--space-4);
 
   .formBtn {
-    background-color: var(--blue-700);
+    width: 300px;
+    background-color: var(--blue-500);
     color: var(--white);
-    font-weight: var(--font-weight-semi-bold);
+    font-weight: var(--font-weight-bold);
     width: 100%;
     border: none;
     height: 50px;
@@ -17,14 +18,5 @@
     cursor: not-allowed;
     background-color: var(--gray-100);
     color: var(--gray-700);
-  }
-
-  .error {
-    color: var(--red-600);
-    font-size: var(--font-size-p1);
-    line-height: var(--line-height-p1);
-    font-weight: var(--font-weight-semi-bold);
-    padding: 0;
-    text-align: center;
   }
 }

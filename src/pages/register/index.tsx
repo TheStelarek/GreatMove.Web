@@ -1,4 +1,4 @@
-import styles from '@/styles/Register.module.scss';
+import styles from '@/pages/register/Register.module.scss';
 import RegisterHeader from '@/components/register/registerHeader/RegisterHeader';
 import RegisterSocials from '@/components/register/registerSocials/RegisterSocials';
 import Divider from '@/components/core/divider/Divider';

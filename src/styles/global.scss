@@ -7,3 +7,32 @@ html,
 body {
   font-family: 'Nunito', sans-serif;
 }
+
+.error {
+  color: var(--red-400);
+  font-size: var(--font-size-p1);
+  line-height: var(--line-height-p1);
+  font-weight: var(--font-weight-semi-bold);
+  margin: var(--space-1-5) 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.error {
+  color: var(--red-400);
+  font-size: var(--font-size-p1);
+  line-height: var(--line-height-p1);
+  font-weight: var(--font-weight-semi-bold);
+  margin: var(--space-2) 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.success {
+  color: var(--green-600);
+  font-size: var(--font-size-p1);
+  line-height: var(--line-height-p1);
+  font-weight: var(--font-weight-semi-bold);
+  padding: 0;
+  text-align: center;
+}

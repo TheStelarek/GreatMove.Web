@@ -1,13 +1,11 @@
 .container {
-  max-width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   background-color: var(--gray-50);
-  position: relative;
 
   .loginBox {
-    padding: var(--space-5) var(--space-6);
+    padding: var(--space-6) var(--space-5);
     background-color: var(--white);
     gap: var(--space-1-5);
     border-radius: var(--border-radius-8);
@@ -16,25 +14,15 @@
     flex-direction: column;
 
     .logo {
-      font-size: var(--font-size-h3-small);
-      font-weight: var(--font-weight-black);
-      color: var(--blue-700);
-      text-align: center;
+      height: 20px;
+      cursor: pointer;
     }
 
     .login {
       font-weight: var(--font-weight-semi-bold);
-      color: var(--gray-800);
+      color: var(--gray-700);
       text-align: center;
       margin: var(--space-1-5) 0;
-    }
-
-    .divider {
-      margin: var(--space-3) 0;
-      font-size: var(--font-size-p1);
-      font-weight: var(--font-weight-semi-bold);
-      color: var(--gray-500);
-      text-align: center;
     }
 
     .links {
@@ -44,9 +32,8 @@
 
       .link {
         font-size: var(--font-size-caption);
-        font-weight: var(--font-weight-bold);
-        color: var(--blue-700);
-        padding: 0;
+        font-weight: var(--font-weight-semi-bold);
+        color: var(--blue-600);
         text-align: right;
       }
     }

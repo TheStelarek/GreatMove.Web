@@ -1,18 +1,20 @@
 .heading {
-  margin-top: 20px;
-  color: var(--gray-80);
+  margin: var(--space-5) 0;
+  color: var(--gray-800);
   text-align: center;
-  font-size: 36px;
+  font-size: var(--font-size-h1-small);
+  line-height: var(--line-height-h1-small);
 }
 
 @media (min-width: 1100px) {
   .heading {
-    margin-top: 40px;
+    margin-top: var(--space-10);
   }
 }
 
 @media (min-width: 1500px) {
   .heading {
-    font-size: 42px;
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
   }
 }

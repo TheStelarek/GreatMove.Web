@@ -9,7 +9,7 @@ type InputProps = UseFormRegisterReturn & {
   type: 'text' | 'email' | 'number' | 'password';
   error?: string | null;
   radius?: 5 | 10 | 15;
-  variant?: 'gray' | 'white' | 'blue';
+  variant?: 'gray' | 'blue';
   autocomplete?: boolean;
   onKeyPress?: KeyboardEventHandler<HTMLInputElement> | undefined;
 };
@@ -23,7 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       type,
       error,
       radius,
-      variant,
+      variant = `gray`,
       onChange,
       onBlur,
       onKeyPress,
@@ -48,7 +48,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {...{ onChange, onBlur, name, placeholder, type }}
       />
       {error && (
-        <p role="alert" className={styles.error}>
+        <p role="alert" className="error">
           {error}
         </p>
       )}

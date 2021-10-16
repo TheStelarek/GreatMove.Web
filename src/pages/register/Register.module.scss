@@ -8,30 +8,24 @@
   .information {
     order: 2;
     width: 100%;
-    padding: 25px 20px 35px 20px;
-    background: var(--blue-50);
-    background: -webkit-linear-gradient(
-      to left,
-      var(--primary-color),
-      var(--blue-50)
-    );
-    background: linear-gradient(to left, var(--primary-color), var(--blue-50));
+    padding: var(--space-6) var(--space-5) var(--space-9) var(--space-5);
+    background: var(--blue-500);
 
     .benefits {
-      margin-top: 30px;
+      margin-top: var(--space-7);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: var(--space-5);
 
       .icon {
         margin: 0;
         height: 30px;
-        fill: var(--blue-80);
+        fill: var(--blue-50);
       }
     }
     @media (min-width: 800px) {
       .benefits {
-        gap: 40px;
+        gap: var(--space-10);
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
@@ -42,8 +36,8 @@
   .register {
     order: 1;
     width: 100%;
-    background-color: var(--white-1);
-    padding: 25px 20px;
+    background-color: var(--white);
+    padding: var(--space-6) var(--space-5);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +46,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: var(--space-1-5);
+      width: 300px;
     }
   }
 }
@@ -62,11 +58,12 @@
     .information {
       order: 1;
       width: 40%;
-      padding: 30px 50px;
+      padding: var(--space-7) var(--space-12);
       height: 100vh;
 
       .benefits {
-        gap: 20px;
+        margin-top: var(--space-12);
+        gap: var(--space-16);
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: unset;
@@ -76,18 +73,11 @@
     .register {
       order: 2;
       width: 60%;
-      padding: 30px 50px;
+      padding: var(--space-7) var(--space-12);
       height: 100vh;
-    }
-  }
-}
 
-@media (min-width: 1300px) {
-  .container {
-    .information {
-      .benefits {
-        margin-top: 50px;
-        gap: 30px;
+      .wrapper {
+        width: 350px;
       }
     }
   }
@@ -97,14 +87,15 @@
   .container {
     .information {
       .benefits {
-        margin-top: 80px;
-        gap: 60px;
+        margin-top: var(--space-20);
+        gap: var(--space-20);
 
         .icon {
           height: 45px;
         }
       }
     }
+
     .register {
       .wrapper {
         height: 100%;
