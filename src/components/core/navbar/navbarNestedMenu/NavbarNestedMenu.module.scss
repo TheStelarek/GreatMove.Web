@@ -17,7 +17,7 @@
       display: flex;
       justify-content: center;
 
-      button {
+      .nestedMenuItemButton {
         font-size: var(--font-size-p1);
         line-height: var(--line-height-p1);
         font-weight: var(--font-weight-regular);
@@ -72,7 +72,7 @@
         height: 85px;
         border-radius: var(--border-radius-8);
 
-        button {
+        .nestedMenuItemButton {
           width: 100%;
           font-size: var(--font-size-p1);
           line-height: var(--line-height-p1);

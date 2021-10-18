@@ -25,7 +25,8 @@
     width: 100%;
     left: -100%;
     top: 70px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 70px - calc(100vh - 100%));
+
     transition: 0.3s;
     gap: var(--space-7);
 
@@ -33,7 +34,7 @@
       text-align: center;
       width: 100%;
 
-      button {
+      .navMenuItemButton {
         color: var(--gray-900);
         font-size: var(--font-size-p3);
         line-height: var(--line-height-p3);
@@ -51,7 +52,7 @@
       flex-direction: column;
       align-items: center;
 
-      button {
+      .multipleButton {
         gap: var(--space-1-5);
         display: flex;
         align-items: center;
@@ -71,7 +72,7 @@
     .profile {
       order: -1;
 
-      button {
+      .profileButton {
         .avatar {
           display: none;
         }
@@ -84,15 +85,21 @@
       width: 100%;
       height: 70px;
 
-      button {
+      .loginButton,
+      .registerButton {
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: var(--font-size-p1);
         line-height: var(--line-height-p1);
+        transition: background-color 0.25s ease-in-out;
+
+        &:hover {
+          font-weight: var(--font-weight-bold);
+        }
       }
 
-      .login {
+      .loginButton {
         width: 40%;
         font-weight: var(--font-weight-semi-bold);
 
@@ -101,12 +108,11 @@
         }
       }
 
-      .register {
+      .registerButton {
         width: 60%;
         background-color: var(--blue-400);
         color: var(--blue-50);
         font-weight: var(--font-weight-extra-bold);
-        transition: background-color 0.25s ease-in-out;
 
         &:hover {
           color: var(--white);
@@ -140,7 +146,7 @@
       .navMenuItem {
         width: initial;
 
-        button {
+        .navMenuItemButton {
           font-size: var(--font-size-p1);
           line-height: var(--line-height-p1);
           font-weight: var(--font-weight-semi-bold);
@@ -160,7 +166,7 @@
         margin-left: auto;
         margin-right: var(--space-11);
 
-        button {
+        .profileButton {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -179,12 +185,12 @@
         max-width: 240px;
         gap: var(--space-2-5);
 
-        .login {
+        .loginButton {
           width: 35%;
           border-top: none;
         }
 
-        .register {
+        .registerButton {
           width: 65%;
         }
       }

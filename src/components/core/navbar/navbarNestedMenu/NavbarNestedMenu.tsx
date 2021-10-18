@@ -24,7 +24,11 @@ const NavbarNestedMenu: React.FC<NavbarNestedMenuProps> = ({
         nested.map(({ route, label, description }) => (
           <li className={styles.nestedMenuItem} key={route}>
             <Link href={`${mainRoute}/${route}`}>
-              <button type="button" onClick={hideMenu}>
+              <button
+                className={styles.nestedMenuItemButton}
+                type="button"
+                onClick={hideMenu}
+              >
                 <span className={styles.icon}>
                   <DynamicIcon name={label} />
                 </span>

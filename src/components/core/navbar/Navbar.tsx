@@ -48,21 +48,33 @@ const Navbar: React.FC = () => {
       <ul className={cx(styles.navMenu, showHamburger && styles.navMenuActive)}>
         <li className={styles.navMenuItem}>
           <Link href={RECIPES.page.route}>
-            <button type="button" onClick={hideMenu}>
+            <button
+              type="button"
+              className={styles.navMenuItemButton}
+              onClick={hideMenu}
+            >
               {RECIPES.page.label}
             </button>
           </Link>
         </li>
         <li className={styles.navMenuItem}>
           <Link href={CALCULATORS.page.route}>
-            <button type="button" onClick={hideMenu}>
+            <button
+              type="button"
+              className={styles.navMenuItemButton}
+              onClick={hideMenu}
+            >
               {CALCULATORS.page.label}
             </button>
           </Link>
         </li>
         <li className={styles.navMenuItem}>
           <Link href={BLOG.page.route}>
-            <button type="button" onClick={hideMenu}>
+            <button
+              type="button"
+              className={styles.navMenuItemButton}
+              onClick={hideMenu}
+            >
               {BLOG.page.label}
             </button>
           </Link>
@@ -70,6 +82,7 @@ const Navbar: React.FC = () => {
         <li className={cx(styles.navMenuItem, styles.multiple)}>
           <button
             type="button"
+            className={cx(styles.multipleButton, styles.navMenuItemButton)}
             onClick={() => toggleNestedMenu(NestedMenuTypes.trainings)}
           >
             {TRAININGS.page.label}
@@ -92,7 +105,10 @@ const Navbar: React.FC = () => {
         {isLoggedIn ? (
           <li className={cx(styles.navMenuItem, styles.profile)}>
             <Link href={MYPROFILE.page.route}>
-              <button type="button">
+              <button
+                type="button"
+                className={cx(styles.profileButton, styles.navMenuItemButton)}
+              >
                 <span className={styles.username}>{MYPROFILE.page.label}</span>
                 <DefaultAvatar className={styles.avatar} />
               </button>
@@ -101,13 +117,17 @@ const Navbar: React.FC = () => {
         ) : (
           <li className={cx(styles.navMenuItem, styles.auth)}>
             <Link href={LOGIN.page.route}>
-              <button className={styles.login} type="button" onClick={hideMenu}>
+              <button
+                className={styles.loginButton}
+                type="button"
+                onClick={hideMenu}
+              >
                 {LOGIN.page.label}
               </button>
             </Link>
             <Link href={REGISTER.page.route}>
               <button
-                className={styles.register}
+                className={styles.registerButton}
                 type="button"
                 onClick={hideMenu}
               >
