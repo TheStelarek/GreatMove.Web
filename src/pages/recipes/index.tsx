@@ -63,7 +63,7 @@ const Recipes: NextApplicationPage<RecipesProps> = ({
 };
 
 Recipes.getLayout = function getLayout(page: ReactElement) {
-  return <Layout whiteNavbar>{page}</Layout>;
+  return <Layout>{page}</Layout>;
 };
 
 export default Recipes;

@@ -1,85 +1,126 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import cx from 'classnames';
+import styles from '@/components/core/navbar/Navbar.module.scss';
+import {
+  RECIPES,
+  CALCULATORS,
+  TRAININGS,
+  BLOG,
+  MYPROFILE,
+  LOGIN,
+  REGISTER,
+} from '@/components/core/navbar/navbarData';
+import { NestedMenuTypes } from '@/components/core/navbar/NestedMenuTypes';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { authSelector, logout } from '@/store/auth/AuthSlice';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import styles from './Navbar.module.scss';
+import { authSelector } from '@/store/auth/AuthSlice';
+import Logo from '@/public/logo/greatmove-mobile.svg';
+import Arrow from '@/public/navbar/expand-arrow.svg';
+import DefaultAvatar from '@/public/navbar/default-avatar.svg';
+import NavbarNestedMenu from './navbarNestedMenu/NavbarNestedMenu';
+import NavbarHamburger from './navbarHamburger/NavbarHamburger';
 
-interface NavbarProps {
-  whiteNavbar?: boolean;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ whiteNavbar }) => {
+const Navbar: React.FC = () => {
   const [showHamburger, setShowHamburger] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<NestedMenuTypes | ''>(``);
   const { isLoggedIn } = useAppSelector(authSelector);
-  const dispatch = useAppDispatch();
 
-  const showMenu = () => setShowHamburger(!showHamburger);
-  const hideMenu = () => setShowHamburger(false);
-  const logoutUser = () => {
-    dispatch(logout());
-    hideMenu();
+  const toggleNestedMenu = (expand: SetStateAction<'' | NestedMenuTypes>) =>
+    expandedMenu === expand ? setExpandedMenu(``) : setExpandedMenu(expand);
+
+  const hideMenu = () => {
+    setShowHamburger(false);
+    setExpandedMenu(``);
   };
 
   return (
-    <nav className={cx(styles.navbar, whiteNavbar && styles.navbarWhite)}>
+    <nav className={styles.navbar}>
+      <Link href="/">
+        <button
+          className={styles.logo}
+          type="button"
+          onClick={hideMenu}
+          tabIndex={1}
+        >
+          <Logo />
+        </button>
+      </Link>
       <ul className={cx(styles.navMenu, showHamburger && styles.navMenuActive)}>
-        <li className={styles.navItem}>
-          <Link href="/">
-            <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-              Home
+        <li className={styles.navMenuItem}>
+          <Link href={RECIPES.page.route}>
+            <button type="button" onClick={hideMenu}>
+              {RECIPES.page.label}
             </button>
           </Link>
         </li>
-        <li className={styles.navItem}>
-          <Link href="/recipes">
-            <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-              Recipes
+        <li className={styles.navMenuItem}>
+          <Link href={CALCULATORS.page.route}>
+            <button type="button" onClick={hideMenu}>
+              {CALCULATORS.page.label}
             </button>
           </Link>
         </li>
-        <li className={styles.navItem}>
-          <Link href="/calculators">
-            <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-              Calculators
+        <li className={styles.navMenuItem}>
+          <Link href={BLOG.page.route}>
+            <button type="button" onClick={hideMenu}>
+              {BLOG.page.label}
             </button>
           </Link>
         </li>
-        <div className={styles.auth}>
-          {isLoggedIn ? (
-            <button type="button" onClick={logoutUser} onKeyPress={logoutUser}>
-              Logout
-            </button>
-          ) : (
-            <>
-              <Link href="/login">
-                <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-                  Sign in
-                </button>
-              </Link>
-              <Link href="/register">
-                <button type="button" onClick={hideMenu} onKeyPress={hideMenu}>
-                  Sign up
-                </button>
-              </Link>
-            </>
+        <li className={cx(styles.navMenuItem, styles.multiple)}>
+          <button
+            type="button"
+            onClick={() => toggleNestedMenu(NestedMenuTypes.trainings)}
+          >
+            {TRAININGS.page.label}
+            <Arrow
+              className={cx(
+                styles.expandArrow,
+                expandedMenu === NestedMenuTypes.trainings && styles.active,
+              )}
+            />
+          </button>
+          {expandedMenu === NestedMenuTypes.trainings && (
+            <NavbarNestedMenu
+              label={TRAININGS.page.label}
+              hideMenu={hideMenu}
+              mainRoute={TRAININGS.page.route}
+              nested={TRAININGS.nested}
+            />
           )}
-        </div>
-      </ul>
-      <button
-        type="button"
-        className={cx(
-          styles.hamburger,
-          showHamburger && styles.hamburgerActive,
+        </li>
+        {isLoggedIn ? (
+          <li className={cx(styles.navMenuItem, styles.profile)}>
+            <Link href={MYPROFILE.page.route}>
+              <button type="button">
+                <span className={styles.username}>{MYPROFILE.page.label}</span>
+                <DefaultAvatar className={styles.avatar} />
+              </button>
+            </Link>
+          </li>
+        ) : (
+          <li className={cx(styles.navMenuItem, styles.auth)}>
+            <Link href={LOGIN.page.route}>
+              <button className={styles.login} type="button" onClick={hideMenu}>
+                {LOGIN.page.label}
+              </button>
+            </Link>
+            <Link href={REGISTER.page.route}>
+              <button
+                className={styles.register}
+                type="button"
+                onClick={hideMenu}
+              >
+                {REGISTER.page.label}
+              </button>
+            </Link>
+          </li>
         )}
-        onClick={showMenu}
-        onKeyPress={hideMenu}
-      >
-        <span className={styles.bar} />
-        <span className={styles.bar} />
-        <span className={styles.bar} />
-      </button>
+      </ul>
+      <NavbarHamburger
+        toggleMenu={() => setShowHamburger((prevState) => !prevState)}
+        isHamburgerActive={showHamburger}
+      />
     </nav>
   );
 };

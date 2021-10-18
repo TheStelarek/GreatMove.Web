@@ -66,7 +66,7 @@ const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({
 };
 
 RecipesIndexPage.getLayout = function getLayout(page: ReactElement) {
-  return <Layout whiteNavbar>{page}</Layout>;
+  return <Layout>{page}</Layout>;
 };
 
 export default RecipesIndexPage;

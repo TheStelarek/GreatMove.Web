@@ -1,0 +1,38 @@
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: var(--space-2-5);
+
+  .bar {
+    height: 2px;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--gray-800);
+
+    &:first-of-type {
+      width: 45px;
+    }
+
+    &:nth-of-type(2) {
+      width: 28px;
+      margin-left: auto;
+    }
+  }
+}
+
+.hamburgerActive {
+  .bar:first-of-type {
+    width: 28px;
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .bar:nth-of-type(2) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+@media (min-width: 992px) {
+  .hamburger {
+    display: none;
+  }
+}

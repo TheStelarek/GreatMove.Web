@@ -1,170 +1,200 @@
 .navbar {
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   width: 100%;
-  padding: 20px 100px;
-  background-color: var(--primary-color);
+  background-color: var(--white);
+  box-shadow: var(--box-shadow-xs);
   z-index: 100;
+  padding: 0 var(--space-5);
+  height: 70px;
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .navMenu {
+    position: fixed;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin: 0;
-    padding: 0;
+    background-color: var(--white);
     width: 100%;
-    gap: 35px;
+    left: -100%;
+    top: 70px;
+    height: calc(100vh - 70px);
+    transition: 0.3s;
+    gap: var(--space-7);
 
-    .navItem,
-    .auth {
-      list-style-type: none;
-      color: var(--white-3);
-      transition: 0.3s;
+    .navMenuItem {
+      text-align: center;
+      width: 100%;
 
       button {
-        background-color: transparent;
-        border: none;
-        color: inherit;
-        cursor: pointer;
-        padding: 0;
-        font-weight: 700;
-        font-size: 14px;
+        color: var(--gray-900);
+        font-size: var(--font-size-p3);
+        line-height: var(--line-height-p3);
+        font-weight: var(--font-weight-regular);
 
         &:hover {
-          color: var(--white-1);
+          color: var(--blue-500);
+          font-weight: var(--font-weight-semi-bold);
         }
       }
     }
 
-    .auth {
-      margin-left: auto;
+    .multiple {
       display: flex;
-      gap: 20px;
-
-      button {
-        width: 75px;
-        border-radius: 6px;
-        padding: 6px 8px;
-
-        &:last-of-type {
-          border: 1px solid var(--blue-20);
-        }
-      }
-    }
-  }
-
-  .hamburger {
-    display: none;
-    margin-left: auto;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-
-    .bar {
-      display: block;
-      width: 25px;
-      height: 3px;
-      margin: 5px auto;
-      -webkit-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out;
-      background-color: var(--white-1);
-    }
-  }
-}
-
-@media (max-width: 780px) {
-  .navbar {
-    padding: 10px 35px;
-    height: 50px;
-
-    .navMenu {
-      position: fixed;
       flex-direction: column;
       align-items: center;
-      left: -100%;
-      top: 50px;
+
+      button {
+        gap: var(--space-1-5);
+        display: flex;
+        align-items: center;
+
+        .expandArrow {
+          width: 12px;
+          transition: transform 0.25s;
+          transform: scaleY(-1);
+        }
+
+        .active {
+          transform: scaleY(1);
+        }
+      }
+    }
+
+    .profile {
+      order: -1;
+
+      button {
+        .avatar {
+          display: none;
+        }
+      }
+    }
+
+    .auth {
+      margin-top: auto;
+      display: flex;
       width: 100%;
-      height: calc(100vh - 50px);
-      transition: 0.3s;
-      background-color: var(--primary-color);
-      gap: 50px;
+      height: 70px;
 
-      .navItem,
-      .auth {
-        text-align: center;
-
-        button {
-          font-size: 18px;
-        }
-      }
-
-      .auth {
-        margin: 0 auto;
-        gap: 50px;
+      button {
+        display: flex;
         justify-content: center;
-        flex-direction: column;
+        align-items: center;
+        font-size: var(--font-size-p1);
+        line-height: var(--line-height-p1);
+      }
 
-        button {
-          width: 100px;
+      .login {
+        width: 40%;
+        font-weight: var(--font-weight-semi-bold);
+
+        @media (min-width: 580px) {
+          border-top: 1px solid var(--gray-100);
+        }
+      }
+
+      .register {
+        width: 60%;
+        background-color: var(--blue-400);
+        color: var(--blue-50);
+        font-weight: var(--font-weight-extra-bold);
+        transition: background-color 0.25s ease-in-out;
+
+        &:hover {
+          color: var(--white);
+          background-color: var(--blue-500);
+          font-weight: var(--font-weight-extra-bold);
         }
       }
     }
+  }
 
-    .navMenuActive {
-      left: 0;
+  .navMenuActive {
+    left: 0;
+    padding-top: var(--space-7);
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    justify-content: flex-start;
+    gap: var(--space-24);
+    padding: 0 0 0 var(--space-7);
+
+    .navMenu {
+      position: unset;
+      flex-direction: row;
+      align-items: center;
       padding: 0;
-    }
+      height: 100%;
+      gap: var(--space-7);
 
-    .hamburger {
-      display: block;
-      cursor: pointer;
-    }
+      .navMenuItem {
+        width: initial;
 
-    .hamburgerActive {
-      .bar:nth-child(2) {
-        opacity: 0;
+        button {
+          font-size: var(--font-size-p1);
+          line-height: var(--line-height-p1);
+          font-weight: var(--font-weight-semi-bold);
+
+          .expandArrow {
+            width: 10px;
+          }
+        }
       }
-      .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+
+      .multiple {
+        position: relative;
       }
-      .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+
+      .profile {
+        order: 1;
+        margin-left: auto;
+        margin-right: var(--space-11);
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-2-5);
+
+          .avatar {
+            display: block;
+          }
+        }
+      }
+
+      .auth {
+        order: 1;
+        margin-left: auto;
+        width: 100%;
+        max-width: 240px;
+        gap: var(--space-2-5);
+
+        .login {
+          width: 35%;
+          border-top: none;
+        }
+
+        .register {
+          width: 65%;
+        }
       }
     }
   }
 }
 
-.navbarWhite {
-  background-color: var(--white-1);
-  box-shadow: rgb(0 0 0 / 15%) 0px 1px 3px;
-
-  .navMenu {
-    background-color: var(--white-1);
-
-    .navItem,
-    .auth {
-      button {
-        color: var(--black-1);
-
-        &:hover {
-          color: var(--blue-50);
-        }
-      }
-    }
-  }
-
-  .auth {
-    button {
-      &:last-of-type {
-        color: var(--blue-40);
-      }
-    }
-  }
-
-  .hamburger {
-    .bar {
-      background-color: var(--blue-50);
-    }
+@media (min-width: 1500px) {
+  .navbar {
+    gap: var(--space-40);
+    padding: 0 0 0 var(--space-10);
   }
 }

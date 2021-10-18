@@ -3,18 +3,14 @@ import Navbar from '@/components/core/navbar/Navbar';
 import Footer from '@/components/core/footer/Footer';
 import styles from './Layout.module.scss';
 
-interface LayoutProps {
-  whiteNavbar?: boolean;
-}
-
-const Layout: React.FC<LayoutProps> = ({ whiteNavbar, children }) => (
+const Layout: React.FC = ({ children }) => (
   <div className={styles.container}>
     <Head>
       <title>GreatMove - make a better lifestyle</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <header className={styles.header}>
-      <Navbar whiteNavbar={whiteNavbar} />
+      <Navbar />
     </header>
     <main className={styles.main}>{children}</main>
     <Footer />
