@@ -51,22 +51,22 @@ export const TRAININGS: MenuItem = {
   nested: [
     {
       label: `Start training`,
-      route: `/start-training`,
+      route: `start-training`,
       description: `Analyze your data to make more optimized plans`,
     },
     {
       label: `History`,
-      route: `/history`,
+      route: `history`,
       description: `Analyze your data to make more optimized plans`,
     },
     {
       label: `Create plan`,
-      route: `/create-plan`,
+      route: `create-plan`,
       description: `Analyze your data to make more optimized plans`,
     },
     {
       label: `Plans`,
-      route: `/plans`,
+      route: `plans`,
       description: `Analyze your data to make more optimized plans`,
     },
   ],

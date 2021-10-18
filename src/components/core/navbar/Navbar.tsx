@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useState, useEffect } from 'react';
 import cx from 'classnames';
 import styles from '@/components/core/navbar/Navbar.module.scss';
 import {
@@ -32,6 +32,10 @@ const Navbar: React.FC = () => {
     setShowHamburger(false);
     setExpandedMenu(``);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = showHamburger ? `hidden` : `scroll`;
+  }, [showHamburger]);
 
   return (
     <nav className={styles.navbar}>
