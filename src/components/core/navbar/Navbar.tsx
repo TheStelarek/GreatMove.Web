@@ -11,16 +11,24 @@ import {
   LOGIN,
   REGISTER,
 } from '@/components/core/navbar/navbarData';
-import { NestedMenuTypes } from '@/components/core/navbar/NestedMenuTypes';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector } from '@/store/auth/AuthSlice';
-import Logo from '@/public/logo/greatmove-mobile.svg';
 import Arrow from '@/public/navbar/expand-arrow.svg';
 import DefaultAvatar from '@/public/navbar/default-avatar.svg';
-import NavbarNestedMenu from './navbarNestedMenu/NavbarNestedMenu';
-import NavbarHamburger from './navbarHamburger/NavbarHamburger';
+import NavbarNestedMenu from '@/components/core/navbar/navbarNestedMenu/NavbarNestedMenu';
+import NavbarHamburger from '@/components/core/navbar/navbarHamburger/NavbarHamburger';
+import {
+  NavbarVariants,
+  NestedMenuTypes,
+} from '@/components/core/navbar/NavbarTypes';
+import Logo from '@/components/core/logo/Logo';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  variant?: NavbarVariants;
+  boxShadow?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
   const [showHamburger, setShowHamburger] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<NestedMenuTypes | ''>(``);
   const { isLoggedIn } = useAppSelector(authSelector);
@@ -38,15 +46,21 @@ const Navbar: React.FC = () => {
   }, [showHamburger]);
 
   return (
-    <nav className={styles.navbar}>
+    <nav
+      className={cx(
+        styles.navbar,
+        boxShadow && styles.navbarBoxShadow,
+        styles[`navbar-${variant}`],
+      )}
+    >
       <Link href="/">
         <button
-          className={styles.logo}
+          className={styles.logoWrapper}
           type="button"
           onClick={hideMenu}
           tabIndex={1}
         >
-          <Logo />
+          <Logo color={variant ? `white` : `black`} />
         </button>
       </Link>
       <ul className={cx(styles.navMenu, showHamburger && styles.navMenuActive)}>
@@ -103,6 +117,7 @@ const Navbar: React.FC = () => {
               hideMenu={hideMenu}
               mainRoute={TRAININGS.page.route}
               nested={TRAININGS.nested}
+              navbarVariant={variant}
             />
           )}
         </li>
@@ -144,6 +159,7 @@ const Navbar: React.FC = () => {
       <NavbarHamburger
         toggleMenu={() => setShowHamburger((prevState) => !prevState)}
         isHamburgerActive={showHamburger}
+        navbarVariant={variant}
       />
     </nav>
   );

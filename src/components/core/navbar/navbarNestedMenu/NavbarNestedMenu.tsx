@@ -1,13 +1,18 @@
 import Link from 'next/link';
+import cx from 'classnames';
 import styles from '@/components/core/navbar/navbarNestedMenu/NavbarNestedMenu.module.scss';
 import DynamicIcon from '@/components/core/dynamicIcon/DynamicIcon';
-import { PageRoute } from '../navbarData';
+import {
+  NavbarVariants,
+  PageRoute,
+} from '@/components/core/navbar/NavbarTypes';
 
 interface NavbarNestedMenuProps {
   mainRoute: string;
   label: string;
   nested: PageRoute[] | undefined;
   hideMenu: () => void;
+  navbarVariant?: NavbarVariants;
 }
 
 const NavbarNestedMenu: React.FC<NavbarNestedMenuProps> = ({
@@ -15,8 +20,9 @@ const NavbarNestedMenu: React.FC<NavbarNestedMenuProps> = ({
   nested,
   mainRoute,
   hideMenu,
+  navbarVariant: variant,
 }) => (
-  <div className={styles.nestedMenu}>
+  <div className={cx(styles.nestedMenu, styles[`nestedMenu-${variant}`])}>
     <p className={styles.nestedMenuTitle}>{title}</p>
     <ul className={styles.nestedMenuList}>
       {nested &&

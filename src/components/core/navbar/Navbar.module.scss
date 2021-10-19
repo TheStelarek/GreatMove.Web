@@ -5,12 +5,11 @@
   align-items: center;
   width: 100%;
   background-color: var(--white);
-  box-shadow: var(--box-shadow-xs);
   z-index: 100;
   padding: 0 var(--space-5);
   height: 70px;
 
-  .logo {
+  .logoWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,9 +100,10 @@
 
       .loginButton {
         width: 40%;
+        color: var(--gray-900);
         font-weight: var(--font-weight-semi-bold);
 
-        @media (min-width: 580px) {
+        @media (min-width: 580px) and (max-width: 991px) {
           border-top: 1px solid var(--gray-100);
         }
       }
@@ -127,6 +127,10 @@
     left: 0;
     padding-top: var(--space-7);
   }
+}
+
+.navbarBoxShadow {
+  box-shadow: var(--box-shadow-xs);
 }
 
 @media (min-width: 992px) {
@@ -187,11 +191,48 @@
 
         .loginButton {
           width: 35%;
-          border-top: none;
         }
 
         .registerButton {
           width: 65%;
+        }
+      }
+    }
+  }
+}
+
+.navbar-purple {
+  background-color: var(--purple-400);
+
+  .navMenu {
+    background-color: var(--purple-400);
+
+    .navMenuItem {
+      .navMenuItemButton,
+      .loginButton {
+        color: var(--white);
+        font-weight: var(--font-weight-regular);
+
+        &:hover {
+          font-weight: var(--font-weight-regular);
+          color: var(--purple-100);
+        }
+      }
+
+      .loginButton {
+        font-weight: var(--font-weight-semi-bold);
+        @media (min-width: 580px) and (max-width: 991px) {
+          border-top: 1px solid var(--purple-300);
+        }
+      }
+
+      .registerButton {
+        font-weight: var(--font-weight-bold);
+        background-color: var(--purple-700);
+
+        &:hover {
+          background-color: var(--purple-800);
+          font-weight: var(--font-weight-bold);
         }
       }
     }

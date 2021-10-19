@@ -1,13 +1,4 @@
-export interface PageRoute {
-  label: string;
-  route: string;
-  description?: string;
-}
-
-export interface MenuItem {
-  page: PageRoute;
-  nested?: PageRoute[];
-}
+import { MenuItem } from '@/components/core/navbar/NavbarTypes';
 
 export const MYPROFILE: MenuItem = {
   page: {

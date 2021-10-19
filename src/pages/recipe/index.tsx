@@ -60,7 +60,11 @@ const Recipe: NextApplicationPage<RecipeProps> = ({ ingredients }) => (
 export default Recipe;
 
 Recipe.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
+  return (
+    <Layout navbarVariant="purple" navbarBoxShadow={false} fullWidth>
+      {page}
+    </Layout>
+  );
 };
 
 export async function getStaticProps() {

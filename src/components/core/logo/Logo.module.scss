@@ -1,0 +1,27 @@
+.logo {
+  height: 100%;
+}
+
+.logo-white {
+  path {
+    fill: var(--white);
+  }
+}
+
+.logo-black {
+  path {
+    fill: var(--black);
+  }
+}
+
+.logo-purple {
+  path {
+    fill: var(--purple-500);
+  }
+}
+
+.logo-blue {
+  path {
+    fill: var(--blue-500);
+  }
+}

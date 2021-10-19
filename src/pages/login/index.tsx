@@ -3,14 +3,16 @@ import styles from '@/pages/login/Login.module.scss';
 import LoginForm from '@/components/login/loginForm/LoginForm';
 import LoginSocials from '@/components/login/loginSocials/LoginSocials';
 import Divider from '@/components/core/divider/Divider';
-import Logo from '@/public/logo/greatmove-blue.svg';
+import Logo from '@/components/core/logo/Logo';
 
 export default function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.loginBox}>
         <Link href="/">
-          <Logo className={styles.logo} />
+          <button type="button" className={styles.logoWrapper}>
+            <Logo variant="text" color="blue" />
+          </button>
         </Link>
         <h5 className={styles.login}>Sign in</h5>
         <LoginSocials />

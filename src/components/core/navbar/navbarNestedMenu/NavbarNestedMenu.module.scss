@@ -40,6 +40,10 @@
   }
 }
 
+.nestedMenu-purple {
+  background-color: var(--purple-200);
+}
+
 @media (min-width: 992px) {
   .nestedMenu {
     display: flex;
