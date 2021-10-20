@@ -21,13 +21,15 @@ const RecipesListItem: React.FC<Recipe> = ({
     </div>
     <div className={styles.content}>
       <div className={styles.meal}>
-        <p>{meal}</p>
-        <p>Calories: {calories}</p>
+        <p className={styles.type}>{meal}</p>
+        <p className={styles.calories}>Calories: {calories}</p>
       </div>
       <p className={styles.name}>{name}</p>
       <div className={styles.difficulty}>
-        <p>{difficulty}</p>
-        <p>{preparationTime + cookTime} MINS</p>
+        <p className={styles.level}>{difficulty}</p>
+        <p className={styles.estimatedTime}>
+          {preparationTime + cookTime} MINS
+        </p>
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@ const RangeWrapper = ({
     <p className={styles.range}>
       {range[0]} - {range[1]} g
     </p>
-    {children}
+    <div className={styles.slider}>{children}</div>
   </div>
 );
 

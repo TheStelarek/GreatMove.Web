@@ -44,6 +44,22 @@
     border-radius: var(--border-radius-15);
   }
 
+  .input-small {
+    height: 36px;
+  }
+
+  .input-regular {
+    height: 44px;
+  }
+
+  .input-big {
+    height: 50px;
+  }
+
+  .input-large {
+    height: 55px;
+  }
+
   .inputError {
     border-color: var(--red-400);
   }

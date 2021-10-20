@@ -43,7 +43,6 @@ const RecipesFilterForm = () => {
   const { register, handleSubmit, control, watch } = useForm<FilterValue>();
 
   const onSubmit = async ({ name, caloriesRange, time }: FilterValue) => {
-    alert(time);
     if (name) {
       dispatch(setSearchName(name));
       dispatch(getRecipes({ name }));
@@ -144,50 +143,52 @@ const RecipesFilterForm = () => {
             )}
           />
         </RangeWrapper>
-        <ListWrapper title="Estimated time">
-          {times.map(({ value, label }) => (
-            <TagCheckbox
-              key={value}
-              type="radio"
-              value={value}
-              {...register(`time`)}
-              label={label}
-            />
-          ))}
-        </ListWrapper>
-        <ListWrapper title="Meal" titleBold>
-          {meals.map((meal) => (
-            <TagCheckbox
-              key={meal}
-              type="checkbox"
-              value={meal}
-              {...register(`meals`)}
-              label={meal}
-            />
-          ))}
-        </ListWrapper>
-        <ListWrapper title="Diet" titleBold>
-          {diets.map((diet) => (
-            <TagCheckbox
-              key={diet}
-              type="checkbox"
-              value={diet}
-              {...register(`diets`)}
-              label={diet}
-            />
-          ))}
-        </ListWrapper>
-        <ListWrapper title="Tags" titleBold>
-          {tags.map((tag) => (
-            <TagCheckbox
-              key={tag}
-              type="checkbox"
-              value={tag}
-              {...register(`tags`)}
-              label={tag}
-            />
-          ))}
-        </ListWrapper>
+        <div className={styles.tags}>
+          <ListWrapper title="Estimated time">
+            {times.map(({ value, label }) => (
+              <TagCheckbox
+                key={value}
+                type="radio"
+                value={value}
+                {...register(`time`)}
+                label={label}
+              />
+            ))}
+          </ListWrapper>
+          <ListWrapper title="Meal">
+            {meals.map((meal) => (
+              <TagCheckbox
+                key={meal}
+                type="checkbox"
+                value={meal}
+                {...register(`meals`)}
+                label={meal}
+              />
+            ))}
+          </ListWrapper>
+          <ListWrapper title="Diet">
+            {diets.map((diet) => (
+              <TagCheckbox
+                key={diet}
+                type="checkbox"
+                value={diet}
+                {...register(`diets`)}
+                label={diet}
+              />
+            ))}
+          </ListWrapper>
+          <ListWrapper title="Tags">
+            {tags.map((tag) => (
+              <TagCheckbox
+                key={tag}
+                type="checkbox"
+                value={tag}
+                {...register(`tags`)}
+                label={tag}
+              />
+            ))}
+          </ListWrapper>
+        </div>
       </div>
     </form>
   );

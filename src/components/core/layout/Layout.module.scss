@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--white-1);
+  background-color: var(--white);
 
   .header {
     width: 100%;
@@ -15,7 +15,6 @@
     min-height: calc(100vh - 70px);
     max-width: 1366px;
     width: 100%;
-    background-color: var(--white-1);
   }
 
   .mainFullWidth {

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import styles from '@/styles/Recipes.module.scss';
+import styles from '@/pages/recipes/Recipes.module.scss';
 import Layout from '@/components/core/layout/Layout';
 import RecipesList from '@/components/recipes/recipesList/RecipesList';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
@@ -44,7 +44,7 @@ const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({
         className={styles.filterBtn}
         onClick={() => setShowFilter(!showFilters)}
       >
-        <FilterIcon className={styles.icon} /> Filters
+        <FilterIcon className={styles.icon} /> FILTERS
       </button>
 
       {showFilters && <RecipesFilterForm />}

@@ -1,0 +1,39 @@
+.container {
+  padding: var(--space-6) var(--space-5) 0 var(--space-5);
+  margin: 0 auto;
+  max-width: 1336px;
+
+  .filterBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3-5);
+    margin-left: auto;
+    padding: var(--space-3-5) var(--space-5);
+    border: 1px solid var(--blue-500);
+    background-color: var(--white);
+    border-radius: var(--border-radius-5);
+    color: var(--blue-500);
+    font-size: var(--font-size-p1);
+    line-height: var(--line-height-p1);
+    font-weight: var(--font-weight-semi-bold);
+    cursor: pointer;
+
+    .icon {
+      width: 16px;
+      fill: var(--blue-500);
+    }
+  }
+
+  .staticRecipeList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    padding: var(--space-12) var(--space-20) 0 var(--space-20);
+  }
+}

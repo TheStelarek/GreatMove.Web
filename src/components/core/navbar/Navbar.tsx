@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
   };
 
   useEffect(() => {
-    document.body.style.overflow = showHamburger ? `hidden` : `scroll`;
+    document.body.style.overflow = showHamburger ? `hidden` : `auto`;
   }, [showHamburger]);
 
   return (

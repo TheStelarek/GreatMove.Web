@@ -2,12 +2,12 @@
   overflow: hidden;
 
   .spinnerWrapper {
-    margin-top: 25px;
+    margin-top: var(--space-6);
     height: 50px;
   }
 }
 
 .resultsAlert {
   text-align: center;
-  font-weight: 600;
+  font-weight: var(--font-weight-semi-bold);
 }

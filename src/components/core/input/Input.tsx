@@ -6,10 +6,11 @@ import styles from '@/components/core/input/Input.module.scss';
 type InputProps = UseFormRegisterReturn & {
   label?: string;
   placeholder?: string;
-  type: 'text' | 'email' | 'number' | 'password';
   error?: string | null;
+  type: 'text' | 'email' | 'number' | 'password';
   radius?: 5 | 10 | 15;
   variant?: 'gray' | 'blue';
+  size?: 'small' | 'regular' | 'big' | 'large';
   autocomplete?: boolean;
   onKeyPress?: KeyboardEventHandler<HTMLInputElement> | undefined;
 };
@@ -24,6 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       radius,
       variant = `gray`,
+      size = `regular`,
       onChange,
       onBlur,
       onKeyPress,
@@ -38,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           styles.input,
           styles[`input-${variant}`],
           styles[`input-radius-${radius}`],
+          styles[`input-${size}`],
           error && styles.inputError,
         )}
         aria-invalid={error ? `true` : `false`}

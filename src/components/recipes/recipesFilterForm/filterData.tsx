@@ -1,15 +1,15 @@
 export const handleStyle = [
   {
-    backgroundColor: `#4bc0e7`,
-    border: `1px solid #4bc0e7`,
+    backgroundColor: `#63CBEE`,
+    border: `1px solid #63CBEE`,
     height: 12,
     width: 12,
     marginTop: -4,
   },
 ];
 
-export const trackStyle = [{ backgroundColor: `#6fcceb` }];
-export const railStyle = { backgroundColor: `#e2dfdf` };
+export const trackStyle = [{ backgroundColor: `#63CBEE` }];
+export const railStyle = { backgroundColor: `#CAD5DE` };
 
 export const caloriesMarks = {
   0: {
@@ -198,8 +198,8 @@ export const diets = [
 ];
 
 export const times = [
-  { value: 10, label: `up to 10min` },
-  { value: 20, label: `up to 20min` },
-  { value: 30, label: `up to 30min` },
+  { value: 10, label: `up to 10 mins` },
+  { value: 20, label: `up to 20 mins` },
+  { value: 30, label: `up to 30 mins` },
   { value: `unlimited`, label: `unlimited` },
 ];

@@ -47,8 +47,8 @@ const RecipesSearchBar = forwardRef<HTMLInputElement, RecipesSearchBarProps>(
       <div className={styles.searchWrapper} {...getComboboxProps()}>
         <Input
           autocomplete={false}
-          variant="blue"
           radius={5}
+          size="large"
           type="text"
           placeholder="Search recipe by name"
           onKeyPress={handleKeyPress}
