@@ -1,5 +1,5 @@
 .container {
-  padding: 20px 25px;
+  padding: var(--space-6) var(--space-5);
   display: flex;
   justify-content: center;
 
@@ -7,15 +7,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: var(--space-5);
     width: 100%;
 
     .calculator {
-      border: 1px solid #e9eef1;
+      border: 1px solid var(--gray-100);
+      box-shadow: var(--box-shadow-xs);
       width: 100%;
       height: 240px;
-      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 8px;
-      border-radius: 10px;
+      border-radius: var(--border-radius-5);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -25,19 +25,19 @@
 
       .name {
         margin: 0;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 22px;
-        color: #065c79;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-p5);
+        line-height: var(--line-height-p5);
+        color: var(--blue-800);
         transition: color 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
       }
 
       .description {
-        margin: 5px 0 0 0;
-        padding: 0 31px;
-        font-size: 14px;
-        line-height: 17px;
-        color: #127ba1;
+        margin: var(--space-1) 0 0 0;
+        padding: 0 var(--space-8);
+        font-size: var(--font-size-p1);
+        line-height: var(--line-height-p1);
+        color: var(--blue-700);
         text-align: center;
         transition: color 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
       }
@@ -47,11 +47,11 @@
         transform: scale(1.03);
 
         .name {
-          color: #17a1cf;
+          color: var(--blue-600);
         }
 
         .description {
-          color: #17a1cf;
+          color: var(--blue-600);
         }
       }
     }
@@ -60,12 +60,12 @@
 
 @media (min-width: 720px) {
   .container {
-    padding: 20px 30px;
+    padding: var(--space-5) var(--space-8);
 
     .calculators {
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 25px;
+      gap: var(--space-6);
 
       .calculator {
         max-width: 310px;
@@ -77,10 +77,10 @@
 
 @media (min-width: 1100px) {
   .container {
-    padding: 45px 0;
+    padding: var(--space-11) 0;
 
     .calculators {
-      gap: 45px;
+      gap: var(--space-11);
     }
   }
 }
