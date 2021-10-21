@@ -2,17 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  gap: var(--space-1);
 
   .arrow {
-    border: none;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     cursor: pointer;
-    background-color: unset;
 
     .arrowLink {
       display: flex;
@@ -20,17 +15,19 @@
       align-items: center;
       height: 100%;
       width: 100%;
+
       .icon {
         width: 12px;
-        fill: var(--gray-30);
+        fill: var(--gray-800);
       }
     }
 
     &:hover {
-      background-color: var(--gray-10);
-      border-radius: 5px;
+      background-color: var(--gray-200);
+      border-radius: var(--border-radius-5);
+
       .icon {
-        fill: var(--gray-40);
+        fill: var(--gray-900);
       }
     }
   }
@@ -41,16 +38,14 @@
   }
 
   .break {
-    color: var(--gray-30);
+    color: var(--gray-700);
   }
 
   .page {
-    border: none;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     cursor: pointer;
-    background-color: unset;
-    color: var(--gray-30);
+    color: var(--gray-800);
     font-weight: 700;
     display: flex;
     justify-content: center;
@@ -66,31 +61,31 @@
     }
 
     &:hover {
-      border-radius: 4px;
-      background-color: var(--blue-40);
-      color: var(--white-1);
+      border-radius: var(--border-radius-5);
+      background-color: var(--blue-400);
+      color: var(--white);
     }
   }
 
   .pageActive {
-    border-radius: 4px;
-    color: var(--white-1);
-    background-color: var(--blue-40);
+    border-radius: var(--border-radius-5);
+    color: var(--white);
+    background-color: var(--blue-500);
   }
 }
 
-@media (max-width: 400px) {
+@media (min-width: 400px) {
   .paginationContainer {
-    gap: 5px;
+    gap: var(--space-2-5);
 
     .arrow {
-      height: 30px;
-      width: 30px;
+      height: 35px;
+      width: 35px;
     }
 
     .page {
-      height: 30px;
-      width: 30px;
+      height: 35px;
+      width: 35px;
     }
   }
 }
