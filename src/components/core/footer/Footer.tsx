@@ -1,14 +1,14 @@
+import Link from 'next/link';
 import styles from '@/components/core/footer/Footer.module.scss';
 import ArrowUpLeft from '@/public/footer/arrowUpLeft.svg';
 import Facebook from '@/public/footer/facebook.svg';
 import Instagram from '@/public/footer/instagram.svg';
 import Twitter from '@/public/footer/twitter.svg';
-import Link from 'next/link';
 
 const Footer = () => (
   <footer className={styles.footerContainer}>
     <div className={styles.footerWrapper}>
-      <div className={styles.sectionWrapper}>
+      <div className={styles.section}>
         <div className={styles.description}>
           <ArrowUpLeft className={styles.arrowIcon} />
           <p className={styles.seoText}>
@@ -19,14 +19,14 @@ const Footer = () => (
           </p>
         </div>
       </div>
-      <div className={styles.sectionWrapper}>
+      <div className={styles.section}>
         <ul className={styles.linksList}>
           <li className={styles.link}>Faq</li>
           <li className={styles.link}>About us</li>
           <li className={styles.link}>Contact</li>
         </ul>
       </div>
-      <div className={styles.sectionWrapper}>
+      <div className={styles.section}>
         <div className={styles.socials}>
           <Facebook className={styles.socialIcon} />
           <Instagram className={styles.socialIcon} />
