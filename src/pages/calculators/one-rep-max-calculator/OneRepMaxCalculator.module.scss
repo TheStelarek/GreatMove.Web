@@ -39,6 +39,8 @@
   .result {
     font-weight: var(--font-weight-semi-bold);
     color: var(--gray-900);
+    font-size: var(--font-size-p3);
+    line-height: var(--line-height-p3);
 
     .max {
       color: var(--blue-500);
@@ -46,8 +48,8 @@
 
     .weight {
       color: var(--black);
-      font-size: var(--font-size-p3);
-      line-height: var(--line-height-p3);
+      font-size: var(--font-size-p4);
+      line-height: var(--line-height-p4);
     }
   }
 }

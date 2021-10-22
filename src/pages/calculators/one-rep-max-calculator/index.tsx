@@ -4,7 +4,7 @@ import styles from '@/pages/calculators/one-rep-max-calculator/OneRepMaxCalculat
 import Layout from '@/components/core/layout/Layout';
 import Calculator from '@/components/calculator/Calculator';
 import Input from '@/components/core/input/Input';
-import { oneRepMaxData } from '@/utils/data/calculatorsData';
+import { oneRepMaxData } from '@/utils/data/calculators/oneRepMaxData';
 import { calculateOneRepMax } from '@/utils/functions/calculateRepMax';
 
 const OneRepMaxCalculator = () => {

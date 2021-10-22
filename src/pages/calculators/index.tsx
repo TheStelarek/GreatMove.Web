@@ -1,16 +1,19 @@
 import { ReactElement } from 'react';
+import Link from 'next/link';
 import Layout from '@/components/core/layout/Layout';
 import styles from '@/pages/calculators/Calculators.module.scss';
-import { calculatorsData } from '@/utils/data/calculatorsData';
+import { calculatorsData } from '@/utils/data/calculators/calculatorsData';
 
 const Calculators = () => (
   <div className={styles.container}>
     <div className={styles.calculators}>
-      {calculatorsData.map(({ name, description }) => (
-        <div className={styles.calculator} key={name}>
-          <p className={styles.name}>{name}</p>
-          <p className={styles.description}>{description}</p>
-        </div>
+      {calculatorsData.map(({ name, description, href }) => (
+        <Link href={`calculators/${href}`} key={name}>
+          <div className={styles.calculator}>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.description}>{description}</p>
+          </div>
+        </Link>
       ))}
     </div>
   </div>
