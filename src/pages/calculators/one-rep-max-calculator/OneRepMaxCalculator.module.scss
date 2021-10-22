@@ -1,0 +1,53 @@
+.oneRepMax {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 460px;
+
+    .inputWrapper {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .form {
+      flex-direction: row;
+      gap: var(--space-8);
+      max-width: 600px;
+
+      .inputWrapper {
+        width: 200px;
+      }
+    }
+  }
+
+  @media (min-width: 900px) {
+    .form {
+      gap: var(--space-10);
+
+      .inputWrapper {
+        width: 230px;
+      }
+    }
+  }
+
+  .result {
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--gray-900);
+
+    .max {
+      color: var(--blue-500);
+    }
+
+    .weight {
+      color: var(--black);
+      font-size: var(--font-size-p3);
+      line-height: var(--line-height-p3);
+    }
+  }
+}

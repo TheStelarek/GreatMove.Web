@@ -12,6 +12,8 @@ type InputProps = UseFormRegisterReturn & {
   variant?: 'gray' | 'blue';
   size?: 'small' | 'regular' | 'big' | 'large';
   autocomplete?: boolean;
+  min?: number;
+  max?: number;
   onKeyPress?: KeyboardEventHandler<HTMLInputElement> | undefined;
 };
 
@@ -29,6 +31,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onChange,
       onBlur,
       onKeyPress,
+      min,
+      max,
       autocomplete = true,
     },
     ref,
@@ -48,7 +52,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         onKeyPress={onKeyPress}
         autoComplete={autocomplete ? `on` : `off`}
-        {...{ onChange, onBlur, name, placeholder, type }}
+        {...{ onChange, onBlur, name, placeholder, type, min, max }}
       />
       {error && (
         <p role="alert" className="error">

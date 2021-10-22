@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import Layout from '@/components/core/layout/Layout';
 import styles from '@/pages/calculators/Calculators.module.scss';
 import { calculatorsData } from '@/utils/data/calculatorsData';

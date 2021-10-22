@@ -15,7 +15,7 @@ import {
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import ShoppingListTemplate from '@/utils/printTemplates/shoppingListTemplate/ShoppingListTemplate';
 import { Ingredient } from '@/utils/types/Ingredient';
-import chunks from '@/utils/chunks';
+import chunks from '@/utils/functions/chunks';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 
 const ShoppingList: NextApplicationPage = () => {
