@@ -56,6 +56,7 @@ const LoginForm = () => {
         variant="gray"
         type="text"
         placeholder="Username"
+        size="big"
         {...register(`username`)}
         error={errors?.username?.message}
       />
@@ -63,6 +64,7 @@ const LoginForm = () => {
         variant="gray"
         type="password"
         placeholder="Enter password"
+        size="big"
         {...register(`password`)}
         error={errors?.password?.message || errorMessage}
       />

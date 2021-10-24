@@ -6,16 +6,20 @@ import Calculator from '@/components/calculator/Calculator';
 import Input from '@/components/core/input/Input';
 import { oneRepMaxData } from '@/utils/data/calculators/oneRepMaxData';
 import { calculateOneRepMax } from '@/utils/functions/calculateRepMax';
+import { fieldMax } from '@/utils/functions/fieldMax';
 
 const OneRepMaxCalculator = () => {
   const [repMax, setRepMax] = useState<number>(0);
   const { register, watch } = useForm<{ weight: number; reps: number }>();
 
+  const weightField = register(`weight`);
+  const repsField = register(`reps`);
+
   const weight = watch(`weight`);
   const reps = watch(`reps`);
 
   useEffect(() => {
-    if (reps && weight) setRepMax(calculateOneRepMax(weight, reps));
+    if (weight && reps) setRepMax(calculateOneRepMax(weight, reps));
   }, [weight, reps]);
 
   return (
@@ -30,11 +34,15 @@ const OneRepMaxCalculator = () => {
               size="large"
               radius={5}
               type="number"
-              min={30}
+              min={1}
               max={1000}
               label="Weight"
               placeholder="Enter weight"
-              {...register(`weight`)}
+              {...weightField}
+              onChange={async (e) => {
+                e.target.value = fieldMax(e.target.value, 1000);
+                weightField.onChange(e);
+              }}
             />
           </div>
           <div className={styles.inputWrapper}>
@@ -42,11 +50,15 @@ const OneRepMaxCalculator = () => {
               size="large"
               radius={5}
               type="number"
-              min={0}
+              min={1}
               max={20}
               label="Reps"
               placeholder="Enter number of reps"
-              {...register(`reps`)}
+              {...repsField}
+              onChange={async (e) => {
+                e.target.value = fieldMax(e.target.value, 20);
+                repsField.onChange(e);
+              }}
             />
           </div>
         </div>

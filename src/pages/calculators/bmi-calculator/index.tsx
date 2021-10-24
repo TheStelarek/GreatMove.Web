@@ -6,10 +6,14 @@ import Calculator from '@/components/calculator/Calculator';
 import Input from '@/components/core/input/Input';
 import { bmiData, bmiRanges } from '@/utils/data/calculators/bmiData';
 import { calculateBMI } from '@/utils/functions/calculateBMI';
+import { fieldMax } from '@/utils/functions/fieldMax';
 
 const BMICalculator = () => {
   const [bmi, setBmi] = useState<number>(0);
   const { register, watch } = useForm<{ height: number; weight: number }>();
+
+  const heightField = register(`height`);
+  const weightField = register(`weight`);
 
   const height = watch(`height`);
   const weight = watch(`weight`);
@@ -28,11 +32,15 @@ const BMICalculator = () => {
                 size="large"
                 radius={5}
                 type="number"
-                min={60}
-                max={250}
+                min={1}
+                max={300}
                 label="Height"
                 placeholder="Enter your height"
-                {...register(`height`)}
+                {...heightField}
+                onChange={async (e) => {
+                  e.target.value = fieldMax(e.target.value, 300);
+                  heightField.onChange(e);
+                }}
               />
             </div>
             <div className={styles.inputWrapper}>
@@ -40,11 +48,15 @@ const BMICalculator = () => {
                 size="large"
                 radius={5}
                 type="number"
-                min={15}
-                max={400}
+                min={1}
+                max={1000}
                 label="Weight"
                 placeholder="Enter your weight"
-                {...register(`weight`)}
+                {...weightField}
+                onChange={async (e) => {
+                  e.target.value = fieldMax(e.target.value, 1000);
+                  weightField.onChange(e);
+                }}
               />
             </div>
           </div>

@@ -83,6 +83,7 @@ const RegisterForm = () => {
             label="Email"
             type="text"
             placeholder="Email address"
+            size="big"
             {...register(`email`)}
             error={errors?.email?.message || errorMessage}
           />
@@ -104,6 +105,7 @@ const RegisterForm = () => {
             label="Username"
             type="text"
             placeholder="Your username"
+            size="big"
             {...register(`username`)}
             error={errors?.username?.message || errorMessage}
           />
@@ -133,6 +135,7 @@ const RegisterForm = () => {
               label="Password"
               type="password"
               placeholder="Enter password"
+              size="big"
               {...register(`password`)}
               error={errors?.password?.message || errorMessage}
             />

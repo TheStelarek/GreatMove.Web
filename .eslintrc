@@ -21,7 +21,7 @@
       "error",
       {
         "props": true,
-        "ignorePropertyModificationsFor": ["state", "config"]
+        "ignorePropertyModificationsFor": ["state", "config", "e", "event"]
       }
     ],
     "jsx-a11y/tabindex-no-positive": "off",

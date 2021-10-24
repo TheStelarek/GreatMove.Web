@@ -4,16 +4,17 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 import styles from '@/components/core/input/Input.module.scss';
 
 type InputProps = UseFormRegisterReturn & {
-  label?: string;
-  placeholder?: string;
-  error?: string | null;
   type: 'text' | 'email' | 'number' | 'password';
   radius?: 5 | 10 | 15;
   variant?: 'gray' | 'blue';
   size?: 'small' | 'regular' | 'big' | 'large';
+  label?: string;
+  placeholder?: string;
+  error?: string | null;
   autocomplete?: boolean;
   min?: number;
   max?: number;
+  maxlength?: number;
   onKeyPress?: KeyboardEventHandler<HTMLInputElement> | undefined;
 };
 
@@ -33,6 +34,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onKeyPress,
       min,
       max,
+      maxlength,
       autocomplete = true,
     },
     ref,
@@ -52,7 +54,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         onKeyPress={onKeyPress}
         autoComplete={autocomplete ? `on` : `off`}
-        {...{ onChange, onBlur, name, placeholder, type, min, max }}
+        {...{ onChange, onBlur, name, placeholder, type, min, max, maxlength }}
       />
       {error && (
         <p role="alert" className="error">
