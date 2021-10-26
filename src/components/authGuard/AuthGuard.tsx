@@ -18,7 +18,7 @@ const AuthGuard: React.FC = ({ children }) => {
   if (!isLoggedIn)
     return (
       <div className={styles.container}>
-        <Spinner big blue />
+        <Spinner size="extra-large" variant="primary" />
       </div>
     );
 

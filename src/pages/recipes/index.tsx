@@ -8,6 +8,7 @@ import Pagination from '@/components/core/pagination/Pagination';
 import FilterIcon from '@/public/filter.svg';
 import RecipesFilterList from '@/components/recipes/recipesFilterList/RecipesFilterList';
 import RecipesFilterForm from '@/components/recipes/recipesFilterForm/RecipesFilterForm';
+import Button from '@/components/core/button/Button';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { clearState, recipesSelector } from '@/store/recipes/RecipesSlice';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
@@ -36,13 +37,16 @@ const Recipes: NextApplicationPage<RecipesProps> = ({
   );
   return (
     <div className={styles.container}>
-      <button
-        type="button"
-        className={styles.filterBtn}
-        onClick={() => setShowFilter(!showFilters)}
-      >
-        <FilterIcon className={styles.icon} /> FILTERS
-      </button>
+      <div className={styles.filterBtnWrapper}>
+        <Button
+          leftIcon={<FilterIcon className={styles.icon} />}
+          borderRadius={5}
+          variant="ghost-primary"
+          onClick={() => setShowFilter(!showFilters)}
+        >
+          FILTERS
+        </Button>
+      </div>
 
       {showFilters && <RecipesFilterForm />}
 

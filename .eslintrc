@@ -33,6 +33,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/no-unused-prop-types": "off",
     "react/react-in-jsx-scope": "off",
+    "react/button-has-type": "off",
     "react/require-default-props": "off",
     "@next/next/link-passhref": "off",
     "react/no-unescaped-entities": 0,

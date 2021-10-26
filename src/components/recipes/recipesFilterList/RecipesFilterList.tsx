@@ -39,7 +39,7 @@ const RecipesFilterList: React.FC = () => {
           className={styles.scrollWrapper}
           loader={
             <div className={styles.spinnerWrapper}>
-              <Spinner blue />
+              <Spinner variant="primary" size="regular" />
             </div>
           }
         >

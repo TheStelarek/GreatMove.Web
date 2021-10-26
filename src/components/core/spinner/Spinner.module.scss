@@ -1,5 +1,4 @@
-.skChase,
-.skChageBig {
+.skChase {
   margin: 0 auto;
   width: 25px;
   height: 25px;
@@ -7,13 +6,27 @@
   animation: skChase 2.5s infinite linear both;
 }
 
-.skChageBig {
+.skChase-small {
+  width: var(--font-size-caption);
+  height: var(--font-size-caption);
+}
+
+.skChase-regular {
+  width: var(--font-size-p1);
+  height: var(--font-size-p1);
+}
+
+.skChase-large {
+  width: var(--font-size-p3);
+  height: var(--font-size-p3);
+}
+
+.skChase-extra-large {
   width: 35px;
   height: 35px;
 }
 
-.skChaseDot,
-.skChaseDotBlue {
+.skChaseDot {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -22,67 +35,66 @@
   animation: skChaseDot 2s infinite ease-in-out both;
 }
 
-.skChaseDot:before,
-.skChaseDotBlue:before {
+.skChaseDot:before {
   content: '';
   display: block;
   width: 25%;
   height: 25%;
-  background-color: var(--blue-0);
   border-radius: 100%;
   animation: skChaseDot-before 2s infinite ease-in-out both;
 }
 
-.skChaseDotBlue:before {
+.skChaseDot-primary:before {
   background-color: var(--blue-50);
 }
 
-.skChaseDot:nth-child(1),
-.skChaseDotBlue:nth-child(1) {
+.skChaseDot-secondary:before {
+  background-color: var(--purple-50);
+}
+
+.skChaseDot-ghost-primary:before {
+  background-color: var(--blue-500);
+}
+
+.skChaseDot-ghost-secondary:before {
+  background-color: var(--purple-500);
+}
+
+.skChaseDot:nth-child(1) {
   animation-delay: -1.1s;
 }
-.skChaseDot:nth-child(2),
-.skChaseDotBlue:nth-child(2) {
+
+.skChaseDot:nth-child(2) {
   animation-delay: -1s;
 }
-.skChaseDot:nth-child(3),
-.skChaseDotBlue:nth-child(3) {
+.skChaseDot:nth-child(3) {
   animation-delay: -0.9s;
 }
-.skChaseDot:nth-child(4),
-.skChaseDotBlue:nth-child(4) {
+.skChaseDot:nth-child(4) {
   animation-delay: -0.8s;
 }
-.skChaseDot:nth-child(5),
-.skChaseDotBlue:nth-child(5) {
+.skChaseDot:nth-child(5) {
   animation-delay: -0.7s;
 }
-.skChaseDot:nth-child(6),
-.skChaseDotBlue:nth-child(6) {
+.skChaseDot:nth-child(6) {
   animation-delay: -0.6s;
 }
-.skChaseDot:nth-child(1):before,
-.skChaseDotBlue:nth-child(1):before {
+.skChaseDot:nth-child(1):before {
   animation-delay: -1.1s;
 }
-.skChaseDot:nth-child(2):before,
-.skChaseDotBlue:nth-child(2):before {
+.skChaseDot:nth-child(2):before {
   animation-delay: -1s;
 }
-.skChaseDot:nth-child(3):before,
-.skChaseDotBlue:nth-child(3):before {
+.skChaseDot:nth-child(3):before {
   animation-delay: -0.9s;
 }
-.skChaseDot:nth-child(4):before,
-.skChaseDotBlue:nth-child(4):before {
+.skChaseDot:nth-child(4):before {
   animation-delay: -0.8s;
 }
-.skChaseDot:nth-child(5):before,
-.skChaseDotBlue:nth-child(5):before {
+.skChaseDot:nth-child(5):before {
   animation-delay: -0.7s;
 }
-.skChaseDot:nth-child(6):before,
-.skChaseDotBlue:nth-child(6):before {
+.skChaseDot:nth-child(6):before {
   animation-delay: -0.6s;
 }
 
@@ -99,7 +111,7 @@
   }
 }
 
-@keyframes skChageDot-before {
+@keyframes skChaseDot-before {
   50% {
     transform: scale(0.4);
   }

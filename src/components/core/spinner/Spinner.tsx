@@ -1,18 +1,28 @@
+import cx from 'classnames';
 import styles from '@/components/core/spinner/Spinner.module.scss';
 
 interface SpinnerProps {
-  big?: boolean;
-  blue?: boolean;
+  variant?: 'primary' | 'secondary' | 'ghost-primary' | 'ghost-secondary';
+  size?: 'small' | 'regular' | 'large' | 'extra-large';
 }
 
-const Spinner: React.FC<SpinnerProps> = ({ big, blue }) => (
-  <div className={big ? styles.skChageBig : styles.skChase}>
-    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
-    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
-    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
-    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
-    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
-    <div className={blue ? styles.skChaseDotBlue : styles.skChaseDot} />
+const Spinner: React.FC<SpinnerProps> = ({
+  variant = `primary`,
+  size = `regular`,
+}) => (
+  <div
+    className={cx(
+      styles.skChase,
+      styles[`skChase-${size}`],
+      styles[`skChase-${variant}`],
+    )}
+  >
+    <div className={cx(styles.skChaseDot, styles[`skChaseDot-${variant}`])} />
+    <div className={cx(styles.skChaseDot, styles[`skChaseDot-${variant}`])} />
+    <div className={cx(styles.skChaseDot, styles[`skChaseDot-${variant}`])} />
+    <div className={cx(styles.skChaseDot, styles[`skChaseDot-${variant}`])} />
+    <div className={cx(styles.skChaseDot, styles[`skChaseDot-${variant}`])} />
+    <div className={cx(styles.skChaseDot, styles[`skChaseDot-${variant}`])} />
   </div>
 );
 

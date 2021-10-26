@@ -6,36 +6,11 @@
   gap: var(--space-4);
   width: 300px;
 
-  .formBtn {
-    margin-bottom: var(--space-6);
-    width: 300px;
-    background-color: var(--blue-500);
-    color: var(--white);
-    font-weight: var(--font-weight-bold);
-    width: 100%;
-    border: none;
-    height: 50px;
-    cursor: pointer;
-  }
-
-  .formBtn:disabled {
-    cursor: not-allowed;
-    background-color: var(--gray-100);
-    color: var(--gray-700);
-  }
-
   .mail {
     width: 90px;
   }
-}
 
-@media (min-width: 1100px) {
-  .registerForm {
+  @media (min-width: 1100px) {
     width: 350px;
-
-    .formBtn {
-      width: 350px;
-      border: none;
-    }
   }
 }

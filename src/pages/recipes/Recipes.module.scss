@@ -3,21 +3,9 @@
   margin: 0 auto;
   max-width: 1336px;
 
-  .filterBtn {
+  .filterBtnWrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-3-5);
-    margin-left: auto;
-    padding: var(--space-3-5) var(--space-5);
-    border: 1px solid var(--blue-500);
-    background-color: var(--white);
-    border-radius: var(--border-radius-5);
-    color: var(--blue-500);
-    font-size: var(--font-size-p1);
-    line-height: var(--line-height-p1);
-    font-weight: var(--font-weight-semi-bold);
-    cursor: pointer;
+    justify-content: flex-end;
 
     .icon {
       width: 16px;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
@@ -8,7 +8,7 @@ import { signUpUser } from '@/store/auth/signUpUser';
 import { isAvailableEmailUsername } from '@/store/auth/isAvailableEmailUsername';
 import Input from '@/components/core/input/Input';
 import styles from '@/components/register/registerForm/RegisterForm.module.scss';
-import Spinner from '@/components/core/spinner/Spinner';
+import Button from '@/components/core/button/Button';
 import MailSent from '@/public/mail-sent.svg';
 import {
   IsAvailableFunction,
@@ -87,14 +87,16 @@ const RegisterForm = () => {
             {...register(`email`)}
             error={errors?.email?.message || errorMessage}
           />
-          <button
-            type="button"
-            className={styles.formBtn}
-            disabled={!!errors.email}
+          <Button
+            size="large"
+            isBold
+            isFullWidth
+            isDisabled={!!errors.email}
+            isLoading={isFetching}
             onClick={goToTheNextStep}
           >
-            {isFetching ? <Spinner /> : `Next`}
-          </button>
+            Next
+          </Button>
         </>
       )}
       {step === 2 && (
@@ -109,14 +111,16 @@ const RegisterForm = () => {
             {...register(`username`)}
             error={errors?.username?.message || errorMessage}
           />
-          <button
-            type="button"
-            className={styles.formBtn}
-            disabled={!!errors.username}
+          <Button
+            size="large"
+            isBold
+            isFullWidth
+            isDisabled={!!errors.username}
+            isLoading={isFetching}
             onClick={goToTheNextStep}
           >
-            {isFetching ? <Spinner /> : `Next`}
-          </button>
+            Next
+          </Button>
         </>
       )}
       {step === 3 &&
@@ -139,13 +143,16 @@ const RegisterForm = () => {
               {...register(`password`)}
               error={errors?.password?.message || errorMessage}
             />
-            <button
+            <Button
               type="submit"
-              className={styles.formBtn}
-              disabled={!!errors.password || isSuccess}
+              size="large"
+              isBold
+              isFullWidth
+              isDisabled={!!errors.password || isSuccess}
+              isLoading={isFetching}
             >
-              {isFetching ? <Spinner /> : `Submit`}
-            </button>
+              Submit
+            </Button>
           </>
         ))}
     </form>
