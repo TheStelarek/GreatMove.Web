@@ -1,0 +1,107 @@
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+
+  .checkbox {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: var(--space-7);
+    color: var(--gray-900);
+    height: 18px;
+  }
+
+  .label-regular {
+    font-weight: var(--font-weight-regular);
+  }
+
+  .label-semi-bold {
+    font-weight: var(--font-weight-semi-bold);
+  }
+
+  .label-bold {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .label-p1 {
+    font-size: var(--font-size-p1);
+    line-height: var(--line-height-p1);
+  }
+
+  .label-p2 {
+    font-size: var(--font-size-p2);
+    line-height: var(--line-height-p2);
+  }
+
+  .label-p3 {
+    font-size: var(--font-size-p3);
+    line-height: var(--line-height-p3);
+  }
+
+  .label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    outline: 2px solid var(--gray-400);
+    border-radius: 3px;
+    background-color: var(--white);
+  }
+
+  .checkbox:checked + .label-primary::before {
+    outline: 2px solid var(--blue-500);
+  }
+
+  .checkbox:focus + .label-primary:before {
+    outline: 2px solid var(--blue-800);
+  }
+
+  .checkbox:checked + .label-secondary::before {
+    outline: 2px solid var(--purple-500);
+  }
+
+  .checkbox:focus + .label-secondary:before {
+    outline: 2px solid var(--purple-800);
+  }
+
+  .checkbox:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    transform: scale(1);
+    opacity: 1;
+    transition: all 0.15s ease;
+  }
+
+  .checkbox:not(:checked) + label::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .checkbox:checked + .label-primary::after {
+    background-image: url('../../../../public/check-blue.png');
+  }
+
+  .checkbox:checked + .label-secondary::after {
+    background-image: url('../../../../public/check-purple.png');
+  }
+}
