@@ -54,28 +54,38 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({
 
   return (
     <div className={styles.ingredientsContainer}>
-      <div className={styles.subTitle}>Ingredients</div>
-      <div className={styles.savages}>
-        <button type="button" className={styles.button}>
-          <Minus className={styles.icon} onClick={decreaseServings} />
-        </button>
-        <div className={styles.servingsNUM}>{servings} servings</div>
-        <button type="button" className={styles.button}>
-          <Plus className={styles.icon} onClick={increaseServings} />
-        </button>
+      <div className={styles.center}>
+        <div className={styles.subTitle}>Ingredients</div>
+        <div className={styles.savages}>
+          <button type="button" className={styles.button}>
+            <Minus className={styles.icon} onClick={decreaseServings} />
+          </button>
+          <div className={styles.servingsNUM}>{servings} servings</div>
+          <button type="button" className={styles.button}>
+            <Plus className={styles.icon} onClick={increaseServings} />
+          </button>
+        </div>
       </div>
       {!!recipeIngredients?.length &&
         recipeIngredients.map(({ id, name, weight }) => (
-          <div key={id} className={styles.ingredient}>
+          <div key={id} className={styles.ingredients}>
             <span className={styles.dot} />
-            <p>
-              {weight} {name}
-            </p>
+            <div className={styles.ingredient}>
+              {name} - {weight}g
+            </div>
           </div>
         ))}
-      <button type="button" className={styles.button} onClick={addToShopList}>
-        <Shop className={styles.icon} />
-      </button>
+      <div className={styles.list}>
+        <button
+          type="button"
+          className={styles.shoppingButton}
+          onClick={addToShopList}
+        >
+          <Shop className={styles.shopIcon} />
+          {` `}
+          <div className={styles.buttonText}>Add to shopping list</div>
+        </button>
+      </div>
     </div>
   );
 };

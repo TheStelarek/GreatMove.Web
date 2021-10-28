@@ -1,25 +1,23 @@
 .timeContainer {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   display: flex;
-  font-size: 10px;
   margin-right: auto;
+  color: white;
+  flex-wrap: wrap;
+  margin-left: 20px;
 
-  height: 100%;
-  @media (min-width: 279px) {
-    /* smartphones, iPhone, portrait 480x320 phones */
-    margin-left: 20px;
-  }
   @media (min-width: 481px) {
     /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     margin-left: 11px;
   }
   @media (min-width: 1000px) {
     /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-    margin-left: 85px;
+    margin-left: 22px;
   }
   .timeInfo {
     margin-right: 30px;
-    line-height: 30px;
+    margin-top: 8px;
+    line-height: var(--line-height-p1);
     gap: 6px;
     display: flex;
     flex-direction: column;
@@ -30,10 +28,31 @@
   }
 
   .textTime {
-    color: var(--blue-10);
-    font-size: 13px;
+    color: var(--white);
+    font-size: var(--font-size-p1);
+    font-weight: var(--font-weight-bold);
   }
   .textColor {
-    color: white;
+    color: var(--white);
+    font-size: var(--font-size-p1);
+  }
+  .star {
+    width: 22px;
+    height: 20px;
+  }
+
+  .rate {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .rating {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 279px) {
+      /* smartphones, iPhone, portrait 480x320 phones */
+      margin-right: 20px;
+    }
   }
 }
