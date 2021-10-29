@@ -4,25 +4,23 @@ import { apiClient } from '@/api/apiClient';
 import { Recipe } from '@/utils/types/Recipe';
 
 interface GetMoreRecipesData {
-  name?: string;
-  take?: number;
-  skip?: number;
+   name?: string;
+   take?: number;
+   skip?: number;
 }
 
 interface GetMoreRecipesResponse {
-  data: Array<Recipe>;
+   data: Array<Recipe>;
 }
 
 export const getMoreRecipes = createAsyncThunk<
-  GetMoreRecipesResponse,
-  GetMoreRecipesData,
-  {
-    rejectValue: string;
-  }
->(
-  `recipes/getMoreRecipes`,
-  async ({ name, take, skip }, { rejectWithValue }) => {
-    try {
+   GetMoreRecipesResponse,
+   GetMoreRecipesData,
+   {
+      rejectValue: string;
+   }
+>(`recipes/getMoreRecipes`, async ({ name, take, skip }, { rejectWithValue }) => {
+   try {
       let link = `/recipes?`;
       if (name) link += `name=${name}`;
       if (take) link += `&take=${take}`;
@@ -31,20 +29,19 @@ export const getMoreRecipes = createAsyncThunk<
       const response = await apiClient.get(link);
 
       if (response.status === 200) {
-        return response.data;
+         return response.data;
       }
 
       return rejectWithValue(response.data.message);
-    } catch (err) {
+   } catch (err) {
       if (axios.isAxiosError(err)) {
-        if (!err.response) {
-          throw err;
-        }
+         if (!err.response) {
+            throw err;
+         }
 
-        return rejectWithValue(err.response?.data.message);
+         return rejectWithValue(err.response?.data.message);
       }
 
       return rejectWithValue(`Something went wrong.`);
-    }
-  },
-);
+   }
+});

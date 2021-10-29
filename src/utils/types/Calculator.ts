@@ -1,4 +1,4 @@
 export interface CalculatorType {
-  name: string;
-  description: string;
+   name: string;
+   description: string;
 }

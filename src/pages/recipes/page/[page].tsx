@@ -17,95 +17,85 @@ import Button from '@/components/core/button/Button';
 import FilterIcon from '@/public/filter.svg';
 
 interface RecipesProps {
-  recipes: Recipe[];
-  currentPage: string;
-  totalPages: number;
+   recipes: Recipe[];
+   currentPage: string;
+   totalPages: number;
 }
 
-const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({
-  recipes,
-  totalPages,
-  currentPage,
-}) => {
-  const [showFilters, setShowFilter] = useState<boolean>(false);
-  const { filterSearch } = useAppSelector(recipesSelector);
-  const dispatch = useAppDispatch();
+const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, currentPage }) => {
+   const [showFilters, setShowFilter] = useState<boolean>(false);
+   const { filterSearch } = useAppSelector(recipesSelector);
+   const dispatch = useAppDispatch();
 
-  useEffect(
-    () => () => {
-      dispatch(clearState());
-    },
-    [],
-  );
+   useEffect(
+      () => () => {
+         dispatch(clearState());
+      },
+      [],
+   );
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.filterBtnWrapper}>
-        <Button
-          leftIcon={<FilterIcon className={styles.icon} />}
-          borderRadius={5}
-          variant="ghost-primary"
-          onClick={() => setShowFilter(!showFilters)}
-        >
-          FILTERS
-        </Button>
+   return (
+      <div className={styles.container}>
+         <div className={styles.filterBtnWrapper}>
+            <Button
+               leftIcon={<FilterIcon className={styles.icon} />}
+               borderRadius={5}
+               variant="ghost-primary"
+               onClick={() => setShowFilter(!showFilters)}
+            >
+               FILTERS
+            </Button>
+         </div>
+
+         {showFilters && <RecipesFilterForm />}
+
+         {filterSearch ? (
+            <RecipesFilterList />
+         ) : (
+            <div className={styles.staticRecipeList}>
+               <RecipesList recipes={recipes} />
+               <Pagination totalPages={totalPages} currentPage={currentPage} url="/recipes" />
+            </div>
+         )}
       </div>
-
-      {showFilters && <RecipesFilterForm />}
-
-      {filterSearch ? (
-        <RecipesFilterList />
-      ) : (
-        <div className={styles.staticRecipeList}>
-          <RecipesList recipes={recipes} />
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            url="/recipes"
-          />
-        </div>
-      )}
-    </div>
-  );
+   );
 };
 
 RecipesIndexPage.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
+   return <Layout>{page}</Layout>;
 };
 
 export default RecipesIndexPage;
 
 export async function getStaticPaths() {
-  const response = await apiClient.get(`/recipes`);
-  const totalRecipes = response.data.total;
-  const totalPages = Math.ceil(totalRecipes / 9);
-  const paths = [];
+   const response = await apiClient.get(`/recipes`);
+   const totalRecipes = response.data.total;
+   const totalPages = Math.ceil(totalRecipes / 9);
+   const paths = [];
 
-  for (let page = 2; page <= totalPages; page += 1) {
-    paths.push({ params: { page: page.toString() } });
-  }
+   for (let page = 2; page <= totalPages; page += 1) {
+      paths.push({ params: { page: page.toString() } });
+   }
 
-  return {
-    paths,
-    fallback: false,
-  };
+   return {
+      paths,
+      fallback: false,
+   };
 }
 
 interface IParams extends ParsedUrlQuery {
-  page: string;
+   page: string;
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { page } = params as IParams;
-  const response = await apiClient.get(
-    `/recipes?take=9&skip=${9 * (parseInt(page, 10) - 1)}`,
-  );
+   const { page } = params as IParams;
+   const response = await apiClient.get(`/recipes?take=9&skip=${9 * (parseInt(page, 10) - 1)}`);
 
-  return {
-    props: {
-      recipes: response.data.data,
-      totalPages: Math.ceil(response.data.total / 9),
-      currentPage: page,
-    },
-  };
+   return {
+      props: {
+         recipes: response.data.data,
+         totalPages: Math.ceil(response.data.total / 9),
+         currentPage: page,
+      },
+   };
 };

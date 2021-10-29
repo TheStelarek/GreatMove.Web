@@ -1,16 +1,16 @@
 export interface PageRoute {
-  label: string;
-  route: string;
-  description?: string;
+   label: string;
+   route: string;
+   description?: string;
 }
 
 export interface MenuItem {
-  page: PageRoute;
-  nested?: PageRoute[];
+   page: PageRoute;
+   nested?: PageRoute[];
 }
 
 export enum NestedMenuTypes {
-  trainings,
+   trainings,
 }
 
 export type NavbarVariants = 'purple';

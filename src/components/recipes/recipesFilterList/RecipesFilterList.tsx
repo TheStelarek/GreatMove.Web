@@ -9,55 +9,48 @@ import RecipesList from '@/components/recipes/recipesList/RecipesList';
 import styles from '@/components/recipes/recipesFilterList/RecipesFilterList.module.scss';
 
 const RecipesFilterList: React.FC = () => {
-  const {
-    isError,
-    errorMessage,
-    isSuccess,
-    filteredRecipes,
-    hasMore,
-    searchName,
-    isEmpty,
-  } = useAppSelector(recipesSelector);
-  const dispatch = useAppDispatch();
+   const { isError, errorMessage, isSuccess, filteredRecipes, hasMore, searchName, isEmpty } =
+      useAppSelector(recipesSelector);
+   const dispatch = useAppDispatch();
 
-  const getMore = () =>
-    dispatch(
-      getMoreRecipes({
-        skip: filteredRecipes.length,
-        take: 9,
-        name: searchName,
-      }),
-    );
+   const getMore = () =>
+      dispatch(
+         getMoreRecipes({
+            skip: filteredRecipes.length,
+            take: 9,
+            name: searchName,
+         }),
+      );
 
-  return (
-    <>
-      {isSuccess && !isEmpty && (
-        <InfiniteScroll
-          dataLength={filteredRecipes.length}
-          next={getMore}
-          hasMore={hasMore}
-          className={styles.scrollWrapper}
-          loader={
-            <div className={styles.spinnerWrapper}>
-              <Spinner variant="primary" size="regular" />
-            </div>
-          }
-        >
-          <RecipesList recipes={filteredRecipes} />
-        </InfiniteScroll>
-      )}
-      {isSuccess && isEmpty && (
-        <p role="alert" className={styles.resultsAlert}>
-          Nothing found.
-        </p>
-      )}
-      {isError && (
-        <p role="alert" className={styles.resultsAlert}>
-          {errorMessage}
-        </p>
-      )}
-    </>
-  );
+   return (
+      <>
+         {isSuccess && !isEmpty && (
+            <InfiniteScroll
+               dataLength={filteredRecipes.length}
+               next={getMore}
+               hasMore={hasMore}
+               className={styles.scrollWrapper}
+               loader={
+                  <div className={styles.spinnerWrapper}>
+                     <Spinner variant="primary" size="regular" />
+                  </div>
+               }
+            >
+               <RecipesList recipes={filteredRecipes} />
+            </InfiniteScroll>
+         )}
+         {isSuccess && isEmpty && (
+            <p role="alert" className={styles.resultsAlert}>
+               Nothing found.
+            </p>
+         )}
+         {isError && (
+            <p role="alert" className={styles.resultsAlert}>
+               {errorMessage}
+            </p>
+         )}
+      </>
+   );
 };
 
 export default RecipesFilterList;

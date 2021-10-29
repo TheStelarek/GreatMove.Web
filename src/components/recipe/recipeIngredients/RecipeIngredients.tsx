@@ -8,85 +8,75 @@ import { addProduct } from '@/store/shoppingList/ShoppingListSlice';
 import { Ingredient } from '@/utils/types/Ingredient';
 
 interface RecipeIngredientsProps {
-  ingredients: Array<Ingredient>;
+   ingredients: Array<Ingredient>;
 }
 
-const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({
-  ingredients,
-}) => {
-  const dispatch = useAppDispatch();
-  const [recipeIngredients, setRecipeIngredients] = useState<Ingredient[]>([]);
-  const [servings, setServings] = useState<number>(1);
+const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({ ingredients }) => {
+   const dispatch = useAppDispatch();
+   const [recipeIngredients, setRecipeIngredients] = useState<Ingredient[]>([]);
+   const [servings, setServings] = useState<number>(1);
 
-  useEffect(() => {
-    setRecipeIngredients(ingredients);
-  }, []);
+   useEffect(() => {
+      setRecipeIngredients(ingredients);
+   }, []);
 
-  const increaseServings = () => {
-    if (servings < 15 && recipeIngredients.length) {
-      const increasedServings = recipeIngredients.map(
-        ({ id, name, weight }) => ({
-          id,
-          name,
-          weight: weight * 2,
-        }),
-      );
-      setServings((prevState) => prevState + 1);
-      setRecipeIngredients(increasedServings);
-    }
-  };
+   const increaseServings = () => {
+      if (servings < 15 && recipeIngredients.length) {
+         const increasedServings = recipeIngredients.map(({ id, name, weight }) => ({
+            id,
+            name,
+            weight: weight * 2,
+         }));
+         setServings((prevState) => prevState + 1);
+         setRecipeIngredients(increasedServings);
+      }
+   };
 
-  const decreaseServings = () => {
-    if (servings > 1 && recipeIngredients.length) {
-      const decreasedServings = recipeIngredients.map(
-        ({ id, name, weight }) => ({
-          id,
-          name,
-          weight: weight / 2,
-        }),
-      );
-      setServings((prevState) => prevState - 1);
-      setRecipeIngredients(decreasedServings);
-    }
-  };
+   const decreaseServings = () => {
+      if (servings > 1 && recipeIngredients.length) {
+         const decreasedServings = recipeIngredients.map(({ id, name, weight }) => ({
+            id,
+            name,
+            weight: weight / 2,
+         }));
+         setServings((prevState) => prevState - 1);
+         setRecipeIngredients(decreasedServings);
+      }
+   };
 
-  const addToShopList = () => dispatch(addProduct(recipeIngredients));
+   const addToShopList = () => dispatch(addProduct(recipeIngredients));
 
-  return (
-    <div className={styles.ingredientsContainer}>
-      <div className={styles.center}>
-        <div className={styles.subTitle}>Ingredients</div>
-        <div className={styles.savages}>
-          <button type="button" className={styles.button}>
-            <Minus className={styles.icon} onClick={decreaseServings} />
-          </button>
-          <div className={styles.servingsNUM}>{servings} servings</div>
-          <button type="button" className={styles.button}>
-            <Plus className={styles.icon} onClick={increaseServings} />
-          </button>
-        </div>
-      </div>
-      {!!recipeIngredients?.length &&
-        recipeIngredients.map(({ id, name, weight }) => (
-          <div key={id} className={styles.ingredients}>
-            <span className={styles.dot} />
-            <div className={styles.ingredient}>
-              {name} - {weight}g
+   return (
+      <div className={styles.ingredientsContainer}>
+         <div className={styles.center}>
+            <div className={styles.subTitle}>Ingredients</div>
+            <div className={styles.savages}>
+               <button type="button" className={styles.button}>
+                  <Minus className={styles.icon} onClick={decreaseServings} />
+               </button>
+               <div className={styles.servingsNUM}>{servings} servings</div>
+               <button type="button" className={styles.button}>
+                  <Plus className={styles.icon} onClick={increaseServings} />
+               </button>
             </div>
-          </div>
-        ))}
-      <div className={styles.list}>
-        <button
-          type="button"
-          className={styles.shoppingButton}
-          onClick={addToShopList}
-        >
-          <Shop className={styles.shopIcon} />
-          {` `}
-          <div className={styles.buttonText}>Add to shopping list</div>
-        </button>
+         </div>
+         {!!recipeIngredients?.length &&
+            recipeIngredients.map(({ id, name, weight }) => (
+               <div key={id} className={styles.ingredients}>
+                  <span className={styles.dot} />
+                  <div className={styles.ingredient}>
+                     {name} - {weight}g
+                  </div>
+               </div>
+            ))}
+         <div className={styles.list}>
+            <button type="button" className={styles.shoppingButton} onClick={addToShopList}>
+               <Shop className={styles.shopIcon} />
+               {` `}
+               <div className={styles.buttonText}>Add to shopping list</div>
+            </button>
+         </div>
       </div>
-    </div>
-  );
+   );
 };
 export default RecipeIngredients;

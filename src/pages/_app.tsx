@@ -16,27 +16,27 @@ Router.events.on(`routeChangeError`, NProgress.done);
 Router.events.on(`routeChangeComplete`, NProgress.done);
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextApplicationPage;
+   Component: NextApplicationPage;
 };
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
+   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return (
-    <>
-      {Component.requireAuth ? (
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <AuthGuard>{getLayout(<Component {...pageProps} />)}</AuthGuard>
-          </PersistGate>
-        </Provider>
-      ) : (
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            {getLayout(<Component {...pageProps} />)}
-          </PersistGate>
-        </Provider>
-      )}
-    </>
-  );
+   return (
+      <>
+         {Component.requireAuth ? (
+            <Provider store={store}>
+               <PersistGate loading={null} persistor={persistor}>
+                  <AuthGuard>{getLayout(<Component {...pageProps} />)}</AuthGuard>
+               </PersistGate>
+            </Provider>
+         ) : (
+            <Provider store={store}>
+               <PersistGate loading={null} persistor={persistor}>
+                  {getLayout(<Component {...pageProps} />)}
+               </PersistGate>
+            </Provider>
+         )}
+      </>
+   );
 }

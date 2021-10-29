@@ -1,0 +1,48 @@
+.smolovWrapper {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-7);
+
+   .smolovForm {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+
+      @media (min-width: 600px) {
+         max-width: 400px;
+         gap: var(--space-4);
+      }
+   }
+
+   .smolovResults {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+
+      .result {
+         .week {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-weight-semi-bold);
+            color: var(--gray-800);
+         }
+      }
+   }
+}
+
+@media (min-width: 1150px) {
+   .smolovWrapper {
+      flex-direction: row;
+      gap: var(--space-20);
+
+      .smolovForm {
+         gap: var(--space-7);
+         width: 100%;
+         max-width: 300px;
+      }
+
+      .smolovResults {
+         width: 100%;
+      }
+   }
+}

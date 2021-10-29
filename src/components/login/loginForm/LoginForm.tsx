@@ -12,74 +12,74 @@ import { authSelector, clearState } from '@/store/auth/AuthSlice';
 import { LoginFormValue, LoginValidationSchema } from './LoginFormTypes';
 
 const LoginForm = () => {
-  const dispatch = useAppDispatch();
-  const router = useRouter();
+   const dispatch = useAppDispatch();
+   const router = useRouter();
 
-  const { isFetching, errorMessage, isSuccess } = useAppSelector(authSelector);
+   const { isFetching, errorMessage, isSuccess } = useAppSelector(authSelector);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormValue>({
-    mode: `onBlur`,
-    resolver: yupResolver(LoginValidationSchema),
-  });
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = useForm<LoginFormValue>({
+      mode: `onBlur`,
+      resolver: yupResolver(LoginValidationSchema),
+   });
 
-  useEffect(() => {
-    if (isSuccess) {
-      router.push(`/`);
-    }
-  }, [isSuccess]);
+   useEffect(() => {
+      if (isSuccess) {
+         router.push(`/`);
+      }
+   }, [isSuccess]);
 
-  useEffect(
-    () => () => {
+   useEffect(
+      () => () => {
+         dispatch(clearState());
+      },
+      [],
+   );
+
+   useEffect(() => {
+      if (errorMessage) {
+         dispatch(clearState());
+      }
+   }, [errors.username, errors.password]);
+
+   const onSubmit = (data: LoginFormValue) => {
       dispatch(clearState());
-    },
-    [],
-  );
+      dispatch(signIn({ ...data }));
+   };
 
-  useEffect(() => {
-    if (errorMessage) {
-      dispatch(clearState());
-    }
-  }, [errors.username, errors.password]);
-
-  const onSubmit = (data: LoginFormValue) => {
-    dispatch(clearState());
-    dispatch(signIn({ ...data }));
-  };
-
-  return (
-    <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        variant="gray"
-        type="text"
-        placeholder="Username"
-        size="big"
-        {...register(`username`)}
-        error={errors?.username?.message}
-      />
-      <Input
-        variant="gray"
-        type="password"
-        placeholder="Enter password"
-        size="big"
-        {...register(`password`)}
-        error={errors?.password?.message || errorMessage}
-      />
-      <Button
-        type="submit"
-        size="large"
-        isBold
-        isFullWidth
-        isDisabled={!!errors.password || !!errors.username}
-        isLoading={isFetching}
-      >
-        Submit
-      </Button>
-    </form>
-  );
+   return (
+      <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
+         <Input
+            variant="gray"
+            type="text"
+            placeholder="Username"
+            size="big"
+            {...register(`username`)}
+            error={errors?.username?.message}
+         />
+         <Input
+            variant="gray"
+            type="password"
+            placeholder="Enter password"
+            size="big"
+            {...register(`password`)}
+            error={errors?.password?.message || errorMessage}
+         />
+         <Button
+            type="submit"
+            size="large"
+            isBold
+            isFullWidth
+            isDisabled={!!errors.password || !!errors.username}
+            isLoading={isFetching}
+         >
+            Submit
+         </Button>
+      </form>
+   );
 };
 
 export default LoginForm;

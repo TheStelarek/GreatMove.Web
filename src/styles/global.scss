@@ -1,57 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 @import 'normalize.scss';
 @import 'variables.scss';
 @import 'typography.scss';
 
 html,
 body {
-  font-family: 'Nunito', sans-serif;
+   font-family: 'Nunito', sans-serif;
 }
 
 .error {
-  color: var(--red-400);
-  font-size: var(--font-size-p1);
-  line-height: var(--line-height-p1);
-  font-weight: var(--font-weight-semi-bold);
-  margin: var(--space-1-5) 0 0 0;
-  padding: 0;
-  text-align: center;
+   color: var(--red-400);
+   font-size: var(--font-size-p1);
+   line-height: var(--line-height-p1);
+   font-weight: var(--font-weight-semi-bold);
+   margin: var(--space-1-5) 0 0 0;
+   padding: 0;
+   text-align: center;
 }
 
 .error {
-  color: var(--red-400);
-  font-size: var(--font-size-p1);
-  line-height: var(--line-height-p1);
-  font-weight: var(--font-weight-semi-bold);
-  margin: var(--space-2) 0 0 0;
-  padding: 0;
-  text-align: center;
+   color: var(--red-400);
+   font-size: var(--font-size-p1);
+   line-height: var(--line-height-p1);
+   font-weight: var(--font-weight-semi-bold);
+   margin: var(--space-2) 0 0 0;
+   padding: 0;
+   text-align: center;
 }
 
 .success {
-  color: var(--green-600);
-  font-size: var(--font-size-p1);
-  line-height: var(--line-height-p1);
-  font-weight: var(--font-weight-semi-bold);
-  padding: 0;
-  text-align: center;
+   color: var(--green-600);
+   font-size: var(--font-size-p1);
+   line-height: var(--line-height-p1);
+   font-weight: var(--font-weight-semi-bold);
+   padding: 0;
+   text-align: center;
 }
 
 button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   padding: 0;
 }
 
 ul,
 ol {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+   margin: 0;
+   padding: 0;
+   list-style-type: none;
 }
 
 .fixed_body {
-  overflow: hidden;
-  height: 100%;
+   overflow: hidden;
+   height: 100%;
 }
