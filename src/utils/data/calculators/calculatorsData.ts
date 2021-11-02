@@ -31,8 +31,8 @@ export const calculatorsData: CalculatorData[] = [
       href: `/`,
    },
    {
-      name: `TBR`,
+      name: `TMR`,
       description: `Calculate your total metabolic rate`,
-      href: `/`,
+      href: `/tmr-calculator`,
    },
 ];
