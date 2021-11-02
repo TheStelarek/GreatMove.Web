@@ -1,0 +1,87 @@
+.rs .react-select {
+   &__control {
+      height: 50px;
+      padding: 0 0 0 var(--space-4);
+      border: 1px solid var(--gray-100);
+      cursor: pointer;
+   }
+
+   &__indicator {
+      color: var(--gray-400);
+
+      &:hover {
+         color: var(--gray-500);
+      }
+   }
+
+   &__placeholder {
+      color: var(--gray-400);
+      font-weight: var(--font-weight-regular);
+   }
+
+   &__value-container {
+      padding: 0;
+   }
+
+   &__input-container,
+   &__single-value {
+      color: var(--gray-700);
+      font-size: var(--font-size-p2);
+      font-weight: var(--font-weight-semi-bold);
+   }
+
+   &__option {
+      color: var(--gray-700);
+      font-size: var(--font-size-p2);
+      font-weight: var(--font-weight-regular);
+      cursor: pointer;
+
+      &--is-focused {
+         background-color: var(--blue-300);
+         font-weight: var(--font-weight-semi-bold);
+         color: var(--blue-50);
+      }
+
+      &--is-selected {
+         background-color: var(--blue-100);
+         font-weight: var(--font-weight-semi-bold);
+         color: var(--blue-900);
+      }
+
+      &:hover {
+         background-color: var(--blue-500);
+         color: var(--blue-50);
+         font-weight: var(--font-weight-semi-bold);
+      }
+   }
+}
+
+.rs-small .react-select {
+   &__control {
+      height: 36px;
+   }
+}
+
+.rs-regular .react-select {
+   &__control {
+      height: 44px;
+   }
+}
+
+.rs-big .react-select {
+   &__control {
+      height: 50px;
+   }
+}
+
+.rs-large .react-select {
+   &__control {
+      height: 55px;
+   }
+}
+
+.rs-radius-5 .react-select {
+   &__control {
+      border-radius: var(--border-radius-5);
+   }
+}
