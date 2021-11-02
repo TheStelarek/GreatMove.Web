@@ -72,7 +72,6 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({ ingredients }) =>
          <div className={styles.list}>
             <button type="button" className={styles.shoppingButton} onClick={addToShopList}>
                <Shop className={styles.shopIcon} />
-               {` `}
                <div className={styles.buttonText}>Add to shopping list</div>
             </button>
          </div>

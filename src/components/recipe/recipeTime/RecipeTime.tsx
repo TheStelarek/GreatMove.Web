@@ -28,7 +28,7 @@ const RecipeTime: React.FC<RecipeTimeProps> = ({ totalTime, prepTime, cookTime }
             <Rating
                emptySymbol={
                   <img
-                     src="http://www.kukhula.co.za/wp-content/plugins/nd-learning/assets/img/icons/icon-star-empty-yellow.svg"
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1088px-Five-pointed_star.svg.png"
                      className={styles.star}
                   />
                }
