@@ -87,6 +87,7 @@ const TMRCalculator = () => {
                            rules={{ required: true }}
                            render={({ field }) => (
                               <Select
+                                 isSearchable={false}
                                  classNamePrefix="react-select"
                                  className="rs rs-large"
                                  options={options}

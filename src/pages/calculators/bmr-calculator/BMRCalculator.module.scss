@@ -1,0 +1,136 @@
+.bmrContainer {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-7);
+
+   .bmrWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+
+      .bmrCalculator {
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-3);
+
+         .genderWrapper {
+            display: flex;
+            gap: var(--space-3);
+         }
+
+         .inputsWrapper {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+
+            .group {
+               display: flex;
+               flex-direction: column;
+               gap: var(--space-3);
+            }
+         }
+      }
+   }
+
+   .resultsContainer {
+      .resultsWrapper {
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-3);
+
+         .info {
+            font-weight: var(--font-weight-semi-bold);
+            color: var(--gray-900);
+            font-size: var(--font-size-p3);
+            line-height: var(--line-height-p3);
+
+            .bmr {
+               color: var(--blue-500);
+            }
+         }
+
+         .result {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-2-5);
+
+            .dot {
+               height: 7px;
+               width: 7px;
+               background-color: var(--blue-500);
+               border-radius: calc(7px / 2);
+            }
+
+            .kcal {
+               font-size: var(--font-size-p1);
+               line-height: var(--line-height-p1);
+               font-weight: var(--font-weight-regular);
+               color: var(--gray-800);
+               width: 100%;
+            }
+         }
+      }
+   }
+}
+
+@media (min-width: 600px) {
+   .bmrContainer {
+      .bmrWrapper {
+         max-width: 478px;
+         width: 100%;
+         gap: var(--space-4);
+
+         .bmrCalculator {
+            gap: var(--space-4);
+
+            .genderWrapper {
+               gap: var(--space-4);
+            }
+
+            .inputsWrapper {
+               gap: var(--space-4);
+
+               .group {
+                  gap: var(--space-4);
+               }
+            }
+         }
+      }
+   }
+}
+
+@media (min-width: 1200px) {
+   .bmrContainer {
+      flex-direction: row;
+      gap: var(--space-12);
+
+      @media (min-width: 1300px) {
+         gap: var(--space-28);
+      }
+
+      .bmrWrapper {
+         gap: var(--space-5);
+
+         .bmrCalculator {
+            gap: var(--space-5);
+
+            .genderWrapper {
+               gap: var(--space-5);
+            }
+
+            .inputsWrapper {
+               flex-direction: column;
+
+               .group {
+                  width: 100%;
+                  flex-direction: row;
+                  align-items: flex-end;
+                  & > * {
+                     width: 230px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -28,7 +28,7 @@ export const calculatorsData: CalculatorData[] = [
    {
       name: `BMR`,
       description: `Calculate your basal metabolic rate`,
-      href: `/`,
+      href: `/bmr-calculator`,
    },
    {
       name: `TMR`,
