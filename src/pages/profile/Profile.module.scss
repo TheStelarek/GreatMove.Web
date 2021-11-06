@@ -1,0 +1,61 @@
+.Container {
+   display: flex;
+   flex-direction: column;
+   .imageContainer {
+      position: relative;
+      width: 100%;
+      height: 348px;
+   }
+   .profileContainer {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--white);
+      width: 330px;
+      height: 450px;
+      border-radius: var(--border-radius-15);
+      margin-left: 61px;
+      transform: translateY(-40%);
+      box-shadow: var(--box-shadow-xl);
+      .avatar {
+         position: relative;
+         width: 150px;
+         height: 150px;
+      }
+   }
+
+   .icon {
+      width: 24px;
+      height: 24px;
+   }
+   .informationContainer {
+      display: flex;
+      flex-direction: column;
+      padding-top: var(--space-2-5);
+      gap: var(--space-2-5);
+   }
+   .informationWrapper {
+      display: flex;
+      gap: var(--space-2-5);
+   }
+
+   .SocialContainer {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;
+      margin-top: var(--space-2-5);
+   }
+   .socialText {
+      font-weight: var(--font-weight-bold);
+   }
+   .socialWrapper {
+      display: flex;
+      gap: var(--space-2-5);
+   }
+   .socialIcon {
+      width: 37px;
+      height: 37px;
+   }
+}
