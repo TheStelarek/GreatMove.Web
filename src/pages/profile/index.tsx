@@ -1,4 +1,6 @@
-import { ReactElement } from 'react';
+import { ReactElement, SetStateAction, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Layout from '@/components/core/layout/Layout';
 import Image from 'next/image';
 import Button from '@/components/core/button/Button';
@@ -9,6 +11,9 @@ import Birthday from '@/public/profile/calendar.svg';
 import Facebook from '@/public/profile/facebook.svg';
 import Twitter from '@/public/profile/twitter.svg';
 import Instagram from '@/public/profile/instagram.svg';
+import More from '@/public/profile/more.svg';
+import Heart from '@/public/profile/heart.svg';
+import Comment from '@/public/profile/comment.svg';
 import styles from './Profile.module.scss';
 
 const Profile = () => (
@@ -60,32 +65,118 @@ const Profile = () => (
          <div className={styles.rightBox}>
             <div className={styles.menuContainer}>
                <p className={styles.menuText}>
-                  <button className={styles.menuButton}>Discussion</button>
+                  <button className={styles.menuButton} onClick={() => setShowMe(0)}>
+                     Discussion
+                  </button>
                </p>
                <p className={styles.menuText}>
                   <p className={styles.menuText}>
-                     <button className={styles.menuButton}>Training</button>
+                     <button className={styles.menuButton} onClick={() => setShowMe(1)}>
+                        Training
+                     </button>
                   </p>
                </p>
                <p className={styles.menuText}>
                   <p className={styles.menuText}>
-                     <button className={styles.menuButton}>Achivments</button>
+                     <button className={styles.menuButton} onClick={() => setShowMe(2)}>
+                        Achivments
+                     </button>
                   </p>
                </p>
                <p className={styles.menuText}>
                   <p className={styles.menuText}>
-                     <button className={styles.menuButton}>Recipes</button>
+                     <button className={styles.menuButton} onClick={() => setShowMe(3)}>
+                        Recipes
+                     </button>
                   </p>
                </p>
             </div>
             <div className={styles.commentContainer}>
-               <div className={styles.commentBox}>XD</div>
+               <div className={styles.commentBox}>
+                  <div className={styles.headerComment}>
+                     <div className={styles.commentAvatar}>
+                        <Image src="/profile/avatar.png" alt="Picture of the author" layout="fill" objectFit="cover" />
+                     </div>
+                     <div className={styles.commentName}>
+                        <p>Dennis Buk</p>
+                     </div>
+                     <div className={styles.commentTag}>
+                        <p className={styles.commentTagText}>@Hickari</p>
+                     </div>
+                     <div className={styles.commentDate}>
+                        <p className={styles.commentDate}>32 min</p>
+                     </div>
+
+                     <div className={styles.commentMenu}>
+                        <More className={styles.commentIcon} />
+                     </div>
+                  </div>
+                  <div className={styles.commentText}>
+                     <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pellentesque nibh ligula, at egestas
+                        tellus efficitur eu. Nunc id leo pharetra erat vehicula feugiat eu vel nibh. Mauris suscipit
+                        tortor libero, vel dictum neque ornare sit amet.
+                     </span>
+                  </div>
+                  <div className={styles.commentFooter}>
+                     <div className={styles.commentLike}>
+                        <Heart className={styles.commentIcon} />
+                        <p>123</p>
+                     </div>
+                     <div className={styles.commentWrapper}>
+                        <Comment className={styles.commentIcon} />
+                        <p>123</p>
+                     </div>
+                  </div>
+               </div>
+               <div className={styles.commentBox}>
+                  <div className={styles.headerComment}>
+                     <div className={styles.commentAvatar}>
+                        <Image src="/profile/avatar.png" alt="Picture of the author" layout="fill" objectFit="cover" />
+                     </div>
+                     <div className={styles.commentName}>
+                        <p>Dennis Buk</p>
+                     </div>
+                     <div className={styles.commentTag}>
+                        <p className={styles.commentTagText}>@Hickari</p>
+                     </div>
+                     <div className={styles.commentDate}>
+                        <p className={styles.commentDate}>32 min</p>
+                     </div>
+
+                     <div className={styles.commentMenu}>
+                        <More className={styles.commentIcon} />
+                     </div>
+                  </div>
+                  <div className={styles.commentText}>
+                     <span>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur rutrum dui ac auctor.
+                        Quisque quis massa congue quam efficitur eleifend a nec ante. Etiam a ex iaculis, vulputate nisi
+                        eget, venenatis leo. Fusce sed interdum massa. Donec vel convallis nunc. Pellentesque volutpat
+                        lectus quam, ac hendrerit leo rhoncus et ...
+                     </span>
+                     <div>
+                        <Button size="small" borderRadius={5} variant="ghost-primary">
+                           More...
+                        </Button>
+                     </div>
+                  </div>
+                  <div className={styles.commentFooter}>
+                     <div className={styles.commentLike}>
+                        <Heart className={styles.clickedHeart} />
+                        <p>78</p>
+                     </div>
+                     <div className={styles.commentWrapper}>
+                        <Comment className={styles.commentIcon} />
+                        <p>41</p>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
    </div>
 );
-
 export default Profile;
 
 Profile.getLayout = function getLayout(page: ReactElement) {
