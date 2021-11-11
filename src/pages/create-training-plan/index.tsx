@@ -9,9 +9,12 @@ import styles from '@/pages/create-training-plan/CreateTrainingPlan.module.scss'
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { dragExercise, trainingPlanSelector } from '@/store/trainingPlan/TrainingPlanSlice';
+import Modal from '@/components/core/modal/Modal';
+import useModal from '@/components/core/modal/useModal';
 
 const CreateTrainingPlan = () => {
    const { isCreatingPlan, training } = useAppSelector(trainingPlanSelector);
+   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
    const dispatch = useAppDispatch();
 
    return (
@@ -19,7 +22,10 @@ const CreateTrainingPlan = () => {
          {isCreatingPlan ? (
             <div className={styles.trainingContainer}>
                <div className={styles.saveBtnWrapper}>
-                  <Button size="small" isBold isFullWidth>
+                  <Modal isOpen={isOpen} handleClose={handleCloseModal}>
+                     Test
+                  </Modal>
+                  <Button size="small" isBold isFullWidth onClick={handleOpenModal}>
                      Save plan
                   </Button>
                </div>
