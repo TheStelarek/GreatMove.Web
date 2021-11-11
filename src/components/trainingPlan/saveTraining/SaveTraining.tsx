@@ -17,7 +17,7 @@ const SaveTraining = () => {
    const {
       register,
       handleSubmit,
-      setValue,
+      reset,
       formState: { errors },
    } = useForm<SaveTrainingFormValue>({
       mode: `onSubmit`,
@@ -30,7 +30,7 @@ const SaveTraining = () => {
 
    const closeModal = () => {
       handleCloseModal();
-      setValue(`name`, ``);
+      reset();
    };
 
    const onSubmit = (data: SaveTrainingFormValue) => {
