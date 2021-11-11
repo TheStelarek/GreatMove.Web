@@ -3,8 +3,8 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Layout from '@/components/core/layout/Layout';
 import NewTraining from '@/components/trainingPlan/newTraining/NewTraining';
 import TrainingDay from '@/components/trainingPlan/trainingDay/TrainingDay';
+import SaveTraining from '@/components/trainingPlan/saveTraining/SaveTraining';
 import CreatePlanBox from '@/components/trainingPlan/createPlanBox/CreatePlanBox';
-import Button from '@/components/core/button/Button';
 import styles from '@/pages/create-training-plan/CreateTrainingPlan.module.scss';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
@@ -21,14 +21,7 @@ const CreateTrainingPlan = () => {
       <div className={styles.createPlanContainer}>
          {isCreatingPlan ? (
             <div className={styles.trainingContainer}>
-               <div className={styles.saveBtnWrapper}>
-                  <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-                     Test
-                  </Modal>
-                  <Button size="small" isBold isFullWidth onClick={handleOpenModal}>
-                     Save plan
-                  </Button>
-               </div>
+               <SaveTraining />
                <div className={styles.trainingWrapper}>
                   {!!Object.entries(training).length && (
                      <DragDropContext onDragEnd={(result) => dispatch(dragExercise(result))}>
