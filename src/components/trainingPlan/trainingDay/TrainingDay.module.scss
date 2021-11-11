@@ -1,0 +1,36 @@
+.trainingDayContainer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .trainingDayWrapper {
+      min-width: 400px;
+      width: fit-content;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--border-radius-8);
+      display: flex;
+      flex-direction: column;
+   }
+
+   .trashButton {
+      cursor: pointer;
+      margin-left: auto;
+      margin-top: var(--space-3);
+
+      .trashIcon {
+         width: 15px;
+         height: 15px;
+
+         path {
+            transition: all 0.25s ease;
+            fill: var(--gray-400);
+         }
+
+         &:hover {
+            path {
+               fill: var(--gray-800);
+            }
+         }
+      }
+   }
+}

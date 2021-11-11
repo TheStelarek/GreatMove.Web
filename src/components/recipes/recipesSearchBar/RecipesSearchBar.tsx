@@ -25,6 +25,7 @@ const RecipesSearchBar = forwardRef<HTMLInputElement, RecipesSearchBarProps>(({ 
    const { isOpen, getMenuProps, getInputProps, getComboboxProps, getItemProps, closeMenu } = useCombobox({
       items: matchingRecipes,
       onInputValueChange: getMatchingRecipes,
+      itemToString: (item) => (item ? item.name : ``),
    });
 
    const handleKeyPress = (e: KeyboardEvent) => {

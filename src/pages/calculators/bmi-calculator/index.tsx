@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from '@/pages/calculators/bmi-calculator/BMICalculator.module.scss';
 import Layout from '@/components/core/layout/Layout';
@@ -37,8 +37,8 @@ const BMICalculator = () => {
                         label="Height"
                         placeholder="Enter your height"
                         {...heightField}
-                        onChange={async (e) => {
-                           e.target.value = fieldMax(e.target.value, 300);
+                        onChange={async (e: ChangeEvent<HTMLInputElement>) => {
+                           e.target.value = fieldMax(+e.target.value, 300) as string;
                            heightField.onChange(e);
                         }}
                      />
@@ -53,8 +53,8 @@ const BMICalculator = () => {
                         label="Weight"
                         placeholder="Enter your weight"
                         {...weightField}
-                        onChange={async (e) => {
-                           e.target.value = fieldMax(e.target.value, 1000);
+                        onChange={async (e: ChangeEvent<HTMLInputElement>) => {
+                           e.target.value = fieldMax(+e.target.value, 1000) as string;
                            weightField.onChange(e);
                         }}
                      />

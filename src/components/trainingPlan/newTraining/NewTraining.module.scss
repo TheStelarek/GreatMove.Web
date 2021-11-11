@@ -1,0 +1,13 @@
+.newTrainingWrapper {
+   .addTrainingBtn {
+      text-align: left;
+      width: 135px;
+      color: var(--gray-600);
+      font-weight: var(--font-weight-semi-bold);
+      transition: all 0.2s ease;
+
+      &:hover {
+         color: var(--gray-900);
+      }
+   }
+}

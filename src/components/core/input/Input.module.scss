@@ -1,66 +1,72 @@
 .label {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-right: auto;
-  font-size: var(--font-size-caption);
-  line-height: var(--line-height-caption);
-  font-weight: var(--font-weight-semi-bold);
-  width: 100%;
-  color: var(--gray-700);
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   margin-right: auto;
+   font-size: var(--font-size-caption);
+   line-height: var(--line-height-caption);
+   font-weight: var(--font-weight-semi-bold);
+   width: 100%;
+   color: var(--gray-700);
 
-  .input {
-    height: 50px;
-    background-color: transparent;
-    padding: 0 var(--space-4);
-    color: var(--gray-700);
-    font-size: var(--font-size-p2);
-    font-weight: var(--font-weight-semi-bold);
+   .input {
+      height: 50px;
+      background-color: transparent;
+      padding: 0 var(--space-4);
+      color: var(--gray-700);
+      font-size: var(--font-size-p2);
+      font-weight: var(--font-weight-semi-bold);
 
-    &::placeholder {
-      color: var(--gray-400);
-      font-weight: var(--font-weight-regular);
-      border: none;
-    }
-  }
+      &::placeholder {
+         color: var(--gray-400);
+         font-weight: var(--font-weight-regular);
+         border: none;
+      }
 
-  .input-gray {
-    border: 1px solid var(--gray-100);
-  }
+      &[type='number']::-webkit-inner-spin-button,
+      &[type='number']::-webkit-outer-spin-button {
+         -webkit-appearance: none;
+         margin: 0;
+      }
+   }
 
-  .input-blue {
-    border: 2px solid var(--blue-500);
-  }
+   .input-gray {
+      border: 1px solid var(--gray-100);
+   }
 
-  .input-radius-5 {
-    border-radius: var(--border-radius-5);
-  }
+   .input-blue {
+      border: 2px solid var(--blue-500);
+   }
 
-  .input-radius-10 {
-    border-radius: var(--border-radius-10);
-  }
+   .input-radius-5 {
+      border-radius: var(--border-radius-5);
+   }
 
-  .input-radius-15 {
-    border-radius: var(--border-radius-15);
-  }
+   .input-radius-10 {
+      border-radius: var(--border-radius-10);
+   }
 
-  .input-small {
-    height: 36px;
-  }
+   .input-radius-15 {
+      border-radius: var(--border-radius-15);
+   }
 
-  .input-regular {
-    height: 44px;
-  }
+   .input-small {
+      height: 36px;
+   }
 
-  .input-big {
-    height: 50px;
-  }
+   .input-regular {
+      height: 44px;
+   }
 
-  .input-large {
-    height: 55px;
-  }
+   .input-big {
+      height: 50px;
+   }
 
-  .inputError {
-    border-color: var(--red-400);
-  }
+   .input-large {
+      height: 55px;
+   }
+
+   .inputError {
+      border-color: var(--red-400);
+   }
 }

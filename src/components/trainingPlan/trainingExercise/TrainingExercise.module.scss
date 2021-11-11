@@ -1,0 +1,43 @@
+.trainingExerciseContainer {
+   padding: var(--space-7) var(--space-7) var(--space-5) var(--space-7);
+   display: flex;
+   flex-direction: column;
+
+   &:not(:last-of-type) {
+      border-bottom: 1px solid var(--gray-200);
+   }
+
+   &:last-of-type {
+      padding-bottom: var(--space-7);
+   }
+
+   .trainingExerciseWrapper {
+      display: flex;
+      align-items: flex-start;
+
+      .nameWrapper {
+         display: flex;
+         align-items: center;
+         gap: var(--space-1-5);
+
+         .actionBtn {
+            width: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+
+         .expandBtn {
+            width: 185px;
+            text-align: left;
+
+            .name {
+               font-size: var(--font-size-p1);
+               line-height: var(--line-height-p1);
+               font-weight: var(--font-weight-semi-bold);
+               color: var(--gray-900);
+            }
+         }
+      }
+   }
+}

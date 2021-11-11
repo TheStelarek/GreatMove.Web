@@ -41,6 +41,7 @@
     "rc-progress": "3.1.4",
     "rc-slider": "9.7.2",
     "react": "17.0.2",
+    "react-beautiful-dnd": "13.1.0",
     "react-dom": "17.0.2",
     "react-hook-form": "7.16.0",
     "react-infinite-scroll-component": "6.1.0",
@@ -52,6 +53,7 @@
     "react-to-print": "2.13.0",
     "redux-persist": "6.0.0",
     "sass": "1.41.0",
+    "uuid": "8.3.2",
     "yup": "0.32.9"
   },
   "devDependencies": {
@@ -62,9 +64,11 @@
     "@types/node": "14.17.14",
     "@types/nprogress": "0.2.0",
     "@types/react": "17.0.20",
+    "@types/react-beautiful-dnd": "13.1.2",
     "@types/react-dom": "17.0.9",
     "@types/react-paginate": "7.1.1",
     "@types/react-table": "7.7.7",
+    "@types/uuid": "8.3.1",
     "@typescript-eslint/eslint-plugin": "4.30.0",
     "@typescript-eslint/parser": "4.30.0",
     "commitizen": "4.2.4",

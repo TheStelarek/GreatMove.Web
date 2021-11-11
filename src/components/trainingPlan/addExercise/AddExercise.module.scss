@@ -1,0 +1,20 @@
+.addExerciseWrapper {
+   padding: var(--space-3-5) var(--space-7) var(--space-3-5) var(--space-7);
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: var(--space-4);
+   width: 100%;
+
+   .addBtn {
+      width: 20px;
+      height: 23px;
+
+      .addIcon {
+         path {
+            fill: var(--gray-800);
+         }
+      }
+   }
+}
