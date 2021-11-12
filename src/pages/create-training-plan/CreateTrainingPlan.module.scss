@@ -8,6 +8,27 @@
       gap: var(--space-6);
       width: 100%;
 
+      .actionsButtons {
+         display: flex;
+         align-items: center;
+         margin-left: auto;
+         gap: var(--space-3);
+
+         .discardBtn {
+            height: 100%;
+            padding: 0 var(--space-2);
+            color: var(--gray-600);
+            font-size: var(--font-size-caption);
+            line-height: var(--line-height-caption);
+            font-weight: var(--font-weight-semi-bold);
+            transition: all 0.2s ease;
+
+            &:hover {
+               color: var(--gray-800);
+            }
+         }
+      }
+
       .trainingWrapper {
          display: flex;
          gap: var(--space-10);

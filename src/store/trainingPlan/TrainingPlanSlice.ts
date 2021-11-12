@@ -28,6 +28,16 @@ export const trainingPlanSlice = createSlice({
       createTraining: (state: TrainingPlanStates) => {
          state.isCreatingPlan = true;
       },
+      discardTraining: (state: TrainingPlanStates) => {
+         state.isCreatingPlan = false;
+         state.training = {
+            '1': {
+               name: `Day 1`,
+               id: `1`,
+               items: [],
+            },
+         };
+      },
       addColumn: (state: TrainingPlanStates, action: PayloadAction<string>) => {
          const ID = uuidv4();
          const newBoard = {
@@ -175,6 +185,7 @@ export const trainingPlanSlice = createSlice({
 
 export const {
    createTraining,
+   discardTraining,
    addColumn,
    removeColumn,
    dragExercise,

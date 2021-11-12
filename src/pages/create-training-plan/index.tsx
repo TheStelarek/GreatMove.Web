@@ -8,20 +8,22 @@ import CreatePlanBox from '@/components/trainingPlan/createPlanBox/CreatePlanBox
 import styles from '@/pages/create-training-plan/CreateTrainingPlan.module.scss';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { dragExercise, trainingPlanSelector } from '@/store/trainingPlan/TrainingPlanSlice';
-import Modal from '@/components/core/modal/Modal';
-import useModal from '@/components/core/modal/useModal';
+import { discardTraining, dragExercise, trainingPlanSelector } from '@/store/trainingPlan/TrainingPlanSlice';
 
 const CreateTrainingPlan = () => {
    const { isCreatingPlan, training } = useAppSelector(trainingPlanSelector);
-   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
    const dispatch = useAppDispatch();
 
    return (
       <div className={styles.createPlanContainer}>
          {isCreatingPlan ? (
             <div className={styles.trainingContainer}>
-               <SaveTraining />
+               <div className={styles.actionsButtons}>
+                  <button className={styles.discardBtn} onClick={() => dispatch(discardTraining())}>
+                     Discard
+                  </button>
+                  <SaveTraining />
+               </div>
                <div className={styles.trainingWrapper}>
                   {!!Object.entries(training).length && (
                      <DragDropContext onDragEnd={(result) => dispatch(dragExercise(result))}>
