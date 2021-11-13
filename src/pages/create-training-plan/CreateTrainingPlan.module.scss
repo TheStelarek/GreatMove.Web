@@ -35,9 +35,15 @@
 
       .trainingWrapper {
          display: flex;
+         flex-direction: column;
+         align-items: flex-start;
          gap: var(--space-10);
          padding-bottom: 150px;
          overflow-x: auto;
+
+         @media (min-width: 500px) {
+            flex-direction: row;
+         }
 
          &::-webkit-scrollbar {
             height: 10px;
@@ -54,9 +60,17 @@
          }
 
          .trainingDayList {
+            margin: 0 auto;
             display: flex;
+            flex-direction: column;
             gap: var(--space-10);
-            padding-bottom: var(--space-6);
+
+            @media (min-width: 500px) {
+               margin: unset;
+               padding-bottom: var(--space-6);
+               justify-content: flex-start;
+               flex-direction: row;
+            }
          }
       }
    }
