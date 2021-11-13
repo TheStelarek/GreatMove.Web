@@ -5,7 +5,7 @@ import NewTraining from '@/components/trainingPlan/newTraining/NewTraining';
 import TrainingDay from '@/components/trainingPlan/trainingDay/TrainingDay';
 import SaveTraining from '@/components/trainingPlan/saveTraining/SaveTraining';
 import CreatePlanBox from '@/components/trainingPlan/createPlanBox/CreatePlanBox';
-import styles from '@/pages/create-training-plan/CreateTrainingPlan.module.scss';
+import styles from '@/pages/trainings/create-training-plan/CreateTrainingPlan.module.scss';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { discardTraining, dragExercise, trainingPlanSelector } from '@/store/trainingPlan/TrainingPlanSlice';
