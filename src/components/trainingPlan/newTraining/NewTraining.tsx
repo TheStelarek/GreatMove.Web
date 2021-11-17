@@ -1,6 +1,6 @@
 import { useState, KeyboardEvent, ChangeEvent } from 'react';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import { addColumn } from '@/store/trainingPlan/TrainingPlanSlice';
+import { addTrainingDay } from '@/store/trainingPlan/TrainingPlanSlice';
 import Input from '@/components/core/input/Input';
 import styles from '@/components/trainingPlan/newTraining/NewTraining.module.scss';
 
@@ -20,7 +20,7 @@ const NewTraining = () => {
 
    const onEnterPressHandler = (e: KeyboardEvent) => {
       if (e.key === `Enter`) {
-         dispatch(addColumn(trainingName));
+         dispatch(addTrainingDay(trainingName));
          setShowTrainingNameInput(false);
       }
    };

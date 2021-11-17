@@ -4,13 +4,18 @@ import { v4 as uuidv4 } from 'uuid';
 import { ExerciseDetailsType } from '@/utils/types/ExerciseDetailsType';
 import type { RootState } from '@/store/index';
 import { TrainingType } from '@/utils/types/TrainingType';
+import { saveTrainingPlan } from './saveTrainingPlan';
 
-interface TrainingPlanStates {
+interface TrainingPlanState {
    training: TrainingType;
    isCreatingPlan: boolean;
+   isFetching: boolean;
+   isSuccess: boolean;
+   isError: boolean;
+   errorMessage: string | null | undefined;
 }
 
-const initialState: TrainingPlanStates = {
+const initialState: TrainingPlanState = {
    training: {
       '1': {
          name: `Day 1`,
@@ -19,16 +24,24 @@ const initialState: TrainingPlanStates = {
       },
    },
    isCreatingPlan: false,
+   isFetching: false,
+   isSuccess: false,
+   isError: false,
+   errorMessage: null,
 };
 
 export const trainingPlanSlice = createSlice({
    name: `trainingPlan`,
    initialState,
    reducers: {
-      createTraining: (state: TrainingPlanStates) => {
+      createTraining: (state: TrainingPlanState) => {
          state.isCreatingPlan = true;
       },
-      discardTraining: (state: TrainingPlanStates) => {
+      discardTraining: (state: TrainingPlanState) => {
+         state.isError = false;
+         state.isSuccess = false;
+         state.isFetching = false;
+         state.errorMessage = null;
          state.isCreatingPlan = false;
          state.training = {
             '1': {
@@ -38,7 +51,7 @@ export const trainingPlanSlice = createSlice({
             },
          };
       },
-      addColumn: (state: TrainingPlanStates, action: PayloadAction<string>) => {
+      addTrainingDay: (state: TrainingPlanState, action: PayloadAction<string>) => {
          const ID = uuidv4();
          const newBoard = {
             id: ID,
@@ -47,10 +60,10 @@ export const trainingPlanSlice = createSlice({
          };
          state.training = { ...state.training, [ID]: newBoard };
       },
-      removeColumn: (state: TrainingPlanStates, action: PayloadAction<string>) => {
+      removeTrainingDay: (state: TrainingPlanState, action: PayloadAction<string>) => {
          delete state.training[action.payload];
       },
-      dragExercise: (state: TrainingPlanStates, action: PayloadAction<DropResult>) => {
+      dragExercise: (state: TrainingPlanState, action: PayloadAction<DropResult>) => {
          const result = action.payload;
          const columns = state.training;
          if (!result.destination) return;
@@ -93,7 +106,7 @@ export const trainingPlanSlice = createSlice({
          }
       },
       addExercise: (
-         state: TrainingPlanStates,
+         state: TrainingPlanState,
          action: PayloadAction<{ columnId: string; exerciseId: string; name: string }>,
       ) => {
          const { columnId, exerciseId, name } = action.payload;
@@ -103,7 +116,7 @@ export const trainingPlanSlice = createSlice({
          state.training = { ...state.training, [columnId]: column };
       },
       removeExercise: (
-         state: TrainingPlanStates,
+         state: TrainingPlanState,
          action: PayloadAction<{ trainingDayId: string; exerciseId: string }>,
       ) => {
          const { trainingDayId, exerciseId } = action.payload;
@@ -116,7 +129,7 @@ export const trainingPlanSlice = createSlice({
             );
       },
       updateExercise: (
-         state: TrainingPlanStates,
+         state: TrainingPlanState,
          action: PayloadAction<{
             trainingDayId: string;
             exerciseId: string;
@@ -143,7 +156,7 @@ export const trainingPlanSlice = createSlice({
          }
       },
       removeSet: (
-         state: TrainingPlanStates,
+         state: TrainingPlanState,
          action: PayloadAction<{ trainingDayId: string; exerciseId: string; setId: string }>,
       ) => {
          const { trainingDayId, exerciseId, setId } = action.payload;
@@ -155,7 +168,7 @@ export const trainingPlanSlice = createSlice({
                1,
             );
       },
-      addNewSet: (state: TrainingPlanStates, action: PayloadAction<{ trainingDayId: string; exerciseId: string }>) => {
+      addNewSet: (state: TrainingPlanState, action: PayloadAction<{ trainingDayId: string; exerciseId: string }>) => {
          const { trainingDayId, exerciseId } = action.payload;
          const trainingExercise = state.training[trainingDayId].items.find((exercise) => exercise.id === exerciseId);
          if (trainingExercise) {
@@ -170,8 +183,8 @@ export const trainingPlanSlice = createSlice({
             trainingExercise.details.push(newSet);
          }
       },
-      updateTrainingName: (
-         state: TrainingPlanStates,
+      updateTrainingDayName: (
+         state: TrainingPlanState,
          action: PayloadAction<{ trainingDayId: string; name: string }>,
       ) => {
          const { trainingDayId, name } = action.payload;
@@ -181,20 +194,37 @@ export const trainingPlanSlice = createSlice({
          state.training = { ...state.training, [trainingDayId]: training };
       },
    },
+   extraReducers: (builder) => {
+      builder.addCase(saveTrainingPlan.fulfilled, (state: TrainingPlanState) => {
+         state.isFetching = false;
+         state.isSuccess = true;
+      });
+
+      builder.addCase(saveTrainingPlan.pending, (state: TrainingPlanState) => {
+         state.isFetching = true;
+      });
+
+      builder.addCase(saveTrainingPlan.rejected, (state: TrainingPlanState, action) => {
+         state.isFetching = false;
+         state.isError = true;
+         state.errorMessage = action.payload;
+         state.errorMessage = action.payload ? action.payload : action.error.message;
+      });
+   },
 });
 
 export const {
    createTraining,
    discardTraining,
-   addColumn,
-   removeColumn,
+   addTrainingDay,
+   removeTrainingDay,
+   updateTrainingDayName,
    dragExercise,
    addExercise,
    removeExercise,
    updateExercise,
    removeSet,
    addNewSet,
-   updateTrainingName,
 } = trainingPlanSlice.actions;
 
 export const trainingPlanSelector = (state: RootState) => state.trainingPlan;

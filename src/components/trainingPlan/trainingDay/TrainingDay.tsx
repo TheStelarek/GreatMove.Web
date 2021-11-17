@@ -6,7 +6,7 @@ import AddExercise from '@/components/trainingPlan/addExercise/AddExercise';
 import { ExerciseType } from '@/utils/types/ExerciseType';
 import Trash from '@/public/my-shopping-list/trash.svg';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import { removeColumn } from '@/store/trainingPlan/TrainingPlanSlice';
+import { removeTrainingDay } from '@/store/trainingPlan/TrainingPlanSlice';
 import TrainingDayName from '../trainingDayName/TrainingDayName';
 
 interface TrainingDayProps {
@@ -19,7 +19,7 @@ interface TrainingDayProps {
 const TrainingDay: FC<TrainingDayProps> = ({ exercises, trainingDayName, trainingDayId, provided }) => {
    const dispatch = useAppDispatch();
 
-   const removeTrainingDay = () => dispatch(removeColumn(trainingDayId));
+   const remove = () => dispatch(removeTrainingDay(trainingDayId));
 
    return (
       <div className={styles.trainingDayContainer} {...provided.droppableProps} ref={provided.innerRef}>
@@ -41,7 +41,7 @@ const TrainingDay: FC<TrainingDayProps> = ({ exercises, trainingDayName, trainin
             {provided.placeholder}
             <AddExercise trainingDayId={trainingDayId} />
          </div>
-         <button type="button" className={styles.trashButton} onClick={removeTrainingDay}>
+         <button type="button" className={styles.trashButton} onClick={remove}>
             <Trash className={styles.trashIcon} />
          </button>
       </div>

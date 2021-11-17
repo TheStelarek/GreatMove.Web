@@ -2,7 +2,7 @@ import { FC, useState, KeyboardEvent, ChangeEvent } from 'react';
 import styles from '@/components/trainingPlan/trainingDayName/TrainingDayName.module.scss';
 import Input from '@/components/core/input/Input';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import { updateTrainingName } from '@/store/trainingPlan/TrainingPlanSlice';
+import { updateTrainingDayName } from '@/store/trainingPlan/TrainingPlanSlice';
 
 interface TrainingDayNameProps {
    trainingDayId: string;
@@ -18,14 +18,14 @@ const TrainingDayName: FC<TrainingDayNameProps> = ({ trainingDayId, trainingName
    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setName(e.target.value);
 
    const onBlurHandler = () => {
-      if (name) dispatch(updateTrainingName({ trainingDayId, name }));
+      if (name) dispatch(updateTrainingDayName({ trainingDayId, name }));
       setShowNameInput(false);
    };
 
    const onEnterPressHandler = (e: KeyboardEvent) => {
       if (e.key === `Enter` && name) {
          setShowNameInput(false);
-         dispatch(updateTrainingName({ trainingDayId, name }));
+         dispatch(updateTrainingDayName({ trainingDayId, name }));
       }
    };
 
