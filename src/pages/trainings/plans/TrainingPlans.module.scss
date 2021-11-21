@@ -1,0 +1,24 @@
+.trainingPlansContainer {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   padding: var(--space-6) var(--space-5);
+
+   @media (min-width: 1000px) {
+      padding: var(--space-12) var(--space-20);
+   }
+
+   .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+
+      .pageName {
+         font-size: var(--font-size-p4);
+         line-height: var(--line-height-p4);
+         color: var(--gray-800);
+         font-weight: var(--font-weight-semi-bold);
+      }
+   }
+}
