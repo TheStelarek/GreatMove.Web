@@ -1,0 +1,77 @@
+.createPlanContainer {
+   display: flex;
+   margin: var(--space-6) var(--space-5);
+
+   @media (min-width: 1000px) {
+      margin: var(--space-12) var(--space-20) 0 var(--space-20);
+   }
+
+   .trainingContainer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+      width: 100%;
+
+      .actionsButtons {
+         display: flex;
+         align-items: center;
+         margin-left: auto;
+         gap: var(--space-3);
+
+         .discardBtn {
+            height: 100%;
+            padding: 0 var(--space-2);
+            color: var(--gray-600);
+            font-size: var(--font-size-caption);
+            line-height: var(--line-height-caption);
+            font-weight: var(--font-weight-semi-bold);
+            transition: all 0.2s ease;
+
+            &:hover {
+               color: var(--gray-800);
+            }
+         }
+      }
+
+      .trainingWrapper {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         gap: var(--space-10);
+         padding-bottom: 150px;
+         overflow-x: auto;
+
+         @media (min-width: 500px) {
+            flex-direction: row;
+         }
+
+         &::-webkit-scrollbar {
+            height: 10px;
+            border-radius: var(--border-radius-10);
+         }
+
+         &::-webkit-scrollbar-track {
+            background: var(--gray-50);
+         }
+
+         &::-webkit-scrollbar-thumb {
+            background-color: var(--gray-300);
+            border-radius: var(--border-radius-10);
+         }
+
+         .trainingDayList {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-10);
+
+            @media (min-width: 500px) {
+               margin: unset;
+               padding-bottom: var(--space-6);
+               justify-content: flex-start;
+               flex-direction: row;
+            }
+         }
+      }
+   }
+}

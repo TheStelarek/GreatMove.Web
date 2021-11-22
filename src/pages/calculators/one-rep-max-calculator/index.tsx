@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from '@/pages/calculators/one-rep-max-calculator/OneRepMaxCalculator.module.scss';
 import Layout from '@/components/core/layout/Layout';
@@ -36,8 +36,8 @@ const OneRepMaxCalculator = () => {
                      label="Weight"
                      placeholder="Enter weight"
                      {...weightField}
-                     onChange={async (e) => {
-                        e.target.value = fieldMax(e.target.value, 1000);
+                     onChange={async (e: ChangeEvent<HTMLInputElement>) => {
+                        e.target.value = fieldMax(+e.target.value, 1000) as string;
                         weightField.onChange(e);
                      }}
                   />
@@ -52,8 +52,8 @@ const OneRepMaxCalculator = () => {
                      label="Reps"
                      placeholder="Enter number of reps"
                      {...repsField}
-                     onChange={async (e) => {
-                        e.target.value = fieldMax(e.target.value, 20);
+                     onChange={async (e: ChangeEvent<HTMLInputElement>) => {
+                        e.target.value = fieldMax(+e.target.value, 20) as string;
                         repsField.onChange(e);
                      }}
                   />

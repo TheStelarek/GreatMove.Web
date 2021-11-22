@@ -61,7 +61,7 @@ const MyShoppingList = () => {
          <div className={styles.productsContainer}>
             {products.length === 0 && (
                <div className={styles.emptyProducts}>
-                  <Empty />
+                  <Empty className={styles.illustration} />
                   <p className={styles.info}>Your shopping list is empty. Check our recipes and add ingredients!</p>
                </div>
             )}

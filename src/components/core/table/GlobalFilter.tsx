@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { Row, useAsyncDebounce } from 'react-table';
 import { useForm } from 'react-hook-form';
 import Input from '@/components/core/input/Input';
@@ -23,7 +24,7 @@ const GlobalFilter: React.FC<{
             radius={5}
             size="big"
             {...searchField}
-            onChange={async (e) => {
+            onChange={async (e: ChangeEvent<HTMLInputElement>) => {
                onChange(e.target.value);
                searchField.onChange(e);
             }}

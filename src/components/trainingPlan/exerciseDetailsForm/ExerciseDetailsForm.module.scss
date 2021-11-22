@@ -1,0 +1,41 @@
+.exerciseDetailsForm {
+   margin-top: var(--space-2);
+   display: flex;
+   flex-direction: column;
+
+   .formHeaders {
+      display: flex;
+      gap: var(--space-2);
+
+      span {
+         width: 85px;
+         font-size: var(--font-size-footer);
+         line-height: var(--line-height-footer);
+         font-weight: var(--font-weight-semi-bold);
+         color: var(--gray-900);
+
+         &:last-of-type {
+            width: 12px;
+         }
+      }
+   }
+
+   .inputsWrapper {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+
+      .inputWrapper {
+         width: 85px;
+      }
+
+      .removeBtn {
+         width: 12px;
+      }
+   }
+
+   .addSetBtn {
+      width: 100%;
+      margin-top: var(--space-2);
+   }
+}

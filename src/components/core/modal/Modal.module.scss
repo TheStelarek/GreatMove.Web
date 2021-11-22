@@ -1,0 +1,43 @@
+.modalContainer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: column;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   min-width: 280px;
+   min-height: 180px;
+   background-color: var(--white);
+   border-radius: var(--border-radius-10);
+   box-shadow: var(--box-shadow-md);
+   opacity: 1;
+
+   .closeBtn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 23px;
+      height: 23px;
+      gap: var(--space-2-5);
+      cursor: pointer;
+      position: absolute;
+      right: var(--space-4);
+
+      .line {
+         width: 23px;
+         height: 2px;
+         background-color: var(--gray-600);
+
+         &:first-of-type {
+            transform: translateY(6px) rotate(45deg);
+         }
+
+         &:last-of-type {
+            transform: translateY(-6px) rotate(-45deg);
+         }
+      }
+   }
+}

@@ -52,7 +52,7 @@ export const TRAININGS: MenuItem = {
       },
       {
          label: `Create plan`,
-         route: `create-plan`,
+         route: `create-training-plan`,
          description: `Analyze your data to make more optimized plans`,
       },
       {

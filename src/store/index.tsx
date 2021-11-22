@@ -4,11 +4,13 @@ import storage from 'redux-persist/lib/storage';
 import { authSlice } from '@/store/auth/AuthSlice';
 import { recipesSlice } from '@/store/recipes/RecipesSlice';
 import { shoppingListSlice } from '@/store/shoppingList/ShoppingListSlice';
+import { trainingPlanSlice } from './trainingPlan/TrainingPlanSlice';
 
 const reducers = combineReducers({
    auth: authSlice.reducer,
    recipes: recipesSlice.reducer,
    shoppingList: shoppingListSlice.reducer,
+   trainingPlan: trainingPlanSlice.reducer,
 });
 
 const persistConfig = {
