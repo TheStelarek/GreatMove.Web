@@ -53,7 +53,7 @@ const SaveTraining = () => {
 
    return (
       <div className={styles.saveBtnWrapper}>
-         <Modal isOpen={isOpen} handleClose={closeModal}>
+         <Modal rounded isOpen={isOpen} handleClose={closeModal}>
             <form className={styles.saveForm} onSubmit={handleSubmit(onSubmit)}>
                <div className={styles.titleWrapper}>
                   <Input

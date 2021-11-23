@@ -8,31 +8,31 @@ export const calculatorsData: CalculatorData[] = [
    {
       name: `Smolov jr.`,
       description: `Take this challenge and use 4 weeks long smolov junior plan`,
-      href: `/smolov-jr-calculator`,
+      href: `smolov-jr-calculator`,
    },
    {
       name: `Wendler 5/3/1`,
       description: `Most basic version of 5/3/1`,
-      href: `/`,
+      href: ``,
    },
    {
       name: `BMI`,
       description: `Calculate your BMI`,
-      href: `/bmi-calculator`,
+      href: `bmi-calculator`,
    },
    {
       name: `1 REP MAX`,
       description: `Estimate your 1 rep max`,
-      href: `/one-rep-max-calculator`,
+      href: `one-rep-max-calculator`,
    },
    {
       name: `BMR`,
       description: `Calculate your basal metabolic rate`,
-      href: `/bmr-calculator`,
+      href: `bmr-calculator`,
    },
    {
       name: `TMR`,
       description: `Calculate your total metabolic rate`,
-      href: `/tmr-calculator`,
+      href: `tmr-calculator`,
    },
 ];

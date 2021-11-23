@@ -7,7 +7,7 @@ interface ButtonProps {
    onClick?: () => any;
    leftIcon?: ReactElement;
    rightIcon?: ReactElement;
-   variant?: 'primary' | 'secondary' | 'ghost-primary' | 'ghost-secondary';
+   variant?: 'primary' | 'secondary' | 'ghost-primary' | 'ghost-secondary' | 'warning';
    size?: 'small' | 'regular' | 'large' | 'extra-large';
    type?: 'button' | 'submit' | 'reset';
    borderRadius?: 5 | 8 | 10 | 15;

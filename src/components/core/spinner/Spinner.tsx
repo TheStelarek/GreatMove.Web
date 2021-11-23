@@ -2,7 +2,7 @@ import cx from 'classnames';
 import styles from '@/components/core/spinner/Spinner.module.scss';
 
 interface SpinnerProps {
-   variant?: 'primary' | 'secondary' | 'ghost-primary' | 'ghost-secondary';
+   variant?: 'primary' | 'secondary' | 'ghost-primary' | 'ghost-secondary' | 'warning';
    size?: 'small' | 'regular' | 'large' | 'extra-large';
 }
 

@@ -10,7 +10,6 @@
    min-width: 280px;
    min-height: 180px;
    background-color: var(--white);
-   border-radius: var(--border-radius-10);
    box-shadow: var(--box-shadow-md);
    opacity: 1;
 
@@ -40,4 +39,8 @@
          }
       }
    }
+}
+
+.rounded {
+   border-radius: var(--border-radius-10);
 }
