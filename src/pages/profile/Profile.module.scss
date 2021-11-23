@@ -31,6 +31,12 @@
       font-weight: var(--font-weight-extra-bold);
    }
 
+   .recipeContainer {
+      max-width: 70%;
+      margin-left: var(--space-16);
+      margin-top: var(--space-10);
+   }
+
    .tag {
       color: var(--gray-400);
    }
