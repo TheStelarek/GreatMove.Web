@@ -13,7 +13,62 @@ import ProfileDiscussion from '@/components/profile/discussion/ProfilDiscussion'
 import Table from '@/components/core/table/Table';
 import styles from './Profile.module.scss';
 
-const homeBudgets = [
+const trainingData = [
+   {
+      index: 1,
+      name: `1`,
+      exercises: `2`,
+      volume: `3`,
+      date: `4`,
+      time: `5`,
+   },
+   {
+      index: 1,
+      name: `1`,
+      exercises: `2`,
+      volume: `3`,
+      date: `4`,
+      time: `5`,
+   },
+   {
+      index: 1,
+      name: `1`,
+      exercises: `2`,
+      volume: `3`,
+      date: `4`,
+      time: `5`,
+   },
+];
+
+const trainingColumns = [
+   {
+      Header: `INDEX`,
+      accessor: `index` as const,
+   },
+   {
+      Header: `NAME`,
+      accessor: `name` as const,
+   },
+
+   {
+      Header: `EXERCISES`,
+      accessor: `exercises` as const,
+   },
+   {
+      Header: `VOLUME`,
+      accessor: `volume` as const,
+   },
+   {
+      Header: `DATE`,
+      accessor: `date` as const,
+   },
+   {
+      Header: `TIME`,
+      accessor: `time` as const,
+   },
+];
+
+const recipesData = [
    {
       name: `test`,
       time: `1`,
@@ -40,7 +95,7 @@ const homeBudgets = [
    },
 ];
 
-const columns = [
+const recipeColumns = [
    {
       Header: `NAME`,
       accessor: `name` as const,
@@ -147,27 +202,66 @@ const Profile = () => {
                </div>
                {showPage === 0 && <ProfileDiscussion />}
                {showPage === 1 && (
-                  <div className={styles.recipeContainer}>
+                  <div className={styles.tabContainer}>
                      <Table
                         hasGlobalFilter
                         hasPagination
                         isSortable
                         isEquallyGrow
-                        columns={columns}
-                        data={homeBudgets}
+                        columns={trainingColumns}
+                        data={trainingData}
                      />
                   </div>
                )}
-               {showPage === 2 && <div> Achievements </div>}
+               {showPage === 2 && (
+                  <div className={styles.tabContainer}>
+                     <div className={styles.wrapper}>
+                        <div className={styles.firstAchiv}>
+                           <div className={styles.boxWrapper}>
+                              <div className={styles.smallBlueBox}>1</div>
+                              <div className={styles.smallBlueBox}>2</div>
+                           </div>
+                           <div className={styles.boxWrapper}>
+                              <div className={styles.smallRightBlueBox}>3</div>
+                              <div className={styles.smallRightBlueBox}>4</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div className={styles.wrapper}>
+                        <div className={styles.secondAchiv}>
+                           <div className={styles.boxWrapper}>
+                              <div className={styles.smallDarkerBlueBox}>1</div>
+                              <div className={styles.smallDarkerBlueBox}>2</div>
+                           </div>
+                           <div className={styles.boxWrapper}>
+                              <div className={styles.smallDarkRight}>3</div>
+                              <div className={styles.smallDarkRight}>4</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div className={styles.wrapper}>
+                        <div className={styles.tripleAchiv}>
+                           <div className={styles.boxWrapper}>
+                              <div className={styles.smallDarkest}>1</div>
+                              <div className={styles.smallDarkest}>2</div>
+                           </div>
+                           <div className={styles.boxWrapper}>
+                              <div className={styles.smallRightDarkest}>3</div>
+                              <div className={styles.smallRightDarkest}>4</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               )}
                {showPage === 3 && (
-                  <div className={styles.recipeContainer}>
+                  <div className={styles.tabContainer}>
                      <Table
                         hasGlobalFilter
                         hasPagination
                         isSortable
                         isEquallyGrow
-                        columns={columns}
-                        data={homeBudgets}
+                        columns={recipeColumns}
+                        data={recipesData}
                      />
                   </div>
                )}
