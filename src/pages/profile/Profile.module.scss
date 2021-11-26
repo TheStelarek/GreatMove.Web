@@ -14,13 +14,19 @@
       flex-direction: column;
       align-items: center;
       background-color: var(--white);
-      width: 450px;
-      height: 450px;
-      max-width: 50%;
+      width: 95%;
+      height: 380px;
       border-radius: var(--border-radius-15);
-      margin-left: var(--space-16);
-      transform: translateY(-40%);
+      margin-left: var(--space-2);
+      transform: translateY(-0%);
       box-shadow: var(--box-shadow-xl);
+   }
+   .mobileWrapper {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      transform: translateY(-15%);
    }
    .avatar {
       position: relative;
@@ -78,6 +84,11 @@
       box-shadow: var(--box-shadow-md);
    }
 
+   .menuIcon {
+      width: 40px;
+      height: 40px;
+   }
+
    .smallRightBlueBox {
       margin: var(--space-12);
       background-color: var(--blue-200);
@@ -107,7 +118,7 @@
 
    .tabContainer {
       max-width: 70%;
-      margin-left: var(--space-16);
+      margin-left: var(--space-2);
       margin-top: var(--space-10);
    }
 
@@ -157,20 +168,25 @@
    .menuContainer {
       display: flex;
       flex-direction: row;
-      margin-left: var(--space-16);
-      margin-top: var(--space-5);
-      gap: var(--space-14);
-      font-size: var(--font-size-p5);
-      height: 24px;
+      gap: 17%;
+      margin-left: var(--space-2);
+      margin-right: var(--space-2);
    }
    .botContainer {
       display: flex;
+      flex-direction: column;
    }
    .rightBox {
       width: 100%;
    }
+
+   .activeMenu {
+      fill: var(--blue-600);
+      height: 40px;
+      width: 40px;
+   }
    .menuText {
-      font-size: var(--font-size-p5);
+      font-size: var(--font-size-p1);
       font-weight: var(--font-weight-bold);
    }
    .menuButton {
