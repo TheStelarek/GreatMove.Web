@@ -1,27 +1,24 @@
-import { useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from '@/components/recipe/recipeIngredients/RecipeIngredients.module.scss';
-import Minus from '@/public/recipe/minus.svg';
-import Plus from '@/public/recipe/plus.svg';
-import Shop from '@/public/recipe/shop.svg';
+import Button from '@/components/core/button/Button';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addProduct } from '@/store/shoppingList/ShoppingListSlice';
 import { Ingredient } from '@/utils/types/Ingredient';
+import Minus from '@/public/recipe/minus.svg';
+import Plus from '@/public/recipe/plus.svg';
+import Shop from '@/public/recipe/shop.svg';
 
 interface RecipeIngredientsProps {
    ingredients: Array<Ingredient>;
 }
 
-const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({ ingredients }) => {
+const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
    const dispatch = useAppDispatch();
-   const [recipeIngredients, setRecipeIngredients] = useState<Ingredient[]>([]);
+   const [recipeIngredients, setRecipeIngredients] = useState<Ingredient[]>(ingredients);
    const [servings, setServings] = useState<number>(1);
 
-   useEffect(() => {
-      setRecipeIngredients(ingredients);
-   }, []);
-
    const increaseServings = () => {
-      if (servings < 15 && recipeIngredients.length) {
+      if (servings < 15) {
          const increasedServings = recipeIngredients.map(({ id, name, weight }) => ({
             id,
             name,
@@ -33,7 +30,7 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({ ingredients }) =>
    };
 
    const decreaseServings = () => {
-      if (servings > 1 && recipeIngredients.length) {
+      if (servings > 1) {
          const decreasedServings = recipeIngredients.map(({ id, name, weight }) => ({
             id,
             name,
@@ -44,36 +41,37 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({ ingredients }) =>
       }
    };
 
-   const addToShopList = () => dispatch(addProduct(recipeIngredients));
-
    return (
       <div className={styles.ingredientsContainer}>
-         <div className={styles.center}>
-            <div className={styles.subTitle}>Ingredients</div>
-            <div className={styles.savages}>
-               <button type="button" className={styles.button}>
-                  <Minus className={styles.icon} onClick={decreaseServings} />
-               </button>
-               <div className={styles.servingsNUM}>{servings} servings</div>
-               <button type="button" className={styles.button}>
-                  <Plus className={styles.icon} onClick={increaseServings} />
-               </button>
-            </div>
-         </div>
-         {!!recipeIngredients?.length &&
-            recipeIngredients.map(({ id, name, weight }) => (
-               <div key={id} className={styles.ingredients}>
-                  <span className={styles.dot} />
-                  <div className={styles.ingredient}>
-                     {name} - {weight}g
-                  </div>
-               </div>
-            ))}
-         <div className={styles.list}>
-            <button type="button" className={styles.shoppingButton} onClick={addToShopList}>
-               <Shop className={styles.shopIcon} />
-               <div className={styles.buttonText}>Add to shopping list</div>
+         <div className={styles.title}>Ingredients</div>
+         <div className={styles.servingsButtons}>
+            <button className={styles.decreaseBtn} onClick={decreaseServings}>
+               <Minus className={styles.icon} />
             </button>
+            <span className={styles.servingsNumber}>{servings} servings</span>
+            <button className={styles.increaseBtn} onClick={increaseServings}>
+               <Plus className={styles.icon} />
+            </button>
+         </div>
+         <ul className={styles.ingredientsList}>
+            {recipeIngredients.map(({ id, name, weight }) => (
+               <li key={id} className={styles.ingredient}>
+                  <span className={styles.dot} />
+                  <p className={styles.name}>{`${weight} g - ${name}`}</p>
+               </li>
+            ))}
+         </ul>
+         <div className={styles.shopBtnWrapper}>
+            <Button
+               variant="ghost-secondary"
+               size="small"
+               borderRadius={5}
+               isBold
+               leftIcon={<Shop className={styles.shopIcon} />}
+               onClick={() => dispatch(addProduct(recipeIngredients))}
+            >
+               Add to shopping list
+            </Button>
          </div>
       </div>
    );

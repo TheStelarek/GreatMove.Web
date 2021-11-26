@@ -1,0 +1,41 @@
+.nutrilionsContainer {
+   margin-top: var(--space-10);
+
+   .title {
+      font-size: var(--font-size-p3);
+      line-height: var(--line-height-p3);
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--gray-900);
+   }
+   .nurtilions {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: var(--space-3);
+      gap: var(--space-4);
+      row-gap: var(--space-2);
+
+      .nurtilionBox {
+         height: 60px;
+         width: 60px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         padding: var(--space-3-5) var(--space-1);
+         background-color: var(--gray-50);
+         border-radius: var(--border-radius-10);
+         color: var(--gray-700);
+
+         .name {
+            font-size: var(--font-size-p1);
+            line-height: var(--line-height-p1);
+            font-weight: var(--font-weight-semi-bold);
+         }
+
+         p {
+            font-size: var(--font-size-p1);
+            line-height: var(--line-height-p1);
+         }
+      }
+   }
+}

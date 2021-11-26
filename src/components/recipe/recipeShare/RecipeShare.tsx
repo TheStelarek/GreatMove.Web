@@ -22,99 +22,74 @@ import Print from '@/public/recipe/print.svg';
 import Copy from '@/public/recipe/copy.svg';
 
 const RecipeShare = () => {
-   const [showMe, setShowMe] = useState(false);
-   function toggle() {
-      setShowMe(!showMe);
-   }
-
+   const [show, setShow] = useState(false);
    const router = useRouter();
 
-   console.log();
-
-   const [copySuccess, setCopySuccess] = useState(``);
-
-   const copy = async () => {
-      await navigator.clipboard.writeText(`localhost:3000${router.pathname}`);
-   };
+   const toggle = () => setShow((prevState) => !prevState);
+   const copy = () => navigator.clipboard.writeText(`localhost:3000${router.pathname}`);
 
    return (
       <div className={styles.shareContainer}>
-         <div className={styles.icons}>
-            <div className={styles.share}>
-               <button type="button" className={styles.button} onClick={toggle}>
-                  <Share className={styles.icon} />
-               </button>
-               <div
-                  className={styles.socials}
-                  style={{
-                     display: showMe ? `block` : `none`,
-                  }}
-               >
-                  <div className={styles.copyContainer}>
-                     <button type="button" className={styles.copy} onClick={copy}>
-                        <Copy />
-                     </button>
-                  </div>
-                  <div className={styles.copyContainer}>
-                     <FacebookShareButton
-                        url="https://github.com/next-share"
-                        quote="next-share is a social share buttons for your next React apps."
-                        hashtag="#nextshare"
-                        className={styles.outline}
-                     >
-                        <FacebookIcon className={styles.outline} size={32} round />
-                     </FacebookShareButton>
-                  </div>
-                  <div>
-                     <TwitterShareButton
-                        url="https://github.com/next-share"
-                        title="next-share is a social share buttons for your next React apps."
-                     >
-                        <TwitterIcon size={32} round />
-                     </TwitterShareButton>
-                  </div>
-                  <div>
-                     <WhatsappShareButton
-                        url="https://github.com/next-share"
-                        title="next-share is a social share buttons for your next React apps."
-                        separator=":: "
-                     >
-                        <WhatsappIcon size={32} round />
-                     </WhatsappShareButton>
-                  </div>
-                  <div>
-                     <FacebookMessengerShareButton url="https://github.com/next-share" appId="">
-                        <FacebookMessengerIcon size={32} round />
-                     </FacebookMessengerShareButton>
-                  </div>
-                  <div>
-                     <TelegramShareButton
-                        url="https://github.com/next-share"
-                        title="next-share is a social share buttons for your next React apps."
-                     >
-                        <TelegramIcon size={32} round />
-                     </TelegramShareButton>
-                  </div>
-                  <div>
-                     <RedditShareButton
-                        url="https://github.com/next-share"
-                        title="next-share is a social share buttons for your next React apps."
-                     >
-                        <RedditIcon size={32} round />
-                     </RedditShareButton>
-                  </div>
-                  <div>
-                     <EmailShareButton url="https://github.com/next-share" subject="Next Share" body="body">
-                        <EmailIcon size={32} round />
-                     </EmailShareButton>
-                  </div>
+         <div className={styles.shareSocials}>
+            <button className={styles.actionBtn} onClick={toggle}>
+               <Share className={styles.shareIcon} />
+            </button>
+            <div
+               className={styles.socials}
+               style={{
+                  display: show ? `block` : `none`,
+               }}
+            >
+               <div className={styles.socialWrapper}>
+                  <button className={styles.copyBtn} onClick={copy}>
+                     <Copy />
+                  </button>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <FacebookShareButton
+                     url="https://github.com/next-share"
+                     hashtag="#nextshare"
+                     className={styles.outline}
+                  >
+                     <FacebookIcon className={styles.outline} size={32} round />
+                  </FacebookShareButton>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <TwitterShareButton url="https://github.com/next-share">
+                     <TwitterIcon size={32} round />
+                  </TwitterShareButton>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <WhatsappShareButton url="https://github.com/next-share" separator=":: ">
+                     <WhatsappIcon size={32} round />
+                  </WhatsappShareButton>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <FacebookMessengerShareButton url="https://github.com/next-share" appId="">
+                     <FacebookMessengerIcon size={32} round />
+                  </FacebookMessengerShareButton>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <TelegramShareButton url="https://github.com/next-share">
+                     <TelegramIcon size={32} round />
+                  </TelegramShareButton>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <RedditShareButton url="https://github.com/next-share">
+                     <RedditIcon size={32} round />
+                  </RedditShareButton>
+               </div>
+               <div className={styles.socialWrapper}>
+                  <EmailShareButton url="https://github.com/next-share" subject="Next Share" body="body">
+                     <EmailIcon size={32} round />
+                  </EmailShareButton>
                </div>
             </div>
-            <div className={styles.print}>
-               <button type="button" className={styles.button}>
-                  <Print className={styles.icon} />
-               </button>
-            </div>
+         </div>
+         <div className={styles.print}>
+            <button className={styles.actionBtn}>
+               <Print className={styles.printIcon} />
+            </button>
          </div>
       </div>
    );
