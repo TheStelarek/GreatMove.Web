@@ -1,6 +1,5 @@
 import React, { ReactElement, useMemo, useState } from 'react';
 import cx from 'classnames';
-
 import Layout from '@/components/core/layout/Layout';
 import Image from 'next/image';
 import Button from '@/components/core/button/Button';
@@ -17,6 +16,9 @@ import Recipes from '@/public/profile/recipes.svg';
 import Discussion from '@/public/profile/discussion.svg';
 import Training from '@/public/profile/training.svg';
 import Achievements from '@/public/profile/achievements.svg';
+import Gold from '@/public/profile/gold.svg';
+import Silver from '@/public/profile/silver.svg';
+import Bronze from '@/public/profile/bronze.svg';
 import styles from './Profile.module.scss';
 
 const trainingData = [
@@ -128,8 +130,14 @@ const recipeColumns = [
    },
 ];
 
+const name = `Dennis Buk`;
+const tag = `@Hickari`;
+
 const Profile = () => {
    const [showPage, setShowPage] = useState(0);
+   const [follow, setFollow] = useState(`Follow`);
+
+   const followFunction = () => setFollow(`Followed`);
 
    return (
       <div className={styles.Container}>
@@ -149,10 +157,10 @@ const Profile = () => {
                      <Image src="/profile/avatar.png" alt="Picture of the author" layout="fill" objectFit="cover" />
                   </div>
                   <div className={styles.name}>
-                     <p>Dennis Buk</p>
+                     <p>{name}</p>
                   </div>
                   <div className={styles.tag}>
-                     <p>@Hickari</p>
+                     <p>{tag}</p>
                   </div>
                   <div>
                      <Button
@@ -160,8 +168,9 @@ const Profile = () => {
                         leftIcon={<Follow className={styles.icon} />}
                         borderRadius={5}
                         variant="ghost-primary"
+                        onClick={() => followFunction()}
                      >
-                        Follow
+                        {follow}
                      </Button>
                   </div>
                   <div className={styles.informationContainer}>
@@ -234,37 +243,52 @@ const Profile = () => {
                   <div className={styles.tabContainer}>
                      <div className={styles.wrapper}>
                         <div className={styles.firstAchiv}>
-                           <div className={styles.boxWrapper}>
-                              <div className={styles.smallBlueBox}>1</div>
-                              <div className={styles.smallBlueBox}>2</div>
+                           <div>
+                              <Gold className={styles.medal} />
                            </div>
-                           <div className={styles.boxWrapper}>
-                              <div className={styles.smallRightBlueBox}>3</div>
-                              <div className={styles.smallRightBlueBox}>4</div>
+                           <div className={styles.boxes}>
+                              <div className={styles.boxWrapper}>
+                                 <div className={styles.smallBlueBox}>1</div>
+                                 <div className={styles.smallBlueBox}>2</div>
+                              </div>
+                              <div className={styles.boxWrapper}>
+                                 <div className={styles.smallRightBlueBox}>3</div>
+                                 <div className={styles.smallRightBlueBox}>4</div>
+                              </div>
                            </div>
                         </div>
                      </div>
                      <div className={styles.wrapper}>
                         <div className={styles.secondAchiv}>
-                           <div className={styles.boxWrapper}>
-                              <div className={styles.smallDarkerBlueBox}>1</div>
-                              <div className={styles.smallDarkerBlueBox}>2</div>
+                           <div>
+                              <Silver className={styles.medal} />
                            </div>
-                           <div className={styles.boxWrapper}>
-                              <div className={styles.smallDarkRight}>3</div>
-                              <div className={styles.smallDarkRight}>4</div>
+                           <div className={styles.boxes}>
+                              <div className={styles.boxWrapper}>
+                                 <div className={styles.smallDarkerBlueBox}>1</div>
+                                 <div className={styles.smallDarkerBlueBox}>2</div>
+                              </div>
+                              <div className={styles.boxWrapper}>
+                                 <div className={styles.smallDarkRight}>3</div>
+                                 <div className={styles.smallDarkRight}>4</div>
+                              </div>
                            </div>
                         </div>
                      </div>
                      <div className={styles.wrapper}>
                         <div className={styles.tripleAchiv}>
-                           <div className={styles.boxWrapper}>
-                              <div className={styles.smallDarkest}>1</div>
-                              <div className={styles.smallDarkest}>2</div>
+                           <div>
+                              <Bronze className={styles.medal} />
                            </div>
-                           <div className={styles.boxWrapper}>
-                              <div className={styles.smallRightDarkest}>3</div>
-                              <div className={styles.smallRightDarkest}>4</div>
+                           <div className={styles.boxes}>
+                              <div className={styles.boxWrapper}>
+                                 <div className={styles.smallDarkest}>1</div>
+                                 <div className={styles.smallDarkest}>2</div>
+                              </div>
+                              <div className={styles.boxWrapper}>
+                                 <div className={styles.smallRightDarkest}>3</div>
+                                 <div className={styles.smallRightDarkest}>4</div>
+                              </div>
                            </div>
                         </div>
                      </div>

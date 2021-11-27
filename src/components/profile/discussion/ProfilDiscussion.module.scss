@@ -2,37 +2,41 @@
    display: flex;
    flex-direction: column;
    margin-left: var(--space-2);
-   margin-top: var(--space-8);
+   margin-top: var(--space-2);
    margin-right: var(--space-2);
 
    .commentBox {
       display: flex;
       flex-direction: column;
       box-shadow: var(--box-shadow-xl);
-
-      height: 250px;
+      height: 300px;
       background-color: var(--gray-50);
-      width: 95%;
+      width: 99%;
       border-radius: var(--border-radius-10);
-      margin-top: var(--space-4);
+      margin-top: var(--space-6);
+      padding-left: var(--space-2);
+   }
+   .commentwrapp {
+      display: flex;
+      flex-direction: column;
    }
    .commentAvatar {
       position: relative;
       width: 40px;
       height: 40px;
-      margin-top: var(--space-5);
+      margin-top: var(--space-2);
    }
    .headerComment {
       display: flex;
+      margin-bottom: var(--space-4);
    }
    .commentName {
       font-weight: var(--font-weight-extra-bold);
-      margin-top: var(--space-8);
+      margin-top: var(--space-4);
       font-size: var(--font-size-p1);
       line-height: var(--line-height-p3);
    }
    .commentTag {
-      margin-top: var(--space-9);
       margin-left: var(--space-2);
 
       color: var(--gray-600);
@@ -92,5 +96,30 @@
       width: 24px;
       height: 24px;
       margin-right: var(--space-1);
+   }
+
+   .partybuffs {
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 5px;
+      margin: auto;
+      text-align: center;
+      width: 500px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .partybuff {
+      flex-basis: 125px;
+      display: grid;
+      justify-content: center;
+      margin: 7px 2px 7px 2px;
+      border-right: 2px solid black;
+      font-size: 12px;
+
+      &:last-child {
+         border-right: none;
+      }
    }
 }

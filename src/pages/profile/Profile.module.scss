@@ -41,6 +41,8 @@
       display: flex;
       height: 326px;
       width: 100%;
+      align-items: center;
+      flex-direction: column;
       background-color: var(--blue-100);
    }
 
@@ -48,6 +50,8 @@
       display: flex;
       height: 326px;
       width: 100%;
+      align-items: center;
+      flex-direction: column;
       background-color: var(--gray-400);
    }
 
@@ -55,33 +59,52 @@
       display: flex;
       height: 326px;
       width: 100%;
+      align-items: center;
+      flex-direction: column;
       background-color: var(--gray-700);
+   }
+
+   .medal {
+      height: 40px;
+      width: 40px;
+   }
+
+   .boxes {
+      display: flex;
+      width: 100%;
+      max-height: 75%;
+      justify-content: center;
+      align-items: center;
    }
 
    .boxWrapper {
       width: 100%;
+      height: 75%;
    }
    .smallBlueBox {
-      margin: var(--space-12);
       background-color: var(--blue-200);
-      width: 40%;
+      width: 70%;
       height: 100px;
       box-shadow: var(--box-shadow-md);
+      margin-left: var(--space-8);
+      margin-bottom: var(--space-8);
    }
 
    .smallDarkerBlueBox {
-      margin: var(--space-12);
       background-color: var(--gray-500);
-      width: 40%;
+      width: 70%;
       height: 100px;
       box-shadow: var(--box-shadow-md);
+      margin-left: var(--space-8);
+      margin-bottom: var(--space-8);
    }
    .smallDarkest {
-      margin: var(--space-12);
       background-color: var(--gray-800);
-      width: 40%;
+      width: 70%;
       height: 100px;
       box-shadow: var(--box-shadow-md);
+      margin-left: var(--space-8);
+      margin-bottom: var(--space-8);
    }
 
    .menuIcon {
@@ -90,34 +113,34 @@
    }
 
    .smallRightBlueBox {
-      margin: var(--space-12);
       background-color: var(--blue-200);
-      width: 40%;
+      width: 70%;
       height: 100px;
       box-shadow: var(--box-shadow-md);
-      margin-left: auto;
+      margin-left: var(--space-8);
+      margin-bottom: var(--space-8);
    }
 
    .smallDarkRight {
-      margin: var(--space-12);
       background-color: var(--gray-500);
-      width: 40%;
+      width: 70%;
       height: 100px;
       box-shadow: var(--box-shadow-md);
-      margin-left: auto;
+      margin-left: var(--space-8);
+      margin-bottom: var(--space-8);
    }
 
    .smallRightDarkest {
-      margin: var(--space-12);
       background-color: var(--gray-800);
-      width: 40%;
+      width: 70%;
       height: 100px;
       box-shadow: var(--box-shadow-md);
-      margin-left: auto;
+      margin-left: var(--space-8);
+      margin-bottom: var(--space-8);
    }
 
    .tabContainer {
-      max-width: 70%;
+      max-width: 95%;
       margin-left: var(--space-2);
       margin-top: var(--space-10);
    }

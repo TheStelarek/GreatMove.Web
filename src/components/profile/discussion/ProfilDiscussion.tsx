@@ -5,6 +5,10 @@ import Heart from '@/public/profile/heart.svg';
 import Comment from '@/public/profile/comment.svg';
 import Button from '@/components/core/button/Button';
 
+const name = `Dennis Buk`;
+const tag = `@Hickari`;
+const time = `32 min`;
+
 const ProfileDiscussion = () => (
    <div className={styles.commentContainer}>
       <div className={styles.commentBox}>
@@ -12,14 +16,16 @@ const ProfileDiscussion = () => (
             <div className={styles.commentAvatar}>
                <Image src="/profile/avatar.png" alt="Picture of the author" layout="fill" objectFit="cover" />
             </div>
-            <div className={styles.commentName}>
-               <p>Dennis Buk</p>
-            </div>
-            <div className={styles.commentTag}>
-               <p className={styles.commentTagText}>@Hickari</p>
+            <div className={styles.commentwrapp}>
+               <div className={styles.commentName}>
+                  <p>{name}</p>
+               </div>
+               <div className={styles.commentTag}>
+                  <p className={styles.commentTagText}>{tag}</p>
+               </div>
             </div>
             <div className={styles.commentDate}>
-               <p className={styles.commentDate}>32 min</p>
+               <p className={styles.commentDate}>{time}</p>
             </div>
 
             <div className={styles.commentMenu}>
@@ -49,14 +55,16 @@ const ProfileDiscussion = () => (
             <div className={styles.commentAvatar}>
                <Image src="/profile/avatar.png" alt="Picture of the author" layout="fill" objectFit="cover" />
             </div>
-            <div className={styles.commentName}>
-               <p>Dennis Buk</p>
-            </div>
-            <div className={styles.commentTag}>
-               <p className={styles.commentTagText}>@Hickari</p>
+            <div className={styles.commentwrapp}>
+               <div className={styles.commentName}>
+                  <p>{name}</p>
+               </div>
+               <div className={styles.commentTag}>
+                  <p className={styles.commentTagText}>{tag}</p>
+               </div>
             </div>
             <div className={styles.commentDate}>
-               <p className={styles.commentDate}>32 min</p>
+               <p className={styles.commentDate}>{time}</p>
             </div>
 
             <div className={styles.commentMenu}>
