@@ -1,110 +1,68 @@
 .shareContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
-  align-self: flex-end;
-  padding-right: 5px;
+   margin-left: auto;
+   display: flex;
+   flex-direction: row;
+   align-items: flex-end;
 
-  position: static;
-  @media (min-width: 940px) {
-    max-width: 55%;
-    transform: translateY(-10px);
-  }
-  @media (min-width: 1080px) {
-    max-width: 60%;
-    transform: translateY(-10px);
-  }
+   .shareSocials,
+   .print {
+      position: relative;
+      .actionBtn {
+         width: 46px;
 
-  .categoryText {
-    color: var(--white);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-p1);
-  }
+         .shareIcon,
+         .printIcon {
+            fill: var(--white);
+            width: 24px;
+            height: 24px;
+         }
+      }
 
-  .share {
-    margin-top: 8px;
-    margin-left: 10px;
-  }
+      .socials {
+         background-color: var(--white);
+         box-shadow: var(--box-shadow-sm);
+         border: 1px solid var(--gray-100);
+         display: flex;
+         flex-direction: column;
+         border-radius: var(--border-radius-10);
+         padding: var(--space-1-5);
+         position: absolute;
+         animation: growDown 300ms ease-in-out backwards;
 
-  .icon {
-    margin-left: auto;
-    margin-right: auto;
-    fill: white;
-    width: 24px;
-    height: 24px;
-  }
-  .print {
-    margin-top: 8px;
-    margin-left: 10px;
-  }
-  .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: none;
-    background-color: var(--primary-color);
-    color: var(--gray-80);
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-  }
-  .icons {
-    display: flex;
-    flex-direction: row;
-  }
+         .socialWrapper {
+            & > button {
+               width: 31px;
+               height: 31px;
 
-  @keyframes growDown {
-    0% {
-      transform: scaleY(0);
-    }
-    80% {
-      transform: scaleY(1.1);
-    }
-    100% {
-      transform: scaleY(1);
-    }
-  }
+               &:focus {
+                  outline: 2px solid var(--black) !important;
+                  border-radius: 50%;
+               }
+            }
 
-  .socials {
-    background-color: var(--white);
-    box-shadow: var(--box-shadow-sm);
-    border: 1px solid var(--gray-100);
-    display: flex;
-    justify-content: center;
-    border-radius: var(--border-radius-10);
-    padding-top: var(--space-2-5);
-    padding-right: var(--space-1-5);
-    padding-left: var(--space-1-5);
-    flex-direction: column;
-    position: absolute;
-    padding-bottom: 5px;
-    animation: growDown 300ms ease-in-out forwards;
-  }
+            &:first-of-type {
+               padding-bottom: var(--space-1);
 
-  .copy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: none;
-    background-color: var(--primary-color);
-    color: var(--gray-80);
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-  }
+               .copyBtn {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border-radius: 50%;
+               }
+            }
+         }
+      }
 
-  .copyContainer {
-    padding-bottom: var(--space-1);
-  }
-
-  *:focus {
-    outline-style: 2px solid var(--black) !important;
-    outline: 2px solid var(--black) !important;
-    outline: 2 !important;
-    border: 1px solid black;
-    border-radius: 50%;
-  }
+      @keyframes growDown {
+         0% {
+            transform: scaleY(0);
+         }
+         80% {
+            transform: scaleY(1.1);
+         }
+         100% {
+            transform: scaleY(1);
+         }
+      }
+   }
 }

@@ -39,7 +39,12 @@
                padding: var(--space-4) 0 var(--space-4) var(--space-6);
                margin: 0;
 
+               &:first-of-type {
+                  border-top-left-radius: var(--border-radius-5);
+               }
+
                &:last-of-type {
+                  border-top-right-radius: var(--border-radius-5);
                   padding-right: var(--space-6);
                }
             }

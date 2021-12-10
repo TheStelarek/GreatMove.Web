@@ -5,12 +5,10 @@ interface RecipeTipsProps {
 }
 
 const RecipeTips: React.FC<RecipeTipsProps> = ({ tips }) => (
-   <>
-      <div className={styles.subTitle}>Tips</div>
-      <div className={styles.tip}>
-         <div className={styles.tips}>{tips}</div>
-      </div>
-   </>
+   <div className={styles.tipsContainer}>
+      <span className={styles.title}>Tips</span>
+      <p className={styles.tips}>{tips}</p>
+   </div>
 );
 
 export default RecipeTips;

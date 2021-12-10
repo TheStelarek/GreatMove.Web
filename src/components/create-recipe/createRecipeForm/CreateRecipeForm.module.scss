@@ -1,0 +1,145 @@
+.createRecipeForm {
+   max-width: 850px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-7);
+
+   .uploadPhotoContainer {
+      width: 100%;
+      box-shadow: var(--box-shadow-xs);
+      border-radius: var(--border-radius-15);
+      padding: var(--space-6) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-1-5);
+
+      @media (min-width: 850px) {
+         padding: var(--space-11) var(--space-8);
+      }
+
+      .uploadTitle {
+         color: var(--gray-900);
+         font-size: var(--font-size-p5);
+         line-height: var(--line-height-p5);
+         font-weight: var(--font-weight-semi-bold);
+      }
+
+      .info {
+         color: var(--gray-400);
+         font-size: var(--font-size-caption);
+         line-height: var(--line-height-caption);
+      }
+
+      .recipePhoto {
+         margin-top: var(--space-3);
+         height: 150px;
+         object-fit: cover;
+      }
+
+      .uploadPhotoWrapper {
+         width: 100%;
+         margin-top: var(--space-5);
+         padding: var(--space-8) var(--space-8);
+         border-radius: var(--border-radius-15);
+         border: 1px dashed var(--blue-200);
+         background-color: var(--gray-0);
+
+         .upload {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .description {
+               margin-top: var(--space-2);
+               color: var(--blue-700);
+               font-size: var(--font-size-p1);
+               line-height: var(--line-height-p1);
+               font-weight: var(--font-weight-semi-bold);
+            }
+
+            .uploadArt {
+               width: 80px;
+            }
+
+            .dividerWrapper {
+               width: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+            }
+         }
+      }
+   }
+
+   .boxInfo {
+      width: 100%;
+      box-shadow: var(--box-shadow-xs);
+      border-radius: var(--border-radius-15);
+      padding: var(--space-6) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+
+      @media (min-width: 850px) {
+         padding: var(--space-8);
+      }
+
+      .title {
+         color: var(--gray-900);
+         font-size: var(--font-size-p4);
+         line-height: var(--line-height-p4);
+         font-weight: var(--font-weight-semi-bold);
+         margin-bottom: var(--space-2);
+      }
+
+      .sectionContainer {
+         .subTitle {
+            color: var(--gray-900);
+            font-size: var(--font-size-p2);
+            line-height: var(--line-height-p2);
+            font-weight: var(--font-weight-semi-bold);
+            margin: var(--space-4) 0 var(--space-2) 0;
+         }
+
+         .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+         }
+      }
+
+      .list {
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-4);
+
+         .listItem {
+            display: flex;
+            gap: var(--space-3);
+            align-items: flex-start;
+
+            .removeBtn {
+               height: 44px;
+            }
+         }
+      }
+      .addBtnWrapper {
+         margin-top: var(--space-2);
+         margin-left: auto;
+      }
+   }
+
+   .privacyContainer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+   }
+
+   .saveBtnWrapper {
+      margin-left: auto;
+   }
+}

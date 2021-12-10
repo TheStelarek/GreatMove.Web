@@ -7,10 +7,6 @@ import ListWrapper from '@/components/recipes/recipesFilterForm/ListWrapper';
 import RangeWrapper from '@/components/recipes/recipesFilterForm/RangeWrapper';
 import TagCheckbox from '@/components/core/tagCheckbox/TagCheckbox';
 import {
-   times,
-   tags,
-   meals,
-   diets,
    proteinsMarks,
    caloriesMarks,
    carbsMarks,
@@ -22,6 +18,7 @@ import {
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { getRecipes } from '@/store/recipes/getRecipes';
 import { clearState, setSearchName } from '@/store/recipes/RecipesSlice';
+import { times, tags, meals, diets } from '@/utils/data/recipes';
 
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);

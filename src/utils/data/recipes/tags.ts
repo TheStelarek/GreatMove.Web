@@ -1,0 +1,26 @@
+import { MealTag } from '@/utils/types/MealTag';
+
+export const tags: MealTag[] = [
+   `appetizer`,
+   `drinks and beverages`,
+   `breadstuff`,
+   `pastries, cakes and desserts`,
+   `bake`,
+   `pancakes`,
+   `autumn season`,
+   `fish`,
+   `meal dishes`,
+   `omelette`,
+   `pasta`,
+   `poultry`,
+   `red meat`,
+   `rice and groats`,
+   `salads`,
+   `sandwiches`,
+   `seafood`,
+   `summer season`,
+   `winter season`,
+   `snack`,
+   `spring season`,
+   `Wheatless`,
+];

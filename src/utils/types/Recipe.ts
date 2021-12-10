@@ -6,4 +6,8 @@ export interface Recipe {
    meal: string;
    calories: number;
    difficulty: string;
+   protein?: number;
+   carbs?: number;
+   fats?: number;
+   createdAt?: string;
 }

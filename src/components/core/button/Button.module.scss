@@ -177,7 +177,7 @@
 }
 
 .button-ghost-secondary {
-   background-color: var(--white);
+   background-color: transparent;
    color: var(--purple-500);
    border: 1px solid var(--purple-500);
 
@@ -201,6 +201,33 @@
       background-color: var(--gray-100);
       color: var(--gray-600);
       border: 1px solid var(--gray-300);
+      transition: none;
+
+      .icon {
+         svg {
+            fill: var(--gray-600);
+         }
+      }
+   }
+}
+
+.button-warning {
+   background-color: var(--red-100);
+   color: var(--red-700);
+
+   &:hover {
+      background-color: var(--red-200);
+      color: var(--red-800);
+   }
+
+   &:active {
+      color: var(--red-900);
+   }
+
+   &:disabled {
+      pointer-events: none;
+      background-color: var(--gray-100);
+      color: var(--gray-600);
       transition: none;
 
       .icon {
