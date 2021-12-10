@@ -196,32 +196,38 @@ const Profile = () => {
             </div>
             <div className={styles.rightBox}>
                <div className={styles.menuContainer}>
-                  <p className={styles.menuText}>
+                  <p className={styles.menuWrapper}>
                      <button className={styles.menuButton} onClick={() => setShowPage(0)}>
                         <Discussion className={cx(styles.menuIcon, showPage === 0 && styles.activeMenu)} />
+                        <span className={cx(styles.menuText, showPage === 0 && styles.activeText)}>Discussion</span>
                      </button>
                   </p>
-                  <p className={styles.menuText}>
-                     <p className={styles.menuText}>
+                  <p className={styles.menuWrapper}>
+                     <p className={styles.menuWrapper}>
                         <button className={styles.menuButton} onClick={() => setShowPage(1)}>
                            <Training className={cx(styles.menuIcon, showPage === 1 && styles.activeMenu)} />
+                           <span className={cx(styles.menuText, showPage === 1 && styles.activeText)}>Training</span>
                         </button>
                      </p>
                   </p>
-                  <p className={styles.menuText}>
-                     <p className={styles.menuText}>
+                  <p className={styles.menuWrapper}>
+                     <p className={styles.menuWrapper}>
                         <button
                            className={cx(styles.menuButton, showPage === 2 && styles.active)}
                            onClick={() => setShowPage(2)}
                         >
                            <Achievements className={cx(styles.menuIcon, showPage === 2 && styles.activeMenu)} />
+                           <span className={cx(styles.menuText, showPage === 2 && styles.activeText)}>
+                              Achievements
+                           </span>
                         </button>
                      </p>
                   </p>
-                  <p className={styles.menuText}>
-                     <p className={styles.menuText}>
+                  <p className={styles.menuWrapper}>
+                     <p className={styles.menuWrapper}>
                         <button className={styles.menuButton} onClick={() => setShowPage(3)}>
                            <Recipes className={cx(styles.menuIcon, showPage === 3 && styles.activeMenu)} />
+                           <span className={cx(styles.menuText, showPage === 3 && styles.activeText)}>Recipes</span>
                         </button>
                      </p>
                   </p>

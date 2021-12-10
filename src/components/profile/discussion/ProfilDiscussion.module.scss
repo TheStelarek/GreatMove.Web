@@ -8,13 +8,16 @@
    .commentBox {
       display: flex;
       flex-direction: column;
-      box-shadow: var(--box-shadow-xl);
+      box-shadow: var(--box-shadow-md);
       height: 300px;
       background-color: var(--gray-50);
       width: 99%;
       border-radius: var(--border-radius-10);
       margin-top: var(--space-6);
       padding-left: var(--space-2);
+      @media (min-width: 1100px) {
+         width: 800px;
+      }
    }
    .commentwrapp {
       display: flex;

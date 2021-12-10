@@ -18,8 +18,15 @@
       height: 380px;
       border-radius: var(--border-radius-15);
       margin-left: var(--space-2);
-      transform: translateY(-0%);
       box-shadow: var(--box-shadow-xl);
+      @media (min-width: 800px) {
+         width: 500px;
+         margin-left: var(--space-8);
+         height: 500px;
+         transform: translateY(-20%);
+         justify-content: flex-end;
+         margin-right: var(--space-8);
+      }
    }
    .mobileWrapper {
       display: flex;
@@ -44,6 +51,9 @@
       align-items: center;
       flex-direction: column;
       background-color: var(--blue-100);
+      @media (min-width: 1100px) {
+         width: 800px;
+      }
    }
 
    .secondAchiv {
@@ -53,6 +63,9 @@
       align-items: center;
       flex-direction: column;
       background-color: var(--gray-400);
+      @media (min-width: 1100px) {
+         width: 800px;
+      }
    }
 
    .tripleAchiv {
@@ -62,6 +75,9 @@
       align-items: center;
       flex-direction: column;
       background-color: var(--gray-700);
+      @media (min-width: 1100px) {
+         width: 800px;
+      }
    }
 
    .medal {
@@ -88,6 +104,12 @@
       box-shadow: var(--box-shadow-md);
       margin-left: var(--space-8);
       margin-bottom: var(--space-8);
+      @media (min-width: 1100px) {
+         width: 250px;
+         height: 100px;
+         margin-right: auto;
+         margin-left: var(--space-12);
+      }
    }
 
    .smallDarkerBlueBox {
@@ -97,6 +119,12 @@
       box-shadow: var(--box-shadow-md);
       margin-left: var(--space-8);
       margin-bottom: var(--space-8);
+      @media (min-width: 1100px) {
+         width: 250px;
+         height: 100px;
+         margin-right: auto;
+         margin-left: var(--space-12);
+      }
    }
    .smallDarkest {
       background-color: var(--gray-800);
@@ -105,11 +133,12 @@
       box-shadow: var(--box-shadow-md);
       margin-left: var(--space-8);
       margin-bottom: var(--space-8);
-   }
-
-   .menuIcon {
-      width: 40px;
-      height: 40px;
+      @media (min-width: 1100px) {
+         width: 250px;
+         height: 100px;
+         margin-right: auto;
+         margin-left: var(--space-12);
+      }
    }
 
    .smallRightBlueBox {
@@ -119,6 +148,12 @@
       box-shadow: var(--box-shadow-md);
       margin-left: var(--space-8);
       margin-bottom: var(--space-8);
+      @media (min-width: 1100px) {
+         width: 250px;
+         height: 100px;
+         margin-left: auto;
+         margin-right: var(--space-12);
+      }
    }
 
    .smallDarkRight {
@@ -128,6 +163,12 @@
       box-shadow: var(--box-shadow-md);
       margin-left: var(--space-8);
       margin-bottom: var(--space-8);
+      @media (min-width: 1100px) {
+         width: 250px;
+         height: 100px;
+         margin-left: auto;
+         margin-right: var(--space-12);
+      }
    }
 
    .smallRightDarkest {
@@ -137,6 +178,12 @@
       box-shadow: var(--box-shadow-md);
       margin-left: var(--space-8);
       margin-bottom: var(--space-8);
+      @media (min-width: 1100px) {
+         width: 250px;
+         height: 100px;
+         margin-left: auto;
+         margin-right: var(--space-12);
+      }
    }
 
    .tabContainer {
@@ -191,32 +238,71 @@
    .menuContainer {
       display: flex;
       flex-direction: row;
-      gap: 17%;
+      justify-content: space-between;
       margin-left: var(--space-2);
       margin-right: var(--space-2);
+      margin-top: var(--space-8);
+      width: 95%;
    }
    .botContainer {
       display: flex;
       flex-direction: column;
+      @media (min-width: 800px) {
+         flex-direction: row;
+      }
    }
    .rightBox {
       width: 100%;
    }
 
+   .menuIcon {
+      width: 24px;
+      height: 24px;
+      @media (min-width: 500px) {
+         height: 40px;
+         width: 40px;
+      }
+      @media (min-width: 800px) {
+         display: none;
+      }
+   }
+
    .activeMenu {
       fill: var(--blue-600);
-      height: 40px;
-      width: 40px;
+      height: 24px;
+      width: 24px;
+      @media (min-width: 500px) {
+         height: 40px;
+         width: 40px;
+      }
+      @media (min-width: 800px) {
+         display: none;
+      }
+   }
+   .activeText {
+      color: var(--blue-600);
+      font-size: var(--font-size-p5);
+      font-weight: var(--font-weight-bold);
+      display: none;
+      @media (min-width: 800px) {
+         display: flex;
+      }
    }
    .menuText {
-      font-size: var(--font-size-p1);
+      font-size: var(--font-size-p5);
+      font-weight: var(--font-weight-bold);
+      display: none;
+      @media (min-width: 800px) {
+         display: flex;
+      }
+   }
+
+   .menuWrapper {
+      font-size: var(--font-size-p5);
       font-weight: var(--font-weight-bold);
    }
+
    .menuButton {
       font-weight: var(--font-weight-bold);
-
-      &:active {
-         color: var(--blue-600);
-      }
    }
 }
