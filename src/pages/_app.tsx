@@ -9,6 +9,7 @@ import AuthGuard from '@/components/authGuard/AuthGuard';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import '@/styles/global.scss';
 import '@/styles/nprogress.scss';
+import setupInterceptors from '@/api/setup';
 
 NProgress.configure({ showSpinner: false });
 Router.events.on(`routeChangeStart`, NProgress.start);
@@ -40,3 +41,5 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       </>
    );
 }
+
+setupInterceptors(store);

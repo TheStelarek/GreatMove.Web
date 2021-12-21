@@ -82,15 +82,19 @@ const TrainingPlans: NextApplicationPage = () => {
    };
 
    const fetchTrainingPlans = useCallback(async (pageSize: number, pageIndex: number) => {
-      const response = await apiClient.get(`/training-plans/my-plans?take=${pageSize}&skip=${pageIndex * pageSize}`);
-      const mappedData = response.data.data.map((plan: TrainingPlan, index: number) => ({
-         ...plan,
-         createdAt: new Date(plan.createdAt).toLocaleDateString(),
-         number: index + 1,
-      }));
+      try {
+         const response = await apiClient.get(`/training-plans/my-plans?take=${pageSize}&skip=${pageIndex * pageSize}`);
+         const mappedData = response.data.data.map((plan: TrainingPlan, index: number) => ({
+            ...plan,
+            createdAt: new Date(plan.createdAt).toLocaleDateString(),
+            number: index + 1,
+         }));
 
-      setPlans(mappedData);
-      setPageCount(Math.ceil(response.data.total / pageSize));
+         setPlans(mappedData);
+         setPageCount(Math.ceil(response.data.total / pageSize));
+      } catch (err) {
+         console.log(err);
+      }
    }, []);
 
    useEffect(() => {

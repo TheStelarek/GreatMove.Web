@@ -1,3 +1,4 @@
+import { setAccessToken } from '@/api/accessToken';
 import { apiClient } from '@/api/apiClient';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -9,9 +10,8 @@ interface SignInUserData {
 
 interface SignInResponse {
    user: {
-      roles: Array<string>;
+      email: string;
    };
-   token: string;
 }
 
 export const signIn = createAsyncThunk<
@@ -27,12 +27,10 @@ export const signIn = createAsyncThunk<
          password,
       });
 
-      if (response.status === 200) {
-         localStorage.setItem(`token`, response.data.token);
-         return response.data;
-      }
+      setAccessToken(response.data.accessToken);
+      const user = await apiClient.get(`/users/me`);
 
-      return rejectWithValue(response.data.message);
+      return { user: user.data.user };
    } catch (err) {
       if (axios.isAxiosError(err)) {
          if (!err.response) {

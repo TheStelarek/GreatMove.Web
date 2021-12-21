@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DropResult } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import { ExerciseDetailsType } from '@/utils/types/ExerciseDetailsType';
-import type { RootState } from '@/store/index';
+import type { RootState } from '@/utils/types/RootState';
 import { TrainingType } from '@/utils/types/TrainingType';
 import { saveTrainingPlan } from './saveTrainingPlan';
 

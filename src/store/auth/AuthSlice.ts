@@ -1,12 +1,14 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import type { RootState } from '@/store/index';
+import type { RootState } from '@/utils/types/RootState';
+import { User } from '@/utils/types/User';
 import { signUpUser } from './signUpUser';
 import { isAvailableEmailUsername } from './isAvailableEmailUsername';
 import { signIn } from './signIn';
+import { logout } from './logout';
 
 interface AuthState {
    isLoggedIn: boolean;
-   roles: Array<string>;
+   me: User | null;
    isFetching: boolean;
    isSuccess: boolean;
    isError: boolean;
@@ -15,7 +17,7 @@ interface AuthState {
 
 const initialState: AuthState = {
    isLoggedIn: false,
-   roles: [],
+   me: null,
    isFetching: false,
    isSuccess: false,
    isError: false,
@@ -32,18 +34,16 @@ export const authSlice = createSlice({
          state.isFetching = false;
          state.errorMessage = null;
       },
-      logout: (state) => {
-         state.isLoggedIn = false;
-         state.roles = [];
-         localStorage.removeItem(`token`);
-      },
+      reset: () => initialState,
    },
    extraReducers: (builder) => {
+      builder.addCase(logout.fulfilled, () => initialState);
+
       builder.addCase(signIn.fulfilled, (state: AuthState, { payload: { user } }) => {
          state.isFetching = false;
          state.isSuccess = true;
          state.isLoggedIn = true;
-         state.roles = user.roles;
+         state.me = user;
       });
 
       builder.addMatcher(isAnyOf(signUpUser.fulfilled, isAvailableEmailUsername.fulfilled), (state: AuthState) => {
@@ -52,7 +52,7 @@ export const authSlice = createSlice({
       });
 
       builder.addMatcher(
-         isAnyOf(signUpUser.pending, isAvailableEmailUsername.pending, signIn.pending),
+         isAnyOf(signUpUser.pending, isAvailableEmailUsername.pending, signIn.pending, logout.pending),
          (state: AuthState) => {
             state.isFetching = true;
          },
@@ -70,5 +70,5 @@ export const authSlice = createSlice({
    },
 });
 
-export const { clearState, logout } = authSlice.actions;
+export const { clearState, reset } = authSlice.actions;
 export const authSelector = (state: RootState) => state.auth;
