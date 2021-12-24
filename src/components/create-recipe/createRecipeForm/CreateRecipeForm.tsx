@@ -75,7 +75,7 @@ const CreateRecipeForm = () => {
             fats: data.fats,
             fibre: data.fibre,
             useConsent: data.useConsent,
-            visibility: data.visibility,
+            visibility: data.visibility.value,
             meal: data.meal,
             difficulty: data.difficulty,
             steps: data.steps.map(({ step }) => step),

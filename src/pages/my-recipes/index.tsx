@@ -1,22 +1,26 @@
 import { FormEvent, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
+import { AxiosError } from 'axios';
 import Link from 'next/link';
 import { Cell } from 'react-table';
+import { apiClient } from '@/api/apiClient';
 import styles from '@/pages/my-recipes/MyRecipes.module.scss';
 import Layout from '@/components/core/layout/Layout';
 import Table from '@/components/core/table/Table';
 import Button from '@/components/core/button/Button';
 import Spinner from '@/components/core/spinner/Spinner';
-import Modal from '@/components/core/modal/Modal';
 import useModal from '@/components/core/modal/useModal';
-import { apiClient } from '@/api/apiClient';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { Recipe } from '@/utils/types/Recipe';
 import Edit from '@/public/icons/edit-regular.svg';
 import Trash from '@/public/my-shopping-list/trash.svg';
+import DeleteRecipeModal from '@/components/my-recipes/deleteRecipeModal/DeleteRecipeModal';
 
 const MyRecipes: NextApplicationPage = () => {
    const [recipes, setRecipes] = useState<Recipe[]>();
    const [pageCount, setPageCount] = useState(0);
+   const [error, setError] = useState<string>(``);
+   const [isLoading, setIsLoading] = useState<boolean>(false);
+   const [deleteError, setDeleteError] = useState<string>(``);
    const [selectedRecipeId, setSelectedRecipeId] = useState<string>(``);
    const { isOpen, handleOpenModal, handleCloseModal } = useModal();
 
@@ -98,26 +102,43 @@ const MyRecipes: NextApplicationPage = () => {
    const closeDeleteModal = () => {
       handleCloseModal();
       setSelectedRecipeId(``);
+      setDeleteError(``);
    };
 
    const removeRecipe = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      await apiClient.delete(`/recipes/${selectedRecipeId}`);
-      const filteredRecipes = recipes?.filter(({ id }) => id !== selectedRecipeId);
-      setRecipes(filteredRecipes);
-      closeDeleteModal();
+      try {
+         setIsLoading(true);
+         await apiClient.delete(`/recipes/${selectedRecipeId}`);
+         const filteredRecipes = recipes?.filter(({ id }) => id !== selectedRecipeId);
+         setIsLoading(false);
+         setRecipes(filteredRecipes);
+         closeDeleteModal();
+      } catch (axiosError) {
+         setIsLoading(false);
+         const err = axiosError as AxiosError;
+         setError(err.response?.data.message);
+      }
    };
-
    const fetchMyRecipes = useCallback(async (pageSize: number, pageIndex: number) => {
-      const response = await apiClient.get(`/recipes/my-recipes?take=${pageSize}&skip=${pageIndex * pageSize}`);
-      const mappedData = response.data.data.map((recipe: Recipe, index: number) => ({
-         ...recipe,
-         createdAt: recipe.createdAt ? new Date(recipe.createdAt).toLocaleDateString() : null,
-         number: index + 1,
-      }));
+      try {
+         setIsLoading(true);
+         const response = await apiClient.get(`/recipes/my-recipes?take=${pageSize}&skip=${pageIndex * pageSize}`);
+         const mappedData = response.data.data.map((recipe: Recipe, index: number) => ({
+            ...recipe,
+            createdAt: recipe.createdAt ? new Date(recipe.createdAt).toLocaleDateString() : null,
+            number: index + 1,
+         }));
 
-      setRecipes(mappedData);
-      setPageCount(Math.ceil(response.data.total / pageSize));
+         const pagesCount = Math.ceil(response.data.total / pageSize);
+         setIsLoading(false);
+         setRecipes(mappedData);
+         setPageCount(pagesCount === 0 ? 1 : pagesCount);
+      } catch (axiosError) {
+         const err = axiosError as AxiosError;
+         setIsLoading(false);
+         setError(err.response?.data.message);
+      }
    }, []);
 
    useEffect(() => {
@@ -128,36 +149,21 @@ const MyRecipes: NextApplicationPage = () => {
       <div className={styles.recipesContainer}>
          <div className={styles.header}>
             <p className={styles.pageName}>My recipes</p>
-            <Link href="/trainings/create-training-plan">
+            <Link href="/recipes/create-recipe">
                <Button borderRadius={5} size="small">
                   Create recipe
                </Button>
             </Link>
          </div>
-
-         <Modal isOpen={isOpen} handleClose={closeDeleteModal}>
-            <div className={styles.deleteModalContainer}>
-               <div className={styles.modalHeader}>
-                  <span className={styles.heading}>Delete recipe</span>
-                  <p className={styles.description}>
-                     Are you sure you want to delete this recipe? By doing this you will lose all of your saved data and
-                     will not be able to retrive it.
-                  </p>
-               </div>
-               <form className={styles.deleteRecipeForm} onSubmit={removeRecipe}>
-                  <div className={styles.buttonsWrapper}>
-                     <button className={styles.cancelBtn} onClick={closeDeleteModal}>
-                        Cancel
-                     </button>
-                     <Button type="submit" variant="warning" borderRadius={5} isBold>
-                        Delete recipe
-                     </Button>
-                  </div>
-               </form>
-            </div>
-         </Modal>
-
-         {recipes ? (
+         <DeleteRecipeModal
+            isOpen={isOpen}
+            isLoading={isLoading}
+            removeRecipe={removeRecipe}
+            closeModal={closeDeleteModal}
+            deleteError={deleteError}
+         />
+         {error && <p className="error">{error}</p>}
+         {recipes && (
             <Table
                hasGlobalFilter
                hasPagination
@@ -168,9 +174,8 @@ const MyRecipes: NextApplicationPage = () => {
                fetchData={fetchMyRecipes}
                pageCount={pageCount}
             />
-         ) : (
-            <Spinner variant="ghost-primary" size="extra-large" />
          )}
+         {isLoading && !recipes && <Spinner variant="ghost-primary" size="extra-large" />}
       </div>
    );
 };

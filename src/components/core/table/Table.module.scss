@@ -38,6 +38,7 @@
                color: var(--gray-700);
                padding: var(--space-4) 0 var(--space-4) var(--space-6);
                margin: 0;
+               white-space: nowrap;
 
                &:first-of-type {
                   border-top-left-radius: var(--border-radius-5);
