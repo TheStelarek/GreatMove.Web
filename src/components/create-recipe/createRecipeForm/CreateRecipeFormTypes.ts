@@ -9,12 +9,11 @@ import { OptionType } from '@/utils/types/OptionType';
 export const MAX_PICTURE_SIZE = 2621440;
 export const PICTURE_SUPPORTED_FORMATS = [`image/jpeg`, `image/jpeg`, `image/png`];
 export interface CreateRecipeFormValue {
-   picture: FileList;
    title: string;
-   description?: string;
-   tips?: string;
    preparationTime: number;
    cookTime?: number;
+   description: string;
+   tips?: string;
    calories: number;
    proteins: number;
    carbs: number;
@@ -22,15 +21,16 @@ export interface CreateRecipeFormValue {
    fibre?: number;
    difficulty: Difficulty;
    meal: Meal;
-   diet: Diet;
-   tags: MealTag[];
+   diet?: Diet;
    steps: { step: string }[];
-   useConsent: boolean;
-   visibility: NestedValue<OptionType>;
    ingredients: {
       name?: string;
       weight?: number;
    }[];
+   tags: MealTag[];
+   picture: FileList;
+   useConsent: boolean;
+   visibility: NestedValue<OptionType>;
 }
 
 export const CreateRecipeValidationSchema = yup.object({
@@ -47,55 +47,56 @@ export const CreateRecipeValidationSchema = yup.object({
          `We only support jpg/jpeg/png files`,
          (value) => value && value[0] && PICTURE_SUPPORTED_FORMATS.includes(value[0].type),
       ),
-   title: yup.string().max(80).required(`Title is required`),
-   description: yup.string().max(400, `Description must be at most 400 characters`),
-   tips: yup.string().max(400, `Tips must be at most 400 characters`),
+   title: yup.string().max(80, `Title must be at most 80 characters`).required(`Title is required`),
    preparationTime: yup
       .number()
       .typeError(`Preparation time is required and must be a number`)
-      .max(999)
+      .min(0, `Preparation time must be at least 0`)
+      .max(999, `Preparation time must be at most 999`)
       .required(`Preparation time is required`),
    cookTime: yup
       .number()
       .typeError(`Cook time must be a number`)
       .transform((v) => (Number.isNaN(v) ? null : v))
-      .min(0)
-      .max(999)
+      .min(0, `Cook time must be at least 0`)
+      .max(999, `Cook time must be at most 999`)
       .nullable(),
+   description: yup.string().max(400, `Description must be at most 400 characters`).required(`Description is required`),
+   tips: yup.string().max(400, `Tips must be at most 400 characters`),
    calories: yup
       .number()
       .typeError(`Calories are required and must be a number`)
-      .min(0)
-      .max(999)
+      .min(0, `Calories must be at least 0`)
+      .max(999, `Calories must be at most 999`)
       .required(`Calories number is required`),
    proteins: yup
       .number()
       .typeError(`Proteins are required and must be a number`)
-      .min(0)
-      .max(999)
+      .min(0, `Proteins must be at least 0`)
+      .max(999, `Proteins must be at most 999`)
       .required(`Proteins number is required`),
    carbs: yup
       .number()
       .typeError(`Carbs are required and must be a number`)
-      .min(0)
-      .max(999)
+      .min(0, `Carbs must be at least 0`)
+      .max(999, `Carbs must be at most 999`)
       .required(`Carbs number is required`),
    fats: yup
       .number()
       .typeError(`Fats are required and must be a number`)
-      .min(0)
-      .max(999)
+      .min(0, `Cook time must be at least 0`)
+      .max(999, `Cook time must be at most 999`)
       .required(`Fats number is required`),
    fibre: yup
       .number()
       .typeError(`Fibre must be a number`)
       .transform((v) => (Number.isNaN(v) ? null : v))
-      .min(0)
-      .max(999)
+      .min(0, `Fibre must be at least 0`)
+      .max(999, `Fibre must be at most 999`)
       .nullable(),
    difficulty: yup.string().required(`Difficuly must be set`).nullable(),
    meal: yup.string().required(`Meal must be set`).nullable(),
-   diet: yup.string().required(`Diet must be set`).nullable(),
+   diet: yup.string().nullable(),
    visibility: yup
       .object()
       .shape({

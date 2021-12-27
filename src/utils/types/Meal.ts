@@ -1,1 +1,1 @@
-export type Meal = `breakfast` | 'dinner' | 'lunch' | 'snack';
+export type Meal = `breakfast` | 'dinner' | 'lunch' | 'snack' | `drink`;

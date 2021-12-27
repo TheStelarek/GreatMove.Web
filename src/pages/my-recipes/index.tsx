@@ -39,9 +39,7 @@ const MyRecipes: NextApplicationPage = () => {
             accessor: `number` as const,
          },
          {
-            Header: function HeaderName() {
-               return <div style={{ width: `150px` }}>NAME</div>;
-            },
+            Header: `Name`,
             accessor: `name` as const,
             Cell: function RecipeName({ cell }: { cell: Cell<Recipe> }): JSX.Element {
                return <div style={{ width: `150px` }}>{cell.row.original.name}</div>;
@@ -60,7 +58,7 @@ const MyRecipes: NextApplicationPage = () => {
          },
          {
             Header: `PROTEINS`,
-            accessor: `protein` as const,
+            accessor: `proteins` as const,
          },
          {
             Header: `CARBS`,

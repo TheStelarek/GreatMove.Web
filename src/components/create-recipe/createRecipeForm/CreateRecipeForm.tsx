@@ -1,4 +1,5 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
+import router from 'next/router';
 import { useDropzone } from 'react-dropzone';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useFieldArray, useForm, Controller } from 'react-hook-form';
@@ -18,11 +19,14 @@ import {
 import { privacyOptions } from '@/utils/data/recipes/privacySettings';
 import { diets, meals, tags } from '@/utils/data/recipes';
 import { difficulties } from '@/utils/data/recipes/difficulties';
-import { apiClient } from '@/api/apiClient';
+import { ErrorType } from '@/utils/types/ErrorType';
+import { useAddRecipeMutation } from '@/store/userRecipes/';
 import PictureFile from '@/public/create-recipe/photo-file.svg';
 import Remove from '@/public/my-shopping-list/remove.svg';
 
 const CreateRecipeForm = () => {
+   const [addRecipe, result] = useAddRecipeMutation();
+
    const {
       control,
       register,
@@ -54,6 +58,7 @@ const CreateRecipeForm = () => {
       },
       [setValue],
    );
+
    const { getRootProps, getInputProps } = useDropzone({
       onDrop,
       maxFiles: 1,
@@ -64,26 +69,15 @@ const CreateRecipeForm = () => {
       const reader = new FileReader();
       reader.readAsDataURL(data.picture[`0`]);
       reader.onloadend = async () => {
-         await apiClient.post(`/recipes`, {
-            name: data.title,
-            preparationTime: data.preparationTime,
-            cookTime: data.cookTime,
-            description: data.description,
-            calories: data.calories,
-            protein: data.proteins,
-            carbs: data.carbs,
-            fats: data.fats,
-            fibre: data.fibre,
-            useConsent: data.useConsent,
-            visibility: data.visibility.value,
-            meal: data.meal,
-            difficulty: data.difficulty,
-            steps: data.steps.map(({ step }) => step),
-            ingredients: data.ingredients.map(({ name, weight }) => ({ product: name, weight })),
-            picture: reader.result,
-         });
+         addRecipe({ ...data, photo: reader.result });
       };
    };
+
+   useEffect(() => {
+      if (result.isSuccess) {
+         router.push(`/`);
+      }
+   }, [result]);
 
    return (
       <form className={styles.createRecipeForm} onSubmit={handleSubmit(onSubmit)}>
@@ -380,8 +374,10 @@ const CreateRecipeForm = () => {
             />
          </div>
 
+         {result.isError && result.error && <p className="error">{(result.error as ErrorType).data.message}</p>}
+
          <div className={styles.saveBtnWrapper}>
-            <Button type="submit" size="large" isBold borderRadius={5}>
+            <Button type="submit" size="large" isBold borderRadius={5} isLoading={result.isLoading}>
                Save recipe
             </Button>
          </div>
