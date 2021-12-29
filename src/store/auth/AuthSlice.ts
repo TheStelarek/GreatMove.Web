@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/utils/types/RootState';
 import { User } from '@/utils/types/User';
 import { signUpUser } from './signUpUser';
@@ -8,6 +8,7 @@ import { logout } from './logout';
 
 interface AuthState {
    isLoggedIn: boolean;
+   accessToken: string;
    me: User | null;
    isFetching: boolean;
    isSuccess: boolean;
@@ -17,6 +18,7 @@ interface AuthState {
 
 const initialState: AuthState = {
    isLoggedIn: false,
+   accessToken: ``,
    me: null,
    isFetching: false,
    isSuccess: false,
@@ -35,6 +37,9 @@ export const authSlice = createSlice({
          state.errorMessage = null;
       },
       reset: () => initialState,
+      updateAccessToken: (state, action: PayloadAction<string>) => {
+         state.accessToken = action.payload;
+      },
    },
    extraReducers: (builder) => {
       builder.addCase(logout.fulfilled, () => initialState);
@@ -70,5 +75,5 @@ export const authSlice = createSlice({
    },
 });
 
-export const { clearState, reset } = authSlice.actions;
+export const { clearState, reset, updateAccessToken } = authSlice.actions;
 export const authSelector = (state: RootState) => state.auth;

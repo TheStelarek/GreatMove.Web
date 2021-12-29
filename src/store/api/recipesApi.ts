@@ -1,20 +1,11 @@
-import { axiosBaseQuery } from '@/api/axiosBaseQuery';
 import { CreateRecipeFormValue } from '@/components/create-recipe/createRecipeForm/CreateRecipeFormTypes';
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { api } from './api';
 
-export const userRecipesApi = createApi({
-   reducerPath: `userRecipesApi`,
-   baseQuery: axiosBaseQuery(),
+export const recipesApi = api.injectEndpoints({
    endpoints: (build) => ({
-      getUserRecipes: build.query<
-         any,
-         {
-            pageSize: number;
-            pageIndex: number;
-         }
-      >({
-         query: ({ pageSize, pageIndex }) => ({
-            url: `/recipes/my-recipes?take=${pageSize}&skip=${pageIndex * pageSize}`,
+      getRecipeById: build.query({
+         query: (recipeId) => ({
+            url: `/recipes/${recipeId}`,
             method: `get`,
          }),
       }),
@@ -36,6 +27,7 @@ export const userRecipesApi = createApi({
                visibility: recipeFormData.visibility.value,
                meal: recipeFormData.meal,
                difficulty: recipeFormData.difficulty,
+               tags: recipeFormData.tags,
                steps: recipeFormData.steps.map(({ step }) => step),
                ingredients: recipeFormData.ingredients.map(({ name, weight }) => ({ product: name, weight })),
                picture: recipeFormData.photo,
@@ -45,4 +37,4 @@ export const userRecipesApi = createApi({
    }),
 });
 
-export const { useGetUserRecipesQuery, useAddRecipeMutation } = userRecipesApi;
+export const { useGetRecipeByIdQuery, useAddRecipeMutation } = recipesApi;

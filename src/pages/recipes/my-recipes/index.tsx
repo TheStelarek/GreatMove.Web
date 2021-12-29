@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import Link from 'next/link';
 import { Cell } from 'react-table';
 import { apiClient } from '@/api/apiClient';
-import styles from '@/pages/my-recipes/MyRecipes.module.scss';
+import styles from '@/pages/recipes/my-recipes/MyRecipes.module.scss';
 import Layout from '@/components/core/layout/Layout';
 import Table from '@/components/core/table/Table';
 import Button from '@/components/core/button/Button';
@@ -12,6 +12,7 @@ import useModal from '@/components/core/modal/useModal';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { Recipe } from '@/utils/types/Recipe';
 import Edit from '@/public/icons/edit-regular.svg';
+import View from '@/public/icons/view.svg';
 import Trash from '@/public/my-shopping-list/trash.svg';
 import DeleteRecipeModal from '@/components/my-recipes/deleteRecipeModal/DeleteRecipeModal';
 
@@ -46,10 +47,11 @@ const MyRecipes: NextApplicationPage = () => {
             },
          },
          {
-            Header: `COOK TIME`,
+            Header: `TOTAL TIME`,
             accessor: `time` as const,
             Cell: function EstimatedTime({ cell }: { cell: Cell<Recipe> }): string {
-               return `${cell.row.original.preparationTime + cell.row.original.cookTime} mins`;
+               const cookTime = cell.row.original.cookTime ? cell.row.original.cookTime : 0;
+               return `${cell.row.original.preparationTime + cookTime} mins`;
             },
          },
          {
@@ -83,6 +85,11 @@ const MyRecipes: NextApplicationPage = () => {
             Cell: function ActionButtons({ cell }: { cell: Cell<Recipe> }) {
                return (
                   <div className={styles.actionsContainer}>
+                     <Link href={`/recipes/${cell.row.original.id}/${cell.row.original.name.replace(/ /g, `-`)}`}>
+                        <button>
+                           <View className={styles.icon} />
+                        </button>
+                     </Link>
                      <button>
                         <Edit className={styles.icon} />
                      </button>

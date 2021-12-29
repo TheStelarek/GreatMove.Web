@@ -1,7 +1,7 @@
-import { reset } from '@/store/auth/AuthSlice';
+import { reset, updateAccessToken } from '@/store/auth/AuthSlice';
 import type { RootState } from '@/utils/types/RootState';
 import { EnhancedStore } from '@reduxjs/toolkit';
-import { getAccessToken, setAccessToken } from './accessToken';
+import Router from 'next/router';
 import { apiClient } from './apiClient';
 
 const setup = (store: EnhancedStore<RootState>) => {
@@ -9,7 +9,7 @@ const setup = (store: EnhancedStore<RootState>) => {
 
    apiClient.interceptors.request.use(
       (config) => {
-         const token = getAccessToken();
+         const token = store.getState().auth.accessToken;
          if (token) {
             config.headers.Authorization = `Bearer ${token}`;
          }
@@ -25,8 +25,11 @@ const setup = (store: EnhancedStore<RootState>) => {
       (error) => {
          const originalRequest = error.config;
 
-         if (error.response.status === 401 && originalRequest.url === `/auth/refresh-token`) {
-            setAccessToken(``);
+         if (
+            originalRequest.url === `/auth/refresh-token` &&
+            (error.response.status === 400 || error.response.status === 401)
+         ) {
+            Router.push(`/login`);
             dispatch(reset());
             return Promise.reject(error);
          }
@@ -36,8 +39,8 @@ const setup = (store: EnhancedStore<RootState>) => {
             // eslint-disable-next-line no-underscore-dangle
             originalRequest._retry = true;
             return apiClient.post(`/auth/refresh-token`).then((res) => {
-               setAccessToken(res.data.accessToken);
-               apiClient.defaults.headers.common.Authorization = `Bearer ${getAccessToken()}`;
+               dispatch(updateAccessToken(res.data.accessToken));
+               apiClient.defaults.headers.common.Authorization = `Bearer ${store.getState().auth.accessToken}`;
                return apiClient(originalRequest);
             });
          }

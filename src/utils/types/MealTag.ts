@@ -18,6 +18,5 @@ export type MealTag =
    | 'seafood'
    | 'summer season'
    | 'winter season'
-   | 'snack'
    | 'spring season'
-   | 'Wheatless';
+   | 'wheatless';

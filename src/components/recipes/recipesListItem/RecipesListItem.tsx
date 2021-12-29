@@ -2,7 +2,9 @@ import Image from 'next/image';
 import styles from '@/components/recipes/recipesListItem/RecipesListItem.module.scss';
 import { Recipe } from '@/utils/types/Recipe';
 
-const RecipesListItem: React.FC<Recipe> = ({ name, meal, calories, difficulty, preparationTime, cookTime }) => (
+const RecipesListItem: React.FC<
+   Pick<Recipe, 'name' | 'meal' | 'calories' | 'difficulty' | 'preparationTime' | 'cookTime'>
+> = ({ name, meal, calories, difficulty, preparationTime, cookTime = 0 }) => (
    <div className={styles.recipe}>
       <div className={styles.imageContainer}>
          <Image src="/recipes/placki.jpg" alt="Picture of the author" layout="fill" objectFit="cover" />

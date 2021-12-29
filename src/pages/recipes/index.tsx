@@ -73,5 +73,6 @@ export async function getStaticProps() {
          totalPages: Math.ceil(response.data.total / 9),
          currentPage: `1`,
       },
+      revalidate: 60,
    };
 }

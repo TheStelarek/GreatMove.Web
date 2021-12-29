@@ -67,11 +67,11 @@ const MyShoppingList = () => {
             )}
             <ul className={styles.productsList}>
                {!!products.length &&
-                  products.map(({ id, name, weight }, index) => (
+                  products.map(({ id, product, weight }, index) => (
                      <li className={styles.product} key={id}>
                         <div className={styles.productNumber}>{index + 1}.</div>
                         <div className={styles.productName}>
-                           {name} <span className={styles.productWeight}>{`${weight}g`}</span>
+                           {product} <span className={styles.productWeight}>{`${weight}g`}</span>
                         </div>
                         <div className={styles.productActions}>
                            <button

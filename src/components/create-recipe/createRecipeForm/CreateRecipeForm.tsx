@@ -20,7 +20,7 @@ import { privacyOptions } from '@/utils/data/recipes/privacySettings';
 import { diets, meals, tags } from '@/utils/data/recipes';
 import { difficulties } from '@/utils/data/recipes/difficulties';
 import { ErrorType } from '@/utils/types/ErrorType';
-import { useAddRecipeMutation } from '@/store/userRecipes/';
+import { useAddRecipeMutation } from '@/store/api/recipesApi';
 import PictureFile from '@/public/create-recipe/photo-file.svg';
 import Remove from '@/public/my-shopping-list/remove.svg';
 
@@ -33,6 +33,7 @@ const CreateRecipeForm = () => {
       handleSubmit,
       setValue,
       watch,
+      reset,
       formState: { errors },
    } = useForm<CreateRecipeFormValue>({
       mode: `onSubmit`,
@@ -40,6 +41,7 @@ const CreateRecipeForm = () => {
       defaultValues: {
          ingredients: [{ weight: undefined, name: undefined }],
          steps: [{ step: `` }],
+         tags: [],
          useConsent: false,
       },
    });
@@ -75,12 +77,13 @@ const CreateRecipeForm = () => {
 
    useEffect(() => {
       if (result.isSuccess) {
+         reset();
          router.push(`/`);
       }
    }, [result]);
 
    return (
-      <form className={styles.createRecipeForm} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.createRecipeForm} onSubmit={handleSubmit(onSubmit)} noValidate>
          <div className={styles.uploadPhotoContainer}>
             <span className={styles.uploadTitle}>Upload recipe photo</span>
             <p className={styles.info}>Photo should be jpg/jpeg/png and max 2.5mb size</p>
@@ -251,7 +254,7 @@ const CreateRecipeForm = () => {
                <p className={styles.subTitle}>Select type of meal</p>
                <div className={styles.wrapper}>
                   {meals.map((meal) => (
-                     <TagCheckbox key={meal} type="radio" value={meal} {...register(`meal`)} label={meal} />
+                     <TagCheckbox key={`${meal}-meal`} type="radio" value={meal} {...register(`meal`)} label={meal} />
                   ))}
                </div>
                {errors && errors.meal && <p className="error">{errors.meal.message} </p>}
@@ -260,7 +263,7 @@ const CreateRecipeForm = () => {
                <p className={styles.subTitle}>Select type of diet</p>
                <div className={styles.wrapper}>
                   {diets.map((diet) => (
-                     <TagCheckbox key={diet} type="radio" value={diet} {...register(`diet`)} label={diet} />
+                     <TagCheckbox key={`${diet}-diet`} type="radio" value={diet} {...register(`diet`)} label={diet} />
                   ))}
                </div>
                {errors && errors.diet && <p className="error">{errors.diet.message} </p>}
@@ -269,7 +272,7 @@ const CreateRecipeForm = () => {
                <p className={styles.subTitle}>Select some tags</p>
                <div className={styles.wrapper}>
                   {tags.map((tag) => (
-                     <TagCheckbox key={tag} type="checkbox" value={tag} {...register(`tags`)} label={tag} />
+                     <TagCheckbox key={`${tag}-tag`} type="checkbox" value={tag} {...register(`tags`)} label={tag} />
                   ))}
                </div>
             </div>

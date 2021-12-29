@@ -20,7 +20,6 @@ export const tags: MealTag[] = [
    `seafood`,
    `summer season`,
    `winter season`,
-   `snack`,
    `spring season`,
-   `Wheatless`,
+   `wheatless`,
 ];

@@ -3,13 +3,14 @@ import styles from '@/components/recipe/recipeIngredients/RecipeIngredients.modu
 import Button from '@/components/core/button/Button';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addProduct } from '@/store/shoppingList/ShoppingListSlice';
-import { Ingredient } from '@/utils/types/Ingredient';
 import Minus from '@/public/recipe/minus.svg';
 import Plus from '@/public/recipe/plus.svg';
 import Shop from '@/public/recipe/shop.svg';
+import { Ingredient } from '@/utils/types/Ingredient';
+import { round } from '@/utils/functions/round';
 
 interface RecipeIngredientsProps {
-   ingredients: Array<Ingredient>;
+   ingredients: Ingredient[];
 }
 
 const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
@@ -19,10 +20,10 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
 
    const increaseServings = () => {
       if (servings < 15) {
-         const increasedServings = recipeIngredients.map(({ id, name, weight }) => ({
+         const increasedServings = recipeIngredients.map(({ id, product, weight }) => ({
             id,
-            name,
-            weight: weight * 2,
+            product,
+            weight: weight + round(weight / servings),
          }));
          setServings((prevState) => prevState + 1);
          setRecipeIngredients(increasedServings);
@@ -31,10 +32,10 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
 
    const decreaseServings = () => {
       if (servings > 1) {
-         const decreasedServings = recipeIngredients.map(({ id, name, weight }) => ({
+         const decreasedServings = recipeIngredients.map(({ id, product, weight }) => ({
             id,
-            name,
-            weight: weight / 2,
+            product,
+            weight: weight - round(weight / servings),
          }));
          setServings((prevState) => prevState - 1);
          setRecipeIngredients(decreasedServings);
@@ -54,10 +55,10 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
             </button>
          </div>
          <ul className={styles.ingredientsList}>
-            {recipeIngredients.map(({ id, name, weight }) => (
+            {recipeIngredients.map(({ id, product, weight }) => (
                <li key={id} className={styles.ingredient}>
                   <span className={styles.dot} />
-                  <p className={styles.name}>{`${weight} g - ${name}`}</p>
+                  <p className={styles.name}>{`${weight} g - ${product}`}</p>
                </li>
             ))}
          </ul>
