@@ -20,9 +20,9 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
 
    const increaseServings = () => {
       if (servings < 15) {
-         const increasedServings = recipeIngredients.map(({ id, product, weight }) => ({
+         const increasedServings = recipeIngredients.map(({ id, name, weight }) => ({
             id,
-            product,
+            name,
             weight: weight + round(weight / servings),
          }));
          setServings((prevState) => prevState + 1);
@@ -32,9 +32,9 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
 
    const decreaseServings = () => {
       if (servings > 1) {
-         const decreasedServings = recipeIngredients.map(({ id, product, weight }) => ({
+         const decreasedServings = recipeIngredients.map(({ id, name, weight }) => ({
             id,
-            product,
+            name,
             weight: weight - round(weight / servings),
          }));
          setServings((prevState) => prevState - 1);
@@ -55,10 +55,10 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
             </button>
          </div>
          <ul className={styles.ingredientsList}>
-            {recipeIngredients.map(({ id, product, weight }) => (
+            {recipeIngredients.map(({ id, name, weight }) => (
                <li key={id} className={styles.ingredient}>
                   <span className={styles.dot} />
-                  <p className={styles.name}>{`${weight} g - ${product}`}</p>
+                  <p className={styles.name}>{`${weight} g - ${name}`}</p>
                </li>
             ))}
          </ul>

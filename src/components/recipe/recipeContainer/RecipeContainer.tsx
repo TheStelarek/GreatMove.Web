@@ -18,7 +18,7 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipe }) => (
       <div className={styles.headerContainer}>
          <div className={styles.headerWrapper}>
             <div className={styles.headerContent}>
-               <h1 className={styles.title}>{recipe.name}</h1>
+               <h1 className={styles.title}>{recipe.title}</h1>
                <div className={styles.timeWrapper}>
                   <RecipeTime prepTime={recipe.preparationTime} cookTime={recipe.cookTime} />
                   <RecipeShare />

@@ -41,9 +41,9 @@ const MyRecipes: NextApplicationPage = () => {
          },
          {
             Header: `Name`,
-            accessor: `name` as const,
+            accessor: `title` as const,
             Cell: function RecipeName({ cell }: { cell: Cell<Recipe> }): JSX.Element {
-               return <div style={{ width: `150px` }}>{cell.row.original.name}</div>;
+               return <div style={{ width: `150px` }}>{cell.row.original.title}</div>;
             },
          },
          {
@@ -85,14 +85,17 @@ const MyRecipes: NextApplicationPage = () => {
             Cell: function ActionButtons({ cell }: { cell: Cell<Recipe> }) {
                return (
                   <div className={styles.actionsContainer}>
-                     <Link href={`/recipes/${cell.row.original.id}/${cell.row.original.name.replace(/ /g, `-`)}`}>
+                     <Link href={`/recipes/id/${cell.row.original.id}/${cell.row.original.title.replace(/ /g, `-`)}`}>
                         <button>
                            <View className={styles.icon} />
                         </button>
                      </Link>
-                     <button>
-                        <Edit className={styles.icon} />
-                     </button>
+                     <Link href={`/recipes/edit-recipe/${cell.row.original.id}`}>
+                        <button>
+                           <Edit className={styles.icon} />
+                        </button>
+                     </Link>
+
                      <button onClick={() => openDeleteModal(cell.row.original.id)}>
                         <Trash className={styles.icon} />
                      </button>

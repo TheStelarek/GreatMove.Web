@@ -1,6 +1,4 @@
-import { MealTag } from '@/utils/types/MealTag';
-
-export const tags: MealTag[] = [
+export const tags: string[] = [
    `appetizer`,
    `drinks and beverages`,
    `breadstuff`,

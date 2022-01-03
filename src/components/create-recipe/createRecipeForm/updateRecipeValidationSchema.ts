@@ -1,51 +1,58 @@
 import * as yup from 'yup';
-import { NestedValue } from 'react-hook-form';
-import { Diet } from '@/utils/types/Diet';
-import { Difficulty } from '@/utils/types/Difficulty';
-import { Meal } from '@/utils/types/Meal';
-import { MealTag } from '@/utils/types/MealTag';
-import { OptionType } from '@/utils/types/OptionType';
+import { MAX_PICTURE_SIZE, PICTURE_SUPPORTED_FORMATS } from './pictureValidationData';
 
-export const MAX_PICTURE_SIZE = 2621440;
-export const PICTURE_SUPPORTED_FORMATS = [`image/jpeg`, `image/jpeg`, `image/png`];
-export interface CreateRecipeFormValue {
-   title: string;
-   preparationTime: number;
-   cookTime?: number;
-   description: string;
-   tips?: string;
-   calories: number;
-   proteins: number;
-   carbs: number;
-   fats: number;
-   fibre?: number;
-   difficulty: Difficulty;
-   meal: Meal;
-   diet?: Diet;
-   steps: { step: string }[];
-   ingredients: {
-      name?: string;
-      weight?: number;
-   }[];
-   tags: MealTag[];
-   picture: FileList;
-   useConsent: boolean;
-   visibility: NestedValue<OptionType>;
-}
+type UpdateFields =
+   | `title`
+   | `preparationTime`
+   | `cookTime`
+   | `description`
+   | `tips`
+   | `calories`
+   | `proteins`
+   | `carbs`
+   | `fats`
+   | `fibre`
+   | `difficulty`
+   | `meal`
+   | `diet`
+   | `tags`
+   | `steps`
+   | `ingredients`
+   | `visibility`;
 
-export const CreateRecipeValidationSchema = yup.object({
+export const updateFields: UpdateFields[] = [
+   `title`,
+   `preparationTime`,
+   `cookTime`,
+   `description`,
+   `tips`,
+   `calories`,
+   `proteins`,
+   `carbs`,
+   `fats`,
+   `fibre`,
+   `difficulty`,
+   `meal`,
+   `diet`,
+   `tags`,
+   `steps`,
+   `ingredients`,
+   `visibility`,
+];
+
+export const UpdateRecipeValidationSchema = yup.object({
    picture: yup
       .mixed()
-      .test(`required`, `You need to provide a picture`, (value) => value && value.length)
+      .notRequired()
       .test(
          `fileSize`,
          `The file is too large. Max is 2.5 MB`,
-         (value) => value && value[0] && value[0].size <= MAX_PICTURE_SIZE,
+         (value) => !value || (value && value[0] && value[0].size <= MAX_PICTURE_SIZE),
       )
       .test(
          `type`,
          `We only support jpg/jpeg/png files`,
-         (value) => value && value[0] && PICTURE_SUPPORTED_FORMATS.includes(value[0].type),
+         (value) => !value || (value && value[0] && PICTURE_SUPPORTED_FORMATS.includes(value[0].type)),
       ),
    title: yup.string().max(80, `Title must be at most 80 characters`).required(`Title is required`),
    preparationTime: yup

@@ -57,10 +57,10 @@ const ShoppingListTemplate = ({ products }: ShoppingListTemplateProps) => (
                      <Text style={styles.secondPart}>List</Text>
                   </View>
                   <View style={styles.productsList}>
-                     {productsPart.map(({ id, product, weight }, index) => (
+                     {productsPart.map(({ id, name, weight }, index) => (
                         <Text key={id} style={styles.product}>{`${
                            partIndex * 30 + index + 1
-                        }. ${product}  -  ${weight} g `}</Text>
+                        }. ${name}  -  ${weight} g `}</Text>
                      ))}
                   </View>
                </View>

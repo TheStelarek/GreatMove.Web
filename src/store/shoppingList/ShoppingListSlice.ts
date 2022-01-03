@@ -27,8 +27,8 @@ export const shoppingListSlice = createSlice({
          }
 
          const duplicateIndexes: Array<number> = [];
-         const increasedWeightsProductsList = state.products.map(({ product, id, weight }: Ingredient) => {
-            const index = action.payload.findIndex((ingredient: Ingredient) => ingredient.product === product);
+         const increasedWeightsProductsList = state.products.map(({ name, id, weight }: Ingredient) => {
+            const index = action.payload.findIndex((ingredient: Ingredient) => ingredient.name === name);
             let newWeight = 0;
 
             if (index >= 0) {
@@ -38,7 +38,7 @@ export const shoppingListSlice = createSlice({
                newWeight = weight;
             }
 
-            return { id, product, weight: newWeight };
+            return { id, name, weight: newWeight };
          });
 
          const newProducts = action.payload.filter((_, index) => !duplicateIndexes.includes(index));

@@ -51,7 +51,7 @@ const Recipes: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, curre
          ) : (
             <div className={styles.staticRecipeList}>
                <RecipesList recipes={recipes} />
-               <Pagination totalPages={totalPages} currentPage={currentPage} url="/recipes" />
+               {totalPages > 1 && <Pagination totalPages={totalPages} currentPage={currentPage} url="/recipes" />}
             </div>
          )}
       </div>
