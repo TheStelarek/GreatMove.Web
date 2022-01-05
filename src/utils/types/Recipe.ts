@@ -1,6 +1,8 @@
 import { CookStep } from '@/utils/types/CookStep';
 import { Ingredient } from '@/utils/types/Ingredient';
 import { Tag } from '@/utils/types/Tag';
+import { Review } from '@/utils/types/Review';
+import { Rating } from '@/utils/types/Rating';
 
 export interface Recipe {
    id: string;
@@ -22,6 +24,8 @@ export interface Recipe {
    steps: CookStep[];
    tags: Tag[];
    ingredients: Ingredient[];
+   reviews: Review[];
+   groupedRating: Rating;
    userId: string;
    pictureUrl: string;
    createdAt: Date;

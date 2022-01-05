@@ -10,9 +10,11 @@
 
    .header {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: var(--space-5);
+      row-gap: var(--space-1);
 
       .rate {
          display: flex;
@@ -20,8 +22,8 @@
          align-items: center;
 
          .starIcon {
-            width: 20px;
-            fill: var(--yellow-400);
+            font-size: 30px;
+            color: var(--yellow-400);
          }
       }
 

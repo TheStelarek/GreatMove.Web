@@ -64,7 +64,18 @@ export const recipesApi = api.injectEndpoints({
             }),
          },
       ),
+      addReview: build.mutation<string, { description: string; rating: number; recipeId: string }>({
+         query: (reviewData) => ({
+            url: `/recipes/${reviewData.recipeId}/review`,
+            method: `post`,
+            data: {
+               description: reviewData.description,
+               rating: reviewData.rating,
+            },
+         }),
+      }),
    }),
 });
 
-export const { useGetRecipeByIdQuery, useAddRecipeMutation, useUpdateRecipeMutation } = recipesApi;
+export const { useGetRecipeByIdQuery, useAddRecipeMutation, useUpdateRecipeMutation, useAddReviewMutation } =
+   recipesApi;

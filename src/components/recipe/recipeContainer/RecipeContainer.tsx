@@ -38,7 +38,7 @@ const RecipeContainer: FC<RecipeContainerProps> = ({ recipe }) => (
                fibre={recipe.fibre}
             />
             {recipe.tips && <RecipeTips tips={recipe.tips} />}
-            <RecipeReviews />
+            <RecipeReviews recipeId={recipe.id} reviews={recipe.reviews} groupedRating={recipe.groupedRating} />
          </div>
          <div className={styles.rightContainer}>
             <div className={styles.foodImage}>

@@ -33,6 +33,10 @@
             font-weight: var(--font-weight-regular);
             color: var(--gray-800);
          }
+
+         .addBtnWrapper {
+            margin-top: var(--space-3);
+         }
       }
 
       .ratingContainer {
@@ -93,10 +97,14 @@
                      line-height: var(--line-height-footer);
                   }
 
+                  // .starIcon {
+                  //    height: 10px;
+                  //    width: 10px;
+                  //    fill: var(--yellow-500);
+                  // }
                   .starIcon {
-                     height: 10px;
-                     width: 10px;
-                     fill: var(--yellow-500);
+                     font-size: 12px;
+                     color: var(--yellow-400);
                   }
                }
 
