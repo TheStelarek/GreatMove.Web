@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { SetStateAction, useState, useEffect } from 'react';
 import cx from 'classnames';
 import styles from '@/components/core/navbar/Navbar.module.scss';
-import { RECIPES, CALCULATORS, TRAININGS, BLOG, MYPROFILE, LOGIN, REGISTER } from '@/components/core/navbar/navbarData';
+import { RECIPES, CALCULATORS, TRAININGS, MYPROFILE, LOGIN, REGISTER } from '@/components/core/navbar/navbarData';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector } from '@/store/auth/AuthSlice';
 import Arrow from '@/public/navbar/expand-arrow.svg';
@@ -43,47 +43,70 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
          </Link>
          <ul className={cx(styles.navMenu, showHamburger && styles.navMenuActive)}>
             <li className={styles.navMenuItem}>
-               <Link href={RECIPES.page.route}>
-                  <button type="button" className={styles.navMenuItemButton} onClick={hideMenu}>
-                     {RECIPES.page.label}
-                  </button>
-               </Link>
-            </li>
-            <li className={styles.navMenuItem}>
                <Link href={CALCULATORS.page.route}>
                   <button type="button" className={styles.navMenuItemButton} onClick={hideMenu}>
                      {CALCULATORS.page.label}
                   </button>
                </Link>
             </li>
-            <li className={styles.navMenuItem}>
-               <Link href={BLOG.page.route}>
-                  <button type="button" className={styles.navMenuItemButton} onClick={hideMenu}>
-                     {BLOG.page.label}
-                  </button>
-               </Link>
-            </li>
-            <li className={cx(styles.navMenuItem, styles.multiple)}>
-               <button
-                  type="button"
-                  className={cx(styles.multipleButton, styles.navMenuItemButton)}
-                  onClick={() => toggleNestedMenu(NestedMenuTypes.trainings)}
-               >
-                  {TRAININGS.page.label}
-                  <Arrow
-                     className={cx(styles.expandArrow, expandedMenu === NestedMenuTypes.trainings && styles.active)}
-                  />
-               </button>
-               {expandedMenu === NestedMenuTypes.trainings && (
-                  <NavbarNestedMenu
-                     label={TRAININGS.page.label}
-                     hideMenu={hideMenu}
-                     mainRoute={TRAININGS.page.route}
-                     nested={TRAININGS.nested}
-                     navbarVariant={variant}
-                  />
-               )}
-            </li>
+            {!isLoggedIn ? (
+               <li className={styles.navMenuItem}>
+                  <Link href={RECIPES.page.route}>
+                     <button type="button" className={styles.navMenuItemButton} onClick={hideMenu}>
+                        {RECIPES.page.label}
+                     </button>
+                  </Link>
+               </li>
+            ) : (
+               <>
+                  <li className={cx(styles.navMenuItem, styles.multiple)}>
+                     <button
+                        type="button"
+                        className={cx(styles.multipleButton, styles.navMenuItemButton)}
+                        onClick={() => toggleNestedMenu(NestedMenuTypes.recipes)}
+                     >
+                        {RECIPES.page.label}
+                        <Arrow
+                           className={cx(styles.expandArrow, expandedMenu === NestedMenuTypes.recipes && styles.active)}
+                        />
+                     </button>
+                     {expandedMenu === NestedMenuTypes.recipes && (
+                        <NavbarNestedMenu
+                           label={RECIPES.page.label}
+                           hideMenu={hideMenu}
+                           mainRoute={RECIPES.page.route}
+                           nested={RECIPES.nested}
+                           navbarVariant={variant}
+                        />
+                     )}
+                  </li>
+                  <li className={cx(styles.navMenuItem, styles.multiple)}>
+                     <button
+                        type="button"
+                        className={cx(styles.multipleButton, styles.navMenuItemButton)}
+                        onClick={() => toggleNestedMenu(NestedMenuTypes.trainings)}
+                     >
+                        {TRAININGS.page.label}
+                        <Arrow
+                           className={cx(
+                              styles.expandArrow,
+                              expandedMenu === NestedMenuTypes.trainings && styles.active,
+                           )}
+                        />
+                     </button>
+                     {expandedMenu === NestedMenuTypes.trainings && (
+                        <NavbarNestedMenu
+                           label={TRAININGS.page.label}
+                           hideMenu={hideMenu}
+                           mainRoute={TRAININGS.page.route}
+                           nested={TRAININGS.nested}
+                           navbarVariant={variant}
+                        />
+                     )}
+                  </li>
+               </>
+            )}
+
             {isLoggedIn ? (
                <li className={cx(styles.navMenuItem, styles.profile)}>
                   <Link href={MYPROFILE.page.route}>
