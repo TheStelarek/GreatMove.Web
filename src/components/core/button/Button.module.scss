@@ -21,6 +21,8 @@
 }
 
 .buttonLoading {
+   pointer-events: none;
+
    &::before {
       content: '';
       visibility: hidden;

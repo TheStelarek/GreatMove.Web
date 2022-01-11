@@ -1,0 +1,10 @@
+.createRecipeContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: var(--space-6) var(--space-5);
+
+   @media (min-width: 1000px) {
+      margin: var(--space-12) var(--space-20) 0 var(--space-20);
+   }
+}

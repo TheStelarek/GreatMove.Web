@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '@/store/index';
+import type { RootState } from '@/utils/types/RootState';
 import { Ingredient } from '@/utils/types/Ingredient';
 
 interface ShoppingListState {

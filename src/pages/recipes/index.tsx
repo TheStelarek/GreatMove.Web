@@ -51,7 +51,7 @@ const Recipes: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, curre
          ) : (
             <div className={styles.staticRecipeList}>
                <RecipesList recipes={recipes} />
-               <Pagination totalPages={totalPages} currentPage={currentPage} url="/recipes" />
+               {totalPages > 1 && <Pagination totalPages={totalPages} currentPage={currentPage} url="/recipes" />}
             </div>
          )}
       </div>
@@ -73,5 +73,6 @@ export async function getStaticProps() {
          totalPages: Math.ceil(response.data.total / 9),
          currentPage: `1`,
       },
+      revalidate: 60,
    };
 }

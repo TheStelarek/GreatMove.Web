@@ -10,12 +10,12 @@ const RecipesList: React.FC<RecipesListProps> = ({ recipes }) => (
    <div className={styles.container}>
       <div className={styles.wrapperList}>
          {recipes.length > 0 ? (
-            recipes.map(({ id, name, meal, calories, difficulty, preparationTime, cookTime }) => (
+            recipes.map(({ id, title, meal, calories, difficulty, preparationTime, cookTime }) => (
                <RecipesListItem
                   key={id}
                   {...{
                      id,
-                     name,
+                     title,
                      meal,
                      calories,
                      difficulty,
@@ -25,7 +25,7 @@ const RecipesList: React.FC<RecipesListProps> = ({ recipes }) => (
                />
             ))
          ) : (
-            <h4>There are no recipes...</h4>
+            <h5>There are no recipes...</h5>
          )}
       </div>
    </div>

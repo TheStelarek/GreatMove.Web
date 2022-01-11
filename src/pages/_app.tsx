@@ -9,6 +9,7 @@ import AuthGuard from '@/components/authGuard/AuthGuard';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import '@/styles/global.scss';
 import '@/styles/nprogress.scss';
+import setupInterceptors from '@/api/setup';
 
 NProgress.configure({ showSpinner: false });
 Router.events.on(`routeChangeStart`, NProgress.start);
@@ -23,20 +24,16 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
    const getLayout = Component.getLayout ?? ((page) => page);
 
    return (
-      <>
-         {Component.requireAuth ? (
-            <Provider store={store}>
-               <PersistGate loading={null} persistor={persistor}>
-                  <AuthGuard>{getLayout(<Component {...pageProps} />)}</AuthGuard>
-               </PersistGate>
-            </Provider>
-         ) : (
-            <Provider store={store}>
-               <PersistGate loading={null} persistor={persistor}>
-                  {getLayout(<Component {...pageProps} />)}
-               </PersistGate>
-            </Provider>
-         )}
-      </>
+      <Provider store={store}>
+         <PersistGate loading={null} persistor={persistor}>
+            {Component.requireAuth ? (
+               <AuthGuard>{getLayout(<Component {...pageProps} />)}</AuthGuard>
+            ) : (
+               getLayout(<Component {...pageProps} />)
+            )}
+         </PersistGate>
+      </Provider>
    );
 }
+
+setupInterceptors(store);

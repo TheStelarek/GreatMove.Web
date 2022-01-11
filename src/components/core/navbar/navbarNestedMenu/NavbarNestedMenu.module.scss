@@ -1,132 +1,132 @@
 .nestedMenu {
-  width: 100%;
-  margin-top: var(--space-1-5);
-  padding: var(--space-2-5) 0;
-  background-color: var(--purple-50);
+   width: 100%;
+   margin-top: var(--space-1-5);
+   padding: var(--space-2-5) 0;
+   background-color: var(--purple-50);
 
-  .nestedMenuTitle {
-    display: none;
-  }
+   .nestedMenuTitle {
+      display: none;
+   }
 
-  .nestedMenuList {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2-5);
-
-    .nestedMenuItem {
+   .nestedMenuList {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: var(--space-2-5);
 
-      .nestedMenuItemButton {
-        font-size: var(--font-size-p1);
-        line-height: var(--line-height-p1);
-        font-weight: var(--font-weight-regular);
-        color: var(--purple-900);
-        cursor: pointer;
+      .nestedMenuItem {
+         display: flex;
+         justify-content: center;
 
-        .icon {
-          display: none;
-        }
+         .nestedMenuItemButton {
+            font-size: var(--font-size-p1);
+            line-height: var(--line-height-p1);
+            font-weight: var(--font-weight-regular);
+            color: var(--purple-900);
+            cursor: pointer;
 
-        .description {
-          display: none;
-        }
+            .icon {
+               display: none;
+            }
 
-        &:hover {
-          font-weight: var(--font-weight-bold);
-        }
+            .description {
+               display: none;
+            }
+
+            &:hover {
+               font-weight: var(--font-weight-bold);
+            }
+         }
       }
-    }
-  }
+   }
 }
 
 .nestedMenu-purple {
-  background-color: var(--purple-200);
+   background-color: var(--purple-200);
 }
 
 @media (min-width: 992px) {
-  .nestedMenu {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    position: absolute;
-    top: 42px;
-    width: 675px;
-    padding: var(--space-5) var(--space-6);
-    box-shadow: var(--box-shadow-xs);
-    border-radius: var(--border-radius-10);
-    border: 1px solid var(--gray-50);
-    background-color: var(--white);
+   .nestedMenu {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      position: absolute;
+      top: 42px;
+      width: 675px;
+      padding: var(--space-5) var(--space-6);
+      box-shadow: var(--box-shadow-xs);
+      border-radius: var(--border-radius-10);
+      border: 1px solid var(--gray-50);
+      background-color: var(--white);
 
-    .nestedMenuTitle {
-      display: block;
-      text-align: left;
-      font-weight: var(--font-weight-bold);
-      color: var(--gray-900);
-    }
-
-    .nestedMenuList {
-      flex-direction: row;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: var(--space-6);
-
-      .nestedMenuItem {
-        width: 300px;
-        height: 85px;
-        border-radius: var(--border-radius-8);
-
-        .nestedMenuItemButton {
-          width: 100%;
-          font-size: var(--font-size-p1);
-          line-height: var(--line-height-p1);
-          font-weight: var(--font-weight-regular);
-          color: var(--purple-900);
-          padding: var(--space-2-5) var(--space-3) var(--space-5) var(--space-3);
-          display: flex;
-          align-items: flex-start;
-
-          .icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: var(--border-radius-8);
-            background-color: var(--white);
-            border: 1px solid var(--gray-100);
-            width: 100%;
-            max-width: 40px;
-            height: 44px;
-          }
-
-          .info {
-            margin-left: var(--space-3);
-            font-weight: var(--font-weight-bold);
-            color: var(--gray-800);
-            text-align: left;
-
-            .description {
-              display: block;
-              font-size: var(--font-size-p1);
-              line-height: var(--line-height-p1);
-              font-weight: var(--font-weight-regular);
-              color: var(--gray-700);
-            }
-          }
-        }
-
-        &:hover {
-          background-color: var(--purple-50);
-
-          button {
-            .info {
-              color: var(--purple-900);
-              .description {
-                color: var(--purple-800);
-              }
-            }
-          }
-        }
+      .nestedMenuTitle {
+         display: block;
+         text-align: left;
+         font-weight: var(--font-weight-bold);
+         color: var(--gray-900);
       }
-    }
-  }
+
+      .nestedMenuList {
+         flex-direction: row;
+         justify-content: space-between;
+         flex-wrap: wrap;
+         gap: var(--space-6);
+
+         .nestedMenuItem {
+            width: 300px;
+            height: 85px;
+            border-radius: var(--border-radius-8);
+
+            .nestedMenuItemButton {
+               width: 100%;
+               font-size: var(--font-size-p1);
+               line-height: var(--line-height-p1);
+               font-weight: var(--font-weight-regular);
+               color: var(--purple-900);
+               padding: var(--space-2-5) var(--space-3) var(--space-5) var(--space-3);
+               display: flex;
+               align-items: flex-start;
+
+               .icon {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border-radius: var(--border-radius-8);
+                  background-color: var(--white);
+                  border: 1px solid var(--gray-100);
+                  width: 100%;
+                  max-width: 40px;
+                  height: 44px;
+               }
+
+               .info {
+                  margin-left: var(--space-3);
+                  font-weight: var(--font-weight-bold);
+                  color: var(--gray-800);
+                  text-align: left;
+
+                  .description {
+                     display: block;
+                     font-size: var(--font-size-p1);
+                     line-height: var(--line-height-p1);
+                     font-weight: var(--font-weight-regular);
+                     color: var(--gray-700);
+                  }
+               }
+            }
+
+            &:hover {
+               background-color: var(--purple-50);
+
+               button {
+                  .info {
+                     color: var(--purple-900);
+                     .description {
+                        color: var(--purple-800);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
 }

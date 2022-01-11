@@ -25,6 +25,23 @@ export const RECIPES: MenuItem = {
       label: `Recipes`,
       route: `/recipes`,
    },
+   nested: [
+      {
+         label: `Recipes`,
+         route: ``,
+         description: `Analyze your data to make more optimized plans`,
+      },
+      {
+         label: `Create recipe`,
+         route: `create-recipe`,
+         description: `Analyze your data to make more optimized plans`,
+      },
+      {
+         label: `My recipes`,
+         route: `my-recipes`,
+         description: `Analyze your data to make more optimized plans`,
+      },
+   ],
 };
 
 export const CALCULATORS: MenuItem = {
@@ -41,16 +58,6 @@ export const TRAININGS: MenuItem = {
    },
    nested: [
       {
-         label: `Start training`,
-         route: `start-training`,
-         description: `Analyze your data to make more optimized plans`,
-      },
-      {
-         label: `History`,
-         route: `history`,
-         description: `Analyze your data to make more optimized plans`,
-      },
-      {
          label: `Create plan`,
          route: `create-training-plan`,
          description: `Analyze your data to make more optimized plans`,
@@ -61,11 +68,4 @@ export const TRAININGS: MenuItem = {
          description: `Analyze your data to make more optimized plans`,
       },
    ],
-};
-
-export const BLOG: MenuItem = {
-   page: {
-      label: `Blog`,
-      route: `/blog`,
-   },
 };

@@ -6,14 +6,14 @@ import { authSelector } from '@/store/auth/AuthSlice';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 
 const AuthGuard: React.FC = ({ children }) => {
-   const { isLoggedIn, roles } = useAppSelector(authSelector);
+   const { isLoggedIn } = useAppSelector(authSelector);
    const router = useRouter();
 
    useEffect(() => {
       if (!isLoggedIn) {
          router.push(`/login`);
       }
-   }, [isLoggedIn, roles]);
+   }, [isLoggedIn]);
 
    if (!isLoggedIn)
       return (

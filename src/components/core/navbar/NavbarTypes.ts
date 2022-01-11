@@ -11,6 +11,7 @@ export interface MenuItem {
 
 export enum NestedMenuTypes {
    trainings,
+   recipes,
 }
 
 export type NavbarVariants = 'purple';

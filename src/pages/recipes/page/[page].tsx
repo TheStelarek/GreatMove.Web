@@ -97,5 +97,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
          totalPages: Math.ceil(response.data.total / 9),
          currentPage: page,
       },
+      revalidate: 60,
    };
 };

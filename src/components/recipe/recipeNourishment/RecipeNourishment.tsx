@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import styles from '@/components/recipe/recipeNurtilions/RecipeNurtilions.module.scss';
+import styles from '@/components/recipe/recipeNourishment/RecipeNourishment.module.scss';
 
 interface RecipeNurtilionsProps {
    calories: number;
-   protein: number;
+   proteins: number;
    carbs: number;
    fats: number;
    fibre?: number;
 }
 
-const RecipeNurtilions: FC<RecipeNurtilionsProps> = ({ calories, protein, carbs, fats, fibre }) => (
+const RecipeNourishment: FC<RecipeNurtilionsProps> = ({ calories, proteins, carbs, fats, fibre }) => (
    <div className={styles.nutrilionsContainer}>
       <span className={styles.title}>Nurtilion per savings</span>
       <div className={styles.nurtilions}>
@@ -19,7 +19,7 @@ const RecipeNurtilions: FC<RecipeNurtilionsProps> = ({ calories, protein, carbs,
          </div>
          <div className={styles.nurtilionBox}>
             <span className={styles.name}>Proteins</span>
-            <p>{protein}</p>
+            <p>{proteins}</p>
          </div>
          <div className={styles.nurtilionBox}>
             <span className={styles.name}>Carbs</span>
@@ -39,4 +39,4 @@ const RecipeNurtilions: FC<RecipeNurtilionsProps> = ({ calories, protein, carbs,
    </div>
 );
 
-export default RecipeNurtilions;
+export default RecipeNourishment;

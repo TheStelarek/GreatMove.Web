@@ -3,13 +3,14 @@ import styles from '@/components/recipe/recipeIngredients/RecipeIngredients.modu
 import Button from '@/components/core/button/Button';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addProduct } from '@/store/shoppingList/ShoppingListSlice';
-import { Ingredient } from '@/utils/types/Ingredient';
 import Minus from '@/public/recipe/minus.svg';
 import Plus from '@/public/recipe/plus.svg';
 import Shop from '@/public/recipe/shop.svg';
+import { Ingredient } from '@/utils/types/Ingredient';
+import { round } from '@/utils/functions/round';
 
 interface RecipeIngredientsProps {
-   ingredients: Array<Ingredient>;
+   ingredients: Ingredient[];
 }
 
 const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
@@ -22,7 +23,7 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
          const increasedServings = recipeIngredients.map(({ id, name, weight }) => ({
             id,
             name,
-            weight: weight * 2,
+            weight: weight + round(weight / servings),
          }));
          setServings((prevState) => prevState + 1);
          setRecipeIngredients(increasedServings);
@@ -34,7 +35,7 @@ const RecipeIngredients: FC<RecipeIngredientsProps> = ({ ingredients }) => {
          const decreasedServings = recipeIngredients.map(({ id, name, weight }) => ({
             id,
             name,
-            weight: weight / 2,
+            weight: weight - round(weight / servings),
          }));
          setServings((prevState) => prevState - 1);
          setRecipeIngredients(decreasedServings);
