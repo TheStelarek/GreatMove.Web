@@ -5,10 +5,11 @@ export const CreateRecipeValidationSchema = yup.object({
    picture: yup
       .mixed()
       .test(`required`, `You need to provide a picture`, (value) => value && value.length)
-      .test(`fileSize`, `The file is too large. Max is 2.5 MB`, (value) => {
-         console.log(`create`);
-         return value && value[0] && value[0].size <= MAX_PICTURE_SIZE;
-      })
+      .test(
+         `fileSize`,
+         `The file is too large. Max is 2.5 MB`,
+         (value) => value && value[0] && value[0].size <= MAX_PICTURE_SIZE,
+      )
       .test(
          `type`,
          `We only support jpg/jpeg/png files`,

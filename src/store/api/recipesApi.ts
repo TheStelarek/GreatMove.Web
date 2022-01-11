@@ -74,8 +74,19 @@ export const recipesApi = api.injectEndpoints({
             },
          }),
       }),
+      deleteRecipe: build.mutation<string, { recipeId: string }>({
+         query: (recipeFormData) => ({
+            url: `/recipes/${recipeFormData.recipeId}`,
+            method: `delete`,
+         }),
+      }),
    }),
 });
 
-export const { useGetRecipeByIdQuery, useAddRecipeMutation, useUpdateRecipeMutation, useAddReviewMutation } =
-   recipesApi;
+export const {
+   useGetRecipeByIdQuery,
+   useAddRecipeMutation,
+   useUpdateRecipeMutation,
+   useAddReviewMutation,
+   useDeleteRecipeMutation,
+} = recipesApi;

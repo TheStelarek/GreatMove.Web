@@ -1,8 +1,6 @@
-import { FormEvent, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
-import { AxiosError } from 'axios';
+import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Cell } from 'react-table';
-import { apiClient } from '@/api/apiClient';
 import styles from '@/pages/recipes/my-recipes/MyRecipes.module.scss';
 import Layout from '@/components/core/layout/Layout';
 import Table from '@/components/core/table/Table';
@@ -14,23 +12,28 @@ import { Recipe } from '@/utils/types/Recipe';
 import Edit from '@/public/icons/edit-regular.svg';
 import View from '@/public/icons/view.svg';
 import Trash from '@/public/my-shopping-list/trash.svg';
-import DeleteRecipeModal from '@/components/my-recipes/deleteRecipeModal/DeleteRecipeModal';
+import useMyRecipes from '@/utils/hooks/useMyRecipes';
+import { useDeleteRecipeMutation } from '@/store/api/recipesApi';
+import DeleteModal from '@/components/core/deleteModal/DeleteModal';
+import { ErrorType } from '@/utils/types/ErrorType';
 
 const MyRecipes: NextApplicationPage = () => {
-   const [recipes, setRecipes] = useState<Recipe[]>();
-   const [pageCount, setPageCount] = useState(0);
-   const [error, setError] = useState<string>(``);
-   const [isLoading, setIsLoading] = useState<boolean>(false);
-   const [deleteError, setDeleteError] = useState<string>(``);
+   const { recipes, pageCount, error, isLoading, fetchMyRecipes } = useMyRecipes();
+   const [deleteRecipe, deleteResult] = useDeleteRecipeMutation();
    const [selectedRecipeId, setSelectedRecipeId] = useState<string>(``);
-   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
+
+   const {
+      isOpen: isOpenDelete,
+      handleOpenModal: handleOpenDeleteModal,
+      handleCloseModal: handleCloseDeleteModal,
+   } = useModal();
 
    const openDeleteModal = useCallback(
       (selectedId: string) => {
-         handleOpenModal();
+         handleOpenDeleteModal();
          setSelectedRecipeId(selectedId);
       },
-      [handleOpenModal],
+      [handleOpenDeleteModal],
    );
 
    const columns = useMemo(
@@ -107,47 +110,12 @@ const MyRecipes: NextApplicationPage = () => {
       [openDeleteModal],
    );
 
-   const closeDeleteModal = () => {
-      handleCloseModal();
-      setSelectedRecipeId(``);
-      setDeleteError(``);
-   };
-
-   const removeRecipe = async (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      try {
-         setIsLoading(true);
-         await apiClient.delete(`/recipes/${selectedRecipeId}`);
-         const filteredRecipes = recipes?.filter(({ id }) => id !== selectedRecipeId);
-         setIsLoading(false);
-         setRecipes(filteredRecipes);
-         closeDeleteModal();
-      } catch (axiosError) {
-         setIsLoading(false);
-         const err = axiosError as AxiosError;
-         setError(err.response?.data.message);
+   useEffect(() => {
+      if (deleteResult.isSuccess) {
+         handleCloseDeleteModal();
+         setSelectedRecipeId(``);
       }
-   };
-   const fetchMyRecipes = useCallback(async (pageSize: number, pageIndex: number) => {
-      try {
-         setIsLoading(true);
-         const response = await apiClient.get(`/recipes/my-recipes?take=${pageSize}&skip=${pageIndex * pageSize}`);
-         const mappedData = response.data.data.map((recipe: Recipe, index: number) => ({
-            ...recipe,
-            createdAt: recipe.createdAt ? new Date(recipe.createdAt).toLocaleDateString() : null,
-            number: index + 1,
-         }));
-
-         const pagesCount = Math.ceil(response.data.total / pageSize);
-         setIsLoading(false);
-         setRecipes(mappedData);
-         setPageCount(pagesCount === 0 ? 1 : pagesCount);
-      } catch (axiosError) {
-         const err = axiosError as AxiosError;
-         setIsLoading(false);
-         setError(err.response?.data.message);
-      }
-   }, []);
+   }, [deleteResult]);
 
    useEffect(() => {
       fetchMyRecipes(10, 0);
@@ -163,13 +131,16 @@ const MyRecipes: NextApplicationPage = () => {
                </Button>
             </Link>
          </div>
-         <DeleteRecipeModal
-            isOpen={isOpen}
-            isLoading={isLoading}
-            removeRecipe={removeRecipe}
-            closeModal={closeDeleteModal}
-            deleteError={deleteError}
+
+         <DeleteModal
+            isOpen={isOpenDelete}
+            isLoading={deleteResult.isLoading}
+            closeModal={handleCloseDeleteModal}
+            remove={() => deleteRecipe({ recipeId: selectedRecipeId })}
+            deleteError={(deleteResult?.error as ErrorType)?.data?.message}
+            heading="Delete recipe"
          />
+
          {error && <p className="error">{error}</p>}
          {recipes && (
             <Table

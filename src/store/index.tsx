@@ -5,7 +5,7 @@ import { authSlice } from '@/store/auth/AuthSlice';
 import { recipesSlice } from '@/store/recipes/RecipesSlice';
 import { shoppingListSlice } from '@/store/shoppingList/ShoppingListSlice';
 import { api } from '@/store/api/api';
-import { trainingPlanSlice } from '@/store/trainingPlan/TrainingPlanSlice';
+import { trainingPlanSlice } from '@/features/trainingPlan/store/TrainingPlanSlice';
 
 const reducers = combineReducers({
    auth: authSlice.reducer,

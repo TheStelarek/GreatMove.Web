@@ -67,5 +67,10 @@ export const TRAININGS: MenuItem = {
          route: `plans`,
          description: `Analyze your data to make more optimized plans`,
       },
+      {
+         label: `Exercises`,
+         route: `exercises`,
+         description: `Analyze your data to make more optimized plans`,
+      },
    ],
 };

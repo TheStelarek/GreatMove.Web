@@ -1,7 +1,7 @@
-import { ExerciseDetailsType } from '@/utils/types/ExerciseDetailsType';
+import { Type } from '@/utils/types/Type';
 
 export type ExerciseType = {
    id: string;
    name: string;
-   details: ExerciseDetailsType[];
+   type?: Type;
 };
