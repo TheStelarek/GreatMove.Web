@@ -1,0 +1,60 @@
+.Container {
+   height: 100vh;
+   width: 100vw;
+   display: flex;
+   background-color: var(--gray-50);
+   .LeftBox {
+      height: 100%;
+      background-color: var(--blue-700);
+      width: 205px;
+      display: flex;
+   }
+   .LeftMenu {
+      display: flex;
+      padding: 20px 0px 0px 20px;
+      flex-direction: column;
+   }
+   .IconContainer {
+      display: flex;
+      flex-direction: row;
+   }
+   .SettingsIcon {
+      width: 45px;
+      height: 45px;
+      fill: var(--gray-400);
+   }
+   .IconText {
+      padding-top: var(--space-2);
+      color: var(--gray-400);
+      font-size: var(--font-size-h4);
+      padding-left: var(--space-2);
+   }
+   .Icon {
+      width: 20px;
+      height: 20px;
+      margin-right: var(--space-2);
+      fill: var(--gray-400);
+   }
+   .CategoryContainer {
+      padding-top: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+      color: var(--gray-400);
+   }
+
+   .EditProfileContainter {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+   }
+   .Arrow {
+      width: 20px;
+      height: 20px;
+      fill: var(--gray-400);
+      display: none;
+      &:hover .EditProfileContainter {
+         display: block;
+      }
+   }
+}
