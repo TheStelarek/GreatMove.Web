@@ -1,8 +1,12 @@
 .wrapper {
-   padding: var(--space-6);
+   padding: var(--space-4);
    border: 1px solid var(--gray-100);
    border-radius: var(--border-radius-5);
    width: 100%;
+
+   @media (min-width: 600px) {
+      padding: var(--space-6);
+   }
 
    .header {
       display: flex;
