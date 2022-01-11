@@ -23,7 +23,9 @@ const Footer = () => (
                <li className={styles.link}>
                   <Link href="/faq">Faq</Link>
                </li>
-               <li className={styles.link}>About us</li>
+               <li className={styles.link}>
+                  <Link href="/about">About us</Link>
+               </li>
                <li className={styles.link}>Contact</li>
             </ul>
          </div>
