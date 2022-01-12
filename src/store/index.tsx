@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authSlice } from '@/store/auth/AuthSlice';
-import { recipesSlice } from '@/store/recipes/RecipesSlice';
-import { shoppingListSlice } from '@/store/shoppingList/ShoppingListSlice';
+import { authSlice } from '@/features/auth/store/AuthSlice';
+import { recipesSlice } from '@/features/recipe/store/RecipesSlice';
+import { shoppingListSlice } from '@/features/shoppingList/store/ShoppingListSlice';
 import { api } from '@/store/api/api';
-import { trainingPlanSlice } from '@/store/trainingPlan/TrainingPlanSlice';
+import { trainingPlanSlice } from '@/features/trainingPlan/store/TrainingPlanSlice';
 
 const reducers = combineReducers({
    auth: authSlice.reducer,

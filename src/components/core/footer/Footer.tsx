@@ -20,8 +20,12 @@ const Footer = () => (
          </div>
          <div className={styles.section}>
             <ul className={styles.linksList}>
-               <li className={styles.link}>Faq</li>
-               <li className={styles.link}>About us</li>
+               <li className={styles.link}>
+                  <Link href="/faq">Faq</Link>
+               </li>
+               <li className={styles.link}>
+                  <Link href="/about">About us</Link>
+               </li>
                <li className={styles.link}>Contact</li>
             </ul>
          </div>

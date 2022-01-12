@@ -2,15 +2,24 @@ import Link from 'next/link';
 import { SetStateAction, useState, useEffect } from 'react';
 import cx from 'classnames';
 import styles from '@/components/core/navbar/Navbar.module.scss';
-import { RECIPES, CALCULATORS, TRAININGS, MYPROFILE, LOGIN, REGISTER } from '@/components/core/navbar/navbarData';
+import {
+   RECIPES,
+   CALCULATORS,
+   TRAININGS,
+   MYPROFILE,
+   LOGIN,
+   REGISTER,
+   SHOPPINGLIST,
+} from '@/components/core/navbar/navbarData';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { authSelector } from '@/store/auth/AuthSlice';
+import { authSelector } from '@/features/auth/store/AuthSlice';
 import Arrow from '@/public/navbar/expand-arrow.svg';
 import DefaultAvatar from '@/public/navbar/default-avatar.svg';
 import NavbarNestedMenu from '@/components/core/navbar/navbarNestedMenu/NavbarNestedMenu';
 import NavbarHamburger from '@/components/core/navbar/navbarHamburger/NavbarHamburger';
 import { NavbarVariants, NestedMenuTypes } from '@/components/core/navbar/NavbarTypes';
 import Logo from '@/components/core/logo/Logo';
+import { shoppingListSelector } from '@/features/shoppingList/store/ShoppingListSlice';
 
 interface NavbarProps {
    variant?: NavbarVariants;
@@ -21,6 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
    const [showHamburger, setShowHamburger] = useState(false);
    const [expandedMenu, setExpandedMenu] = useState<NestedMenuTypes | ''>(``);
    const { isLoggedIn } = useAppSelector(authSelector);
+   const { products } = useAppSelector(shoppingListSelector);
 
    const toggleNestedMenu = (expand: SetStateAction<'' | NestedMenuTypes>) =>
       expandedMenu === expand ? setExpandedMenu(``) : setExpandedMenu(expand);
@@ -106,7 +116,15 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
                   </li>
                </>
             )}
-
+            {products.length > 0 && (
+               <li className={styles.navMenuItem}>
+                  <Link href={SHOPPINGLIST.page.route}>
+                     <button type="button" className={styles.navMenuItemButton} onClick={hideMenu}>
+                        {SHOPPINGLIST.page.label}
+                     </button>
+                  </Link>
+               </li>
+            )}
             {isLoggedIn ? (
                <li className={cx(styles.navMenuItem, styles.profile)}>
                   <Link href={MYPROFILE.page.route}>

@@ -11,6 +11,7 @@ const icons = new Map([
    [`Recipes`, TrainingsPlans],
    [`Create recipe`, TrainingsStart],
    [`My recipes`, TrainingsHistory],
+   [`Exercises`, TrainingsHistory],
 ]);
 
 interface DynamicIconProps {

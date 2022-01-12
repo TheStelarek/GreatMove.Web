@@ -1,0 +1,43 @@
+.wrapper {
+   padding: var(--space-4);
+   border: 1px solid var(--gray-100);
+   border-radius: var(--border-radius-5);
+   width: 100%;
+
+   @media (min-width: 600px) {
+      padding: var(--space-6);
+   }
+
+   .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: var(--space-5);
+
+      .title {
+         font-weight: var(--font-weight-semi-bold);
+         color: var(--gray-800);
+         text-align: left;
+      }
+
+      .titleActive {
+         color: var(--blue-500);
+      }
+
+      .sign {
+         font-size: 25px;
+      }
+
+      .signActive {
+         color: var(--blue-500);
+      }
+   }
+
+   .content {
+      margin-top: var(--space-3);
+      font-size: var(--font-size-p1);
+      line-height: var(--line-height-p2);
+      color: var(--gray-700);
+   }
+}

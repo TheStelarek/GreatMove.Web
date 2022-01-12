@@ -51,6 +51,13 @@ export const CALCULATORS: MenuItem = {
    },
 };
 
+export const SHOPPINGLIST: MenuItem = {
+   page: {
+      label: `Shopping list`,
+      route: `/my-shopping-list`,
+   },
+};
+
 export const TRAININGS: MenuItem = {
    page: {
       label: `Trainings`,
@@ -65,6 +72,11 @@ export const TRAININGS: MenuItem = {
       {
          label: `Plans`,
          route: `plans`,
+         description: `Analyze your data to make more optimized plans`,
+      },
+      {
+         label: `Exercises`,
+         route: `exercises`,
          description: `Analyze your data to make more optimized plans`,
       },
    ],

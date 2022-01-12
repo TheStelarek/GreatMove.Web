@@ -1,20 +1,11 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 import { GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import styles from '@/pages/recipes/Recipes.module.scss';
-import Layout from '@/components/core/layout/Layout';
-import RecipesList from '@/components/recipes/recipesList/RecipesList';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
-import { Recipe } from '@/utils/types/Recipe';
-import Pagination from '@/components/core/pagination/Pagination';
 import { apiClient } from '@/api/apiClient';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import { clearState, recipesSelector } from '@/store/recipes/RecipesSlice';
-import RecipesFilterList from '@/components/recipes/recipesFilterList/RecipesFilterList';
-import RecipesFilterForm from '@/components/recipes/recipesFilterForm/RecipesFilterForm';
-import Button from '@/components/core/button/Button';
-import FilterIcon from '@/public/filter.svg';
+import { Recipe } from '@/features/recipe/utils/types/Recipe';
+import RecipesContainer from '@/features/recipe/containers/recipesContainer/RecipesContainer';
 
 interface RecipesProps {
    recipes: Recipe[];
@@ -22,50 +13,15 @@ interface RecipesProps {
    totalPages: number;
 }
 
-const RecipesIndexPage: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, currentPage }) => {
-   const [showFilters, setShowFilter] = useState<boolean>(false);
-   const { filterSearch } = useAppSelector(recipesSelector);
-   const dispatch = useAppDispatch();
+const RecipesPage: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, currentPage }) => (
+   <RecipesContainer totalPages={totalPages} currentPage={currentPage} recipes={recipes} />
+);
 
-   useEffect(
-      () => () => {
-         dispatch(clearState());
-      },
-      [],
-   );
-
-   return (
-      <div className={styles.container}>
-         <div className={styles.filterBtnWrapper}>
-            <Button
-               leftIcon={<FilterIcon className={styles.icon} />}
-               borderRadius={5}
-               variant="ghost-primary"
-               onClick={() => setShowFilter(!showFilters)}
-            >
-               FILTERS
-            </Button>
-         </div>
-
-         {showFilters && <RecipesFilterForm />}
-
-         {filterSearch ? (
-            <RecipesFilterList />
-         ) : (
-            <div className={styles.staticRecipeList}>
-               <RecipesList recipes={recipes} />
-               <Pagination totalPages={totalPages} currentPage={currentPage} url="/recipes" />
-            </div>
-         )}
-      </div>
-   );
+RecipesPage.getLayout = function getLayout(page: ReactElement) {
+   return <MainLayout>{page}</MainLayout>;
 };
 
-RecipesIndexPage.getLayout = function getLayout(page: ReactElement) {
-   return <Layout>{page}</Layout>;
-};
-
-export default RecipesIndexPage;
+export default RecipesPage;
 
 export async function getStaticPaths() {
    const response = await apiClient.get(`/recipes`);
