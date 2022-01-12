@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import styles from '@/components/profile/discussion/ProfilDiscussion.module.scss';
 import More from '@/public/profile/more.svg';
 import Heart from '@/public/profile/heart.svg';
 import Comment from '@/public/profile/comment.svg';
 import Button from '@/components/core/button/Button';
+import styles from './ProfileDiscussionContainer.module.scss';
 
 const name = `Dennis Buk`;
 const tag = `@Hickari`;
