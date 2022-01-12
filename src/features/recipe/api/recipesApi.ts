@@ -1,6 +1,6 @@
 import { RecipeFormValues } from '@/features/recipe/components/create-recipe/createRecipeForm/recipeFormValues';
 import type { Recipe } from '@/features/recipe/utils/types/Recipe';
-import { api } from '../../../store/api/api';
+import { api } from '@/store/api/api';
 
 export const recipesApi = api.injectEndpoints({
    endpoints: (build) => ({

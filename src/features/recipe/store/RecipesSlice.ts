@@ -1,15 +1,16 @@
 import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/utils/types/RootState';
 import { Recipe } from '@/features/recipe/utils/types/Recipe';
-import { getRecipes } from './getRecipes';
-import { getMoreRecipes } from './getMoreRecipes';
+import { getRecipes } from '@/features/recipe/store/getRecipes';
+import { getMoreRecipes } from '@/features/recipe/store/getMoreRecipes';
+import { FilterValue } from '@/features/recipe/components/recipes/recipesFilterForm/filterData';
 
 interface RecipesState {
+   isFilterSearch: boolean;
    filteredRecipes: Recipe[];
    totalFilteredRecipes: number;
-   filterSearch: boolean;
+   filters?: FilterValue;
    hasMore: boolean;
-   searchName: string;
    isFetching: boolean;
    isSuccess: boolean;
    isError: boolean;
@@ -18,11 +19,11 @@ interface RecipesState {
 }
 
 const initialState: RecipesState = {
-   hasMore: false,
-   filterSearch: false,
-   totalFilteredRecipes: 0,
-   searchName: ``,
+   isFilterSearch: false,
    filteredRecipes: [],
+   totalFilteredRecipes: 0,
+   filters: undefined,
+   hasMore: false,
    isFetching: false,
    isSuccess: false,
    isError: false,
@@ -34,20 +35,16 @@ export const recipesSlice = createSlice({
    name: `recipes`,
    initialState,
    reducers: {
-      clearState: (state) => {
-         state.hasMore = false;
-         state.filterSearch = false;
-         state.totalFilteredRecipes = 0;
-         state.filteredRecipes = [];
-         state.searchName = ``;
+      clearState: () => initialState,
+      clearStatuses: (state) => {
          state.isFetching = false;
          state.isSuccess = false;
          state.isError = false;
          state.isEmpty = false;
          state.errorMessage = null;
       },
-      setSearchName: (state, action: PayloadAction<string>) => {
-         state.searchName = action.payload;
+      setFilters: (state, action: PayloadAction<FilterValue>) => {
+         state.filters = action.payload;
       },
    },
    extraReducers: (builder) => {
@@ -67,7 +64,7 @@ export const recipesSlice = createSlice({
 
       builder.addCase(getRecipes.pending, (state: RecipesState) => {
          state.isFetching = true;
-         state.filterSearch = true;
+         state.isFilterSearch = true;
          state.isSuccess = false;
       });
 
@@ -80,5 +77,5 @@ export const recipesSlice = createSlice({
    },
 });
 
-export const { clearState, setSearchName } = recipesSlice.actions;
+export const { clearState, setFilters, clearStatuses } = recipesSlice.actions;
 export const recipesSelector = (state: RootState) => state.recipes;

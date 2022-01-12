@@ -41,29 +41,4 @@
       font-weight: var(--font-weight-regular);
       color: var(--gray-800);
    }
-
-   .votes {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-
-      .voteBtn {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         border: 1px solid var(--gray-300);
-         border-radius: var(--border-radius-15);
-         padding: var(--space-1-5) var(--space-3);
-         gap: var(--space-2);
-         font-size: var(--font-size-caption);
-         line-height: var(--line-height-caption);
-         font-weight: var(--font-weight-regular);
-         color: var(--gray-600);
-
-         .voteIcon {
-            width: 12px;
-            fill: var(--gray-400);
-         }
-      }
-   }
 }
