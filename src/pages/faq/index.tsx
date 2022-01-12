@@ -1,5 +1,5 @@
 import Accordion from '@/components/core/accordion/Accordion';
-import Layout from '@/components/core/layout/Layout';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
 import { ReactElement } from 'react';
 import styles from '@/pages/faq/Faq.module.scss';
 
@@ -49,5 +49,5 @@ const Faq = () => (
 export default Faq;
 
 Faq.getLayout = function getLayout(page: ReactElement) {
-   return <Layout>{page}</Layout>;
+   return <MainLayout>{page}</MainLayout>;
 };

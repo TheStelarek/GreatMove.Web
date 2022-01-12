@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import styles from '@/pages/about/About.module.scss';
-import Layout from '@/components/core/layout/Layout';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
 import Info from '@/public/icons/info-solid.svg';
 
 const About = () => (
@@ -30,5 +30,5 @@ const About = () => (
 export default About;
 
 About.getLayout = function getLayout(page: ReactElement) {
-   return <Layout>{page}</Layout>;
+   return <MainLayout>{page}</MainLayout>;
 };

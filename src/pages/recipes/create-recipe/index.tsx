@@ -1,22 +1,11 @@
-import { ReactElement, useState } from 'react';
-import Layout from '@/components/core/layout/Layout';
-import CreateRecipeBox from '@/components/create-recipe/createRecipeBox/CreateRecipeBox';
-import styles from '@/pages/recipes/create-recipe/CreateRecipe.module.scss';
-import CreateRecipeForm from '@/components/create-recipe/createRecipeForm/CreateRecipeForm';
+import { ReactElement } from 'react';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
+import CreateRecipeContainer from '@/features/recipe/containers/createRecipeContainer/CreateRecipeContainer';
 
-const CreateRecipe = () => {
-   const [isCreatingRecipe, setIsCreatingRecipe] = useState(false);
-   const showForm = () => setIsCreatingRecipe((prevState) => !prevState);
-
-   return (
-      <div className={styles.createRecipeContainer}>
-         {isCreatingRecipe ? <CreateRecipeForm /> : <CreateRecipeBox create={showForm} />}
-      </div>
-   );
-};
+const CreateRecipe = () => <CreateRecipeContainer />;
 
 export default CreateRecipe;
 
 CreateRecipe.getLayout = function getLayout(page: ReactElement) {
-   return <Layout>{page}</Layout>;
+   return <MainLayout>{page}</MainLayout>;
 };

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import Layout from '@/components/core/layout/Layout';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
 import CreateTrainingPlanContainer from '@/features/trainingPlan/containers/createTrainingPlanContainer/CreateTrainingPlanContainer';
 
 const CreateTrainingPlan = () => <CreateTrainingPlanContainer />;
@@ -7,5 +7,5 @@ const CreateTrainingPlan = () => <CreateTrainingPlanContainer />;
 export default CreateTrainingPlan;
 
 CreateTrainingPlan.getLayout = function getLayout(page: ReactElement) {
-   return <Layout>{page}</Layout>;
+   return <MainLayout>{page}</MainLayout>;
 };

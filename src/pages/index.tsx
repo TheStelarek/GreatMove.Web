@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import styles from '@/styles/Home.module.scss';
-import Layout from '@/components/core/layout/Layout';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
 
 export default function Home() {
    return (
-      <div className={styles.container}>
+      <div>
          <Head>
             <title>TypeScript starter for Next.js</title>
             <meta
@@ -20,5 +19,5 @@ export default function Home() {
 }
 
 Home.getLayout = function getLayout(page: ReactElement) {
-   return <Layout>{page}</Layout>;
+   return <MainLayout>{page}</MainLayout>;
 };

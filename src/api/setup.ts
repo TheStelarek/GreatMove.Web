@@ -1,4 +1,4 @@
-import { reset, updateAccessToken } from '@/store/auth/AuthSlice';
+import { reset, updateAccessToken } from '@/features/auth/store/AuthSlice';
 import type { RootState } from '@/utils/types/RootState';
 import { EnhancedStore } from '@reduxjs/toolkit';
 import Router from 'next/router';
