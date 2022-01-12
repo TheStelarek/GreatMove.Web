@@ -48,6 +48,22 @@
       align-items: center;
       cursor: pointer;
    }
+   .HelpContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+   }
+   .SecurityContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+   }
+   .NotificationsContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+   }
+
    .Arrow {
       width: 20px;
       height: 20px;
@@ -56,5 +72,40 @@
       &:hover .EditProfileContainter {
          display: block;
       }
+   }
+
+   .RightBox {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      margin-top: var(--space-10);
+      align-items: center;
+      flex-direction: column;
+   }
+
+   .title {
+      font-size: var(--font-size-h1-small);
+      font-weight: var(--font-weight-bold);
+   }
+
+   .inputsWrapper {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      align-items: center;
+      gap: var(--space-20);
+      margin-bottom: var(--space-10);
+      justify-content: center;
+   }
+
+   .inputsContainer {
+      margin-top: var(--space-32);
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+      box-shadow: var(--box-shadow-xs);
+      border-radius: var(--border-radius-15);
+      padding: var(--space-6) var(--space-5);
    }
 }
