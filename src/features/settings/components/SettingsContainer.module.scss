@@ -1,80 +1,121 @@
-.Container {
+.container {
    height: 100vh;
    width: 100vw;
    display: flex;
    background-color: var(--gray-50);
-   .LeftBox {
+   .leftBox {
       height: 100%;
       background-color: var(--blue-700);
       width: 250px;
       display: flex;
    }
-   .LeftMenu {
+   .leftMenu {
       display: flex;
       padding: 20px 0px 0px 20px;
       flex-direction: column;
    }
-   .IconContainer {
+   .iconContainer {
       display: flex;
       flex-direction: row;
    }
-   .SettingsIcon {
+   .settingsIcon {
       width: 45px;
       height: 45px;
       fill: var(--gray-400);
    }
-   .IconText {
+   .iconText {
       padding-top: var(--space-2);
       color: var(--gray-400);
       font-size: var(--font-size-h4);
       padding-left: var(--space-2);
    }
-   .Icon {
+   .icon {
       width: 20px;
       height: 20px;
       margin-right: var(--space-2);
       fill: var(--gray-400);
    }
-   .CategoryContainer {
+   .categoryContainer {
       padding-top: var(--space-8);
       display: flex;
       flex-direction: column;
       gap: var(--space-8);
       color: var(--gray-400);
    }
+   .editProfileContainter {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
 
-   .EditProfileContainter {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-   }
-   .HelpContainer {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-   }
-   .SecurityContainer {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-   }
-   .NotificationsContainer {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-   }
+      .arrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--gray-400);
+         visibility: hidden;
+      }
 
-   .Arrow {
-      width: 20px;
-      height: 20px;
-      fill: var(--gray-400);
-      display: none;
-      &:hover .EditProfileContainter {
-         display: block;
+      &:hover {
+         .arrow {
+            visibility: visible;
+         }
+      }
+   }
+   .helpContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .arrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--gray-400);
+         visibility: hidden;
+      }
+
+      &:hover {
+         .arrow {
+            visibility: visible;
+         }
+      }
+   }
+   .securityContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .arrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--gray-400);
+         visibility: hidden;
+      }
+
+      &:hover {
+         .arrow {
+            visibility: visible;
+         }
+      }
+   }
+   .notificationsContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .arrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--gray-400);
+         visibility: hidden;
+      }
+
+      &:hover {
+         .arrow {
+            visibility: visible;
+         }
       }
    }
 
-   .RightBox {
+   .rightBox {
       display: flex;
       width: 100%;
       height: 100%;
@@ -110,18 +151,18 @@
       padding: var(--space-6) var(--space-5);
    }
 
-   .ChangeAvatar {
+   .changeAvatar {
       display: flex;
       margin-top: var(--space-7);
       margin-bottom: var(--space-7);
       cursor: pointer;
    }
 
-   .AvatarIcon {
+   .avatarIcon {
       height: 92px;
       width: 92px;
    }
-   .EditIcon {
+   .editIcon {
       height: 32px;
       width: 32px;
       margin-top: auto;

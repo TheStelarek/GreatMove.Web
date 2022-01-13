@@ -12,40 +12,43 @@ import Edit from '@/public/settings/edit.svg';
 import styles from './SettingsContainer.module.scss';
 
 const SettingsContainer = () => (
-   <div className={styles.Container}>
-      <div className={styles.LeftBox}>
-         <div className={styles.LeftMenu}>
-            <div className={styles.IconContainer}>
-               <SettingsIcon className={styles.SettingsIcon} />
-               <div className={styles.IconText}>Settings</div>
+   <div className={styles.container}>
+      <div className={styles.leftBox}>
+         <div className={styles.leftMenu}>
+            <div className={styles.iconContainer}>
+               <SettingsIcon className={styles.settingsIcon} />
+               <div className={styles.iconText}>Settings</div>
             </div>
-            <div className={styles.CategoryContainer}>
-               <div className={styles.EditProfileContainter}>
-                  <EditProfileIcon className={styles.Icon} />
+            <div className={styles.categoryContainer}>
+               <div className={styles.editProfileContainter}>
+                  <EditProfileIcon className={styles.icon} />
                   Edit Profile
-                  <Arrow className={styles.Arrow} />
+                  <Arrow className={styles.arrow} />
                </div>
-               <div className={styles.NotificationsContainer}>
-                  <NotificationsIcon className={styles.Icon} />
+               <div className={styles.notificationsContainer}>
+                  <NotificationsIcon className={styles.icon} />
                   Notifications
+                  <Arrow className={styles.arrow} />
                </div>
-               <div className={styles.SecurityContainer}>
-                  <SecurityIcon className={styles.Icon} />
+               <div className={styles.securityContainer}>
+                  <SecurityIcon className={styles.icon} />
                   Security and Login
+                  <Arrow className={styles.arrow} />
                </div>
-               <div className={styles.HelpContainer}>
-                  <HelpIcon className={styles.Icon} />
+               <div className={styles.helpContainer}>
+                  <HelpIcon className={styles.icon} />
                   Help and support
+                  <Arrow className={styles.arrow} />
                </div>
             </div>
          </div>
       </div>
 
-      <div className={styles.RightBox}>
+      <div className={styles.rightBox}>
          <p className={styles.title}>Edit Profile</p>
-         <div className={styles.ChangeAvatar}>
-            <Avatar className={styles.AvatarIcon} />
-            <Edit className={styles.EditIcon} />
+         <div className={styles.changeAvatar}>
+            <Avatar className={styles.avatarIcon} />
+            <Edit className={styles.editIcon} />
          </div>
          <div className={styles.inputsContainer}>
             <div className={styles.inputsWrapper}>
