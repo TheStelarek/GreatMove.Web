@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Spinner from '@/components/core/spinner/Spinner';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
@@ -6,11 +6,12 @@ import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { getMoreRecipes } from '@/features/recipe/store/getMoreRecipes';
 import RecipesList from '@/features/recipe/components/recipes/recipesList/RecipesList';
 import styles from '@/features/recipe/components/recipes/recipesFilterList/RecipesFilterList.module.scss';
-import { recipesSelector } from '@/features/recipe/store/RecipesSlice';
+import { clearStatuses, recipesSelector } from '@/features/recipe/store/RecipesSlice';
 
 const RecipesFilterList = () => {
-   const { isError, errorMessage, isSuccess, filteredRecipes, hasMore, searchName, isEmpty } =
+   const { filters, isError, errorMessage, isSuccess, filteredRecipes, hasMore, isEmpty } =
       useAppSelector(recipesSelector);
+
    const dispatch = useAppDispatch();
 
    const getMore = () =>
@@ -18,9 +19,16 @@ const RecipesFilterList = () => {
          getMoreRecipes({
             skip: filteredRecipes.length,
             take: 9,
-            name: searchName,
+            ...filters,
          }),
       );
+
+   useEffect(
+      () => () => {
+         dispatch(clearStatuses());
+      },
+      [],
+   );
 
    return (
       <>
@@ -44,7 +52,7 @@ const RecipesFilterList = () => {
                Nothing found.
             </p>
          )}
-         {isError && (
+         {isError && errorMessage && (
             <p role="alert" className={styles.resultsAlert}>
                {errorMessage}
             </p>

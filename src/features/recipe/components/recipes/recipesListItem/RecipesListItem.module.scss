@@ -1,114 +1,119 @@
 .recipe {
-  width: 100%;
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: var(--border-radius-8);
-  box-shadow: var(--box-shadow-xs);
-  border: 1px solid var(--gray-50);
+   width: 100%;
+   padding: var(--space-5);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   cursor: pointer;
+   border-radius: var(--border-radius-8);
+   box-shadow: var(--box-shadow-xs);
+   border: 1px solid var(--gray-50);
 
-  .imageContainer {
-    position: relative;
-    width: 100%;
-    height: 250px;
-  }
+   .imageContainer {
+      width: 100%;
+      height: 250px;
 
-  .content {
-    margin-top: var(--space-2-5);
-    gap: var(--space-2);
-    display: flex;
-    flex-direction: column;
+      img {
+         height: 100%;
+         width: 100%;
+         object-fit: cover;
+      }
+   }
 
-    .meal {
+   .content {
+      margin-top: var(--space-2-5);
+      gap: var(--space-2);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
 
-      .type {
-        text-transform: capitalize;
+      .meal {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+
+         .type {
+            text-transform: capitalize;
+         }
+
+         .type,
+         .calories {
+            color: var(--gray-900);
+            font-weight: var(--font-weight-semi-bold);
+            font-size: var(--font-size-p1);
+            line-height: var(--line-height-p1);
+         }
       }
 
-      .type,
-      .calories {
-        color: var(--gray-900);
-        font-weight: var(--font-weight-semi-bold);
-        font-size: var(--font-size-p1);
-        line-height: var(--line-height-p1);
-      }
-    }
-
-    .name {
-      display: flex;
-      font-weight: var(--font-weight-bold);
-      color: var(--gray-900);
-    }
-
-    .difficulty {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .level,
-      .estimatedTime {
-        font-size: var(--font-size-caption);
-        line-height: var(--line-height-caption);
-        font-weight: var(--font-weight-extra-bold);
-        text-transform: uppercase;
+      .name {
+         display: flex;
+         font-weight: var(--font-weight-bold);
+         color: var(--gray-900);
       }
 
-      .level {
-        color: var(--gray-400);
-        letter-spacing: 0.6px;
-      }
+      .difficulty {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
 
-      .estimatedTime {
-        text-align: center;
-        background-color: var(--blue-400);
-        border-radius: 50px;
-        color: var(--white);
-        padding: var(--space-0-5) var(--space-1-5);
-        letter-spacing: 0.8px;
+         .level,
+         .estimatedTime {
+            font-size: var(--font-size-caption);
+            line-height: var(--line-height-caption);
+            font-weight: var(--font-weight-extra-bold);
+            text-transform: uppercase;
+         }
+
+         .level {
+            color: var(--gray-400);
+            letter-spacing: 0.6px;
+         }
+
+         .estimatedTime {
+            text-align: center;
+            background-color: var(--blue-400);
+            border-radius: 50px;
+            color: var(--white);
+            padding: var(--space-0-5) var(--space-1-5);
+            letter-spacing: 0.8px;
+         }
       }
-    }
-  }
+   }
 }
 
 @media (min-width: 550px) {
-  .recipe {
-    width: calc(50% - var(--space-2-5));
+   .recipe {
+      width: calc(50% - var(--space-2-5));
 
-    .imageContainer {
-      height: 200px;
-    }
-  }
+      .imageContainer {
+         height: 200px;
+      }
+   }
 }
 
 @media (min-width: 680px) {
-  .recipe {
-    .imageContainer {
-      height: 250px;
-    }
-  }
+   .recipe {
+      .imageContainer {
+         height: 250px;
+      }
+   }
 }
 
 @media (min-width: 1100px) {
-  .recipe {
-    width: calc(33.33% - var(--space-5));
+   .recipe {
+      width: calc(33.33% - var(--space-5));
 
-    .imageContainer {
-      height: 200px;
-    }
-  }
+      .imageContainer {
+         height: 200px;
+      }
+   }
 }
 
 @media (min-width: 1270px) {
-  .recipe {
-    width: calc(33.33% - var(--space-6));
+   .recipe {
+      width: calc(33.33% - var(--space-6));
 
-    .imageContainer {
-      height: 260px;
-    }
-  }
+      .imageContainer {
+         height: 260px;
+      }
+   }
 }

@@ -14,39 +14,26 @@ import {
    handleStyle,
    trackStyle,
    railStyle,
+   FilterValue,
 } from '@/features/recipe/components/recipes/recipesFilterForm/filterData';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { getRecipes } from '@/features/recipe/store/getRecipes';
-import { clearState, setSearchName } from '@/features/recipe/store/RecipesSlice';
+import { clearStatuses, setFilters } from '@/features/recipe/store/RecipesSlice';
 import { times, tags, meals, diets } from '@/features/recipe/utils/data';
 
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
-interface FilterValue {
-   name: string;
-   caloriesRange: number[];
-   proteinsRange: number[];
-   carbsRange: number[];
-   fatsRange: number[];
-   time: string;
-   meals: string[];
-   tags: string[];
-   diets: string[];
-}
-
 const RecipesFilterForm = () => {
    const dispatch = useAppDispatch();
    const { register, handleSubmit, control, watch } = useForm<FilterValue>();
 
-   const onSubmit = async ({ name, caloriesRange, time }: FilterValue) => {
-      if (name) {
-         dispatch(setSearchName(name));
-         dispatch(getRecipes({ name }));
-      } else {
-         dispatch(clearState());
-      }
+   const onSubmit = (data: FilterValue) => {
+      dispatch(clearStatuses());
+      dispatch(getRecipes({ ...data }));
+      dispatch(setFilters(data));
    };
+
    const calories = watch(`caloriesRange`, [300, 500]);
    const proteins = watch(`proteinsRange`, [10, 50]);
    const carbs = watch(`carbsRange`, [30, 60]);
@@ -65,7 +52,7 @@ const RecipesFilterForm = () => {
                      <Range
                         min={0}
                         max={2000}
-                        step={10}
+                        step={5}
                         defaultValue={value}
                         marks={caloriesMarks}
                         tipFormatter={(v) => `${v}`}
@@ -161,6 +148,9 @@ const RecipesFilterForm = () => {
                      <TagCheckbox key={tag} type="checkbox" value={tag} {...register(`tags`)} label={tag} />
                   ))}
                </ListWrapper>
+               <button type="submit" className={styles.searchBtn}>
+                  Search
+               </button>
             </div>
          </div>
       </form>

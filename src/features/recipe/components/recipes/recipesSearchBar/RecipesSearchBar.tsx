@@ -2,6 +2,7 @@ import { useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
 import { forwardRef, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import Link from 'next/link';
 import cx from 'classnames';
 import Input from '@/components/core/input/Input';
 import { Recipe } from '@/features/recipe/utils/types/Recipe';
@@ -57,9 +58,11 @@ const RecipesSearchBar = forwardRef<HTMLInputElement, RecipesSearchBarProps>(({ 
          >
             {isOpen &&
                matchingRecipes.map((item, index) => (
-                  <li className={styles.searchResultsItem} key={item.id} {...getItemProps({ item, index })}>
-                     {item.title}
-                  </li>
+                  <Link href={`/recipes/id/${item.id}/${item.title}`} key={item.id}>
+                     <li className={styles.searchResultsItem} {...getItemProps({ item, index })}>
+                        {item.title}
+                     </li>
+                  </Link>
                ))}
          </ul>
       </div>
