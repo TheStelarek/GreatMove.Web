@@ -6,7 +6,7 @@ import styles from '@/components/core/textArea/TextArea.module.scss';
 interface TextAreaStyles {
    radius?: 5 | 10 | 15;
    variant?: 'gray' | 'blue';
-   size?: 'small' | 'regular' | 'big' | 'large';
+   size?: 'small' | 'regular' | 'big' | 'large' | 'full';
 }
 
 interface TextAreaHandlers {
@@ -35,14 +35,14 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       { radius, variant = `gray`, size = `regular`, label, error, onChange, onBlur, placeholder, autoFocus, name },
       ref,
    ) => (
-      <label htmlFor={name} className={styles.label}>
+      <label htmlFor={name} className={cx(styles.label, styles[`textArea-${size}`])}>
          {label && label}
          <textarea
             className={cx(
                styles.textArea,
                styles[`textArea-${variant}`],
                styles[`textArea-radius-${radius}`],
-               styles[`textArea-${size}`],
+
                error && styles.textAreaError,
             )}
             aria-invalid={error ? `true` : `false`}
