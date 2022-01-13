@@ -64,24 +64,38 @@ const SettingsContainer = () => {
                </div>
                <div className={styles.inputsContainer}>
                   <div className={styles.inputsWrapper}>
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input
+                        variant="gray"
+                        type="text"
+                        label="First name"
+                        placeholder="Enter your first name"
+                        size="big"
+                     />
+                     <Input
+                        variant="gray"
+                        type="text"
+                        label="Last name"
+                        placeholder="Enter your last name"
+                        size="big"
+                     />
                   </div>
                   <div className={styles.inputsWrapper}>
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Adress" placeholder="Enter your adress" size="big" />
+                     <Input variant="gray" type="text" label="City" placeholder="Enter your city" size="big" />
                   </div>
                   <div className={styles.inputsWrapper}>
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="State" placeholder="Enter your state" size="big" />
+                     <Input variant="gray" type="text" label="Zip-code" placeholder="Enter your zip-code" size="big" />
                   </div>
                   <div className={styles.inputsWrapper}>
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-                  </div>
-                  <div className={styles.inputsWrapper}>
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Country" placeholder="Enter your country" size="big" />
+                     <Input
+                        variant="gray"
+                        type="text"
+                        label="Contact number"
+                        placeholder="Enter your contact number"
+                        size="big"
+                     />
                   </div>
                   <Button type="submit" size="large" isBold isFullWidth>
                      Save
