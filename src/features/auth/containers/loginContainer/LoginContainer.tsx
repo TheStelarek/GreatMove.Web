@@ -22,7 +22,7 @@ const LoginContainer = () => (
                <Link href="/register">Don't have an account? Sign up!</Link>
             </p>
             <p className={styles.link}>
-               <Link href="/">Forgot password?</Link>
+               <Link href="/forgot-password">Forgot password?</Link>
             </p>
          </div>
       </div>
