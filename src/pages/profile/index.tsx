@@ -7,5 +7,5 @@ const MyProfile = () => <ProfileContainer />;
 export default MyProfile;
 
 MyProfile.getLayout = function getLayout(page: ReactElement) {
-   return <MainLayout>{page}</MainLayout>;
+   return <MainLayout fullWidth>{page}</MainLayout>;
 };
