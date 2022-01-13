@@ -19,7 +19,7 @@ interface RecipesContainerProps {
 
 const RecipesContainer: FC<RecipesContainerProps> = ({ recipes, currentPage, totalPages }) => {
    const [showFilters, setShowFilter] = useState<boolean>(false);
-   const { filterSearch } = useAppSelector(recipesSelector);
+   const { isFilterSearch } = useAppSelector(recipesSelector);
    const dispatch = useAppDispatch();
 
    useEffect(
@@ -43,7 +43,7 @@ const RecipesContainer: FC<RecipesContainerProps> = ({ recipes, currentPage, tot
 
          {showFilters && <RecipesFilterForm />}
 
-         {filterSearch ? (
+         {isFilterSearch ? (
             <RecipesFilterList />
          ) : (
             <div className={styles.staticRecipeList}>

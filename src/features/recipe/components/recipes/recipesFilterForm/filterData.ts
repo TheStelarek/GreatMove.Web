@@ -1,3 +1,15 @@
+export interface FilterValue {
+   name: string;
+   caloriesRange: number[];
+   proteinsRange: number[];
+   carbsRange: number[];
+   fatsRange: number[];
+   time: number;
+   meals: string[];
+   tags: string[];
+   diets: string[];
+}
+
 export const handleStyle = [
    {
       backgroundColor: `#63CBEE`,

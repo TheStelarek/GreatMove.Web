@@ -13,8 +13,6 @@ export const RecipeReviewsList: FC<{ reviews: Review[] }> = ({ reviews }) => (
             created_at={created_at}
             rating={rating}
             description={description}
-            upVotes={0}
-            downVotes={0}
          />
       ))}
    </ul>
