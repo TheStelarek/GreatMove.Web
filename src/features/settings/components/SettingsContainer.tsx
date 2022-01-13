@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React, { useState } from 'react';
+import cx from 'classnames';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import SettingsIcon from '@/public/settings/settings.svg';
@@ -11,71 +12,99 @@ import Avatar from '@/public/settings/avatar.svg';
 import Edit from '@/public/settings/edit.svg';
 import styles from './SettingsContainer.module.scss';
 
-const SettingsContainer = () => (
-   <div className={styles.container}>
-      <div className={styles.leftBox}>
-         <div className={styles.leftMenu}>
-            <div className={styles.iconContainer}>
-               <SettingsIcon className={styles.settingsIcon} />
-               <div className={styles.iconText}>Settings</div>
-            </div>
-            <div className={styles.categoryContainer}>
-               <div className={styles.editProfileContainter}>
-                  <EditProfileIcon className={styles.icon} />
-                  Edit Profile
-                  <Arrow className={styles.arrow} />
-               </div>
-               <div className={styles.notificationsContainer}>
-                  <NotificationsIcon className={styles.icon} />
-                  Notifications
-                  <Arrow className={styles.arrow} />
-               </div>
-               <div className={styles.securityContainer}>
-                  <SecurityIcon className={styles.icon} />
-                  Security and Login
-                  <Arrow className={styles.arrow} />
-               </div>
-               <div className={styles.helpContainer}>
-                  <HelpIcon className={styles.icon} />
-                  Help and support
-                  <Arrow className={styles.arrow} />
-               </div>
-            </div>
-         </div>
-      </div>
+const SettingsContainer = () => {
+   const [showPage, setShowPage] = useState(0);
 
-      <div className={styles.rightBox}>
-         <p className={styles.title}>Edit Profile</p>
-         <div className={styles.changeAvatar}>
-            <Avatar className={styles.avatarIcon} />
-            <Edit className={styles.editIcon} />
+   return (
+      <div className={styles.container}>
+         <div className={styles.leftBox}>
+            <div className={styles.leftMenu}>
+               <div className={styles.iconContainer}>
+                  <SettingsIcon className={styles.settingsIcon} />
+                  <div className={styles.iconText}>Settings</div>
+               </div>
+               <div className={styles.categoryContainer}>
+                  <button className={styles.editProfileContainter} onClick={() => setShowPage(0)}>
+                     <EditProfileIcon className={cx(styles.icon, showPage === 0 && styles.activeIcon)} />
+                     <div className={cx(styles.buttonText, showPage === 0 && styles.activeButtonText)}>
+                        Edit Profile
+                     </div>
+                     <Arrow className={cx(styles.arrow, showPage === 0 && styles.activeArrow)} />
+                  </button>
+                  <button className={styles.notificationsContainer} onClick={() => setShowPage(1)}>
+                     <NotificationsIcon className={cx(styles.icon, showPage === 1 && styles.activeIcon)} />
+                     <div className={cx(styles.buttonText, showPage === 1 && styles.activeButtonText)}>
+                        Notifications
+                     </div>
+                     <Arrow className={cx(styles.arrow, showPage === 1 && styles.activeArrow)} />
+                  </button>
+                  <button className={styles.securityContainer} onClick={() => setShowPage(2)}>
+                     <SecurityIcon className={cx(styles.icon, showPage === 2 && styles.activeIcon)} />
+                     <div className={cx(styles.buttonText, showPage === 2 && styles.activeButtonText)}>
+                        Security and Login
+                     </div>
+                     <Arrow className={cx(styles.arrow, showPage === 2 && styles.activeArrow)} />
+                  </button>
+                  <button className={styles.helpContainer} onClick={() => setShowPage(3)}>
+                     <HelpIcon className={cx(styles.icon, showPage === 3 && styles.activeIcon)} />
+                     <div className={cx(styles.buttonText, showPage === 3 && styles.activeButtonText)}>
+                        Help and support
+                     </div>
+                     <Arrow className={cx(styles.arrow, showPage === 3 && styles.activeArrow)} />
+                  </button>
+               </div>
+            </div>
          </div>
-         <div className={styles.inputsContainer}>
-            <div className={styles.inputsWrapper}>
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+         {showPage === 0 && (
+            <div className={styles.rightBox}>
+               <p className={styles.title}>Edit Profile</p>
+               <div className={styles.changeAvatar}>
+                  <Avatar className={styles.avatarIcon} />
+                  <Edit className={styles.editIcon} />
+               </div>
+               <div className={styles.inputsContainer}>
+                  <div className={styles.inputsWrapper}>
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                  </div>
+                  <div className={styles.inputsWrapper}>
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                  </div>
+                  <div className={styles.inputsWrapper}>
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                  </div>
+                  <div className={styles.inputsWrapper}>
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                  </div>
+                  <div className={styles.inputsWrapper}>
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                     <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+                  </div>
+                  <Button type="submit" size="large" isBold isFullWidth>
+                     Save
+                  </Button>
+               </div>
             </div>
-            <div className={styles.inputsWrapper}>
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+         )}
+         {showPage === 1 && (
+            <div className={styles.rightBox}>
+               <p className={styles.title}>Notifications</p>
             </div>
-            <div className={styles.inputsWrapper}>
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+         )}
+         {showPage === 2 && (
+            <div className={styles.rightBox}>
+               <p className={styles.title}>Security and Login</p>
             </div>
-            <div className={styles.inputsWrapper}>
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
+         )}
+         {showPage === 3 && (
+            <div className={styles.rightBox}>
+               <p className={styles.title}>Help and Support</p>
             </div>
-            <div className={styles.inputsWrapper}>
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-               <Input variant="gray" type="text" label="Name" placeholder="Your Name" size="big" />
-            </div>
-            <Button type="submit" size="large" isBold isFullWidth>
-               Save
-            </Button>
-         </div>
+         )}
       </div>
-   </div>
-);
+   );
+};
 export default SettingsContainer;

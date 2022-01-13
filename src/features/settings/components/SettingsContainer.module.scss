@@ -35,6 +35,13 @@
       margin-right: var(--space-2);
       fill: var(--gray-400);
    }
+
+   .activeIcon {
+      width: 20px;
+      height: 20px;
+      margin-right: var(--space-2);
+      fill: var(--purple-500);
+   }
    .categoryContainer {
       padding-top: var(--space-8);
       display: flex;
@@ -47,35 +54,94 @@
       align-items: center;
       cursor: pointer;
 
+      .buttonText {
+         color: var(--gray-400);
+      }
+
+      .activeButtonText {
+         color: var(--purple-500);
+      }
+
       .arrow {
          width: 20px;
          height: 20px;
          fill: var(--gray-400);
          visibility: hidden;
       }
-
       &:hover {
          .arrow {
             visibility: visible;
          }
       }
+      .activeArrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--purple-500);
+         visibility: visible;
+      }
    }
+
+   .notificationsContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .buttonText {
+         color: var(--gray-400);
+      }
+
+      .activeButtonText {
+         color: var(--purple-500);
+      }
+
+      .arrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--gray-400);
+         visibility: hidden;
+      }
+      &:hover {
+         .arrow {
+            visibility: visible;
+         }
+      }
+      .activeArrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--purple-500);
+         visibility: visible;
+      }
+   }
+
    .helpContainer {
       display: flex;
       align-items: center;
       cursor: pointer;
 
+      .buttonText {
+         color: var(--gray-400);
+      }
+
+      .activeButtonText {
+         color: var(--purple-500);
+      }
+
       .arrow {
          width: 20px;
          height: 20px;
          fill: var(--gray-400);
          visibility: hidden;
       }
-
       &:hover {
          .arrow {
             visibility: visible;
          }
+      }
+      .activeArrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--purple-500);
+         visibility: visible;
       }
    }
    .securityContainer {
@@ -83,23 +149,13 @@
       align-items: center;
       cursor: pointer;
 
-      .arrow {
-         width: 20px;
-         height: 20px;
-         fill: var(--gray-400);
-         visibility: hidden;
+      .buttonText {
+         color: var(--gray-400);
       }
 
-      &:hover {
-         .arrow {
-            visibility: visible;
-         }
+      .activeButtonText {
+         color: var(--purple-500);
       }
-   }
-   .notificationsContainer {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
 
       .arrow {
          width: 20px;
@@ -107,11 +163,16 @@
          fill: var(--gray-400);
          visibility: hidden;
       }
-
       &:hover {
          .arrow {
             visibility: visible;
          }
+      }
+      .activeArrow {
+         width: 20px;
+         height: 20px;
+         fill: var(--purple-500);
+         visibility: visible;
       }
    }
 
