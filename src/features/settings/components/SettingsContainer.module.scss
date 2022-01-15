@@ -1,12 +1,12 @@
 .container {
-   height: 100%;
-   width: 100vw;
+   height: 1200px;
+   width: 95vw;
    display: flex;
    flex-direction: column;
    background-color: var(--gray-50);
    @media (min-width: 800px) {
       flex-direction: row;
-      height: 100vh;
+      height: 800px;
    }
    .leftBox {
       height: 60px;
@@ -16,8 +16,9 @@
       align-items: center;
       @media (min-width: 800px) {
          height: 100%;
-         width: 300px;
+         width: 350px;
          align-items: flex-start;
+         padding-top: var(--space-5);
       }
    }
    .leftMenu {
