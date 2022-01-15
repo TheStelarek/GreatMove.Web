@@ -3,11 +3,10 @@ import cx from 'classnames';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import SettingsIcon from '@/public/settings/settings.svg';
-import HelpIcon from '@/public/settings/help.svg';
-import NotificationsIcon from '@/public/settings/notification.svg';
+import LogoutIcon from '@/public/settings/logout.svg';
+import PasswordIcon from '@/public/settings/password.svg';
 import EditProfileIcon from '@/public/settings/pen.svg';
 import Arrow from '@/public/settings/arrow.svg';
-import SecurityIcon from '@/public/settings/security.svg';
 import Avatar from '@/public/settings/avatar.svg';
 import Edit from '@/public/settings/edit.svg';
 import styles from './SettingsContainer.module.scss';
@@ -31,26 +30,17 @@ const SettingsContainer = () => {
                      </div>
                      <Arrow className={cx(styles.arrow, showPage === 0 && styles.activeArrow)} />
                   </button>
-                  <button className={styles.notificationsContainer} onClick={() => setShowPage(1)}>
-                     <NotificationsIcon className={cx(styles.icon, showPage === 1 && styles.activeIcon)} />
+                  <button className={styles.changePasswordContainer} onClick={() => setShowPage(1)}>
+                     <PasswordIcon className={cx(styles.icon, showPage === 1 && styles.activeIcon)} />
                      <div className={cx(styles.buttonText, showPage === 1 && styles.activeButtonText)}>
-                        Notifications
+                        Change password
                      </div>
                      <Arrow className={cx(styles.arrow, showPage === 1 && styles.activeArrow)} />
                   </button>
-                  <button className={styles.securityContainer} onClick={() => setShowPage(2)}>
-                     <SecurityIcon className={cx(styles.icon, showPage === 2 && styles.activeIcon)} />
-                     <div className={cx(styles.buttonText, showPage === 2 && styles.activeButtonText)}>
-                        Security and Login
-                     </div>
+                  <button className={styles.logoutContainer}>
+                     <LogoutIcon className={cx(styles.icon, showPage === 2 && styles.activeIcon)} />
+                     <div className={cx(styles.buttonText, showPage === 2 && styles.activeButtonText)}>Logout</div>
                      <Arrow className={cx(styles.arrow, showPage === 2 && styles.activeArrow)} />
-                  </button>
-                  <button className={styles.helpContainer} onClick={() => setShowPage(3)}>
-                     <HelpIcon className={cx(styles.icon, showPage === 3 && styles.activeIcon)} />
-                     <div className={cx(styles.buttonText, showPage === 3 && styles.activeButtonText)}>
-                        Help and support
-                     </div>
-                     <Arrow className={cx(styles.arrow, showPage === 3 && styles.activeArrow)} />
                   </button>
                </div>
             </div>
@@ -97,6 +87,9 @@ const SettingsContainer = () => {
                         size="big"
                      />
                   </div>
+                  <div className={styles.lastInputsWrapper}>
+                     <Input variant="gray" type="text" label="Email " placeholder="Enter your email" size="big" />
+                  </div>
                   <Button type="submit" size="large" isBold isFullWidth>
                      Save
                   </Button>
@@ -105,17 +98,38 @@ const SettingsContainer = () => {
          )}
          {showPage === 1 && (
             <div className={styles.rightBox}>
-               <p className={styles.title}>Notifications</p>
-            </div>
-         )}
-         {showPage === 2 && (
-            <div className={styles.rightBox}>
-               <p className={styles.title}>Security and Login</p>
-            </div>
-         )}
-         {showPage === 3 && (
-            <div className={styles.rightBox}>
-               <p className={styles.title}>Help and Support</p>
+               <p className={styles.title}>Change Password</p>
+               <div className={styles.inputsContainer}>
+                  <div className={styles.lastInputsWrapper}>
+                     <Input
+                        variant="gray"
+                        type="password"
+                        label="Old password "
+                        placeholder="Enter your old password"
+                        size="big"
+                     />
+                  </div>
+                  <div className={styles.inputsWrapper}>
+                     <Input
+                        variant="gray"
+                        type="password"
+                        label="New password"
+                        placeholder="Enter your new password"
+                        size="big"
+                     />
+                     <Input
+                        variant="gray"
+                        type="password"
+                        label="Confirm password"
+                        placeholder="Confirm your new password"
+                        size="big"
+                     />
+                  </div>
+
+                  <Button type="submit" size="large" isBold isFullWidth>
+                     Save
+                  </Button>
+               </div>
             </div>
          )}
       </div>

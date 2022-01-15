@@ -1,26 +1,42 @@
 .container {
-   height: 100vh;
+   height: 100%;
    width: 100vw;
    display: flex;
+   flex-direction: column;
    background-color: var(--gray-50);
+   @media (min-width: 800px) {
+      flex-direction: row;
+      height: 100vh;
+   }
    .leftBox {
-      height: 100%;
+      height: 60px;
       background-color: var(--blue-700);
-      width: 250px;
+      width: 100%;
       display: flex;
+      align-items: center;
+      @media (min-width: 800px) {
+         height: 100%;
+         width: 300px;
+         align-items: flex-start;
+      }
    }
    .leftMenu {
       display: flex;
-      padding: 20px 0px 0px 20px;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      @media (min-width: 800px) {
+         flex-direction: column;
+      }
    }
    .iconContainer {
       display: flex;
       flex-direction: row;
+      padding: 5px 0 0 5px;
    }
    .settingsIcon {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       fill: var(--gray-400);
    }
    .iconText {
@@ -28,38 +44,58 @@
       color: var(--gray-400);
       font-size: var(--font-size-h4);
       padding-left: var(--space-2);
+      display: none;
+      @media (min-width: 800px) {
+         display: block;
+      }
    }
    .icon {
       width: 20px;
       height: 20px;
-      margin-right: var(--space-2);
+      display: flex;
       fill: var(--gray-400);
    }
 
    .activeIcon {
       width: 20px;
       height: 20px;
-      margin-right: var(--space-2);
       fill: var(--purple-500);
    }
    .categoryContainer {
-      padding-top: var(--space-8);
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: var(--space-8);
       color: var(--gray-400);
+      margin-left: var(--space-8);
+      justify-content: center;
+      @media (min-width: 800px) {
+         flex-direction: column;
+         margin-top: var(--space-10);
+         align-items: flex-start;
+      }
    }
    .editProfileContainter {
       display: flex;
       align-items: center;
+      justify-content: center;
       cursor: pointer;
 
       .buttonText {
          color: var(--gray-400);
+         display: none;
+         @media (min-width: 800px) {
+            display: block;
+            margin-left: var(--space-2);
+            margin-right: var(--space-2);
+         }
       }
 
       .activeButtonText {
          color: var(--purple-500);
+         display: none;
+         @media (min-width: 800px) {
+            display: block;
+         }
       }
 
       .arrow {
@@ -70,28 +106,44 @@
       }
       &:hover {
          .arrow {
-            visibility: visible;
+            visibility: hidden;
+            @media (min-width: 800px) {
+               visibility: visible;
+            }
          }
       }
       .activeArrow {
          width: 20px;
          height: 20px;
          fill: var(--purple-500);
-         visibility: visible;
+         visibility: hidden;
+         @media (min-width: 800px) {
+            visibility: visible;
+         }
       }
    }
 
-   .notificationsContainer {
+   .changePasswordContainer {
       display: flex;
       align-items: center;
       cursor: pointer;
 
       .buttonText {
          color: var(--gray-400);
+         display: none;
+         @media (min-width: 800px) {
+            display: block;
+            margin-left: var(--space-2);
+            margin-right: var(--space-2);
+         }
       }
 
       .activeButtonText {
          color: var(--purple-500);
+         display: none;
+         @media (min-width: 800px) {
+            display: block;
+         }
       }
 
       .arrow {
@@ -102,28 +154,44 @@
       }
       &:hover {
          .arrow {
-            visibility: visible;
+            visibility: hidden;
+            @media (min-width: 800px) {
+               visibility: visible;
+            }
          }
       }
       .activeArrow {
          width: 20px;
          height: 20px;
          fill: var(--purple-500);
-         visibility: visible;
+         visibility: hidden;
+         @media (min-width: 800px) {
+            visibility: visible;
+         }
       }
    }
 
-   .helpContainer {
+   .logoutContainer {
       display: flex;
       align-items: center;
       cursor: pointer;
 
       .buttonText {
          color: var(--gray-400);
+         display: none;
+         @media (min-width: 800px) {
+            display: block;
+            margin-left: var(--space-2);
+            margin-right: var(--space-2);
+         }
       }
 
       .activeButtonText {
          color: var(--purple-500);
+         display: none;
+         @media (min-width: 800px) {
+            display: block;
+         }
       }
 
       .arrow {
@@ -134,45 +202,20 @@
       }
       &:hover {
          .arrow {
-            visibility: visible;
+            visibility: hidden;
+            @media (min-width: 800px) {
+               visibility: visible;
+            }
          }
       }
       .activeArrow {
          width: 20px;
          height: 20px;
          fill: var(--purple-500);
-         visibility: visible;
-      }
-   }
-   .securityContainer {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
-      .buttonText {
-         color: var(--gray-400);
-      }
-
-      .activeButtonText {
-         color: var(--purple-500);
-      }
-
-      .arrow {
-         width: 20px;
-         height: 20px;
-         fill: var(--gray-400);
          visibility: hidden;
-      }
-      &:hover {
-         .arrow {
+         @media (min-width: 800px) {
             visibility: visible;
          }
-      }
-      .activeArrow {
-         width: 20px;
-         height: 20px;
-         fill: var(--purple-500);
-         visibility: visible;
       }
    }
 
@@ -192,13 +235,29 @@
 
    .inputsWrapper {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       width: 100%;
       align-items: center;
-      align-items: center;
-      gap: var(--space-20);
-      margin-bottom: var(--space-10);
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
       justify-content: center;
+      @media (min-width: 800px) {
+         flex-direction: row;
+      }
+   }
+
+   .lastInputsWrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: var(--space-4);
+      @media (min-width: 800px) {
+         width: 50%;
+      }
    }
 
    .inputsContainer {
@@ -209,7 +268,7 @@
       flex-direction: column;
       box-shadow: var(--box-shadow-xs);
       border-radius: var(--border-radius-15);
-      padding: var(--space-6) var(--space-5);
+      padding: var(--space-4) var(--space-4);
    }
 
    .changeAvatar {
@@ -227,7 +286,6 @@
       height: 32px;
       width: 32px;
       margin-top: auto;
-      position: relative;
       transform: translateX(-25px);
    }
 }
