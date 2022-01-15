@@ -1,0 +1,107 @@
+.container {
+   background-color: var(--gray-0);
+   width: 100%;
+   min-height: calc(100vh - 70px);
+
+   .wrapper {
+      max-width: 780px;
+      padding: var(--space-10) var(--space-5);
+      margin: 0 auto;
+
+      .heading {
+         text-align: center;
+         color: var(--gray-900);
+      }
+
+      .info {
+         text-align: center;
+         color: var(--gray-700);
+
+         @media (min-width: 500px) {
+            margin: 0 auto;
+            width: 90%;
+         }
+
+         @media (min-width: 550px) {
+            width: 80%;
+         }
+         @media (min-width: 600px) {
+            width: 70%;
+         }
+      }
+
+      .contactForm {
+         margin-top: var(--space-5);
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-7);
+         background-color: var(--white);
+         padding: var(--space-5);
+         border-radius: var(--border-radius-15);
+
+         .inputsWrapper {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+
+            .left {
+               display: flex;
+               flex-direction: column;
+               gap: var(--space-4);
+            }
+
+            .right {
+               height: 150px;
+            }
+
+            .left,
+            .right {
+               .inputWrapper {
+                  height: 100%;
+               }
+            }
+         }
+
+         .btnWrapper {
+            margin: 0 auto;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1-5);
+         }
+      }
+   }
+}
+
+@media (min-width: 780px) {
+   .container {
+      .wrapper {
+         padding: var(--space-12) var(--space-5);
+
+         .contactForm {
+            padding: var(--space-10);
+            gap: var(--space-9);
+            margin-top: var(--space-8);
+
+            .inputsWrapper {
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+               gap: var(--space-6);
+
+               .left {
+                  display: flex;
+                  flex-direction: column;
+                  gap: var(--space-4);
+                  width: 50%;
+               }
+
+               .right {
+                  height: unset;
+                  width: 50%;
+               }
+            }
+         }
+      }
+   }
+}
