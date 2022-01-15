@@ -6,7 +6,7 @@
    background-color: var(--gray-50);
    @media (min-width: 800px) {
       flex-direction: row;
-      height: 800px;
+      height: 100vh;
    }
    .leftBox {
       height: 60px;
