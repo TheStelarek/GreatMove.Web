@@ -4,7 +4,7 @@ import cx from 'classnames';
 import debounce from 'lodash.debounce';
 import Input from '@/components/core/input/Input';
 import { apiClient } from '@/api/apiClient';
-import styles from '@/features/trainingPlan/components/searchExerciseInput/SearchExerciseInput.module.scss';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/searchExerciseInput/SearchExerciseInput.module.scss';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addExercise } from '@/features/trainingPlan/store/TrainingPlanSlice';
 import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';

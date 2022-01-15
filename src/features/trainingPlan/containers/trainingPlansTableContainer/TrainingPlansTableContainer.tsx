@@ -12,6 +12,7 @@ import Trash from '@/public/my-shopping-list/trash.svg';
 import styles from '@/features/trainingPlan/containers/trainingPlansTableContainer/TrainingPlansTableContainer.module.scss';
 import { useDeleteTrainingPlanMutation } from '@/features/trainingPlan/api/trainingPlansApi';
 import useTrainingPlans, { TrainingPlan } from '@/features/trainingPlan/hooks/useTrainingPlans';
+import View from '@/public/icons/view.svg';
 
 const TrainingPlansTableContainer = () => {
    const { plans, pageCount, error, isLoading, fetchTrainingPlans } = useTrainingPlans();
@@ -49,6 +50,13 @@ const TrainingPlansTableContainer = () => {
             Cell: function ActionButtons({ cell }: { cell: Cell<TrainingPlan> }) {
                return (
                   <div className={styles.actionsContainer}>
+                     <Link
+                        href={`/trainings/plan/${cell.row.original.id}/${cell.row.original.name.replace(/ /g, `-`)}`}
+                     >
+                        <button>
+                           <View className={styles.icon} />
+                        </button>
+                     </Link>
                      <button>
                         <Edit className={styles.icon} />
                      </button>

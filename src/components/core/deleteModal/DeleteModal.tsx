@@ -5,7 +5,7 @@ import styles from '@/components/core/deleteModal/DeleteModal.module.scss';
 
 interface DeleteModalProps {
    isOpen: boolean;
-   isLoading: boolean;
+   isLoading?: boolean;
    closeModal: () => void;
    remove: any;
    deleteError?: string;
@@ -16,7 +16,7 @@ interface DeleteModalProps {
 
 const DeleteModal: FC<DeleteModalProps> = ({
    isOpen,
-   isLoading,
+   isLoading = false,
    deleteError,
    closeModal,
    remove,

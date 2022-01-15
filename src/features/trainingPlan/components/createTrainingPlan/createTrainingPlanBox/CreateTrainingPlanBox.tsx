@@ -1,6 +1,6 @@
 import CreatePlan from '@/public/create-training-plan/create-plan.svg';
 import Button from '@/components/core/button/Button';
-import styles from '@/features/trainingPlan/components/createTrainingPlanBox/CreateTrainingPlanBox.module.scss';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/createTrainingPlanBox/CreateTrainingPlanBox.module.scss';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { createTraining } from '@/features/trainingPlan/store/TrainingPlanSlice';
 

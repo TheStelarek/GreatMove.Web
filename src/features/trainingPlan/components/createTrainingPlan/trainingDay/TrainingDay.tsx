@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { DroppableProvided, Draggable } from 'react-beautiful-dnd';
-import styles from '@/features/trainingPlan/components/trainingDay/TrainingDay.module.scss';
-import TrainingExercise from '@/features/trainingPlan/components/trainingExercise/TrainingExercise';
-import ToggleSearchInput from '@/features/trainingPlan/components/toggleSearchInput/ToggleSearchInput';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/trainingDay/TrainingDay.module.scss';
+import TrainingExercise from '@/features/trainingPlan/components/createTrainingPlan/trainingExercise/TrainingExercise';
+import ToggleSearchInput from '@/features/trainingPlan/components/createTrainingPlan/toggleSearchInput/ToggleSearchInput';
 import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';
 import Trash from '@/public/my-shopping-list/trash.svg';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';

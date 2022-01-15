@@ -2,22 +2,32 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import styles from '@/features/trainingPlan/containers/createTrainingPlanContainer/CreateTrainingPlanContainer.module.scss';
-import CreateTrainingPlanBox from '@/features/trainingPlan/components/createTrainingPlanBox/CreateTrainingPlanBox';
-import NewTrainingDay from '@/features/trainingPlan/components/newTrainingDay/NewTrainingDay';
-import SaveTrainingPlanModal from '@/features/trainingPlan/components/saveTrainingPlanModal/SaveTrainingPlanModal';
-import TrainingDay from '@/features/trainingPlan/components/trainingDay/TrainingDay';
+import CreateTrainingPlanBox from '@/features/trainingPlan/components/createTrainingPlan/createTrainingPlanBox/CreateTrainingPlanBox';
+import NewTrainingDay from '@/features/trainingPlan/components/createTrainingPlan/newTrainingDay/NewTrainingDay';
+import SaveTrainingPlanModal from '@/features/trainingPlan/components/createTrainingPlan/saveTrainingPlanModal/SaveTrainingPlanModal';
+import TrainingDay from '@/features/trainingPlan/components/createTrainingPlan/trainingDay/TrainingDay';
 import { discardTraining, dragExercise, trainingPlanSelector } from '@/features/trainingPlan/store/TrainingPlanSlice';
+import DeleteModal from '@/components/core/deleteModal/DeleteModal';
+import useModal from '@/components/core/modal/useModal';
 
 const CreateTrainingPlanContainer = () => {
    const { isCreatingPlan, training } = useAppSelector(trainingPlanSelector);
    const dispatch = useAppDispatch();
+   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
 
    return (
       <div className={styles.createPlanContainer}>
          {isCreatingPlan ? (
             <div className={styles.trainingContainer}>
                <div className={styles.actionsButtons}>
-                  <button className={styles.discardBtn} onClick={() => dispatch(discardTraining())}>
+                  <DeleteModal
+                     isOpen={isOpen}
+                     closeModal={handleCloseModal}
+                     remove={() => dispatch(discardTraining())}
+                     heading="Discard training plan"
+                     description="Are you sure you want to delete this? By doing this you will lose all of your data and will not be able to retrive it."
+                  />
+                  <button className={styles.discardBtn} onClick={handleOpenModal}>
                      Discard
                   </button>
                   <SaveTrainingPlanModal />

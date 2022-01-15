@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from '@/features/trainingPlan/components/exerciseDetailsForm/ExerciseDetailsForm.module.scss';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/exerciseDetailsForm/ExerciseDetailsForm.module.scss';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';

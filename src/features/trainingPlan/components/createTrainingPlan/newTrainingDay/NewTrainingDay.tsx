@@ -2,7 +2,7 @@ import { useState, KeyboardEvent, ChangeEvent } from 'react';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addTrainingDay } from '@/features/trainingPlan/store/TrainingPlanSlice';
 import Input from '@/components/core/input/Input';
-import styles from '@/features/trainingPlan/components/newTrainingDay/NewTrainingDay.module.scss';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/newTrainingDay/NewTrainingDay.module.scss';
 
 const NewTrainingDay = () => {
    const dispatch = useAppDispatch();
@@ -32,14 +32,16 @@ const NewTrainingDay = () => {
                Add training day
             </button>
          ) : (
-            <Input
-               autoFocus
-               size="small"
-               placeholder="Enter a training name"
-               onChange={onChangeHandler}
-               onBlur={onBlurHandler}
-               onKeyPress={onEnterPressHandler}
-            />
+            <div className={styles.inputWrapper}>
+               <Input
+                  autoFocus
+                  size="small"
+                  placeholder="Enter a training name"
+                  onChange={onChangeHandler}
+                  onBlur={onBlurHandler}
+                  onKeyPress={onEnterPressHandler}
+               />
+            </div>
          )}
       </div>
    );

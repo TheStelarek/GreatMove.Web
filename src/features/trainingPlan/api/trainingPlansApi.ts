@@ -1,8 +1,15 @@
 import { TrainingType } from '@/features/trainingPlan/utils/types/TrainingType';
 import { api } from '@/store/api/api';
+import { TrainingPlan } from '@/features/trainingPlan/utils/types/TrainingPlan';
 
 export const trainingPlansApi = api.injectEndpoints({
    endpoints: (build) => ({
+      getTrainingPlanById: build.query<TrainingPlan, string>({
+         query: (trainingPlanId) => ({
+            url: `/training-plans/${trainingPlanId}`,
+            method: `get`,
+         }),
+      }),
       deleteTrainingPlan: build.mutation<string, { trainingPlanId: string }>({
          query: (trainingPlanFormData) => ({
             url: `/training-plans/${trainingPlanFormData.trainingPlanId}`,
@@ -22,4 +29,5 @@ export const trainingPlansApi = api.injectEndpoints({
    }),
 });
 
-export const { useDeleteTrainingPlanMutation, useSaveTrainingPlanMutation } = trainingPlansApi;
+export const { useDeleteTrainingPlanMutation, useSaveTrainingPlanMutation, useGetTrainingPlanByIdQuery } =
+   trainingPlansApi;
