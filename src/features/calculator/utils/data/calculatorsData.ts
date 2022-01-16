@@ -11,9 +11,9 @@ export const calculatorsData: CalculatorData[] = [
       href: `smolov-jr-calculator`,
    },
    {
-      name: `Wendler 5/3/1`,
-      description: `Most basic version of 5/3/1`,
-      href: ``,
+      name: `HOMA-IR`,
+      description: `HOMA-IR - HOmeostatic Model Assessment for Insulin Resistance`,
+      href: `homa-calculator`,
    },
    {
       name: `BMI`,
