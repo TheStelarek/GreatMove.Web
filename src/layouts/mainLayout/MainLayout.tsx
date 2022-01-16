@@ -9,16 +9,23 @@ interface MainLayoutProps {
    navbarVariant?: NavbarVariants;
    navbarBoxShadow?: boolean;
    fullWidth?: boolean;
+   navbarBottomBorder?: boolean;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ navbarVariant, navbarBoxShadow, fullWidth, children }) => (
+const MainLayout: React.FC<MainLayoutProps> = ({
+   navbarVariant,
+   navbarBoxShadow,
+   fullWidth,
+   navbarBottomBorder,
+   children,
+}) => (
    <div className={styles.container}>
       <Head>
          <title>GreatMove - make a better lifestyle</title>
          <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.header}>
-         <Navbar variant={navbarVariant} boxShadow={navbarBoxShadow} />
+         <Navbar variant={navbarVariant} boxShadow={navbarBoxShadow} navbarBottomBorder={navbarBottomBorder} />
       </header>
       <main className={cx(styles.main, fullWidth && styles.mainFullWidth)}>{children}</main>
       <Footer />

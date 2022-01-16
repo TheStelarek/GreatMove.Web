@@ -9,3 +9,5 @@ export default CreateRecipe;
 CreateRecipe.getLayout = function getLayout(page: ReactElement) {
    return <MainLayout>{page}</MainLayout>;
 };
+
+CreateRecipe.requireAuth = true;

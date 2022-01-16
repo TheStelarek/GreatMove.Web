@@ -24,12 +24,13 @@ import { shoppingListSelector } from '@/features/shoppingList/store/ShoppingList
 interface NavbarProps {
    variant?: NavbarVariants;
    boxShadow?: boolean;
+   navbarBottomBorder?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
+const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true, navbarBottomBorder }) => {
    const [showHamburger, setShowHamburger] = useState(false);
    const [expandedMenu, setExpandedMenu] = useState<NestedMenuTypes | ''>(``);
-   const { isLoggedIn } = useAppSelector(authSelector);
+   const { isLoggedIn, me } = useAppSelector(authSelector);
    const { products } = useAppSelector(shoppingListSelector);
 
    const toggleNestedMenu = (expand: SetStateAction<'' | NestedMenuTypes>) =>
@@ -45,10 +46,17 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
    }, [showHamburger]);
 
    return (
-      <nav className={cx(styles.navbar, boxShadow && styles.navbarBoxShadow, styles[`navbar-${variant}`])}>
+      <nav
+         className={cx(
+            styles.navbar,
+            boxShadow && styles.navbarBoxShadow,
+            navbarBottomBorder && !showHamburger && styles.borderBottom,
+            styles[`navbar-${variant}`],
+         )}
+      >
          <Link href="/">
             <button className={styles.logoWrapper} type="button" onClick={hideMenu} tabIndex={1}>
-               <Logo color={variant ? `white` : `black`} />
+               <Logo color={variant ? `white` : `black`} /> {navbarBottomBorder}
             </button>
          </Link>
          <ul className={cx(styles.navMenu, showHamburger && styles.navMenuActive)}>
@@ -130,7 +138,11 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true }) => {
                   <Link href={MYPROFILE.page.route}>
                      <button type="button" className={cx(styles.profileButton, styles.navMenuItemButton)}>
                         <span className={styles.username}>{MYPROFILE.page.label}</span>
-                        <DefaultAvatar className={styles.avatar} />
+                        {me && me.avatarUrl ? (
+                           <img alt="user avatar" src={me.avatarUrl} className={styles.avatar} />
+                        ) : (
+                           <DefaultAvatar className={styles.avatar} />
+                        )}
                      </button>
                   </Link>
                </li>

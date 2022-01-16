@@ -9,3 +9,5 @@ export default EditRecipe;
 EditRecipe.getLayout = function getLayout(page: ReactElement) {
    return <MainLayout>{page}</MainLayout>;
 };
+
+EditRecipe.requireAuth = true;

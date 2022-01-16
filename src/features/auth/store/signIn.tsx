@@ -1,6 +1,7 @@
 import { apiClient } from '@/api/apiClient';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { User } from '@/features/auth/utils/types/User';
 
 interface SignInUserData {
    username: string;
@@ -8,9 +9,7 @@ interface SignInUserData {
 }
 
 interface SignInResponse {
-   user: {
-      email: string;
-   };
+   user: User;
    accessToken: string;
 }
 
@@ -29,7 +28,7 @@ export const signIn = createAsyncThunk<
 
       const user = await apiClient.get(`/users/me`);
 
-      return { user: user.data.user, accessToken: response.data.accessToken };
+      return { user: user.data, accessToken: response.data.accessToken };
    } catch (err) {
       if (axios.isAxiosError(err)) {
          if (!err.response) {

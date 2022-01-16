@@ -9,3 +9,5 @@ export default CreateTrainingPlan;
 CreateTrainingPlan.getLayout = function getLayout(page: ReactElement) {
    return <MainLayout>{page}</MainLayout>;
 };
+
+CreateTrainingPlan.requireAuth = true;

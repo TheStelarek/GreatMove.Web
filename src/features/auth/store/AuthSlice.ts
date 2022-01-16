@@ -5,6 +5,7 @@ import { signUpUser } from './signUpUser';
 import { isAvailableEmailUsername } from './isAvailableEmailUsername';
 import { signIn } from './signIn';
 import { logout } from './logout';
+import { getMe } from './getMe';
 
 interface AuthState {
    isLoggedIn: boolean;
@@ -50,6 +51,10 @@ export const authSlice = createSlice({
          state.isLoggedIn = true;
          state.me = user;
          state.accessToken = accessToken;
+      });
+
+      builder.addCase(getMe.fulfilled, (state: AuthState, { payload: { user } }) => {
+         state.me = user;
       });
 
       builder.addMatcher(isAnyOf(signUpUser.fulfilled, isAvailableEmailUsername.fulfilled), (state: AuthState) => {
