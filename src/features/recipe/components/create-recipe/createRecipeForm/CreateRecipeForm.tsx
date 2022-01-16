@@ -26,6 +26,8 @@ import {
 } from '@/features/recipe/components/create-recipe/createRecipeForm/updateRecipeValidationSchema';
 import PictureFile from '@/public/create-recipe/photo-file.svg';
 import Remove from '@/public/my-shopping-list/remove.svg';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
+import { authSelector } from '@/features/auth/store/AuthSlice';
 
 interface CreateRecipeFormProps {
    recipeId?: string;
@@ -33,6 +35,7 @@ interface CreateRecipeFormProps {
 }
 
 const CreateRecipeForm: FC<CreateRecipeFormProps> = ({ recipeId, isAddMode = true }) => {
+   const { me } = useAppSelector(authSelector);
    const [addRecipe, result] = useAddRecipeMutation();
    const [updateRecipe, updateResult] = useUpdateRecipeMutation();
 
@@ -122,12 +125,17 @@ const CreateRecipeForm: FC<CreateRecipeFormProps> = ({ recipeId, isAddMode = tru
                setValue(`visibility`, { label: recipeVisibility, value: recipeVisibility });
             },
          };
-         updateFields.forEach((field) => {
-            if (recipeData[field]) {
-               // eslint-disable-next-line no-unused-expressions
-               updateFormValue[field] ? updateFormValue[field]() : setValue(field, recipeData[field]);
-            }
-         });
+
+         if (recipeData.userId !== me?.id) {
+            router.push(`/`);
+         } else {
+            updateFields.forEach((field) => {
+               if (recipeData[field]) {
+                  // eslint-disable-next-line no-unused-expressions
+                  updateFormValue[field] ? updateFormValue[field]() : setValue(field, recipeData[field]);
+               }
+            });
+         }
       }
    }, [isAddMode, isError, recipeData, setValue]);
 

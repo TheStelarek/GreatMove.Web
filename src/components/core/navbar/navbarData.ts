@@ -2,8 +2,8 @@ import { MenuItem } from '@/components/core/navbar/NavbarTypes';
 
 export const MYPROFILE: MenuItem = {
    page: {
-      label: `My profile`,
-      route: `/my-profile`,
+      label: `Profile`,
+      route: `/settings`,
    },
 };
 

@@ -1,22 +1,25 @@
 import Head from 'next/head';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
+import router from 'next/router';
 import MainLayout from '@/layouts/mainLayout/MainLayout';
 
-export default function Home() {
+const Home = () => {
+   useEffect(() => {
+      router.push(`/recipes`);
+   }, []);
+
    return (
       <div>
          <Head>
-            <title>TypeScript starter for Next.js</title>
-            <meta
-               name="description"
-               content="TypeScript starter for Next.js that includes all you need to build amazing apps"
-            />
+            <title>GreatMove - app for better lifestyle.</title>
+            <meta name="description" content="Recipes, traning plans and many others" />
             <link rel="icon" href="/favicon.ico" />
          </Head>
-         <div>Hello world 123</div>
       </div>
    );
-}
+};
+
+export default Home;
 
 Home.getLayout = function getLayout(page: ReactElement) {
    return <MainLayout>{page}</MainLayout>;

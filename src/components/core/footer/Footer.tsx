@@ -38,7 +38,7 @@ const Footer = () => (
                <Twitter className={styles.socialIcon} />
             </div>
             <div className={styles.copyrights}>
-               <span className={styles.credensionals}>© 2021 GreatMove</span>/<Link href="/">privacy policy</Link>
+               <span className={styles.credensionals}>© 2021 GreatMove</span>/privacy policy
             </div>
          </div>
       </div>
