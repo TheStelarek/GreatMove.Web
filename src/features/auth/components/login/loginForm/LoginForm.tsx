@@ -9,7 +9,7 @@ import { signIn } from '@/features/auth/store/signIn';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector, clearState } from '@/features/auth/store/AuthSlice';
-import { LoginFormValue, LoginValidationSchema } from './LoginFormTypes';
+import { LoginFormValue, LoginValidationSchema } from '@/features/auth/components/login/loginForm/LoginFormTypes';
 
 const LoginForm = () => {
    const dispatch = useAppDispatch();
@@ -66,8 +66,10 @@ const LoginForm = () => {
             placeholder="Enter password"
             size="big"
             {...register(`password`)}
-            error={errors?.password?.message || errorMessage}
+            error={errors?.password?.message}
          />
+         {errorMessage && <p className="error">{errorMessage}</p>}
+
          <Button
             type="submit"
             size="large"

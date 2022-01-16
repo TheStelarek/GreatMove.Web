@@ -1,0 +1,9 @@
+.container {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+   margin-top: var(--space-20);
+
+   color: var(--gray-800);
+   font-weight: var(--font-weight-semi-bold);
+}

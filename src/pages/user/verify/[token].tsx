@@ -3,6 +3,7 @@ import MainLayout from '@/layouts/mainLayout/MainLayout';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import axios from 'axios';
 import { ReactElement } from 'react';
+import styles from '@/pages/user/verify/Verify.module.scss';
 
 interface EmailVerificationProps {
    verified: boolean;
@@ -10,7 +11,9 @@ interface EmailVerificationProps {
 }
 
 const EmailVerification: NextApplicationPage<EmailVerificationProps> = ({ verified, message }) => (
-   <>{verified ? <div>Account confirmed. Now you can sign in!</div> : <div>{message}</div>}</>
+   <div className={styles.container}>
+      {verified ? `Account confirmed. Now you can sign in!` : <p className="error">{message}</p>}
+   </div>
 );
 
 EmailVerification.getLayout = function getLayout(page: ReactElement) {

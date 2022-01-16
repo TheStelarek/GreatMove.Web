@@ -1,11 +1,11 @@
 import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/utils/types/RootState';
 import { User } from '@/features/auth/utils/types/User';
-import { signUpUser } from './signUpUser';
-import { isAvailableEmailUsername } from './isAvailableEmailUsername';
-import { signIn } from './signIn';
-import { logout } from './logout';
-import { getMe } from './getMe';
+import { signUpUser } from '@/features/auth/store/signUpUser';
+import { isAvailableEmailUsername } from '@/features/auth/store/isAvailableEmailUsername';
+import { signIn } from '@/features/auth/store/signIn';
+import { logout } from '@/features/auth/store/logout';
+import { getMe } from '@/features/auth/store/getMe';
 
 interface AuthState {
    isLoggedIn: boolean;

@@ -15,7 +15,7 @@ import {
    RegisterFormValue,
    RegisterStepOptions,
    RegisterValidationSchema,
-} from './RegisterFormTypes';
+} from '@/features/auth/components/register/registerForm/RegisterFormTypes';
 
 const RegisterForm = () => {
    const dispatch = useAppDispatch();
