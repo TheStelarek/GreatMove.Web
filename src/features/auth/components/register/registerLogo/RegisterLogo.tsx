@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import styles from '@/features/auth/components/register/registerLogo/RegisterLogo.module.scss';
 import Logo from '@/components/core/logo/Logo';
+import styles from '@/features/auth/components/register/registerLogo/RegisterLogo.module.scss';
 
 const RegisterLogo = () => (
    <>

@@ -2,5 +2,5 @@ import { Calculator } from '@/features/calculator/utils/types/Calculator';
 
 export const smolovJrData: Calculator = {
    name: `Smolov Jr Calculator`,
-   description: `Smolov Jr. is an abbreviated version of the Smolov squatting protocol. It is also very often used for bench press. For many of you, this 4-day per week regimen will include some of the toughest sets you’ve ever attempted. Enter your one rep max and the week-to-week weight increment you plan on using and the tables below will populate with the weights for you to use throughout the program. Most people use 5 to 10 lbs for the increment value.`,
+   description: `The Smolov Jr. squatting protocol is a condensed version of the Smolov squatting protocol. It's also utilized a lot for bench press. This 4-day-per-week regimen will feature some of the most difficult sets you've ever attempted for many of you. Enter your one-rep max and the weight increment you want to utilize week to week, and the tables below will populate with the weights you'll need to complete the program. The most common increment value is 5 to 10 pounds.`,
 };

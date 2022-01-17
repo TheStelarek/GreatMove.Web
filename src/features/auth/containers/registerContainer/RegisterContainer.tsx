@@ -1,14 +1,14 @@
 import styles from '@/features/auth/containers/registerContainer/RegisterContainer.module.scss';
+import Divider from '@/components/core/divider/Divider';
 import RegisterHeader from '@/features/auth/components/register/registerHeader/RegisterHeader';
 import RegisterSocials from '@/features/auth/components/register/registerSocials/RegisterSocials';
-import Divider from '@/components/core/divider/Divider';
 import RegisterSignIn from '@/features/auth/components/register/registerSignIn/RegisterSignIn';
 import RegisterLogo from '@/features/auth/components/register/registerLogo/RegisterLogo';
-import Weight from '@/public/benefits/weight.svg';
-import Diet from '@/public/benefits/diet.svg';
-import Body from '@/public/benefits/body.svg';
 import RegisterBenefitBox from '@/features/auth/components/register/registerBenefitBox/RegisterBenefitBox';
 import RegisterForm from '@/features/auth/components/register/registerForm/RegisterForm';
+import Weight from '@/public/icons/weight.svg';
+import Diet from '@/public/icons/diet.svg';
+import Workout from '@/public/icons/workout.svg';
 
 const RegisterContainer = () => (
    <div className={styles.container}>
@@ -22,16 +22,16 @@ const RegisterContainer = () => (
                <Weight className={styles.icon} />
             </RegisterBenefitBox>
             <RegisterBenefitBox
-               title="Plan and save your meals"
-               description="Achieve your fitness goals with calorie counting."
+               title="Save and share your recipes"
+               description="Enjoy creating your own recipes or using recipes prepared by our experts."
             >
                <Diet className={styles.icon} />
             </RegisterBenefitBox>
             <RegisterBenefitBox
-               title="Track your body measurements"
-               description="Analyze your progress by tracking your measurements."
+               title="Create your own specialized training plans"
+               description="Grow by creating your best workout plans in our app and share them with others!"
             >
-               <Body className={styles.icon} />
+               <Workout className={styles.icon} />
             </RegisterBenefitBox>
          </div>
       </div>

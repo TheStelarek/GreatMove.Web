@@ -5,14 +5,14 @@ import Table from '@/components/core/table/Table';
 import Button from '@/components/core/button/Button';
 import Spinner from '@/components/core/spinner/Spinner';
 import useModal from '@/components/core/modal/useModal';
-import Edit from '@/public/icons/edit-regular.svg';
-import Trash from '@/public/my-shopping-list/trash.svg';
+import DeleteModal from '@/components/core/deleteModal/DeleteModal';
+import { ErrorType } from '@/utils/types/ErrorType';
 import { Exercise } from '@/features/exercise/utils/types/Exercise';
 import AddExerciseModal from '@/features/exercise/components/addExerciseModal/AddExerciseModal';
-import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import { useDeleteExerciseMutation } from '@/features/exercise/api/exercisesApi';
-import { ErrorType } from '@/utils/types/ErrorType';
 import useExercises from '@/features/exercise/hooks/useExercises';
+import Edit from '@/public/icons/edit-regular.svg';
+import Trash from '@/public/icons/trash.svg';
 
 const ExerciseTableContainer = () => {
    const { exercises, pageCount, error, isLoading, fetchExercises } = useExercises();
@@ -116,6 +116,7 @@ const ExerciseTableContainer = () => {
             setSelectedExerciseId={setSelectedExerciseId}
             setSelectedExercise={setSelectedExercise}
             exercise={selectedExercise}
+            fetchExercises={fetchExercises}
          />
          <DeleteModal
             isOpen={isOpenDelete}

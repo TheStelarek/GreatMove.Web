@@ -3,21 +3,21 @@ import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
+import useModal from '@/components/core/modal/useModal';
+import TextArea from '@/components/core/textArea/TextArea';
 import { ErrorType } from '@/utils/types/ErrorType';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector } from '@/features/auth/store/AuthSlice';
-import DefaultAvatar from '@/public/navbar/default-avatar.svg';
 import styles from '@/features/settings/components/editProfile/EditProfile.module.scss';
-import TextArea from '@/components/core/textArea/TextArea';
 import {
    EditProfileFormValue,
    EditProfileValidationSchema,
 } from '@/features/settings/components/editProfile/EditProfileFormTypes';
 import { useUpdateProfileMutation } from '@/features/settings//api/settingsApi';
 import { getMe } from '@/features/auth/store/getMe';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
-import useModal from '@/components/core/modal/useModal';
 import UpdateAvatarModal from '@/features/settings/components/updateAvatarModal/UpdateAvatarModal';
+import DefaultAvatar from '@/public/icons/default-avatar.svg';
 
 const EditProfile = () => {
    const { me } = useAppSelector(authSelector);

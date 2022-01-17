@@ -15,8 +15,8 @@ import {
    EmailIcon,
 } from 'next-share';
 import styles from '@/features/recipe/components/recipe/recipeShare/RecipeShare.module.scss';
-import Share from '@/public/recipe/share.svg';
-import Copy from '@/public/recipe/copy.svg';
+import Share from '@/public/icons/share.svg';
+import Copy from '@/public/icons/copy.svg';
 
 const RecipeShare = () => {
    const [show, setShow] = useState(false);

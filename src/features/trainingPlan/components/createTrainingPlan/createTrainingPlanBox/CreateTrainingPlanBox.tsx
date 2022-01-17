@@ -1,7 +1,7 @@
-import CreatePlan from '@/public/create-training-plan/create-plan.svg';
+import CreatePlan from '@/public/illustrations/create-plan.svg';
 import Button from '@/components/core/button/Button';
-import styles from '@/features/trainingPlan/components/createTrainingPlan/createTrainingPlanBox/CreateTrainingPlanBox.module.scss';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/createTrainingPlanBox/CreateTrainingPlanBox.module.scss';
 import { createTraining } from '@/features/trainingPlan/store/TrainingPlanSlice';
 
 const CreateTrainingPlanBox = () => {

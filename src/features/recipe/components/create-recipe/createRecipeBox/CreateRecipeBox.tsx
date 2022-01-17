@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import Cooking from '@/public/create-recipe/cooking.svg';
 import Button from '@/components/core/button/Button';
 import styles from '@/features/recipe/components/create-recipe/createRecipeBox/CreateRecipeBox.module.scss';
+import Cooking from '@/public/illustrations/cooking.svg';
 
 const CreateRecipeBox: FC<{ create: () => void }> = ({ create }) => (
    <div className={styles.createRecipeBox}>

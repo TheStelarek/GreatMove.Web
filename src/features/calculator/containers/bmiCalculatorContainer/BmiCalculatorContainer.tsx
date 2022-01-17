@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Input from '@/components/core/input/Input';
 import styles from '@/features/calculator/containers/bmiCalculatorContainer/BmiCalculatorContainer.module.scss';
 import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
-import Input from '@/components/core/input/Input';
 import { bmiData, bmiRanges } from '@/features/calculator/utils/data/bmiData';
 import { calculateBMI } from '@/utils/functions/calculateBMI';
 import { fieldMax } from '@/utils/functions/fieldMax';

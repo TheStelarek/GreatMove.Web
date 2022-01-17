@@ -7,9 +7,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '@/store/index';
 import AuthGuard from '@/components/authGuard/AuthGuard';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
+import setupInterceptors from '@/api/setup';
 import '@/styles/global.scss';
 import '@/styles/nprogress.scss';
-import setupInterceptors from '@/api/setup';
 
 NProgress.configure({ showSpinner: false });
 Router.events.on(`routeChangeStart`, NProgress.start);

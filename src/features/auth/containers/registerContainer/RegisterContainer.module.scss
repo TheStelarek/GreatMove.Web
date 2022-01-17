@@ -21,6 +21,10 @@
             margin: 0;
             height: 30px;
             fill: var(--blue-50);
+
+            path {
+               fill: var(--blue-50);
+            }
          }
       }
       @media (min-width: 800px) {

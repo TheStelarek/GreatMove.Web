@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from '@/features/calculator/containers/bmrCalculatorContainer/BmrCalculatorContainer.module.scss';
 import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
+import { bmrData } from '@/features/calculator/utils/data/bmrData';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import Radio from '@/components/core/radio/Radio';
-import { bmrData } from '@/features/calculator/utils/data/bmrData';
 import { calculateMifflinBMR } from '@/utils/functions/calculateMifflinBMR';
 import { calculateHarrisBenedictBMR } from '@/utils/functions/calculateHarrisBenedictBMR';
 

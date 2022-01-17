@@ -1,21 +1,21 @@
-import Button from '@/components/core/button/Button';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, FC, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useForm } from 'react-hook-form';
-import styles from '@/features/settings/components/updateAvatarModal/UpdateAvatarModal.module.scss';
-import PictureFile from '@/public/create-recipe/photo-file.svg';
+import Button from '@/components/core/button/Button';
 import Divider from '@/components/core/divider/Divider';
 import Modal from '@/components/core/modal/Modal';
+import { ErrorType } from '@/utils/types/ErrorType';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import styles from '@/features/settings/components/updateAvatarModal/UpdateAvatarModal.module.scss';
 import { PICTURE_SUPPORTED_FORMATS } from '@/features/settings/components/updateAvatarModal/pictureValidationData';
 import {
    UpdateAvatarModalFormValue,
    UpdateAvatarModalValidationSchema,
 } from '@/features/settings/components/updateAvatarModal/UpdateAvatarModalFormValue';
 import { useUpdateAvatarMutation } from '@/features/settings/api/settingsApi';
-import { ErrorType } from '@/utils/types/ErrorType';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { getMe } from '@/features/auth/store/getMe';
+import PictureFile from '@/public/icons/file.svg';
 
 interface UpdateAvatarModalProps {
    isOpen: boolean;

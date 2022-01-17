@@ -135,8 +135,19 @@
             align-items: center;
 
             .icon {
+               width: 6px;
+
+               path {
+                  fill: var(--gray-800);
+               }
+            }
+
+            .doubleIcon {
                width: 12px;
-               fill: var(--gray-800);
+
+               path {
+                  fill: var(--gray-800);
+               }
             }
 
             &:hover {

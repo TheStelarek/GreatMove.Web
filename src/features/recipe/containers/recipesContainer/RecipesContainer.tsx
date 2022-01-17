@@ -1,15 +1,15 @@
 import { useEffect, useState, FC } from 'react';
-import styles from '@/features/recipe/containers/recipesContainer/RecipesContainer.module.scss';
-import RecipesList from '@/features/recipe/components/recipes/recipesList/RecipesList';
 import Pagination from '@/components/core/pagination/Pagination';
+import Button from '@/components/core/button/Button';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { clearState, recipesSelector } from '@/features/recipe/store/RecipesSlice';
 import RecipesFilterList from '@/features/recipe/components/recipes/recipesFilterList/RecipesFilterList';
 import RecipesFilterForm from '@/features/recipe/components/recipes/recipesFilterForm/RecipesFilterForm';
-import Button from '@/components/core/button/Button';
-import FilterIcon from '@/public/filter.svg';
+import styles from '@/features/recipe/containers/recipesContainer/RecipesContainer.module.scss';
+import RecipesList from '@/features/recipe/components/recipes/recipesList/RecipesList';
 import { Recipe } from '@/features/recipe/utils/types/Recipe';
+import FilterIcon from '@/public/icons/filter.svg';
 
 interface RecipesContainerProps {
    recipes: Recipe[];

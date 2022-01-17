@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
-import { useGetRecipeByIdQuery } from '@/features/recipe/api/recipesApi';
 import { skipToken } from '@reduxjs/toolkit/query';
-import RecipeWrapper from '@/features/recipe/components/recipe/recipeWrapper/RecipeWrapper';
 import Spinner from '@/components/core/spinner/Spinner';
 import { ErrorType } from '@/utils/types/ErrorType';
 import styles from '@/features/recipe/containers/recipeContainer/RecipeContainer.module.scss';
+import RecipeWrapper from '@/features/recipe/components/recipe/recipeWrapper/RecipeWrapper';
+import { useGetRecipeByIdQuery } from '@/features/recipe/api/recipesApi';
 
 const RecipeContainer = () => {
    const router = useRouter();

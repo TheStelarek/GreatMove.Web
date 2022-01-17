@@ -1,6 +1,6 @@
-import { apiClient } from '@/api/apiClient';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { apiClient } from '@/api/apiClient';
 
 interface IsAvailableData {
    username?: string;

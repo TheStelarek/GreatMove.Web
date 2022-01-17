@@ -1,5 +1,5 @@
-import Logo from '@/components/core/logo/Logo';
 import Link from 'next/link';
+import Logo from '@/components/core/logo/Logo';
 import styles from '@/features/auth/containers/forgotPasswordContainer/ForgotPasswordContainer.module.scss';
 import ForgotPasswordForm from '@/features/auth/components/forgotPasswordForm/ForgotPasswordForm';
 

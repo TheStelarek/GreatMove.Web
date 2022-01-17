@@ -1,91 +1,94 @@
 .paginationContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-1);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: var(--space-1);
 
-  .arrow {
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
+   .arrow {
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
 
-    .arrowLink {
+      .arrowLink {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         width: 100%;
+
+         .icon {
+            width: 8px;
+
+            path {
+               fill: var(--gray-800);
+            }
+         }
+      }
+
+      &:hover {
+         background-color: var(--gray-200);
+         border-radius: var(--border-radius-5);
+
+         .icon {
+            fill: var(--gray-900);
+         }
+      }
+   }
+
+   .arrowDisabled {
+      pointer-events: none;
+      cursor: not-allowed;
+   }
+
+   .break {
+      color: var(--gray-700);
+   }
+
+   .page {
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+      color: var(--gray-800);
+      font-weight: 700;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
-      width: 100%;
+      font-size: 13px;
 
-      .icon {
-        width: 12px;
-        fill: var(--gray-800);
+      .pageLink {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         width: 100%;
       }
-    }
 
-    &:hover {
-      background-color: var(--gray-200);
-      border-radius: var(--border-radius-5);
-
-      .icon {
-        fill: var(--gray-900);
+      &:hover {
+         border-radius: var(--border-radius-5);
+         background-color: var(--blue-400);
+         color: var(--white);
       }
-    }
-  }
+   }
 
-  .arrowDisabled {
-    pointer-events: none;
-    cursor: not-allowed;
-  }
-
-  .break {
-    color: var(--gray-700);
-  }
-
-  .page {
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-    color: var(--gray-800);
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-
-    .pageLink {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-    }
-
-    &:hover {
+   .pageActive {
       border-radius: var(--border-radius-5);
-      background-color: var(--blue-400);
       color: var(--white);
-    }
-  }
-
-  .pageActive {
-    border-radius: var(--border-radius-5);
-    color: var(--white);
-    background-color: var(--blue-500);
-  }
+      background-color: var(--blue-500);
+   }
 }
 
 @media (min-width: 400px) {
-  .paginationContainer {
-    gap: var(--space-2-5);
+   .paginationContainer {
+      gap: var(--space-2-5);
 
-    .arrow {
-      height: 35px;
-      width: 35px;
-    }
+      .arrow {
+         height: 35px;
+         width: 35px;
+      }
 
-    .page {
-      height: 35px;
-      width: 35px;
-    }
-  }
+      .page {
+         height: 35px;
+         width: 35px;
+      }
+   }
 }

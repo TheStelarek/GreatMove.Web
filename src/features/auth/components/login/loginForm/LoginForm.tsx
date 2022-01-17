@@ -1,13 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Input from '@/components/core/input/Input';
-import styles from '@/features/auth/components/login/loginForm/LoginForm.module.scss';
-import Button from '@/components/core/button/Button';
-import { signIn } from '@/features/auth/store/signIn';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
+import Input from '@/components/core/input/Input';
+import Button from '@/components/core/button/Button';
+import styles from '@/features/auth/components/login/loginForm/LoginForm.module.scss';
+import { signIn } from '@/features/auth/store/signIn';
 import { authSelector, clearState } from '@/features/auth/store/AuthSlice';
 import { LoginFormValue, LoginValidationSchema } from '@/features/auth/components/login/loginForm/LoginFormTypes';
 

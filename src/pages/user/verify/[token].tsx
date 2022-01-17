@@ -1,9 +1,9 @@
-import { apiClient } from '@/api/apiClient';
-import MainLayout from '@/layouts/mainLayout/MainLayout';
-import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import axios from 'axios';
 import { ReactElement } from 'react';
 import styles from '@/pages/user/verify/Verify.module.scss';
+import { apiClient } from '@/api/apiClient';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
+import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 
 interface EmailVerificationProps {
    verified: boolean;

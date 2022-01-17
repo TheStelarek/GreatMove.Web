@@ -1,8 +1,8 @@
-import { TrainingDay } from '@/features/trainingPlan/utils/types/TrainingDay';
 import { FC } from 'react';
-import styles from '@/features/trainingPlan/components/workout/Workout.module.scss';
 import { capitalize } from '@/utils/functions/capitalize';
 import ExerciseDetails from '@/features/trainingPlan/components/exerciseDetails/ExerciseDetails';
+import { TrainingDay } from '@/features/trainingPlan/utils/types/TrainingDay';
+import styles from '@/features/trainingPlan/components/workout/Workout.module.scss';
 
 interface WorkoutProps {
    day: TrainingDay;

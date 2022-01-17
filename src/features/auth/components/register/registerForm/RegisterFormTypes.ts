@@ -13,11 +13,11 @@ export type RegisterStepOptions = {
 };
 
 export const RegisterValidationSchema = yup.object({
-   email: yup.string().email(`Email must be a valid email.`).required(`Email is required.`),
-   username: yup.string().max(30, `Username can be up to 30 characters long.`).required(`Username is required.`),
+   email: yup.string().email(`Email must be a valid email`).required(`Email is required`),
+   username: yup.string().max(30, `Username can be up to 30 characters long`).required(`Username is required`),
    password: yup
       .string()
-      .required(`Password is required.`)
+      .required(`Password is required`)
       .min(6, `Password must contain at least 6 characters`)
-      .max(32, `Password can be up to 32 characters long.`),
+      .max(32, `Password can be up to 32 characters long`),
 });

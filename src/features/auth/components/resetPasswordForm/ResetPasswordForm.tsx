@@ -2,14 +2,14 @@ import { FC } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Input from '@/components/core/input/Input';
-import styles from '@/features/auth/components/login/loginForm/LoginForm.module.scss';
 import Button from '@/components/core/button/Button';
+import styles from '@/features/auth/components/login/loginForm/LoginForm.module.scss';
 import { useResetPasswordMutation } from '@/features/auth/api/authApi';
-import { ErrorType } from '@/utils/types/ErrorType';
 import {
    ResetPasswordFormValue,
    ResetPasswordValidationSchema,
 } from '@/features/auth/components/resetPasswordForm/ResetPasswordFormTypes';
+import { ErrorType } from '@/utils/types/ErrorType';
 
 const ResetPasswordForm: FC<{ token: string }> = ({ token }) => {
    const [resetPassword, result] = useResetPasswordMutation();

@@ -7,10 +7,10 @@ import Modal from '@/components/core/modal/Modal';
 import useModal from '@/components/core/modal/useModal';
 import Button from '@/components/core/button/Button';
 import Input from '@/components/core/input/Input';
-import styles from '@/features/trainingPlan/components/createTrainingPlan/saveTrainingPlanModal/SaveTrainingPlanModal.module.scss';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { discardTraining, trainingPlanSelector } from '@/features/trainingPlan/store/TrainingPlanSlice';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/saveTrainingPlanModal/SaveTrainingPlanModal.module.scss';
+import { discardTraining, trainingPlanSelector } from '@/features/trainingPlan/store/TrainingPlanSlice';
 import { useSaveTrainingPlanMutation } from '@/features/trainingPlan/api/trainingPlansApi';
 import { ErrorType } from '@/utils/types/ErrorType';
 

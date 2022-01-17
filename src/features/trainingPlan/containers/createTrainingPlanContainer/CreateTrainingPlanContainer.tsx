@@ -1,14 +1,14 @@
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
+import useModal from '@/components/core/modal/useModal';
+import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import styles from '@/features/trainingPlan/containers/createTrainingPlanContainer/CreateTrainingPlanContainer.module.scss';
 import CreateTrainingPlanBox from '@/features/trainingPlan/components/createTrainingPlan/createTrainingPlanBox/CreateTrainingPlanBox';
 import NewTrainingDay from '@/features/trainingPlan/components/createTrainingPlan/newTrainingDay/NewTrainingDay';
 import SaveTrainingPlanModal from '@/features/trainingPlan/components/createTrainingPlan/saveTrainingPlanModal/SaveTrainingPlanModal';
 import TrainingDay from '@/features/trainingPlan/components/createTrainingPlan/trainingDay/TrainingDay';
 import { discardTraining, dragExercise, trainingPlanSelector } from '@/features/trainingPlan/store/TrainingPlanSlice';
-import DeleteModal from '@/components/core/deleteModal/DeleteModal';
-import useModal from '@/components/core/modal/useModal';
 
 const CreateTrainingPlanContainer = () => {
    const { isCreatingPlan, training } = useAppSelector(trainingPlanSelector);

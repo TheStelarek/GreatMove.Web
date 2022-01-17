@@ -1,7 +1,7 @@
-import { apiClient } from '@/api/apiClient';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { User } from '@/features/auth/utils/types/User';
+import { apiClient } from '@/api/apiClient';
 
 interface SignInUserData {
    username: string;

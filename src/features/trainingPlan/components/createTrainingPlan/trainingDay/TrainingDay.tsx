@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { DroppableProvided, Draggable } from 'react-beautiful-dnd';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import styles from '@/features/trainingPlan/components/createTrainingPlan/trainingDay/TrainingDay.module.scss';
 import TrainingExercise from '@/features/trainingPlan/components/createTrainingPlan/trainingExercise/TrainingExercise';
 import ToggleSearchInput from '@/features/trainingPlan/components/createTrainingPlan/toggleSearchInput/ToggleSearchInput';
 import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';
-import Trash from '@/public/my-shopping-list/trash.svg';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { removeTrainingDay } from '@/features/trainingPlan/store/TrainingPlanSlice';
-import TrainingDayName from '../trainingDayName/TrainingDayName';
+import TrainingDayName from '@/features/trainingPlan/components/createTrainingPlan/trainingDayName/TrainingDayName';
+import Trash from '@/public/icons/trash.svg';
 
 interface TrainingDayProps {
    exercises: ExerciseType[];

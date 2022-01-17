@@ -6,16 +6,16 @@ import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector, clearState } from '@/features/auth/store/AuthSlice';
 import { signUpUser } from '@/features/auth/store/signUpUser';
 import { isAvailableEmailUsername } from '@/features/auth/store/isAvailableEmailUsername';
-import Input from '@/components/core/input/Input';
 import styles from '@/features/auth/components/register/registerForm/RegisterForm.module.scss';
+import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
-import MailSent from '@/public/mail-sent.svg';
 import {
    IsAvailableFunction,
    RegisterFormValue,
    RegisterStepOptions,
    RegisterValidationSchema,
 } from '@/features/auth/components/register/registerForm/RegisterFormTypes';
+import MailSent from '@/public/illustrations/mail-sent.svg';
 
 const RegisterForm = () => {
    const dispatch = useAppDispatch();

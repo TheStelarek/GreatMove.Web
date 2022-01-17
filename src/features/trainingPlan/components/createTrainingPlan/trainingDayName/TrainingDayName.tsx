@@ -1,8 +1,8 @@
 import { FC, useState, KeyboardEvent, ChangeEvent } from 'react';
-import styles from '@/features/trainingPlan/components/createTrainingPlan/trainingDayName/TrainingDayName.module.scss';
 import Input from '@/components/core/input/Input';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { updateTrainingDayName } from '@/features/trainingPlan/store/TrainingPlanSlice';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/trainingDayName/TrainingDayName.module.scss';
 
 interface TrainingDayNameProps {
    trainingDayId: string;

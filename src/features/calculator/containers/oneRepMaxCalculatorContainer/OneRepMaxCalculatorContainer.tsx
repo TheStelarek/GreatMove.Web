@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Input from '@/components/core/input/Input';
 import styles from '@/features/calculator/containers/oneRepMaxCalculatorContainer/OneRepMaxCalculatorContainer.module.scss';
 import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
-import Input from '@/components/core/input/Input';
 import { oneRepMaxData } from '@/features/calculator/utils/data/oneRepMaxData';
 import { calculateOneRepMax } from '@/utils/functions/calculateRepMax';
 import { fieldMax } from '@/utils/functions/fieldMax';

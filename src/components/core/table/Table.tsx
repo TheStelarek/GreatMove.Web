@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { Column, TableInstance, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
+import Select from 'react-select';
 import GlobalFilter from '@/components/core/table/GlobalFilter';
 import styles from '@/components/core/table/Table.module.scss';
-import Select from 'react-select';
-import LeftArrow from '@/public/pagination/left-arrow.svg';
-import RightArrow from '@/public/pagination/right-arrow.svg';
 import Input from '@/components/core/input/Input';
+import LeftArrow from '@/public/icons/left-arrow.svg';
+import RightArrow from '@/public/icons/right-arrow.svg';
+import DoubleLeftArrow from '@/public/icons/double-left-arrow.svg';
+import DoubleRightArrow from '@/public/icons/double-right-arrow.svg';
 
 interface TableProps {
    columns: Array<Column>;
@@ -139,8 +141,7 @@ const Table: React.FC<TableProps> = ({
                <div className={styles.paginationWrapper}>
                   <div className={styles.buttonsWrapper}>
                      <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} className={styles.arrowBtn}>
-                        <LeftArrow className={styles.icon} />
-                        <LeftArrow className={styles.icon} />
+                        <DoubleLeftArrow className={styles.doubleIcon} />
                      </button>
                      <button onClick={() => previousPage()} disabled={!canPreviousPage} className={styles.arrowBtn}>
                         <LeftArrow className={styles.icon} />
@@ -153,8 +154,7 @@ const Table: React.FC<TableProps> = ({
                         disabled={!canNextPage}
                         className={styles.arrowBtn}
                      >
-                        <RightArrow className={styles.icon} />
-                        <RightArrow className={styles.icon} />
+                        <DoubleRightArrow className={styles.doubleIcon} />
                      </button>
                   </div>
                   <p className={styles.currentPage}>

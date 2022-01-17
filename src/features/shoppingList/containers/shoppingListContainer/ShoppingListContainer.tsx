@@ -1,18 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import { usePDF } from '@react-pdf/renderer';
-import { shoppingListSelector, deleteProduct, clearState } from '@/features/shoppingList/store/ShoppingListSlice';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import ShoppingListTemplate from '@/features/shoppingList/utils/ShoppingListTemplate';
 import { Ingredient } from '@/features/recipe/utils/types/Ingredient';
-import chunks from '@/utils/functions/chunks';
 import styles from '@/features/shoppingList/containers/shoppingListContainer/ShoppingListContainer.module.scss';
-import Save from '@/public/my-shopping-list/save.svg';
-import Print from '@/public/my-shopping-list/print.svg';
-import Trash from '@/public/my-shopping-list/trash.svg';
-import Empty from '@/public/my-shopping-list/empty.svg';
-import Remove from '@/public/my-shopping-list/remove.svg';
+import { shoppingListSelector, deleteProduct, clearState } from '@/features/shoppingList/store/ShoppingListSlice';
+import chunks from '@/utils/functions/chunks';
+import Save from '@/public/icons/save.svg';
+import Print from '@/public/icons/print.svg';
+import Trash from '@/public/icons/trash.svg';
+import Empty from '@/public/illustrations/empty.svg';
+import Remove from '@/public/icons/remove.svg';
 
 const ShoppingListContainer = () => {
    const [dividedProducts, setDividedProducts] = useState<Array<Ingredient[]>>([]);

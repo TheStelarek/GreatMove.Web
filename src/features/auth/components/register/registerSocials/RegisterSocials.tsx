@@ -1,6 +1,6 @@
-import Google from '@/public/logos/google.svg';
-import Facebook from '@/public/logos/facebook.svg';
 import styles from '@/features/auth/components/register/registerSocials/RegisterSocials.module.scss';
+import Google from '@/public/icons/google.svg';
+import Facebook from '@/public/icons/facebook.svg';
 
 const RegisterSocials = () => (
    <div className={styles.socials}>

@@ -3,10 +3,10 @@ import Select from 'react-select';
 import { useForm, Controller, NestedValue } from 'react-hook-form';
 import styles from '@/features/calculator/containers/tmrCalculatorContainer/TmrCalculatorContainer.module.scss';
 import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
+import { physicalActivities, tmrData } from '@/features/calculator/utils/data/tmrData';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import Radio from '@/components/core/radio/Radio';
-import { physicalActivities, tmrData } from '@/features/calculator/utils/data/tmrData';
 import { calculateHarrisBenedictBMR } from '@/utils/functions/calculateHarrisBenedictBMR';
 import { OptionType } from '@/utils/types/OptionType';
 

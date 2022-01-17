@@ -7,12 +7,12 @@ import Spinner from '@/components/core/spinner/Spinner';
 import useModal from '@/components/core/modal/useModal';
 import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import { ErrorType } from '@/utils/types/ErrorType';
-import Edit from '@/public/icons/edit-regular.svg';
-import Trash from '@/public/my-shopping-list/trash.svg';
 import styles from '@/features/trainingPlan/containers/trainingPlansTableContainer/TrainingPlansTableContainer.module.scss';
 import { useDeleteTrainingPlanMutation } from '@/features/trainingPlan/api/trainingPlansApi';
 import useTrainingPlans, { TrainingPlan } from '@/features/trainingPlan/hooks/useTrainingPlans';
 import View from '@/public/icons/view.svg';
+import Edit from '@/public/icons/edit-regular.svg';
+import Trash from '@/public/icons/trash.svg';
 
 const TrainingPlansTableContainer = () => {
    const { plans, pageCount, error, isLoading, fetchTrainingPlans } = useTrainingPlans();

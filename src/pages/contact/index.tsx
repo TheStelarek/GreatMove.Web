@@ -61,8 +61,8 @@ const Contact = () => {
          <div className={styles.wrapper}>
             <h1 className={styles.heading}>Get in touch!</h1>
             <p className={styles.info}>
-               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores obcaecati neque blanditiis facilis
-               nostrum reprehenderit?
+               Do you have any questions? Having trouble with something on our site? Feel free to contact us using the
+               form below
             </p>
 
             <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>

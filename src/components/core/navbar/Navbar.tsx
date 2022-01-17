@@ -2,6 +2,10 @@ import Link from 'next/link';
 import { SetStateAction, useState, useEffect } from 'react';
 import cx from 'classnames';
 import styles from '@/components/core/navbar/Navbar.module.scss';
+import Logo from '@/components/core/logo/Logo';
+import NavbarNestedMenu from '@/components/core/navbar/navbarNestedMenu/NavbarNestedMenu';
+import { NavbarVariants, NestedMenuTypes } from '@/components/core/navbar/NavbarTypes';
+import NavbarHamburger from '@/components/core/navbar/navbarHamburger/NavbarHamburger';
 import {
    RECIPES,
    CALCULATORS,
@@ -13,13 +17,9 @@ import {
 } from '@/components/core/navbar/navbarData';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector } from '@/features/auth/store/AuthSlice';
-import Arrow from '@/public/navbar/expand-arrow.svg';
-import DefaultAvatar from '@/public/navbar/default-avatar.svg';
-import NavbarNestedMenu from '@/components/core/navbar/navbarNestedMenu/NavbarNestedMenu';
-import NavbarHamburger from '@/components/core/navbar/navbarHamburger/NavbarHamburger';
-import { NavbarVariants, NestedMenuTypes } from '@/components/core/navbar/NavbarTypes';
-import Logo from '@/components/core/logo/Logo';
 import { shoppingListSelector } from '@/features/shoppingList/store/ShoppingListSlice';
+import ExpandArrow from '@/public/icons/expand-arrow.svg';
+import DefaultAvatar from '@/public/icons/default-avatar.svg';
 
 interface NavbarProps {
    variant?: NavbarVariants;
@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true, navbarBottom
                         onClick={() => toggleNestedMenu(NestedMenuTypes.recipes)}
                      >
                         {RECIPES.page.label}
-                        <Arrow
+                        <ExpandArrow
                            className={cx(styles.expandArrow, expandedMenu === NestedMenuTypes.recipes && styles.active)}
                         />
                      </button>
@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, boxShadow = true, navbarBottom
                         onClick={() => toggleNestedMenu(NestedMenuTypes.trainings)}
                      >
                         {TRAININGS.page.label}
-                        <Arrow
+                        <ExpandArrow
                            className={cx(
                               styles.expandArrow,
                               expandedMenu === NestedMenuTypes.trainings && styles.active,

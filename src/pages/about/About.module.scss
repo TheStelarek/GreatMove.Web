@@ -104,3 +104,13 @@
       }
    }
 }
+
+@media (min-width: 1500px) {
+   .wrapper {
+      padding: var(--space-40);
+
+      h5 {
+         width: 45%;
+      }
+   }
+}

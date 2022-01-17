@@ -1,19 +1,19 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Cell } from 'react-table';
-import styles from '@/features/recipe/containers/myRecipesContainer/MyRecipesContainer.module.scss';
 import Table from '@/components/core/table/Table';
 import Button from '@/components/core/button/Button';
 import Spinner from '@/components/core/spinner/Spinner';
 import useModal from '@/components/core/modal/useModal';
+import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import { Recipe } from '@/features/recipe/utils/types/Recipe';
+import useMyRecipes from '@/features/recipe/hooks/useMyRecipes';
+import styles from '@/features/recipe/containers/myRecipesContainer/MyRecipesContainer.module.scss';
+import { useDeleteRecipeMutation } from '@/features/recipe/api/recipesApi';
+import { ErrorType } from '@/utils/types/ErrorType';
 import Edit from '@/public/icons/edit-regular.svg';
 import View from '@/public/icons/view.svg';
-import Trash from '@/public/my-shopping-list/trash.svg';
-import useMyRecipes from '@/features/recipe/hooks/useMyRecipes';
-import { useDeleteRecipeMutation } from '@/features/recipe/api/recipesApi';
-import DeleteModal from '@/components/core/deleteModal/DeleteModal';
-import { ErrorType } from '@/utils/types/ErrorType';
+import Trash from '@/public/icons/trash.svg';
 
 const MyRecipesContainer = () => {
    const { recipes, pageCount, error, isLoading, fetchMyRecipes } = useMyRecipes();

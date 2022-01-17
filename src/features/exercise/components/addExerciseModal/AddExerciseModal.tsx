@@ -6,11 +6,11 @@ import Radio from '@/components/core/radio/Radio';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import Modal from '@/components/core/modal/Modal';
+import { ErrorType } from '@/utils/types/ErrorType';
 import styles from '@/features/exercise/components/addExerciseModal/AddExerciseModal.module.scss';
 import { useAddExerciseMutation, useUpdateExerciseMutation } from '@/features/exercise/api/exercisesApi';
-import { ErrorType } from '@/utils/types/ErrorType';
 import { Exercise } from '@/features/exercise/utils/types/Exercise';
-import { AddExerciseFormValue } from './AddExerciseFormValue';
+import { AddExerciseFormValue } from '@/features/exercise/components/addExerciseModal/AddExerciseFormValue';
 
 interface AddExerciseModalProps {
    isOpen: boolean;
@@ -18,6 +18,7 @@ interface AddExerciseModalProps {
    exercise?: Exercise;
    setSelectedExerciseId: Dispatch<SetStateAction<string>>;
    setSelectedExercise: Dispatch<SetStateAction<Exercise | undefined>>;
+   fetchExercises: (pageSize: number, pageIndex: number) => Promise<void>;
 }
 
 const AddExerciseModal: FC<AddExerciseModalProps> = ({
@@ -26,6 +27,7 @@ const AddExerciseModal: FC<AddExerciseModalProps> = ({
    exercise,
    setSelectedExerciseId,
    setSelectedExercise,
+   fetchExercises,
 }) => {
    const [addExercise, result] = useAddExerciseMutation();
    const [updateExercise, updateResult] = useUpdateExerciseMutation();
@@ -54,6 +56,7 @@ const AddExerciseModal: FC<AddExerciseModalProps> = ({
       setSelectedExerciseId(``);
       setSelectedExercise(undefined);
       reset();
+      fetchExercises(10, 0);
    };
 
    useEffect(() => {

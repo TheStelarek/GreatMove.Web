@@ -29,17 +29,17 @@ export const RECIPES: MenuItem = {
       {
          label: `Recipes`,
          route: ``,
-         description: `Analyze your data to make more optimized plans`,
+         description: `Search among the best recipes in our website`,
       },
       {
          label: `Create recipe`,
          route: `create-recipe`,
-         description: `Analyze your data to make more optimized plans`,
+         description: `Make your own recipe and share with others!`,
       },
       {
          label: `My recipes`,
          route: `my-recipes`,
-         description: `Analyze your data to make more optimized plans`,
+         description: `A cookbook with recipes you've created`,
       },
    ],
 };
@@ -67,17 +67,17 @@ export const TRAININGS: MenuItem = {
       {
          label: `Create plan`,
          route: `create-training-plan`,
-         description: `Analyze your data to make more optimized plans`,
+         description: `Make your own specializied workout plan`,
       },
       {
          label: `Plans`,
          route: `plans`,
-         description: `Analyze your data to make more optimized plans`,
+         description: `Your list of training plans you've created`,
       },
       {
          label: `Exercises`,
          route: `exercises`,
-         description: `Analyze your data to make more optimized plans`,
+         description: `Your exercise database`,
       },
    ],
 };

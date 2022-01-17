@@ -1,27 +1,27 @@
 .signIn {
-  margin-left: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-4);
-  height: 30px;
-  font-size: var(--font-size-p1);
-  font-weight: var(--font-weight-bold);
-  color: var(--gray-800);
+   margin-left: auto;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: var(--space-4);
+   height: 30px;
+   font-size: var(--font-size-p1);
+   font-weight: var(--font-weight-bold);
+   color: var(--gray-800);
 
-  button {
-    border-radius: var(--border-radius-10);
-    border: none;
-    padding: var(--space-1) var(--space-2-5);
-    background-color: var(--blue-100);
-    font-size: var(--font-size-p1);
-    font-weight: var(--font-weight-bold);
-    color: var(--blue-800);
-    transition: color 0.25s ease;
-    cursor: pointer;
+   button {
+      border-radius: var(--border-radius-10);
+      border: none;
+      padding: var(--space-1) var(--space-2-5);
+      background-color: var(--blue-100);
+      font-size: var(--font-size-p1);
+      font-weight: var(--font-weight-bold);
+      color: var(--blue-800);
+      transition: color 0.25s ease;
+      cursor: pointer;
 
-    &:hover {
-      color: var(--blue-900);
-    }
-  }
+      &:hover {
+         color: var(--blue-900);
+      }
+   }
 }

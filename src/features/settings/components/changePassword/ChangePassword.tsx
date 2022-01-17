@@ -2,17 +2,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import Input from '@/components/core/input/Input';
-import styles from '@/features/settings/components/changePassword/ChangePassword.module.scss';
 import Button from '@/components/core/button/Button';
 import { ErrorType } from '@/utils/types/ErrorType';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
+import styles from '@/features/settings/components/changePassword/ChangePassword.module.scss';
 import {
    ChangePasswordFormValue,
    ChangePasswordValidationSchema,
 } from '@/features/settings/components/changePassword/ChangePasswordFormTypes';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector } from '@/features/auth/store/AuthSlice';
-import DefaultAvatar from '@/public/navbar/default-avatar.svg';
 import { useChangePasswordMutation } from '@/features/settings/api/settingsApi';
+import DefaultAvatar from '@/public/icons/default-avatar.svg';
 
 const ChangePassword = () => {
    const { me } = useAppSelector(authSelector);

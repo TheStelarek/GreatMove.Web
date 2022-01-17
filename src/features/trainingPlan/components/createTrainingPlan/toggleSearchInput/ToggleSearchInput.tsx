@@ -1,7 +1,7 @@
 import { useState, FC } from 'react';
-import Plus from '@/public/create-training-plan/plus.svg';
 import styles from '@/features/trainingPlan/components/createTrainingPlan/toggleSearchInput/ToggleSearchInput.module.scss';
 import SearchExerciseInput from '@/features/trainingPlan/components/createTrainingPlan/searchExerciseInput/SearchExerciseInput';
+import Plus from '@/public/icons/plus.svg';
 
 interface AddExerciseProps {
    trainingDayId: string;

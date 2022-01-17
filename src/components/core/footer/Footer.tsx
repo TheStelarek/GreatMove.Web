@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import styles from '@/components/core/footer/Footer.module.scss';
-import ArrowUpLeft from '@/public/footer/arrowUpLeft.svg';
-import Facebook from '@/public/footer/facebook.svg';
-import Instagram from '@/public/footer/instagram.svg';
-import Twitter from '@/public/footer/twitter.svg';
+import ArrowUpLeft from '@/public/icons/arrowUpLeft.svg';
+import Facebook from '@/public/icons/facebook-solid.svg';
+import Instagram from '@/public/icons/instagram-solid.svg';
+import Twitter from '@/public/icons/twitter-solid.svg';
 
 const Footer = () => (
    <footer className={styles.footerContainer}>
@@ -12,9 +12,9 @@ const Footer = () => (
             <div className={styles.description}>
                <ArrowUpLeft className={styles.arrowIcon} />
                <p className={styles.seoText}>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim explicabo id laudantium quam
-                  consectetur ipsum ratione fuga illo quaerat magnam. Iste rem nam pariatur expedita nostrum incidunt in
-                  ad eaque?
+                  Lead a healthy diet with us, create a variety of recipes. Create specialized training plans such as
+                  bodybuilding, powerlifting or conditioning workout plan. Wondering how to lose weight? Ask our experts
+                  and achieve your goals!
                </p>
             </div>
          </div>
@@ -38,7 +38,7 @@ const Footer = () => (
                <Twitter className={styles.socialIcon} />
             </div>
             <div className={styles.copyrights}>
-               <span className={styles.credensionals}>© 2021 GreatMove</span>/privacy policy
+               <span className={styles.credensionals}>© 2022 GreatMove</span>/ privacy policy
             </div>
          </div>
       </div>

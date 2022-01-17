@@ -1,17 +1,17 @@
 import TrainingsPlans from '@/public/navbar/trainings-plans.svg';
-import TrainingsStart from '@/public/navbar/trainings-start.svg';
-import TrainingsHistory from '@/public/navbar/trainings-history.svg';
 import TrainingsPlanning from '@/public/navbar/trainings-planning.svg';
+import Exercises from '@/public/navbar/exercises.svg';
+import Recipes from '@/public/navbar/recipes.svg';
+import RecipeBook from '@/public/navbar/recipe-book.svg';
+import CreateRecipe from '@/public/navbar/create-recipe.svg';
 
 const icons = new Map([
    [`Plans`, TrainingsPlans],
-   [`Start training`, TrainingsStart],
-   [`History`, TrainingsHistory],
    [`Create plan`, TrainingsPlanning],
-   [`Recipes`, TrainingsPlans],
-   [`Create recipe`, TrainingsStart],
-   [`My recipes`, TrainingsHistory],
-   [`Exercises`, TrainingsHistory],
+   [`Exercises`, Exercises],
+   [`Recipes`, Recipes],
+   [`Create recipe`, CreateRecipe],
+   [`My recipes`, RecipeBook],
 ]);
 
 interface DynamicIconProps {

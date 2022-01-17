@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Input from '@/components/core/input/Input';
-import styles from '@/features/auth/components/forgotPasswordForm/ForgotPasswordForm.module.scss';
 import Button from '@/components/core/button/Button';
+import styles from '@/features/auth/components/forgotPasswordForm/ForgotPasswordForm.module.scss';
 import { useRecoverPasswordMutation } from '@/features/auth/api/authApi';
 import {
    ForgotPasswordFormValue,

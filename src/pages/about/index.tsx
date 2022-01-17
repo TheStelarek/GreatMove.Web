@@ -9,19 +9,21 @@ const About = () => (
          <Info className={styles.icon} />
       </span>
       <h5 className={styles.heading}>
-         Since 2014 we strive to be the leading company in the cleaning industry delivering quality services at
-         reasonable price
+         GreatMove is the leading app for tracking and conquering your nutrition and fitness goals. We plan to become
+         the leading application in our industry in the next 3 years.
       </h5>
       <div className={styles.descWrapper}>
          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas eveniet quos. Quisquam accusamus eius
-            reiciendis maxime fugiat beatae, nostrum veniam labore odit quasi magni accusantium repellat. Porro, tempora
-            odit?
+            We started Great Move as a small group of programming enthusiasts. Our goal was to make a hobby site that
+            fit our requirements, as the current market didn't offer everything we wanted from such a site. We needed it
+            to be a site that had all the things we needed to train, instead of being split up into several different
+            applications.
          </p>
          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas eveniet quos. Quisquam accusamus eius
-            reiciendis maxime fugiat beatae, nostrum veniam labore odit quasi magni accusantium repellat. Porro, tempora
-            odit?
+            Always focus on the highest quality of our solutions. Constantly trying to improve our modules in the
+            application. We also wanted it to be simple, minimalistic and intuitive so that everyone could easily find
+            their way around our site. We always listen to the needs of our users and try to implement the tools they
+            need.
          </p>
       </div>
    </div>

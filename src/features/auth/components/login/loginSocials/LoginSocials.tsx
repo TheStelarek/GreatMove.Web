@@ -1,6 +1,6 @@
-import Google from '@/public/logos/google.svg';
-import Facebook from '@/public/logos/facebook.svg';
 import styles from '@/features/auth/components/login/loginSocials/LoginSocials.module.scss';
+import Google from '@/public/icons/google.svg';
+import Facebook from '@/public/icons/facebook.svg';
 
 const LoginSocials = () => (
    <div className={styles.socials}>

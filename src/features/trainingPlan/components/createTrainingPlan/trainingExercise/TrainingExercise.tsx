@@ -1,13 +1,13 @@
 import { FC, useState } from 'react';
 import { DraggableProvided } from 'react-beautiful-dnd';
-import Drag from '@/public/create-training-plan/drag.svg';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import ExerciseDetails from '@/features/trainingPlan/components/exerciseDetails/ExerciseDetails';
 import styles from '@/features/trainingPlan/components/createTrainingPlan/trainingExercise/TrainingExercise.module.scss';
 import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';
 import ExerciseDetailsForm from '@/features/trainingPlan/components/createTrainingPlan/exerciseDetailsForm/ExerciseDetailsForm';
-import Remove from '@/public/my-shopping-list/remove.svg';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { removeExercise } from '@/features/trainingPlan/store/TrainingPlanSlice';
+import Remove from '@/public/icons/remove.svg';
+import Drag from '@/public/icons/drag.svg';
 
 interface TrainingExerciseProps {
    trainingDayId: string;

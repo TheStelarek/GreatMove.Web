@@ -1,30 +1,20 @@
-import Accordion from '@/components/core/accordion/Accordion';
-import MainLayout from '@/layouts/mainLayout/MainLayout';
 import { ReactElement } from 'react';
 import styles from '@/pages/faq/Faq.module.scss';
+import Accordion from '@/components/core/accordion/Accordion';
+import MainLayout from '@/layouts/mainLayout/MainLayout';
 
 const accordionData = [
    {
-      title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
-      content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente
-     laborum cupiditate possimus labore, hic temporibus velit dicta earum
-     suscipit commodi eum enim atque at? Et perspiciatis dolore iure
-     voluptatem.`,
+      title: `Can I contact you about my workouts to get some advice?`,
+      content: `Of course, we will always answer and advise you if it is possible.`,
    },
    {
-      title: `Section 2`,
-      content: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia veniam
-     reprehenderit nam assumenda voluptatem ut. Ipsum eius dicta, officiis
-     quaerat iure quos dolorum accusantium ducimus in illum vero commodi
-     pariatur? Impedit autem esse nostrum quasi, fugiat a aut error cumque
-     quidem maiores doloremque est numquam praesentium eos voluptatem amet!
-     Repudiandae, mollitia id reprehenderit a ab odit!`,
+      title: `Is it free to use our app?`,
+      content: `We do not anticipate entering any payments at this time.`,
    },
    {
-      title: `Section 3`,
-      content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
-     quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
-     dolor ut sequi minus iste? Quas?`,
+      title: `What plans do you have for expanded applications?`,
+      content: `Introducing modules such as measuring body circumference, calorie counting, meal planning, detailed statistics on workouts performed and advice on how to improve them. In the future we will create a system that will automatically create menus and training plans for users based on their goals and progress.`,
    },
 ];
 

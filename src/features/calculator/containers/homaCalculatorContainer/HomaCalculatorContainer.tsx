@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import styles from '@/features/calculator/containers/homaCalculatorContainer/HomaCalculatorContainer.module.scss';
 import { homaData } from '@/features/calculator/utils/data/homaData';
+import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
 
 interface HomaFormValue {
    insulin: number;

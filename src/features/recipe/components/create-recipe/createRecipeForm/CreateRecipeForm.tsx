@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useFieldArray, useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 import { skipToken } from '@reduxjs/toolkit/query';
-import styles from '@/features/recipe/components/create-recipe/createRecipeForm/CreateRecipeForm.module.scss';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import Divider from '@/components/core/divider/Divider';
@@ -15,7 +14,6 @@ import Spinner from '@/components/core/spinner/Spinner';
 import Checkbox from '@/components/core/checkbox/Checkbox';
 import TagCheckbox from '@/components/core/tagCheckbox/TagCheckbox';
 import { diets, meals, tags, difficulties, privacyOptions } from '@/features/recipe/utils/data';
-import { ErrorType } from '@/utils/types/ErrorType';
 import { useAddRecipeMutation, useGetRecipeByIdQuery, useUpdateRecipeMutation } from '@/features/recipe/api/recipesApi';
 import { RecipeFormValues } from '@/features/recipe/components/create-recipe/createRecipeForm/recipeFormValues';
 import { PICTURE_SUPPORTED_FORMATS } from '@/features/recipe/components/create-recipe/createRecipeForm/pictureValidationData';
@@ -24,10 +22,12 @@ import {
    UpdateRecipeValidationSchema,
    updateFields,
 } from '@/features/recipe/components/create-recipe/createRecipeForm/updateRecipeValidationSchema';
-import PictureFile from '@/public/create-recipe/photo-file.svg';
-import Remove from '@/public/my-shopping-list/remove.svg';
+import styles from '@/features/recipe/components/create-recipe/createRecipeForm/CreateRecipeForm.module.scss';
+import { ErrorType } from '@/utils/types/ErrorType';
 import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { authSelector } from '@/features/auth/store/AuthSlice';
+import PictureFile from '@/public/icons/file.svg';
+import Remove from '@/public/icons/remove.svg';
 
 interface CreateRecipeFormProps {
    recipeId?: string;

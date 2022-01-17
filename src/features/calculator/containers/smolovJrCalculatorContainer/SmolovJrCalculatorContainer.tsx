@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
 import Table from '@/components/core/table/Table';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
 import { calculateSmolovJrWeek } from '@/utils/functions/calculateSmolovJrWeek';
 import { smolovJrData } from '@/features/calculator/utils/data/smolovJrData';
+import Calculator from '@/features/calculator/components/calculatorWrapper/CalculatorWrapper';
 import styles from '@/features/calculator/containers/smolovJrCalculatorContainer/SmolovJrCalculatorContainer.module.scss';
 
 interface SmolovJrDay {

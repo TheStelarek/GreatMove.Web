@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import styles from '@/features/trainingPlan/components/createTrainingPlan/exerciseDetailsForm/ExerciseDetailsForm.module.scss';
 import Input from '@/components/core/input/Input';
 import Button from '@/components/core/button/Button';
-import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import { ExerciseType } from '@/features/trainingPlan/utils/types/ExerciseType';
+import styles from '@/features/trainingPlan/components/createTrainingPlan/exerciseDetailsForm/ExerciseDetailsForm.module.scss';
 import { addNewSet, removeSet, updateExercise } from '@/features/trainingPlan/store/TrainingPlanSlice';
-import Plus from '@/public/create-training-plan/plus.svg';
-import Remove from '@/public/my-shopping-list/remove.svg';
+import Plus from '@/public/icons/plus.svg';
+import Remove from '@/public/icons/remove.svg';
 
 interface ExerciseDetailsFormProps {
    trainingDayId: string;

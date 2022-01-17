@@ -1,11 +1,11 @@
 import { FC } from 'react';
+import { Line } from 'rc-progress';
 import Button from '@/components/core/button/Button';
 import useModal from '@/components/core/modal/useModal';
-import styles from '@/features/recipe/components/recipe/recipeReviews/RecipeReviews.module.scss';
-import { Line } from 'rc-progress';
-import { Review } from '@/features/recipe/utils/types/Review';
 import { Rating } from '@/utils/types/Rating';
 import { calculateAvgRating } from '@/utils/functions/calculateAvgRating';
+import { Review } from '@/features/recipe/utils/types/Review';
+import styles from '@/features/recipe/components/recipe/recipeReviews/RecipeReviews.module.scss';
 import RecipeReviewsAddModal from '@/features/recipe/components/recipe/recipeReviewsAddModal/RecipeReviewsAddModal';
 import { RecipeReviewsList } from '@/features/recipe/components/recipe/recipeReviewsList/RecipeReviewsList';
 

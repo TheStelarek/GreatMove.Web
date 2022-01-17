@@ -1,11 +1,12 @@
 import { Controller, useForm } from 'react-hook-form';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+import TagCheckbox from '@/components/core/tagCheckbox/TagCheckbox';
 import styles from '@/features/recipe/components/recipes/recipesFilterForm/RecipesFilterForm.module.scss';
 import RecipesSearchBar from '@/features/recipe/components/recipes/recipesSearchBar/RecipesSearchBar';
 import ListWrapper from '@/features/recipe/components/recipes/recipesFilterForm/ListWrapper';
 import RangeWrapper from '@/features/recipe/components/recipes/recipesFilterForm/RangeWrapper';
-import TagCheckbox from '@/components/core/tagCheckbox/TagCheckbox';
 import {
    proteinsMarks,
    caloriesMarks,
@@ -16,7 +17,6 @@ import {
    railStyle,
    FilterValue,
 } from '@/features/recipe/components/recipes/recipesFilterForm/filterData';
-import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { getRecipes } from '@/features/recipe/store/getRecipes';
 import { clearStatuses, setFilters } from '@/features/recipe/store/RecipesSlice';
 import { times, tags, meals, diets } from '@/features/recipe/utils/data';

@@ -1,6 +1,6 @@
-import { TrainingType } from '@/features/trainingPlan/utils/types/TrainingType';
 import { api } from '@/store/api/api';
 import { TrainingPlan } from '@/features/trainingPlan/utils/types/TrainingPlan';
+import { TrainingType } from '@/features/trainingPlan/utils/types/TrainingType';
 
 export const trainingPlansApi = api.injectEndpoints({
    endpoints: (build) => ({

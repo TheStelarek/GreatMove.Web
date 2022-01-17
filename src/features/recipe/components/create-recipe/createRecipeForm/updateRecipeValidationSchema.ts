@@ -1,5 +1,8 @@
 import * as yup from 'yup';
-import { MAX_PICTURE_SIZE, PICTURE_SUPPORTED_FORMATS } from './pictureValidationData';
+import {
+   MAX_PICTURE_SIZE,
+   PICTURE_SUPPORTED_FORMATS,
+} from '@/features/recipe/components/create-recipe/createRecipeForm/pictureValidationData';
 
 type UpdateFields =
    | `title`

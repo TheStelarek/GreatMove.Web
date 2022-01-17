@@ -1,13 +1,13 @@
 import { FC, useState } from 'react';
-import styles from '@/features/recipe/components/recipe/recipeIngredients/RecipeIngredients.module.scss';
 import Button from '@/components/core/button/Button';
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 import { addProduct } from '@/features/shoppingList/store/ShoppingListSlice';
-import Minus from '@/public/recipe/minus.svg';
-import Plus from '@/public/recipe/plus.svg';
-import Shop from '@/public/recipe/shop.svg';
 import { Ingredient } from '@/features/recipe/utils/types/Ingredient';
+import styles from '@/features/recipe/components/recipe/recipeIngredients/RecipeIngredients.module.scss';
 import { round } from '@/utils/functions/round';
+import Minus from '@/public/icons/minus.svg';
+import Plus from '@/public/icons/plus-2.svg';
+import Shop from '@/public/icons/shop.svg';
 
 interface RecipeIngredientsProps {
    ingredients: Ingredient[];

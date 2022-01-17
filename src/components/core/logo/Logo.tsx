@@ -1,8 +1,8 @@
 import cx from 'classnames';
+import styles from '@/components/core/logo/Logo.module.scss';
 import FullLogo from '@/public/logo/greatmove-full.svg';
 import IconLogo from '@/public/logo/greatmove-icon.svg';
 import TextLogo from '@/public/logo/greatmove-text.svg';
-import styles from '@/components/core/logo/Logo.module.scss';
 
 type LogoVariants = 'full' | 'icon' | 'text';
 type LogoColor = 'blue' | 'purple' | 'white' | 'black';

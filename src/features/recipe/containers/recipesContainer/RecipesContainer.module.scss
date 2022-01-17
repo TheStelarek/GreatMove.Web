@@ -1,5 +1,5 @@
 .container {
-   padding: var(--space-6) var(--space-5) 0 var(--space-5);
+   padding: var(--space-6) var(--space-5) var(--space-5) var(--space-5);
    margin: 0 auto;
    max-width: 1336px;
 
@@ -22,6 +22,6 @@
 
 @media (min-width: 1000px) {
    .container {
-      padding: var(--space-12) var(--space-20) 0 var(--space-20);
+      padding: var(--space-12) var(--space-20) var(--space-5) var(--space-20);
    }
 }

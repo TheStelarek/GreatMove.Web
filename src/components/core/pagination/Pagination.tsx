@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import { useRouter } from 'next/router';
-import LeftArrow from '@/public/pagination/left-arrow.svg';
-import RightArrow from '@/public/pagination/right-arrow.svg';
 import styles from '@/components/core/pagination/Pagination.module.scss';
+import LeftArrow from '@/public/icons/left-arrow.svg';
+import RightArrow from '@/public/icons/right-arrow.svg';
 
 interface PaginationProps {
    currentPage: string;
