@@ -7,16 +7,20 @@ import Spinner from '@/components/core/spinner/Spinner';
 import useModal from '@/components/core/modal/useModal';
 import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import { Recipe } from '@/features/recipe/utils/types/Recipe';
-import useMyRecipes from '@/features/recipe/hooks/useMyRecipes';
 import styles from '@/features/recipe/containers/myRecipesContainer/MyRecipesContainer.module.scss';
-import { useDeleteRecipeMutation } from '@/features/recipe/api/recipesApi';
+import { useDeleteRecipeMutation, useGetMyRecipesQuery } from '@/features/recipe/api/recipesApi';
 import { ErrorType } from '@/utils/types/ErrorType';
 import Edit from '@/public/icons/edit-regular.svg';
 import View from '@/public/icons/view.svg';
 import Trash from '@/public/icons/trash.svg';
 
 const MyRecipesContainer = () => {
-   const { recipes, pageCount, error, isLoading, fetchMyRecipes } = useMyRecipes();
+   const [pageSize, setPageSize] = useState(10);
+   const [pageIndex, setPageIndex] = useState(0);
+   const [recipes, setRecipes] = useState<Recipe[]>([]);
+   const [pageCount, setPageCount] = useState(1);
+   const { data, isLoading, isError, error } = useGetMyRecipesQuery({ pageSize, pageIndex });
+
    const [deleteRecipe, deleteResult] = useDeleteRecipeMutation();
    const [selectedRecipeId, setSelectedRecipeId] = useState<string>(``);
 
@@ -116,8 +120,18 @@ const MyRecipesContainer = () => {
    }, [deleteResult]);
 
    useEffect(() => {
-      fetchMyRecipes(10, 0);
-   }, []);
+      if (data) {
+         const mappedData = data.data.map((recipe: Recipe, index: number) => ({
+            ...recipe,
+            createdAt: recipe.createdAt ? new Date(recipe.createdAt).toLocaleDateString() : null,
+            number: index + 1,
+         }));
+
+         const pagesCount = Math.ceil(data.total / pageSize);
+         setRecipes(mappedData);
+         setPageCount(pagesCount === 0 ? 1 : pagesCount);
+      }
+   }, [data]);
 
    return (
       <div className={styles.recipesContainer}>
@@ -139,8 +153,8 @@ const MyRecipesContainer = () => {
             heading="Delete recipe"
          />
 
-         {error && <p className="error">{error}</p>}
-         {recipes && (
+         {isError && error && <p className="error">{(error as ErrorType).data.message}</p>}
+         {data && recipes && (
             <Table
                hasGlobalFilter
                hasPagination
@@ -148,11 +162,12 @@ const MyRecipesContainer = () => {
                isEquallyGrow
                columns={columns}
                data={recipes}
-               fetchData={fetchMyRecipes}
+               setSize={setPageSize}
+               setIndex={setPageIndex}
                pageCount={pageCount}
             />
          )}
-         {isLoading && !recipes && <Spinner variant="ghost-primary" size="extra-large" />}
+         {isLoading && <Spinner variant="ghost-primary" size="extra-large" />}
       </div>
    );
 };

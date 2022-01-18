@@ -42,7 +42,7 @@ const SaveTrainingPlanModal = () => {
    useEffect(() => {
       if (saveResult.isSuccess) {
          dispatch(discardTraining());
-         router.push(`/trainings/create-training-plan`);
+         router.push(`/trainings/plans`);
       }
    }, [saveResult, dispatch, router]);
 

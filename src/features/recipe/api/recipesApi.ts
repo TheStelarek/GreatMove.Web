@@ -10,6 +10,13 @@ export const recipesApi = api.injectEndpoints({
             method: `get`,
          }),
       }),
+      getMyRecipes: build.query<{ data: Recipe[]; total: number }, { pageSize: number; pageIndex: number }>({
+         query: ({ pageSize, pageIndex }) => ({
+            url: `/recipes/my-recipes?take=${pageSize}&skip=${pageIndex * pageSize}`,
+            method: `get`,
+         }),
+         providesTags: [`Recipes`],
+      }),
       addRecipe: build.mutation<string, RecipeFormValues & { photo: string | ArrayBuffer | null }>({
          query: (recipeFormData) => ({
             url: `/recipes`,
@@ -35,6 +42,7 @@ export const recipesApi = api.injectEndpoints({
                picture: recipeFormData.photo,
             },
          }),
+         invalidatesTags: (result, error) => (error ? [] : [`Recipes`]),
       }),
       updateRecipe: build.mutation<string, RecipeFormValues & { photo: string | ArrayBuffer | null; recipeId: string }>(
          {
@@ -62,6 +70,7 @@ export const recipesApi = api.injectEndpoints({
                   picture: recipeFormData.photo,
                },
             }),
+            invalidatesTags: (result, error) => (error ? [] : [`Recipes`]),
          },
       ),
       addReview: build.mutation<string, { description: string; rating: number; recipeId: string }>({
@@ -79,11 +88,13 @@ export const recipesApi = api.injectEndpoints({
             url: `/recipes/${recipeFormData.recipeId}`,
             method: `delete`,
          }),
+         invalidatesTags: (result, error) => (error ? [] : [`Recipes`]),
       }),
    }),
 });
 
 export const {
+   useGetMyRecipesQuery,
    useGetRecipeByIdQuery,
    useAddRecipeMutation,
    useUpdateRecipeMutation,

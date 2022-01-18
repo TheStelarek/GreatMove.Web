@@ -142,7 +142,7 @@ const CreateRecipeForm: FC<CreateRecipeFormProps> = ({ recipeId, isAddMode = tru
    useEffect(() => {
       if (result.isSuccess || updateResult.isSuccess) {
          reset();
-         router.push(`/`);
+         router.push(`/recipes/my-recipes`);
       }
    }, [result, updateResult, reset]);
 

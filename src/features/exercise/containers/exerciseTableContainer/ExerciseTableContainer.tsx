@@ -9,16 +9,20 @@ import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import { ErrorType } from '@/utils/types/ErrorType';
 import { Exercise } from '@/features/exercise/utils/types/Exercise';
 import AddExerciseModal from '@/features/exercise/components/addExerciseModal/AddExerciseModal';
-import { useDeleteExerciseMutation } from '@/features/exercise/api/exercisesApi';
-import useExercises from '@/features/exercise/hooks/useExercises';
+import { useDeleteExerciseMutation, useGetExercisesQuery } from '@/features/exercise/api/exercisesApi';
 import Edit from '@/public/icons/edit-regular.svg';
 import Trash from '@/public/icons/trash.svg';
 
 const ExerciseTableContainer = () => {
-   const { exercises, pageCount, error, isLoading, fetchExercises } = useExercises();
+   const [pageSize, setPageSize] = useState(10);
+   const [pageIndex, setPageIndex] = useState(0);
+   const [exercises, setExercises] = useState<Exercise[]>([]);
+   const [pageCount, setPageCount] = useState(1);
    const [selectedExerciseId, setSelectedExerciseId] = useState(``);
    const [selectedExercise, setSelectedExercise] = useState<Exercise | undefined>();
    const [removeExerciseId, setRemoveExerciseId] = useState(``);
+
+   const { data, isLoading, isError, error } = useGetExercisesQuery({ pageSize, pageIndex });
 
    const { isOpen, handleOpenModal, handleCloseModal } = useModal();
    const {
@@ -82,7 +86,7 @@ const ExerciseTableContainer = () => {
 
    useEffect(() => {
       if (selectedExerciseId) {
-         const filteredExercise = exercises?.filter(({ id }) => id === selectedExerciseId);
+         const filteredExercise = exercises.filter(({ id }) => id === selectedExerciseId);
          if (filteredExercise) {
             setSelectedExercise(filteredExercise[0]);
             handleOpenModal();
@@ -98,8 +102,16 @@ const ExerciseTableContainer = () => {
    }, [deleteResult]);
 
    useEffect(() => {
-      fetchExercises(10, 0);
-   }, []);
+      if (data) {
+         const mappedData = data.data.map((exercise: Exercise, index: number) => ({
+            ...exercise,
+            number: index + 1,
+         }));
+         const pagesCount = Math.ceil(data.total / pageSize);
+         setExercises(mappedData);
+         setPageCount(pagesCount === 0 ? 1 : pagesCount);
+      }
+   }, [data]);
 
    return (
       <div className={styles.exercisesContainer}>
@@ -116,7 +128,6 @@ const ExerciseTableContainer = () => {
             setSelectedExerciseId={setSelectedExerciseId}
             setSelectedExercise={setSelectedExercise}
             exercise={selectedExercise}
-            fetchExercises={fetchExercises}
          />
          <DeleteModal
             isOpen={isOpenDelete}
@@ -126,8 +137,8 @@ const ExerciseTableContainer = () => {
             deleteError={(deleteResult?.error as ErrorType)?.data?.message}
             heading="Delete exercise"
          />
-         {error && <p className="error">{error}</p>}
-         {exercises && (
+         {isError && error && <p className="error">{(error as ErrorType).data.message}</p>}
+         {data && exercises && (
             <Table
                hasGlobalFilter
                hasPagination
@@ -135,12 +146,13 @@ const ExerciseTableContainer = () => {
                isEquallyGrow
                columns={columns}
                data={exercises}
-               fetchData={fetchExercises}
+               setSize={setPageSize}
+               setIndex={setPageIndex}
                pageCount={pageCount}
             />
          )}
 
-         {isLoading && !exercises && <Spinner variant="ghost-primary" size="extra-large" />}
+         {isLoading && <Spinner variant="ghost-primary" size="extra-large" />}
       </div>
    );
 };

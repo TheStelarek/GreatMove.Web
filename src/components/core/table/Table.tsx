@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { Column, TableInstance, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
 import Select from 'react-select';
 import GlobalFilter from '@/components/core/table/GlobalFilter';
@@ -19,6 +19,8 @@ interface TableProps {
    isEquallyGrow?: boolean;
    fetchData?: (pageSize: number, pageIndex: number) => Promise<void>;
    pageCount?: number;
+   setSize?: Dispatch<SetStateAction<number>>;
+   setIndex?: Dispatch<SetStateAction<number>>;
 }
 
 const Table: React.FC<TableProps> = ({
@@ -31,6 +33,8 @@ const Table: React.FC<TableProps> = ({
    isEquallyGrow,
    fetchData,
    pageCount: controlledPageCount,
+   setSize,
+   setIndex,
 }) => {
    const tableInstance = useTable(
       {
@@ -70,6 +74,10 @@ const Table: React.FC<TableProps> = ({
 
    useEffect(() => {
       if (fetchData) fetchData(pageSize, pageIndex);
+      if (setSize && setIndex) {
+         setSize(pageSize);
+         setIndex(pageIndex);
+      }
    }, [fetchData, pageIndex, pageSize]);
 
    return (

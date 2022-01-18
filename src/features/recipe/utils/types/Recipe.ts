@@ -6,6 +6,7 @@ import { Rating } from '@/utils/types/Rating';
 
 export interface Recipe {
    id: string;
+   number?: number;
    title: string;
    preparationTime: number;
    cookTime?: number;
@@ -28,6 +29,6 @@ export interface Recipe {
    groupedRating: Rating;
    userId: string;
    pictureUrl: string;
-   createdAt: Date;
+   createdAt: Date | string | null;
    updatedAt: Date;
 }

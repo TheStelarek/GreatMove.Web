@@ -1,8 +1,16 @@
-import type { AddExerciseFormValue } from '@/features/exercise/components/addExerciseModal/AddExerciseFormValue';
 import { api } from '@/store/api/api';
+import { Exercise } from '@/features/exercise/utils/types/Exercise';
+import type { AddExerciseFormValue } from '@/features/exercise/components/addExerciseModal/AddExerciseFormValue';
 
 export const exercisesApi = api.injectEndpoints({
    endpoints: (build) => ({
+      getExercises: build.query<{ data: Exercise[]; total: number }, { pageSize: number; pageIndex: number }>({
+         query: ({ pageSize, pageIndex }) => ({
+            url: `/exercises/user?take=${pageSize}&skip=${pageIndex * pageSize}`,
+            method: `get`,
+         }),
+         providesTags: [`Exercises`],
+      }),
       addExercise: build.mutation<string, AddExerciseFormValue>({
          query: (exerciseFormData) => ({
             url: `/exercises`,
@@ -12,6 +20,7 @@ export const exercisesApi = api.injectEndpoints({
                typeName: exerciseFormData.type,
             },
          }),
+         invalidatesTags: (result, error) => (error ? [] : [`Exercises`]),
       }),
       updateExercise: build.mutation<string, AddExerciseFormValue & { exerciseId: string }>({
          query: (exerciseFormData) => ({
@@ -22,14 +31,17 @@ export const exercisesApi = api.injectEndpoints({
                type: exerciseFormData.type,
             },
          }),
+         invalidatesTags: (result, error) => (error ? [] : [`Exercises`]),
       }),
       deleteExercise: build.mutation<string, { exerciseId: string }>({
          query: (exerciseFormData) => ({
             url: `/exercises/${exerciseFormData.exerciseId}`,
             method: `delete`,
          }),
+         invalidatesTags: (result, error) => (error ? [] : [`Exercises`]),
       }),
    }),
 });
 
-export const { useAddExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation } = exercisesApi;
+export const { useGetExercisesQuery, useAddExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation } =
+   exercisesApi;

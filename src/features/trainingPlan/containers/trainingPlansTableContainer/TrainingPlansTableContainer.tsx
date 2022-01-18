@@ -8,14 +8,17 @@ import useModal from '@/components/core/modal/useModal';
 import DeleteModal from '@/components/core/deleteModal/DeleteModal';
 import { ErrorType } from '@/utils/types/ErrorType';
 import styles from '@/features/trainingPlan/containers/trainingPlansTableContainer/TrainingPlansTableContainer.module.scss';
-import { useDeleteTrainingPlanMutation } from '@/features/trainingPlan/api/trainingPlansApi';
-import useTrainingPlans, { TrainingPlan } from '@/features/trainingPlan/hooks/useTrainingPlans';
+import { useDeleteTrainingPlanMutation, useGetMyPlansQuery } from '@/features/trainingPlan/api/trainingPlansApi';
+import { TrainingPlanResponse } from '@/features/trainingPlan/utils/types/TrainingPlanResponse';
 import View from '@/public/icons/view.svg';
-import Edit from '@/public/icons/edit-regular.svg';
 import Trash from '@/public/icons/trash.svg';
 
 const TrainingPlansTableContainer = () => {
-   const { plans, pageCount, error, isLoading, fetchTrainingPlans } = useTrainingPlans();
+   const [pageSize, setPageSize] = useState(10);
+   const [pageIndex, setPageIndex] = useState(0);
+   const [plans, setPlans] = useState<TrainingPlanResponse[]>([]);
+   const [pageCount, setPageCount] = useState(1);
+   const { data, isLoading, isError, error } = useGetMyPlansQuery({ pageSize, pageIndex });
    const [selectedPlanId, setSelectedPlanId] = useState<string>(``);
 
    const [deleteTrainingPlan, deleteResult] = useDeleteTrainingPlanMutation();
@@ -47,7 +50,7 @@ const TrainingPlansTableContainer = () => {
             Header: ``,
             accessor: `actions` as const,
             disableSortBy: true,
-            Cell: function ActionButtons({ cell }: { cell: Cell<TrainingPlan> }) {
+            Cell: function ActionButtons({ cell }: { cell: Cell<TrainingPlanResponse> }) {
                return (
                   <div className={styles.actionsContainer}>
                      <Link
@@ -57,9 +60,6 @@ const TrainingPlansTableContainer = () => {
                            <View className={styles.icon} />
                         </button>
                      </Link>
-                     <button>
-                        <Edit className={styles.icon} />
-                     </button>
                      <button onClick={() => openDeleteModal(cell.row.original.id)}>
                         <Trash className={styles.icon} />
                      </button>
@@ -79,8 +79,18 @@ const TrainingPlansTableContainer = () => {
    }, [deleteResult]);
 
    useEffect(() => {
-      fetchTrainingPlans(10, 0);
-   }, []);
+      if (data) {
+         const mappedData = data.data.map((plan: TrainingPlanResponse, index: number) => ({
+            ...plan,
+            createdAt: new Date(plan.createdAt).toLocaleDateString(),
+            number: index + 1,
+         }));
+
+         const pagesCount = Math.ceil(data.total / pageSize);
+         setPlans(mappedData);
+         setPageCount(pagesCount === 0 ? 1 : pagesCount);
+      }
+   }, [data]);
 
    return (
       <div className={styles.trainingPlansContainer}>
@@ -101,8 +111,8 @@ const TrainingPlansTableContainer = () => {
             heading="Delete training plan"
          />
 
-         {error && <p className="error">{error}</p>}
-         {plans && (
+         {isError && error && <p className="error">{(error as ErrorType).data.message}</p>}
+         {data && plans && (
             <Table
                hasGlobalFilter
                hasPagination
@@ -110,12 +120,13 @@ const TrainingPlansTableContainer = () => {
                isEquallyGrow
                columns={columns}
                data={plans}
-               fetchData={fetchTrainingPlans}
+               setSize={setPageSize}
+               setIndex={setPageIndex}
                pageCount={pageCount}
             />
          )}
 
-         {isLoading && !plans && <Spinner variant="ghost-primary" size="extra-large" />}
+         {isLoading && <Spinner variant="ghost-primary" size="extra-large" />}
       </div>
    );
 };
