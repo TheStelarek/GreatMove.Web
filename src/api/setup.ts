@@ -1,8 +1,23 @@
-import { reset, updateAccessToken } from '@/features/auth/store/AuthSlice';
-import type { RootState } from '@/utils/types/RootState';
 import { EnhancedStore } from '@reduxjs/toolkit';
 import Router from 'next/router';
-import { apiClient } from './apiClient';
+import { apiClient } from '@/api/apiClient';
+import { reset, updateAccessToken } from '@/features/auth/store/AuthSlice';
+import type { RootState } from '@/utils/types/RootState';
+
+let isRefreshing = false;
+let failedQueue: any = [];
+
+const processQueue = (error: any, token = null) => {
+   failedQueue.forEach((prom: any) => {
+      if (error) {
+         prom.reject(error);
+      } else {
+         prom.resolve(token);
+      }
+   });
+
+   failedQueue = [];
+};
 
 const setup = (store: EnhancedStore<RootState>) => {
    const { dispatch } = store;
@@ -36,14 +51,41 @@ const setup = (store: EnhancedStore<RootState>) => {
 
          // eslint-disable-next-line no-underscore-dangle
          if (error.response.status === 401 && !originalRequest._retry) {
+            if (isRefreshing) {
+               return new Promise((resolve, reject) => {
+                  failedQueue.push({ resolve, reject });
+               })
+                  .then((token) => {
+                     originalRequest.headers.Authorization = `Bearer ${token}`;
+                     return apiClient(originalRequest);
+                  })
+                  .catch((err) => Promise.reject(err));
+            }
+
             // eslint-disable-next-line no-underscore-dangle
             originalRequest._retry = true;
-            return apiClient.post(`/auth/refresh-token`).then((res) => {
-               dispatch(updateAccessToken(res.data.accessToken));
-               apiClient.defaults.headers.common.Authorization = `Bearer ${store.getState().auth.accessToken}`;
-               return apiClient(originalRequest);
+            isRefreshing = true;
+
+            return new Promise((resolve, reject) => {
+               apiClient
+                  .post(`/auth/refresh-token`)
+                  .then((res) => {
+                     dispatch(updateAccessToken(res.data.accessToken));
+                     originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
+                     apiClient.defaults.headers.common.Authorization = `Bearer ${store.getState().auth.accessToken}`;
+                     processQueue(null, res.data.accessToken);
+                     resolve(apiClient(originalRequest));
+                  })
+                  .catch((err) => {
+                     processQueue(err, null);
+                     reject(err);
+                  })
+                  .finally(() => {
+                     isRefreshing = false;
+                  });
             });
          }
+
          return Promise.reject(error);
       },
    );
