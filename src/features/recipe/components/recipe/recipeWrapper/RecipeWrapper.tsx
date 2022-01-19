@@ -38,7 +38,12 @@ const RecipeWrapper: FC<RecipeWrapperProps> = ({ recipe }) => (
                fibre={recipe.fibre}
             />
             {recipe.tips && <RecipeTips tips={recipe.tips} />}
-            <RecipeReviews recipeId={recipe.id} reviews={recipe.reviews} groupedRating={recipe.groupedRating} />
+            <RecipeReviews
+               authorId={recipe.userId}
+               recipeId={recipe.id}
+               reviews={recipe.reviews}
+               groupedRating={recipe.groupedRating}
+            />
          </div>
          <div className={styles.rightContainer}>
             <div className={styles.foodImage}>

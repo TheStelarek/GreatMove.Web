@@ -4,16 +4,20 @@ import Button from '@/components/core/button/Button';
 import useModal from '@/components/core/modal/useModal';
 import { Rating } from '@/utils/types/Rating';
 import { calculateAvgRating } from '@/utils/functions/calculateAvgRating';
+import { useAppSelector } from '@/store/hooks/useAppSelector';
 import { Review } from '@/features/recipe/utils/types/Review';
 import styles from '@/features/recipe/components/recipe/recipeReviews/RecipeReviews.module.scss';
 import RecipeReviewsAddModal from '@/features/recipe/components/recipe/recipeReviewsAddModal/RecipeReviewsAddModal';
 import { RecipeReviewsList } from '@/features/recipe/components/recipe/recipeReviewsList/RecipeReviewsList';
+import { authSelector } from '@/features/auth/store/AuthSlice';
 
-const RecipeReviews: FC<{ recipeId: string; reviews: Review[]; groupedRating: Rating }> = ({
+const RecipeReviews: FC<{ authorId: string; recipeId: string; reviews: Review[]; groupedRating: Rating }> = ({
+   authorId,
    recipeId,
    reviews,
    groupedRating,
 }) => {
+   const { isLoggedIn, me } = useAppSelector(authSelector);
    const { isOpen, handleOpenModal, handleCloseModal } = useModal();
 
    const totalRatings = Object.values(groupedRating).reduce((a, b) => a + b);
@@ -30,11 +34,13 @@ const RecipeReviews: FC<{ recipeId: string; reviews: Review[]; groupedRating: Ra
                <span className={styles.title}>Reviews</span>
                <p className={styles.description}>Explore other opinions or leave your own!</p>
                <RecipeReviewsAddModal recipeId={recipeId} isOpen={isOpen} closeModal={handleCloseModal} />
-               <div className={styles.addBtnWrapper}>
-                  <Button size="small" variant="secondary" borderRadius={5} onClick={() => handleOpenModal()}>
-                     Add review
-                  </Button>
-               </div>
+               {isLoggedIn && me?.id !== authorId && (
+                  <div className={styles.addBtnWrapper}>
+                     <Button size="small" variant="secondary" borderRadius={5} onClick={() => handleOpenModal()}>
+                        Add review
+                     </Button>
+                  </div>
+               )}
             </div>
             <div className={styles.ratingContainer}>
                <div className={styles.info}>
