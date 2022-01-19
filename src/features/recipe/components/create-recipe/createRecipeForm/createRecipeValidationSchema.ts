@@ -78,7 +78,7 @@ export const CreateRecipeValidationSchema = yup.object({
       .array()
       .of(
          yup.object().shape({
-            step: yup.string().max(120, `Max length is 120 characters`).required(`Step is required`),
+            step: yup.string().max(250, `Max length is 250 characters`).required(`Step is required`),
          }),
       )
       .required()
