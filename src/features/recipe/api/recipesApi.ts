@@ -9,6 +9,7 @@ export const recipesApi = api.injectEndpoints({
             url: `/recipes/${recipeId}`,
             method: `get`,
          }),
+         providesTags: (result, error, id) => [{ type: `Recipes`, id }],
       }),
       getMyRecipes: build.query<{ data: Recipe[]; total: number }, { pageSize: number; pageIndex: number }>({
          query: ({ pageSize, pageIndex }) => ({
@@ -31,6 +32,7 @@ export const recipesApi = api.injectEndpoints({
                carbs: recipeFormData.carbs,
                fats: recipeFormData.fats,
                fibre: recipeFormData.fibre,
+               tips: recipeFormData.tips,
                useConsent: recipeFormData.useConsent,
                visibility: recipeFormData.visibility.value,
                meal: recipeFormData.meal,
@@ -59,6 +61,7 @@ export const recipesApi = api.injectEndpoints({
                   carbs: recipeFormData.carbs,
                   fats: recipeFormData.fats,
                   fibre: recipeFormData.fibre,
+                  tips: recipeFormData.tips,
                   useConsent: recipeFormData.useConsent,
                   visibility: recipeFormData.visibility.value,
                   meal: recipeFormData.meal,
@@ -70,7 +73,7 @@ export const recipesApi = api.injectEndpoints({
                   picture: recipeFormData.photo,
                },
             }),
-            invalidatesTags: (result, error) => (error ? [] : [`Recipes`]),
+            invalidatesTags: (result, error, arg) => (error ? [] : [`Recipes`, { type: `Recipes`, id: arg.recipeId }]),
          },
       ),
       addReview: build.mutation<string, { description: string; rating: number; recipeId: string }>({
@@ -82,6 +85,7 @@ export const recipesApi = api.injectEndpoints({
                rating: reviewData.rating,
             },
          }),
+         invalidatesTags: (result, error, arg) => (error ? [] : [{ type: `Recipes`, id: arg.recipeId }]),
       }),
       deleteRecipe: build.mutation<string, { recipeId: string }>({
          query: (recipeFormData) => ({
