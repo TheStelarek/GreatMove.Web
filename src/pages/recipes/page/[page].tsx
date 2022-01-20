@@ -19,25 +19,31 @@ const RecipesPage: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, c
    const router = useRouter();
 
    useEffect(() => {
-      if (!router.isFallback && Number(currentPage) > 1 && Number(currentPage) > totalPages && recipes.length === 0) {
+      if (!router.isFallback && Number(currentPage) > totalPages && recipes.length === 0) {
          router.push(`/404`);
       }
    }, [router, recipes, totalPages, currentPage]);
 
-   return router.isFallback ? (
-      <div
-         style={{
-            height: `calc(100vh - 70px)`,
-            display: `flex`,
-            justifyContent: `center`,
-            alignItems: `center`,
-         }}
-      >
-         <Spinner size="extra-large" variant="ghost-primary" />
-      </div>
-   ) : (
-      <RecipesContainer totalPages={totalPages} currentPage={currentPage} recipes={recipes} />
-   );
+   if (router.isFallback) {
+      return (
+         <div
+            style={{
+               height: `calc(100vh - 70px)`,
+               display: `flex`,
+               justifyContent: `center`,
+               alignItems: `center`,
+            }}
+         >
+            <Spinner size="extra-large" variant="ghost-primary" />
+         </div>
+      );
+   }
+
+   if (recipes.length > 0 && Number(currentPage) <= totalPages) {
+      return <RecipesContainer totalPages={totalPages} currentPage={currentPage} recipes={recipes} />;
+   }
+
+   return null;
 };
 
 RecipesPage.getLayout = function getLayout(page: ReactElement) {
