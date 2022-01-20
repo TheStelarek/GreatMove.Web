@@ -1,11 +1,13 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import MainLayout from '@/layouts/mainLayout/MainLayout';
 import { NextApplicationPage } from '@/utils/types/NextApplicationPage';
 import { apiClient } from '@/api/apiClient';
 import { Recipe } from '@/features/recipe/utils/types/Recipe';
 import RecipesContainer from '@/features/recipe/containers/recipesContainer/RecipesContainer';
+import Spinner from '@/components/core/spinner/Spinner';
 
 interface RecipesProps {
    recipes: Recipe[];
@@ -13,9 +15,30 @@ interface RecipesProps {
    totalPages: number;
 }
 
-const RecipesPage: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, currentPage }) => (
-   <RecipesContainer totalPages={totalPages} currentPage={currentPage} recipes={recipes} />
-);
+const RecipesPage: NextApplicationPage<RecipesProps> = ({ recipes, totalPages, currentPage }) => {
+   const router = useRouter();
+
+   useEffect(() => {
+      if (!router.isFallback && Number(currentPage) > 1 && Number(currentPage) > totalPages && recipes.length === 0) {
+         router.push(`/404`);
+      }
+   }, [router, recipes, totalPages, currentPage]);
+
+   return router.isFallback ? (
+      <div
+         style={{
+            height: `calc(100vh - 70px)`,
+            display: `flex`,
+            justifyContent: `center`,
+            alignItems: `center`,
+         }}
+      >
+         <Spinner size="extra-large" variant="ghost-primary" />
+      </div>
+   ) : (
+      <RecipesContainer totalPages={totalPages} currentPage={currentPage} recipes={recipes} />
+   );
+};
 
 RecipesPage.getLayout = function getLayout(page: ReactElement) {
    return <MainLayout>{page}</MainLayout>;
@@ -35,7 +58,7 @@ export async function getStaticPaths() {
 
    return {
       paths,
-      fallback: false,
+      fallback: true,
    };
 }
 

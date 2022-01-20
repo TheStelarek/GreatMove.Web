@@ -16,7 +16,7 @@ const RecipeTime: FC<RecipeTimeProps> = ({ prepTime, cookTime = 0 }) => (
          <span className={styles.timeName}>Prep time</span>
          <p className={styles.time}>{prepTime}m</p>
       </div>
-      {cookTime && (
+      {cookTime > 0 && (
          <div className={styles.timeInfo}>
             <span className={styles.timeName}>Cook time</span>
             <p className={styles.time}>{cookTime}m</p>
