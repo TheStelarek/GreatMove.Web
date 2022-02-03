@@ -29,7 +29,7 @@ const RecipeNourishment: FC<RecipeNurtilionsProps> = ({ calories, proteins, carb
             <span className={styles.name}>Fats</span>
             <p>{fats} </p>
          </div>
-         {fibre && (
+         {!!fibre && (
             <div className={styles.nurtilionBox}>
                <span className={styles.name}>Fibre</span>
                <p>{fibre}</p>
